@@ -1,0 +1,145 @@
+/* Empty. Add your own CSS if you like */
+
+a i{
+        color: white;
+}
+ body{
+
+ }
+.float-left {
+  float: left !important;
+}
+ion-content div{
+    direction:rtl;
+
+
+}
+ion-content.home>div{
+    direction:rtl;
+    transform:inherit!important;
+
+}
+.float-right {
+  float: right !important;
+}
+#fhm_page .scroll,
+.fhm_container {
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+}
+
+.fhm_row {
+  /* position: absolute; */
+  height: 49.9%;
+  left:0;
+  right:0;
+
+  clear:both;
+}
+.fhm_item {
+    text-align:center;
+  height: 100%;
+  width:49.95%;
+  background-color: #00FF00;
+  border: 1px solid #FFFFFF;
+  float:left;
+      color: #fff;
+          /*border-radius: 45px;*/
+}
+.fhm_item i{
+    margin-top: 50%;
+}
+    
+.get-ambulance-fhm{
+    background-color: #1b4888;
+}
+.stairs-assistant-fhm{
+   background-color: #00a25f;
+}
+.therapist-assistant-fhm{
+   background-color: #1d919e;
+}
+
+.general-assistant-fhm{
+   background-color: #ffc900;
+}
+
+.full-width{
+    width:100%!important;
+}
+
+/*reservation-form*/
+.current-place{
+
+}
+.address label span{
+     width: 20%;
+}
+.address  label input{
+    /*border-bottom:solid 1px;
+         border-color: rgba(0,0,0,0.12);*/
+}
+.date label span{
+     width: 20%;
+}
+.date label input{
+    border-bottom:solid 1px;
+         border-color: rgba(0,0,0,0.12);
+}
+.current-place ul{
+    /*display:flex;*/
+}
+.current-place ul li{
+ width:100%;
+}
+.current-place ul .item-checkbox .checkbox{
+        right: inherit!important;
+            direction: ltr;
+}
+.item-radio{
+    direction:ltr;
+}
+.bar.bar-stable .title{
+    color:white;
+}
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar{
+    background-color:#0fc6dc;
+}
+[nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
+    background-color:#0fc6dc;
+}
+.bar-stable .button.button-clear{
+    color:white;
+}
+select{
+     color:dimgray;
+}
+.select-style {
+   
+    border: 1px solid #ccc;
+
+    border-radius: 3px;
+    overflow: hidden;
+   
+
+    background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 5% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}

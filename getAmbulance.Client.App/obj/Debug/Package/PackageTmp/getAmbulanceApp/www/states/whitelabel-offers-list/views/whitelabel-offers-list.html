@@ -1,0 +1,30 @@
+﻿<ion-view view-title="Browse">
+  <ion-content>
+      <ion-list ng-controller="WhiteLabelOffersListCtrl"
+                can-swipe="listCanSwipe">
+          <ion-item ng-repeat="item in ambulancePriceOffersList" ng-click="setSelectedOffer(item)"
+                    class="item-thumbnail-left">
+
+              <img ng-src="img/{{item.logo}}">
+              <h2 style="padding-top: 20px;">שם ספק : {{item.name}}</h2>
+              <p>{{item.description}}</p>
+              <p>מחיר נסיעה : {{item.price}}</p>
+              <!--<ion-option-button class="button-positive"
+                                 ng-click="share(item)">
+                  Share
+              </ion-option-button>
+              <ion-option-button class="button-info"
+                                 ng-click="edit(item)">
+                  Edit
+              </ion-option-button>
+              <ion-delete-button class="ion-minus-circled"
+                                 ng-click="items.splice($index, 1)">
+              </ion-delete-button>
+              <ion-reorder-button class="ion-navicon"
+                                  on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+              </ion-reorder-button>-->
+
+          </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>

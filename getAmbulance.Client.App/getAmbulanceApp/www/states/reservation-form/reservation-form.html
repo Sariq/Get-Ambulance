@@ -1,0 +1,111 @@
+﻿<ion-view view-title="Browse">
+  <ion-content>
+      <form name="authorizationForm" novalidate="" ng-submit="signIn(authorizationForm)">
+
+          <div class="list">
+              <div class="current-place" >
+                  <label class="item item-stable item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+                      <span class="input-label">{{'אני נמצא ב :' | translate}}</span>
+                  </label>
+                  <ul >
+                  <li><ion-radio name="current-place" ng-model="form.Place_Type" value="home"><label>{{'בית' | translate}}</label></ion-radio></li>
+                      <li><ion-radio name="current-place" ng-model="form.Place_Type" value="medicalClinic"><label>{{'מרפאה' | translate}}</label></ion-radio></li>
+                      <li><ion-radio name="current-place" ng-model="form.Place_Type" value="hospital"><label>{{'בית חולים' | translate}}</label></ion-radio></li>
+
+                  </ul>
+
+              </div>
+              <div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
+                  <div ng-messages-include="error-list.html"></div>
+              </div>
+          
+              <div class="address">
+                  <label style="border-top: 0;" class="item item-stable item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+                      <span class="input-label">{{'כתובת'|translate}}</span>
+                  </label>
+                  <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+                      <span class="input-label">{{'איסוף'|translate}} :</span>
+                      <input type="text" name="collect" ng-model="form.From_Address" ng-minlength="2" ng-maxlength="20" required>
+                  </label>
+                  <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+                      <span class="input-label">{{'הורדה'|translate}} :</span>
+                      <input type="text" name="drop" ng-model="form.To_Address" ng-minlength="2" ng-maxlength="20" required>
+                  </label>
+                  <div class="error-container last-error-container" ng-show="authorizationForm.password.$error && authorizationForm.$submitted" ng-messages="authorizationForm.password.$error">
+                      <div ng-messages-include="error-list.html"></div>
+                  </div>
+              </div>
+
+              <div class="date">
+                  <label style="border-top: 0;" class="item item-stable item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+                      <span class="input-label">{{'תאריך הזמנה'|translate}}</span>
+                  </label>
+         
+         
+                      <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+                          <span class="input-label">{{'תאריך'|translate}} :</span>
+                          <input type="date" ng-model="form.date" />
+                      </label>
+                      <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+                          <span class="input-label">{{'שעה'|translate}} :</span>
+                          <input type="time" ng-model="form.time" />
+                      </label>
+                      <div class="error-container last-error-container" ng-show="authorizationForm.password.$error && authorizationForm.$submitted" ng-messages="authorizationForm.password.$error">
+                          <div ng-messages-include="error-list.html"></div>
+                      </div>
+
+                
+                  <div class="error-container last-error-container" ng-show="authorizationForm.password.$error && authorizationForm.$submitted" ng-messages="authorizationForm.password.$error">
+                      <div ng-messages-include="error-list.html"></div>
+                  </div>
+              </div>
+      
+              <div class="weight">
+                  <div class="current-place weight">
+                      <label class="item item-stable item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+                          <span class="input-label">{{'המשקל שלי' | translate}}</span>
+                      </label>
+                      <ul>
+                          <li><ion-radio name="weight" ng-model="form.Weight" value="100"><label>30-100</label></ion-radio></li>
+                          <li><ion-radio name="weight" ng-model="form.Weight" value="120"><label>101-120</label></ion-radio></li>
+                          <li><ion-radio name="weight" ng-model="form.Weight" value="250"><label>121-250</label></ion-radio></li>
+                    
+
+                      </ul>
+
+                  </div>
+                  <div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
+                      <div ng-messages-include="error-list.html"></div>
+                  </div>
+
+              </div>
+              <div class="patient-status">
+                  <div class="current-place">
+                      <label class="item item-stable item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+                          <span class="input-label">{{'מצב נוכחי' | translate}}</span>
+                      </label>
+                      <ul>
+                          <li><ion-radio name="patient-status" ng-model="form.Patient_Status" value="standing"><label>{{'עמידה' | translate}}</label></ion-radio></li>
+                          <li><ion-radio name="patient-status" ng-model="form.Patient_Status" value="setting"><label>{{'ישיבה' | translate}}</label></ion-radio></li>
+                          <li><ion-radio name="patient-status" ng-model="form.Patient_Status" value="repose"><label>{{'שכיבה' | translate}}</label></ion-radio></li>
+                        
+
+
+                      </ul>
+
+                  </div>
+                  <div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
+                      <div ng-messages-include="error-list.html"></div>
+                  </div>
+
+              </div>
+
+          </div>
+
+          <button ng-click="continueToStep2()" class="button button-full button-positive" >
+              <span class="">{{'המשך' | translate}}</span>
+          </button>
+
+      </form>  
+  </ion-content>
+</ion-view>

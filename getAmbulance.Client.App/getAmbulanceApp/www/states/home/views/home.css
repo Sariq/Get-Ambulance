@@ -1,0 +1,41 @@
+.home .info .info-green-svg{
+    fill:lightgreen;
+}
+
+.home{
+   
+}
+
+.home .panel{
+     font-size:calc(0.75em + 2vmin);
+        background-color: ghostwhite;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+   position:relative;
+}
+
+.home .row{
+    width:unset;
+}
+
+.home .cat{
+    height:50px;
+   margin:5%!important;
+}
+.home .cat-img{
+
+      margin-top: 5px;
+        text-align:center;
+}
+
+.home .panel.cat .txt{
+    text-align:center;
+   margin: auto;
+	font-weight : bold;
+	color : #038AA1;
+	color : rgb(3, 138, 161);
+
+}
+

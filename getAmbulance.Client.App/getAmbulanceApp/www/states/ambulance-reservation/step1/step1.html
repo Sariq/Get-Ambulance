@@ -1,0 +1,70 @@
+﻿
+<ion-view view-title="הזמנת אמבולנס פרטי">
+
+    <ion-content>
+        <div class="row">
+            <table class="form-header" style="height:50px;    width: 100%;" cellspacing="0" cellpadding="0">
+                <tr >
+                    <td colspan="2" style=";vertical-align: bottom;">פרטי הזמנה</td>
+                    <td style="width:100%" rowspan="2">
+                        <img src="../www/img/ambulance-white.png" class="info-green-svg" style="width: 134px;height: 55px;;vertical-align: top;" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:10%;vertical-align: middle;">
+                        <img src="../www/img/info-green.svg" class="info-green-svg" style="width:100%" />
+                    </td>
+                    <td style="width:50%;font-size: 70%;line-height: 1;vertical-align: middle;">                ניתן להזמין אמבולנס פרטי בזמן שתרצה ומלווה לכל מטרה שתרצה וגם להזמין עזרה בהעלאה והורדה במדרגות ולחצן מצוקה
+</td>
+                
+                </tr>
+            </table>
+
+        </div>
+        <form class="reservation-form" name="Step1Form" novalidate="" ng-submit="signIn(authorizationForm)">
+
+            <div class="list">
+                <!--<label class="item item-input panel" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+                    <input placeholder="{{'איסוף'|translate}}" type="text" name="collect" ng-model="form.From_Address" ng-minlength="2" ng-maxlength="20" required>
+                </label>
+                    <div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
+                        <div ng-messages-include="error-list.html"></div>
+                    </div>-->
+
+                <!--<label class="item item-input panel item-floating-label">
+                    <span class="input-label">{{'date'|translate}} :</span>
+                    <input placeholder="{{'date'|translate}}" type="text" name="date" onfocus="(this.type='date')"  ng-model="form.date">
+                </label>-->
+
+                <label class="item item-input panel item-floating-label">
+                    <span class="input-label">{{'Full_Name'|translate}} :</span>
+                    <input placeholder="{{'Full_Name'|translate}}" type="text" name="Full_Name" ng-model="form.Full_Name" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                </label>
+                <span id="message"></span>
+                <label class="item item-input panel item-floating-label">
+                    <span class="input-label">{{'Id_Number'|translate}} :</span>
+                    <input placeholder="{{'Id_Number'|translate}}" type="text" name="Id_Number" ng-model="form.Id_Number" ng-minlength="2" ng-maxlength="20" validator="required">
+                </label>
+
+                <label class="item item-input panel item-floating-label">
+                    <span class="input-label">{{'Phone_Number'|translate}} :</span>
+                    <input placeholder="{{'Phone_Number'|translate}}" type="text" name="Phone_Number" ng-model="form.Phone_Number" ng-minlength="2" ng-maxlength="20" validator="required">
+                </label>
+
+                <label class="item item-input panel item-floating-label">
+                    <span class="input-label">{{'Age'|translate}} :</span>
+                    <input placeholder="{{'Age'|translate}}" type="text" name="Age" ng-model="form.Age" ng-minlength="2" ng-maxlength="20" validator="required">
+                </label>
+
+                </div>
+
+         
+
+            <button ng-click="continueToStep2()" class="button button-full next-btn button-positive">
+                <span class="">{{'המשך' | translate}}</span>
+            </button>
+
+        </form>
+    </ion-content>
+</ion-view>

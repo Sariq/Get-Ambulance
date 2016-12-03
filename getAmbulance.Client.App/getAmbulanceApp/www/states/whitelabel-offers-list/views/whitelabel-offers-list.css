@@ -1,0 +1,11 @@
+
+.whitelabel-offer-list .panel{
+font-size: calc(0.75em + 2vmin);
+    background-color: ghostwhite;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    position: relative;
+        margin: 25px 10px 5px 10px;
+}

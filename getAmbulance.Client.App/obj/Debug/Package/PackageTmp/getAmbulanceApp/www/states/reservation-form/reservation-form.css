@@ -1,0 +1,10 @@
+.item-radio .item-content{
+    padding-right: 10px;
+}
+.item-radio .radio-icon{
+        left: 0;
+        right:unset;
+}
+.item-radio input:checked + .radio-content .item-content{
+    background:unset;
+}

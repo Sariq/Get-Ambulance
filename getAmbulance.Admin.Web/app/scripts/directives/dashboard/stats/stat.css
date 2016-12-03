@@ -1,0 +1,13 @@
+.stat{
+
+    cursor:pointer;
+}
+
+.stat a{
+    color: unset;
+    text-decoration: none;
+}
+
+.stat .panel-heading{
+    padding: 10px 15px 0px 30px;
+}
