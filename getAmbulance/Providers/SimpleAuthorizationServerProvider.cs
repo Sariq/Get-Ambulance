@@ -38,28 +38,28 @@ namespace getAmbulance.Providers
                 client=_repo.FindClient(context.ClientId);
             }
 
-            //if (client == null)
-            //{
-            //    context.SetError("invalid_clientId", string.Format("Client '{0}' is not registered in the system.", context.ClientId));
-            //    return Task.FromResult<object>(null);
-            //}
+            if (client == null)
+            {
+                context.SetError("invalid_clientId", string.Format("Client '{0}' is not registered in the system.", context.ClientId));
+                return Task.FromResult<object>(null);
+            }
 
-            //if (client.ApplicationType == Models.ApplicationTypes.NativeConfidential)
-            //{
-            //    if (string.IsNullOrWhiteSpace(clientSecret))
-            //    {
-            //        context.SetError("invalid_clientId", "Client secret should be sent.");
-            //        return Task.FromResult<object>(null);
-            //    }
-            //    else
-            //    {
-            //        if (client.Secret != Helper.GetHash(clientSecret))
-            //        {
-            //            context.SetError("invalid_clientId", "Client secret is invalid.");
-            //            return Task.FromResult<object>(null);
-            //        }
-            //    }
-            //}
+            if (client.ApplicationTypeId == Enums.ApplicationTypes.NativeConfidential)
+            {
+                if (string.IsNullOrWhiteSpace(clientSecret))
+                {
+                    context.SetError("invalid_clientId", "Client secret should be sent.");
+                    return Task.FromResult<object>(null);
+                }
+                else
+                {
+                    if (client.Secret != Helper.GetHash(clientSecret))
+                    {
+                        context.SetError("invalid_clientId", "Client secret is invalid.");
+                        return Task.FromResult<object>(null);
+                    }
+                }
+            }
 
             if (!client.Active)
             {

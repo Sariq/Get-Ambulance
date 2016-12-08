@@ -1,6 +1,6 @@
 
 
-angular.module('starter.controllers').controller('Step3Ctrl', function ($scope, $ionicModal, ReservationService, localStorageService, $state) {
+angular.module('starter.controllers').controller('AmbulanceStep3Ctrl', function ($scope, $ionicModal, ReservationService, localStorageService, $state) {
     $scope.form = {};
 
 

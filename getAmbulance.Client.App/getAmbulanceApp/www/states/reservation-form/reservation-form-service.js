@@ -14,38 +14,31 @@ angular.module('starter.controllers').service('ReservationService', function ($h
         }
         self.formData = angular.extend(self.formData, formData);
         localStorageService.set('reservationFormData', self.formData);
-        
-        
     }
 
     self.getDistance = function (form, callback) {
-     
-           
-  
         try {
-
             var service = new google.maps.DistanceMatrixService();
         } catch (er) {
             alert(er)
-
         }
-      
-      
         service.getDistanceMatrix(
           {
               origins: [form.From_Address],
               destinations: [form.To_Address],
               travelMode: 'DRIVING'
-             
           }, callback);
-
-    
-   
     }
    
     self.getAmbulanceOffersList = function (form) {
         return $http.post(serviceBase + 'api/Reservation/GetAmbulanceOffersList', form);
     }
+
+    self.getMedicalTherapistOffersList = function (form) {
+        return $http.post(serviceBase + 'api/Reservation/GetMedicalTherapistOffersList', form);
+    }
+
+
     self.setWhiteLabelOffer = function (offer) {
         self.whiteLabelOffer = offer;
     }

@@ -94,12 +94,28 @@ namespace getAmbulance.Reservation
             foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
             {
                 int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices["distance"], (int)jsonObj.distance.Value);
-                int extraServicesPrice = getWhiteLabelExtraServicesPrice((BsonDocument)whiteLabel.prices,jsonObj);
+                int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices,jsonObj);
                 int finalPrice = distancePrice + extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
             return whiteLabelsOfferList;
         }
+
+        public List<WhiteLabelOfferEntity> GetMedicalTherapistOffersList(dynamic jsonObj)
+        {
+            List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatus(true);
+            foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
+            {
+                int extraServicesPrice = getMedicalTherapistPriceByHour((BsonDocument)whiteLabel.prices, jsonObj);
+                int finalPrice = extraServicesPrice;
+                whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
+            }
+            return whiteLabelsOfferList;
+        }
+
+        
+
         public int getWhiteLabelDistancePriceByKM(BsonDocument distancePricesList,int reservationDistance)
         {
             foreach (var distance in distancePricesList)
@@ -112,24 +128,28 @@ namespace getAmbulance.Reservation
             }
             return 0;
         }
-        public int getWhiteLabelExtraServicesPrice(BsonDocument prices, dynamic reservationData)
+        public int getAmbulanceExtraServicesPrice(BsonDocument prices, dynamic reservationData)
         {
-
             var temp_prices = prices;
-       
-
             foreach (var weightPrice in (BsonDocument)prices["weight"])
             {
                 if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Name))
                 {
-                    Console.Write(weightPrice);
                     return (int)weightPrice.Value;
                 }
-
             }
             return 0;
-
         }
+
+        public int getMedicalTherapistPriceByHour(BsonDocument prices, dynamic reservationData)
+        {
+                    return ((int)prices["medicaTherapist"]) * ((int)reservationData["Therapist_Stayig_Time"]);
+        }
+       
+
+
+        
+
         public void AcceptReservation(string reservationId)
         {
             var id = new ObjectId(reservationId);
@@ -161,6 +181,7 @@ namespace getAmbulance.Reservation
         {
 
             // IList<IReservationProperty> propesties = new List<IReservationProperty>();
+            BsonDocument doc = BsonDocument.Parse(jsonObjDepositRequest.ToString());
             BsonDocument propesties =new BsonDocument{ };
             if (jsonObjDepositRequest.AdditionalProperties == null)
                 return propesties;
@@ -171,18 +192,28 @@ namespace getAmbulance.Reservation
                 // var key = (eReservationAdditionalProperties)jsonObjDepositRequest.AdditionalProperties[i].Key;
                 var key = (String)jsonObjDepositRequest.AdditionalProperties[i].Key;
              
-                if (key=="date")
-                {
+                //if (key=="date")
+                //{
                   
-                    var value = (DateTime)jsonObjDepositRequest.AdditionalProperties[i].Value;
-                    propesties.Add(key.ToString(), value);
-                }
-                else
-                {
-                    var value = (string)jsonObjDepositRequest.AdditionalProperties[i].Value;
-                    propesties.Add(key.ToString(), value);
+                //    var value = (DateTime)jsonObjDepositRequest.AdditionalProperties[i].Value;
+                //    propesties.Add(key.ToString(), value);
+                //}
+                //else
+                //{
+                //    if (key == "Service_Options")
+                //    {
 
-                }
+                //        var value = doc["AdditionalProperties"][i]["Value"];
+                //        propesties.Add(key.ToString(), value);
+                //    }else
+                //    {
+                        // var value = (string)jsonObjDepositRequest.AdditionalProperties[i].Value;
+                        var value = doc["AdditionalProperties"][i]["Value"];
+                        propesties.Add(key.ToString(), value);
+
+                   // }
+
+             //   }
                 // IReservationProperty property = CreateRequestProperty(key, value);
         
               

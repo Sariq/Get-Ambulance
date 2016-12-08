@@ -1,0 +1,65 @@
+﻿
+<ion-view view-title="הזמנת אמבולנס פרטי">
+
+    <ion-content>
+
+
+        <form class="reservation-form" name="StepForm" novalidate="" ng-submit="signIn(authorizationForm)">
+
+            <div class="list">
+                <label class="item item-input panel item-floating-label select-style">
+                    <span class="input-label">{{'Accompaniment_Location'|translate}} :</span>
+                    <select class="" name="Direction_Type" ng-model="form.Accompaniment_Location">
+                        <option value="" hidden selected>{{'Accompaniment_Location'|translate}}</option>
+                        <option value="Home">{{'Home'|translate}}</option>
+                        <option value="Clinic">{{'Clinic'|translate}}</option>
+                        <option value="Hospital">{{'Hospital'|translate}}</option>
+                        <option value="Other">{{'Other'|translate}}</option>
+                    </select>
+                </label>
+
+
+                <label class="item item-input panel item-floating-label select-style">
+                    <span class="input-label">{{'Current_Status'|translate}} :</span>
+                    <select class="" name="Direction_Type" ng-model="form.Current_Status">
+                        <option value="" hidden selected>{{'Current_Status'|translate}}</option>
+                        <option value="Standing">{{'Standing'|translate}}</option>
+                        <option value="Sitting">{{'Sitting'|translate}}</option>
+                        <option value="Lying">{{'Lying'|translate}}</option>
+                    </select>
+                </label>
+
+          
+
+                <label class="item item-input panel item-floating-label " style="padding:6px 0 5px 0px;">
+                    <label  style="padding: 10px;">{{'Service_Options'|translate}} :</label>
+
+
+
+                    <label class="item item-input panel item-floating-label " style="margin: 5px 10px 5px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Home"><label style="padding-right: 15%;">{{'Home'|translate}}</label></ion-checkbox>
+                    </label>
+                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Hospital"><label style="padding-right: 15%;">{{'Hospital'|translate}}</label></ion-checkbox>
+                    </label>
+                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Clinic"><label style="padding-right: 15%;">{{'Clinic'|translate}}</label></ion-checkbox>
+                    </label>
+                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Other"><label style="padding-right: 15%;">{{'Other'|translate}}</label></ion-checkbox>
+                    </label>
+                </label>
+
+
+
+
+
+          </div>
+
+                <button  ng-click="continueToStep3()" class="button button-full next-btn button-positive">
+                    <span class="">{{'המשך' | translate}}</span>
+                </button>
+
+</form>
+    </ion-content>
+</ion-view>

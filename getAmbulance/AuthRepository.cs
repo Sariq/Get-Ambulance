@@ -47,15 +47,10 @@ namespace getAmbulance
 
         public BrowserClient FindClient(string clientId)
         {
-           // var client = _ctx.Clients.Find(clientId);
 
-
-
-
-            var filter = Builders<BrowserClient>.Filter.Eq("Type", "ngAuthApp");
-            var client = _ctx.BrowserClients.Find(filter).ToListAsync().Result[0];
-            //var result2= result.Result.ToJson();
-            return client;
+           var filter = Builders<BrowserClient>.Filter.Eq("Type", clientId);
+           var client = _ctx.BrowserClients.Find(filter).ToListAsync().Result[0];
+           return client;
         }
 
         public void Dispose()

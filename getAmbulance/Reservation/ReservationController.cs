@@ -49,7 +49,7 @@ namespace getAmbulance.Reservation
             HttpResponseMessage response;
             try
             {
-               
+                
                 dynamic jsonObj = jsonData;
                 reservation.WhiteLabel_ID = jsonObj.WhiteLabel_ID.Value;
                 reservation.Type = jsonObj.Type.Value;
@@ -121,7 +121,7 @@ namespace getAmbulance.Reservation
                     reservationType = jsonObj.type.Value;
                 }
 
-                List<ReservationEntity> reservationList = _reservationService.GetReservationsListByWhiteLabelId(jsonObj.whiteLabelId.Value.ToString(), reservationStatus, reservationStatus);
+                List<ReservationEntity> reservationList = _reservationService.GetReservationsListByWhiteLabelId(jsonObj.whiteLabelId.Value.ToString(), reservationStatus, reservationType);
                 
                 response = Request.CreateResponse(HttpStatusCode.OK, reservationList);
             }
@@ -167,6 +167,27 @@ namespace getAmbulance.Reservation
             }
             return response;
         }
+
+        // Post: /Reservation/GetAmbulanceOffersList
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage GetMedicalTherapistOffersList(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            dynamic jsonObj = jsonData;
+
+            try
+            {
+                List<WhiteLabelOfferEntity> whiteLabelsOfferList = _reservationService.GetMedicalTherapistOffersList(jsonObj);
+                response = Request.CreateResponse(HttpStatusCode.OK, whiteLabelsOfferList);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetAmbulanceOffersList Error");
+            }
+            return response;
+        }
+
         // Post: /Reservation/AcceptReservation
         [HttpPost]
         public HttpResponseMessage AcceptReservation(JObject jsonData)

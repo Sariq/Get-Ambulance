@@ -138,6 +138,17 @@
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.bundle.min.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.min.js" />
+    <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\routes.js" />
+    <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\step2\step2.css" />
+    <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\step2\step2.html" />
+    <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\step2\step2.js" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\routes.js" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step2\step2.css" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step2\step2.html" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step2\step2.js" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.css" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.html" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.js" />
     <Content Include="getAmbulanceApp\www\states\home\views\home.css" />
     <Content Include="getAmbulanceApp\www\states\ambulance-reservation\routes.js" />
     <Content Include="getAmbulanceApp\www\states\ambulance-reservation\step1\step1.css" />

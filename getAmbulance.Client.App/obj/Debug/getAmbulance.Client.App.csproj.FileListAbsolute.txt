@@ -31,3 +31,36 @@ C:\Users\sariq_000\Documents\Visual Studio 2015\Projects\getAmbulance\getAmbulan
 C:\Users\sariq_000\Documents\Visual Studio 2015\Projects\getAmbulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.csprojResolveAssemblyReference.cache
 C:\Users\sariq_000\Documents\Visual Studio 2015\Projects\getAmbulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.dll
 C:\Users\sariq_000\Documents\Visual Studio 2015\Projects\getAmbulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.pdb
+D:\Get-Ambulance\getAmbulance.Client.App\bin\ApplicationInsights.config
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\csc.exe
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\System.Collections.Immutable.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\System.Reflection.Metadata.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\vbc.exe
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\VBCSCompiler.exe
+D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\VBCSCompiler.exe.config
+D:\Get-Ambulance\getAmbulance.Client.App\bin\getAmbulance.Client.App.dll.config
+D:\Get-Ambulance\getAmbulance.Client.App\bin\getAmbulance.Client.App.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\getAmbulance.Client.App.pdb
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.DependencyCollector.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.Web.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.WindowsServer.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.ApplicationInsights.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.DependencyCollector.xml
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.Web.xml
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.WindowsServer.xml
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.ApplicationInsights.xml
+D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Get-Ambulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.csprojResolveAssemblyReference.cache
+D:\Get-Ambulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.dll
+D:\Get-Ambulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.pdb

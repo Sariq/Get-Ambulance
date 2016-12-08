@@ -1,0 +1,56 @@
+﻿
+<ion-view view-title="הזמנת אמבולנס פרטי">
+
+    <ion-content>
+
+
+        <form class="reservation-form" name="Step2Form" novalidate="" >
+
+            <div class="list">
+
+                <label class="item item-input panel item-floating-label">
+                    <span class="input-label">{{'Meeting_Address'|translate}} :</span>
+                    <input placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                </label>
+
+                <label class="item item-input panel item-floating-label col-45">
+                    <span class="input-label">{{'Therapist_Stayig_Time'|translate}} :</span>
+                    <!--<input type="number" class="form-control" min="0" max="12" step="0.5" ng-model="input.hours" required ng-change="onChange(input.hours)">-->
+
+                    <input style="text-align:center" placeholder="{{'Therapist_Stayig_Time'|translate}}" type="text" onfocus="(this.type = 'time')"  name="Time" ng-model="form.Therapist_Stayig_Time"  message-id="message" validator="required">
+                </label>
+
+
+                <label class="item item-input panel item-floating-label select-style">
+                    <span class="input-label">{{'Weight'|translate}} :</span>
+                    <select class="" name="Ambulance_Type" ng-model="form.Weight">
+                        <option value="" hidden selected>{{'Weight'|translate}}</option>
+                        <option value="90">{{'till'|translate}} 90</option>
+                        <option value="121">91-121</option>
+                        <option value="122">{{'From_And_More'|translate}} 121</option>
+                    </select>
+                </label>
+
+
+             
+                <div class="row" style="padding:0;">
+                    <label class="item item-input panel item-floating-label col-45 date-time">
+                        <span class="input-label">{{'Date'|translate}} :</span>
+                        <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" onfocus="(this.type='date')" name="Date" ng-model="form.Date" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    </label>
+                    <label class="item item-input panel item-floating-label col-45 date-time" >
+                        <span class="input-label">{{'Time'|translate}} :</span>
+                        <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" onfocus="(this.type='time')" name="Time" ng-model="form.Time" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    </label>
+                </div>
+            </div>
+
+
+
+            <button ng-click="continueToStep3()" class="button button-full next-btn button-positive">
+                <span class="">{{'המשך' | translate}}</span>
+            </button>
+
+        </form>
+    </ion-content>
+</ion-view>

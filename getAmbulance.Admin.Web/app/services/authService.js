@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', function ($http, $q, localStorageService, ngAuthSettings, $location) {
+angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', function ($http, $q, localStorageService, ngAuthSettings, $location, $state) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -32,6 +32,9 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
 
         if (_authentication.useRefreshTokens) {
             data = data + "&client_id=" + ngAuthSettings.clientId;
+            if (ngAuthSettings.clientSecret) {
+                data = data + "&client_secret=" + ngAuthSettings.clientSecret;
+            }
         }
 
         var deferred = $q.defer();
@@ -122,7 +125,7 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
 
                 $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-                    localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: response.refresh_token, useRefreshTokens: true });
+                    localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: response.refresh_token, useRefreshTokens: true, WhiteLabelData: authData.WhiteLabelData });
 
                     deferred.resolve(response);
 
@@ -181,14 +184,16 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
         return deferred.promise;
 
     };
-
+    var _reLoadState = function () {
+        $state.reload();
+    }
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
     authServiceFactory.authentication = _authentication;
     authServiceFactory.refreshToken = _refreshToken;
-
+    authServiceFactory.reLoadState = _reLoadState;
     authServiceFactory.obtainAccessToken = _obtainAccessToken;
     authServiceFactory.externalAuthData = _externalAuthData;
     authServiceFactory.registerExternal = _registerExternal;

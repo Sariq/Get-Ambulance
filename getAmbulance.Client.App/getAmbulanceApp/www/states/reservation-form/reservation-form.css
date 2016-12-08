@@ -39,3 +39,31 @@ font-size: calc(0.75em + 2vmin);
 .form-header tr td{
     vertical-align: middle;
 }
+
+.item-input.date-time{
+    min-width:45%;
+}
+.checkbox-input-item{
+        border-color: unset;
+    background-color:  unset;
+    color: unset;
+    position: unset;
+    z-index: 2;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    border-style: unset;
+    font-size: 16px;
+}
+.col-30{
+    width:30%;
+}
+
+.platform-android .checkbox-platform input:after, .platform-android .checkbox-platform .checkbox-icon:after, .checkbox-square input:after, .checkbox-square .checkbox-icon:after{
+    left: 40%;
+}
+.checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
+        background: #0fc6dc;
+    border-color: #0fc6dc;
+}

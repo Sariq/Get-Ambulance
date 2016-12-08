@@ -47,5 +47,15 @@ namespace getAmbulance.WhiteLabel
             var whiteLabel = _ctx.WhiteLabels.Find(filter).ToListAsync().Result[0];
             return whiteLabel;
         }
+        public void UpdatePricesByCategory(BsonDocument jsonObj)
+        {
+
+            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"]);
+
+            var update = Builders<WhiteLabelEntity>.Update
+                .Set("prices."+jsonObj["category"].ToString(), jsonObj["updatedData"]);
+            var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
+        }
+        
     }
 }

@@ -2,11 +2,12 @@
 
 angular.module('starter.controllers').controller('HomeCtrl', function ($scope, $ionicModal, ReservationService, localStorageService, $state, $ionicPlatform, $cordovaLocalNotification, $rootScope) {
 
-    $scope.goTo = function () {
-    
-        $state.go('app.reservation-form');
-    }
 
+
+    $scope.goToReservationForm = function (reservationType) {
+        localStorageService.set('reservationType', reservationType);
+        $state.go('app.reservation-step1');
+    }
 
     //$ionicPlatform.ready(function () {
     //    var now = new Date().getTime();
@@ -34,10 +35,6 @@ angular.module('starter.controllers').controller('HomeCtrl', function ($scope, $
        
     //});
 
-    $scope.goToReservationForm = function (reservationType) {
-        localStorageService.set('reservationType', reservationType);
-        $state.go('app.reservation-step1');
-    }
 })
 
 

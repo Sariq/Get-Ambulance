@@ -9,21 +9,21 @@ angular.module('starter.controllers').config(function ($stateProvider, $urlRoute
                 }
             },
           
-           }).state('app.reservation-step2', {
-               url: '/reservation-step2',
+           }).state('app.ambulance-reservation-step2', {
+               url: '/ambulance-reservation-step2',
                views: {
                    'menuContent': {
                        templateUrl: 'states/ambulance-reservation/step2/step2.html',
-                       controller: 'Step2Ctrl'
+                       controller: 'AmbulanceStep2Ctrl'
                    }
                },
 
-           }).state('app.reservation-step3', {
-               url: '/reservation-step3',
+           }).state('app.ambulance-reservation-step3', {
+               url: '/ambulance-reservation-step3',
                views: {
                    'menuContent': {
                        templateUrl: 'states/ambulance-reservation/step3/step3.html',
-                       controller: 'Step3Ctrl'
+                       controller: 'AmbulanceStep3Ctrl'
                    }
                },
 

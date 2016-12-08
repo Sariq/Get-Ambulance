@@ -1,6 +1,6 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('authInterceptorService', ['$q', '$injector', '$location', 'localStorageService', function ($q, $injector, $location, localStorageService) {
-
+angular.module('sbAdminApp').factory('authInterceptorService', ['$q', '$injector', '$location', 'localStorageService', 'ngAuthSettings', function ($q, $injector, $location, localStorageService, ngAuthSettings) {
+    var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authInterceptorServiceFactory = {};
 
     var _request = function (config) {
@@ -22,9 +22,8 @@ angular.module('sbAdminApp').factory('authInterceptorService', ['$q', '$injector
 
             if (authData) {
                 if (authData.useRefreshTokens) {
-                    authService.refreshToken().then(function (response) {
-                        $scope.tokenRefreshed = true;
-                        $scope.tokenResponse = response;
+                    authService.refreshToken().then(function (response) {                 
+                        authService.reLoadState();
                     },
                  function (err) {
                      $location.path('/login');

@@ -1,5 +1,6 @@
 ﻿using getAmbulance.Models;
 using getAmbulance.Reservation;
+using MongoDB.Bson;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -62,5 +63,26 @@ namespace getAmbulance.WhiteLabel
             }
             return response;
         }
+        // Post: /WhiteLabel/UpdatePricesByCategory
+        [HttpPost]
+        public HttpResponseMessage UpdatePricesByCategory(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                dynamic jsonObj = jsonData;
+                BsonDocument doc = BsonDocument.Parse(jsonData.ToString());
+                _whiteLabelService.UpdatePricesByCategory(doc);
+
+                response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "UpdatePricesByCategory Error");
+            }
+            return response;
+        }
+
     }
 }
