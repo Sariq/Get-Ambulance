@@ -38,6 +38,10 @@ angular.module('starter.controllers').service('ReservationService', function ($h
         return $http.post(serviceBase + 'api/Reservation/GetMedicalTherapistOffersList', form);
     }
 
+    self.getStairsAssistanceOffersList = function (form) {
+        return $http.post(serviceBase + 'api/Reservation/GetStairsAssistanceOffersList', form);
+    }
+    
 
     self.setWhiteLabelOffer = function (offer) {
         self.whiteLabelOffer = offer;
@@ -52,9 +56,11 @@ angular.module('starter.controllers').service('ReservationService', function ($h
     self.getReservationData = function () {
         return self.reservationData;
     }
+    self.removeFromLocalStorage = function (key) {
+        localStorageService.remove(key)
+    }
 
-
- 
+  
 
     self.sendReservationData = function () {
         var reservation = {};
@@ -77,8 +83,22 @@ angular.module('starter.controllers').service('ReservationService', function ($h
         angular.forEach(Reservation_Form, function (value, key) {
             reservation.AdditionalProperties.push({ Key: key, Value: value });
         })
-     
-        
+            
+
+    
+    
+switch (localStorageService.get('reservationType')) {
+        case '1':
+            self.removeFromLocalStorage('ambulancePriceOffersList');
+            break;
+        case '2':
+            self.removeFromLocalStorage('medicalTherapistOffersList');
+            break;
+        case '3':
+            self.removeFromLocalStorage('stairsAssistanceOffersList');
+            break;
+    }
+   
   
         return $http.post(serviceBase + 'api/Reservation/AddReservation', reservation);
     }

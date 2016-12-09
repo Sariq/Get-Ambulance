@@ -4,14 +4,9 @@ angular.module('starter.controllers').controller('StairsAssistanceStep2Ctrl', fu
     $scope.form = {};
     $scope.continueToStep3 = function () {
         ReservationService.mergeToFormData($scope.form);
-        $state.go('app.medical-therapist-reservation-step3');
+        $state.go('app.whitelabel-offers-list');
     }
-    $scope.onChange = function (val) {
 
-        if (val < 10) {
-            val = '0' + val;
-        }
-    }
 })
 
 

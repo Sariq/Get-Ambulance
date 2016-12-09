@@ -5,17 +5,28 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
 
     $scope.getAmbulanceOffersList = function () {
         ReservationService.getAmbulanceOffersList($scope.reservationForm).then(function (res) {
-            $scope.ambulancePriceOffersList = res.data;
-            localStorageService.set('ambulancePriceOffersList', $scope.ambulancePriceOffersList);
+            $scope.providerPriceOffersList = res.data;
+            localStorageService.set('ambulancePriceOffersList', $scope.providerPriceOffersList);
         });
     }
 
     $scope.getMedicalTherapistOffersList = function () {
         ReservationService.getMedicalTherapistOffersList($scope.reservationForm).then(function (res) {
-            $scope.ambulancePriceOffersList = res.data;
-            localStorageService.set('ambulancePriceOffersList', $scope.ambulancePriceOffersList);
+            $scope.providerPriceOffersList = res.data;
+            localStorageService.set('medicalTherapistOffersList', $scope.providerPriceOffersList);
         });
     }
+
+    $scope.getStairsAssistanceOffersList = function () {
+        ReservationService.getStairsAssistanceOffersList($scope.reservationForm).then(function (res) {
+            $scope.providerPriceOffersList = res.data;
+            localStorageService.set('stairsAssistanceOffersList', $scope.providerPriceOffersList);
+        });
+    }
+
+
+
+
 
 
     switch (localStorageService.get('reservationType')) {
@@ -26,7 +37,7 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
             $scope.getMedicalTherapistOffersList();
             break;
         case '3':
-         //   $state.go('app.stairs-assistance-reservation-step2');
+            $scope.getStairsAssistanceOffersList();
             break;
     }
 

@@ -114,7 +114,19 @@ namespace getAmbulance.Reservation
             return whiteLabelsOfferList;
         }
 
-        
+        public List<WhiteLabelOfferEntity> GetStairsAssistanceOffersList(dynamic jsonObj)
+        {
+            List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatus(true);
+            foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
+            {
+                int extraServicesPrice = getStairsAssistancePriceByHour((BsonDocument)whiteLabel.prices, jsonObj);
+                int finalPrice = extraServicesPrice;
+                whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
+            }
+            return whiteLabelsOfferList;
+        }
+
 
         public int getWhiteLabelDistancePriceByKM(BsonDocument distancePricesList,int reservationDistance)
         {
@@ -140,15 +152,32 @@ namespace getAmbulance.Reservation
             }
             return 0;
         }
-
+        public int getStairsAssistanceExtraServicesPrice(BsonDocument prices, dynamic reservationData)
+        {
+            var temp_prices = prices;
+            foreach (var weightPrice in (BsonDocument)prices["weight"])
+            {
+                if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Name))
+                {
+                    return (int)weightPrice.Value;
+                }
+            }
+            return 0;
+        }
         public int getMedicalTherapistPriceByHour(BsonDocument prices, dynamic reservationData)
         {
                     return ((int)prices["medicaTherapist"]) * ((int)reservationData["Therapist_Stayig_Time"]);
         }
-       
+
+        public int getStairsAssistancePriceByHour(BsonDocument prices, dynamic reservationData)
+        {
+            //TODO:add check night or day
+            return (int)prices["stairsAssistance"]["day"];
+        }
 
 
-        
+
+
 
         public void AcceptReservation(string reservationId)
         {

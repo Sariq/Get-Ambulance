@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', function ($http, $q, localStorageService, ngAuthSettings, $location, $state) {
+angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -186,6 +186,7 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
     };
     var _reLoadState = function () {
         $state.reload();
+        $rootScope.$broadcast('state-reloaded-after-refreshToken');
     }
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;

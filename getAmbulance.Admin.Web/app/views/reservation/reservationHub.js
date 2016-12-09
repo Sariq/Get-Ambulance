@@ -2,6 +2,7 @@ angular.module('sbAdminApp')
 .factory('Reservations', ['$rootScope', 'Hub', 'localStorageService', '$timeout', 'ReservationService', 'authService', 'ngAuthSettings', function ($rootScope, Hub, localStorageService, $timeout, ReservationService, authService, ngAuthSettings) {
    // var Reservations = this;
     var Employees = this;
+    var self = this;
   //  var reservationsList = ReservationService.getReservations();
 
     //Employee ViewModel
@@ -24,46 +25,30 @@ angular.module('sbAdminApp')
 
         return Employee;
     }
+    self.getToken = function () {
+       return localStorageService.get('authorizationData').token;
+    }
+
+
+
 
     //Hub setup
-    var hub = new Hub('Reservation', {
+    self.hub = new Hub('Reservation', {
         rootPath: ngAuthSettings.apiServiceBaseUri + 'signalr',
         listeners: {
             'newConnection': function (id) {
                 Employees.connected.push(id);
                 $rootScope.$apply();
                 console.log('hub-newConnection');
-             //   alert(id);
             },
             'removeConnection': function (id) {
                 Employees.connected.splice(Employees.connected.indexOf(id), 1);
                 $rootScope.$apply();
             },
-            'lockEmployee': function (id) {
-                var employee = find(id);
-                employee.Locked = true;
-                $rootScope.$apply();
-            },
-            'unlockEmployee': function (id) {
-                var employee = find(id);
-                employee.Locked = false;
-                $rootScope.$apply();
-            },
-            'updatedEmployee': function (id, key, value) {
-                var employee = find(id);
-                employee[key] = value;
-                $rootScope.$apply();
-            },
             'addReservation': function (reservation) {
+                console.log("addReservation")
                 alert("addReservation")
                 $rootScope.$broadcast('update-reservations-list');
-    
-               // reservationsList=ReservationService._getReservations();
-            },
-            'removeEmployee': function (id) {
-                var employee = find(id);
-                Employees.all.splice(Employees.all.indexOf(employee), 1);
-                $rootScope.$apply();
             }
         },
         methods: ['lock', 'unlock'],
@@ -73,12 +58,44 @@ angular.module('sbAdminApp')
         queryParams: {
             'WL_ID': WL_ID
         },
-        token: localStorageService.get('authorizationData').token,
-        autoConnect:false
+        token: self.getToken(),
+        autoConnect: false
     });
     $timeout(function () {
-        hub.connect();
-    },2000);
+        self.hub.connect();
+    }, 1000);
+    $rootScope.$on('state-reloaded-after-refreshToken', function (event, args) {
+        $timeout(function () {
+            self.hub = new Hub('Reservation', {
+                rootPath: ngAuthSettings.apiServiceBaseUri + 'signalr',
+                listeners: {
+                    'newConnection': function (id) {
+                        Employees.connected.push(id);
+                        $rootScope.$apply();
+                        console.log('hub-newConnection');
+                    },
+                    'removeConnection': function (id) {
+                        Employees.connected.splice(Employees.connected.indexOf(id), 1);
+                        $rootScope.$apply();
+                    },
+                    'addReservation': function (reservation) {
+                        alert("addReservation")
+                        $rootScope.$broadcast('update-reservations-list');
+                    }
+                },
+                methods: ['lock', 'unlock'],
+                errorHandler: function (error) {
+                    console.error(error);
+                },
+                queryParams: {
+                    'WL_ID': WL_ID
+                },
+                token: self.getToken(),
+                autoConnect: false
+            });
+            self.hub.connect();
+        }, 1000);
+    });
 
     //Web API setup
    // var webApi = OData('/odata/Employees', { id: '@Id' });
@@ -102,7 +119,7 @@ angular.module('sbAdminApp')
     }
     Employees.edit = function (employee) {
         employee.Edit = true;
-        hub.lock(employee.Id);
+        self.hub.lock(employee.Id);
     }
     Employees.delete = function (employee) {
         webApi.remove({ id: employee.Id });
@@ -114,7 +131,7 @@ angular.module('sbAdminApp')
     }
     Employees.done = function (employee) {
         employee.Edit = false;
-        hub.unlock(employee.Id);
+        self.hub.unlock(employee.Id);
     }
 
     //Load

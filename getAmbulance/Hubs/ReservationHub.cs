@@ -21,20 +21,22 @@ namespace getAmbulance.Hubs
             string WL_ID=Context.QueryString.Get("WL_ID");
             _mapping.TryAdd(Context.ConnectionId, WL_ID);
             var connectionId = _mapping.FirstOrDefault(x => x.Value == WL_ID).Key;
-            await JoinHub(WL_ID);
+            await AddToRoom(WL_ID);
             Clients.Client(connectionId).newConnection(WL_ID);
            // Clients.All.newConnection(Context.ConnectionId);
-       
             await base.OnConnected();
         }
-        public async Task JoinHub(string roomName)
+        public async Task AddToRoom(string roomName)
         {
             await Groups.Add(Context.ConnectionId, roomName);
-            Clients.Group(roomName).addChatMessage(Context.User.Identity.Name + " joined.");
+           // Clients.Group(roomName).addChatMessage(Context.User.Identity.Name + " joined.");
+        }
+        public async Task RemoveFromRoom(string roomName)
+        {
+            await Groups.Remove(Context.ConnectionId, roomName);
         }
         public void Lock(int id)
         {
-           
             Clients.Others.lockEmployee(id);
         //    _mapping[Context.ConnectionId].Add(id);
         }
@@ -51,7 +53,7 @@ namespace getAmbulance.Hubs
             Clients.Others.unlockEmployee(id);
         }
 
-        public override Task OnDisconnected(bool stopCalled)
+        public async override Task OnDisconnected(bool stopCalled)
         {
             if (_mapping.Count > 0) {
             foreach (var id in _mapping[Context.ConnectionId])
@@ -59,10 +61,12 @@ namespace getAmbulance.Hubs
                 UnlockHelper(id);
             }
             var list = new List<int>();
-         //   _mapping.TryRemove(Context.ConnectionId, out list);
-            Clients.All.removeConnection(Context.ConnectionId);
+                //   _mapping.TryRemove(Context.ConnectionId, out list);
+                string WL_ID = Context.QueryString.Get("WL_ID");
+                await RemoveFromRoom(WL_ID);
+               // Clients.All.removeConnection(Context.ConnectionId);
             }
-            return base.OnDisconnected(true);
+            await base.OnDisconnected(true);
 
         }
     }

@@ -188,6 +188,28 @@ namespace getAmbulance.Reservation
             return response;
         }
 
+        // Post: /Reservation/GetStairsAssistanceOffersList
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage GetStairsAssistanceOffersList(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            dynamic jsonObj = jsonData;
+
+            try
+            {
+                List<WhiteLabelOfferEntity> whiteLabelsOfferList = _reservationService.GetStairsAssistanceOffersList(jsonObj);
+                response = Request.CreateResponse(HttpStatusCode.OK, whiteLabelsOfferList);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetStairsAssistanceOffersList Error");
+            }
+            return response;
+        }
+
+        
+
         // Post: /Reservation/AcceptReservation
         [HttpPost]
         public HttpResponseMessage AcceptReservation(JObject jsonData)
