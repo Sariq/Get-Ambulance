@@ -29,6 +29,22 @@ namespace getAmbulance.WhiteLabel
             var whiteLabelsList = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
             return whiteLabelsList;
         }
+        public List<WhiteLabelEntity> GetWhiteLabelsListByStatusAndServiceSupport(bool status, string serviceType)
+        {
+            try
+            {
+                var builder = Builders<WhiteLabelEntity>.Filter;
+                var filter = builder.Eq("isOnline", status);
+                filter = filter & builder.Eq("supportedServices", serviceType);
+                var whiteLabelsList = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
+                return whiteLabelsList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
         public void UpdateWhiteLabelIsOnline(string whiteLabelId,bool status)
         {
      

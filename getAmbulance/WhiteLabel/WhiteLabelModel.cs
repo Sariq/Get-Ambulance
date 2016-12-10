@@ -14,6 +14,7 @@ namespace getAmbulance.WhiteLabel
             public string name { get; set; }
             public BsonDocument users { get; set; }
             public BsonDocument prices { get; set; }
+            public BsonArray supportedServices { get; set; }
             public bool isOnline { get; set; }
             public string logo { get; set; }
         }

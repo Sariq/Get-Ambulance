@@ -90,7 +90,7 @@ namespace getAmbulance.Reservation
         public List<WhiteLabelOfferEntity> GetAmbulanceOffersList(dynamic jsonObj)
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList= new List<WhiteLabelOfferEntity>();
-            List <WhiteLabelEntity> whiteLabelsList= _whiteLabelService.GetWhiteLabelsListByStatus(true);
+            List <WhiteLabelEntity> whiteLabelsList= _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"1");
             foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
             {
                 int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices["distance"], (int)jsonObj.distance.Value);
@@ -104,7 +104,7 @@ namespace getAmbulance.Reservation
         public List<WhiteLabelOfferEntity> GetMedicalTherapistOffersList(dynamic jsonObj)
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
-            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatus(true);
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"2");
             foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
             {
                 int extraServicesPrice = getMedicalTherapistPriceByHour((BsonDocument)whiteLabel.prices, jsonObj);
@@ -117,7 +117,7 @@ namespace getAmbulance.Reservation
         public List<WhiteLabelOfferEntity> GetStairsAssistanceOffersList(dynamic jsonObj)
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
-            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatus(true);
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"3");
             foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
             {
                 int extraServicesPrice = getStairsAssistancePriceByHour((BsonDocument)whiteLabel.prices, jsonObj);
