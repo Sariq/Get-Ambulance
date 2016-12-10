@@ -58,6 +58,9 @@ angular.module('starter.controllers').service('ReservationService', function ($h
     }
     self.removeFromLocalStorage = function (key) {
         localStorageService.remove(key)
+        localStorageService.remove('reservationFormData')
+        localStorageService.remove('ambulancePriceOffersList')
+
     }
 
   

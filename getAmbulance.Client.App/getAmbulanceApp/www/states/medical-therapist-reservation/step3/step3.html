@@ -8,9 +8,9 @@
 
             <div class="list">
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label">{{'Accompaniment_Location'|translate}} :</span>
+                    <span class="input-label">{{'Meeting_Address'|translate}} :</span>
                     <select class="" name="Direction_Type" ng-model="form.Accompaniment_Location">
-                        <option value="" hidden selected>{{'Accompaniment_Location'|translate}}</option>
+                        <option value="" hidden selected>{{'Meeting_Address'|translate}}</option>
                         <option value="Home">{{'Home'|translate}}</option>
                         <option value="Clinic">{{'Clinic'|translate}}</option>
                         <option value="Hospital">{{'Hospital'|translate}}</option>
@@ -37,16 +37,19 @@
 
 
                     <label class="item item-input panel item-floating-label " style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Home"><label style="padding-right: 15%;">{{'Home'|translate}}</label></ion-checkbox>
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Medical_Examination"><label style="padding-right: 15%;">{{'Medical_Examination'|translate}}</label></ion-checkbox>
                     </label>
                     <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Hospital"><label style="padding-right: 15%;">{{'Hospital'|translate}}</label></ion-checkbox>
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Shower"><label style="padding-right: 15%;">{{'Shower_Help'|translate}}</label></ion-checkbox>
                     </label>
                     <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Clinic"><label style="padding-right: 15%;">{{'Clinic'|translate}}</label></ion-checkbox>
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Stand_And_Move"><label style="padding-right: 15%;">{{'Stand_And_Move_Help'|translate}}</label></ion-checkbox>
                     </label>
                     <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Other"><label style="padding-right: 15%;">{{'Other'|translate}}</label></ion-checkbox>
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Supervision"><label style="padding-right: 15%;">{{'Supervision'|translate}}</label></ion-checkbox>
+                    </label>
+                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Shopping"><label style="padding-right: 15%;">{{'Shopping_Help'|translate}}</label></ion-checkbox>
                     </label>
                 </label>
 
@@ -57,7 +60,7 @@
           </div>
 
                 <button  ng-click="continueToStep3()" class="button button-full next-btn button-positive">
-                    <span class="">{{'המשך' | translate}}</span>
+                    <span class="">{{'Continue' | translate}}</span>
                 </button>
 
 </form>

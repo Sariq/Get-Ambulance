@@ -3,6 +3,63 @@
   "Id_Number": "תעודת זהות",
   "Phone_Number": "מספר טלפון/נייד",
   "Age": "גיל",
-  "Complete_Reservation": "השלם הזמנה"
+  "Complete_Reservation": "השלם הזמנה",
+  "Reservation_Completed": "ההזמנה נקלטה",
+  "Wish_You_Success": "בהצלחה",
+  "Provider_Will_contact_You_Soon": "הספק יצור אתך קשר בקרוב",
+  "Reservation_Number": "מספר הזמנה",
+  "Thank_You_For_Reservation": "תודה שהזמנתה",
+  "Common_Continue": "המשך",
+  "Continue": "המשך",
+  "Ambulance_Type": "סוג אמבולנס",
+  "Private_Ambulance": "אמבולנס רגיל",
+  "ICU_Ambulance": "אמבולנס טיפול נמרץ",
+  "From_Address": "כתובת איסוף",
+  "To_Address": "כתובת יעד",
+  "Date": "תאריך",
+  "Time": "שעה",
+  "Direction_Type": "כיוון העלאה",
+  "One_Way": "כיוון אחד",
+  "Two_Way": "שני כיוונים",
+  "Weight": "משקל",
+  "Need_Help_With_Stairs": "יש צורך עזרה בהעלאה/הורדה במדרגות",
+  "Yes": "כן",
+  "No": "לא",
+  "Meeting_Address": "כתובת מפגש",
+  "Therapist_Stayig_Time": "אורך זמן שהיית מלווה",
+  "till": "עד",
+  "From_And_More": "מ",
+  "And_More": "ומעלה",
+  
+  "Home": "בית",
+  "Clinic": "מרפאה",
+  "Hospital": "בית חולים",
+  "Other": "אחר",
+  "Current_Status": "מצב נוכחי",
+  "Standing": "עמידה",
+  "Sitting": "ישיבה",
+  "Lying": "שכיבה",
+  "Service_Options": "סוגי שירות",
+  "Medical_Examination": "בדיקה",
+  "Shower_Help": "מקלחת",
+  "Stand_And_Move_Help": "עזרה בהרמה או העברה",
+  "Supervision": "השגחה",
+  "Shopping_Help": "קניות",
+  "Stairs_Assistance_Options": "צורך העזרה במדרגות",
+  "Stairs_Up": "העלאה",
+  "Stairs_Down": "הורדה",
+  "Stairs_Both": "העלאה והורדה"
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
 
 }

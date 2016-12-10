@@ -41,11 +41,18 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
             break;
     }
 
-
+    $scope.showOnlySelectedOffer = function (whiteLabelOffer) {
+        angular.forEach($scope.providerPriceOffersList, function (value, key) {
+            if (value.whiteLabelid != whiteLabelOffer.whiteLabelid) {
+                value.active = false;
+            }
+        })
+    }
 
 
    // $scope.ambulancePriceOffersList = localStorageService.get('ambulancePriceOffersList');
     $scope.setSelectedOffer = function (whiteLabelOffer) {
+        $scope.showOnlySelectedOffer(whiteLabelOffer);
         ReservationService.setWhiteLabelOffer(whiteLabelOffer);
         ReservationService.sendReservationData();
       //  $state.go('app.client-information')

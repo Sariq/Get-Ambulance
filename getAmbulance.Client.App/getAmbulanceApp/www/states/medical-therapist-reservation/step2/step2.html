@@ -17,7 +17,7 @@
                     <span class="input-label">{{'Therapist_Stayig_Time'|translate}} :</span>
                     <!--<input type="number" class="form-control" min="0" max="12" step="0.5" ng-model="input.hours" required ng-change="onChange(input.hours)">-->
 
-                    <input style="text-align:center" placeholder="{{'Therapist_Stayig_Time'|translate}}" type="text" onfocus="(this.type = 'time')"  name="Time" ng-model="form.Therapist_Stayig_Time"  message-id="message" validator="required">
+                    <input style="" placeholder="{{'Therapist_Stayig_Time'|translate}}" type="text" onfocus="(this.type = 'time')"  name="Time" ng-model="form.Therapist_Stayig_Time"  message-id="message" validator="required">
                 </label>
 
 
@@ -27,7 +27,7 @@
                         <option value="" hidden selected>{{'Weight'|translate}}</option>
                         <option value="90">{{'till'|translate}} 90</option>
                         <option value="121">91-121</option>
-                        <option value="122">{{'From_And_More'|translate}} 121</option>
+                        <option value="122">{{'From'|translate}} 121 {{'And_More'|translate}}</option>
                     </select>
                 </label>
 
@@ -48,7 +48,7 @@
 
 
             <button ng-click="continueToStep3()" class="button button-full next-btn button-positive">
-                <span class="">{{'המשך' | translate}}</span>
+                <span class="">{{'Continue' | translate}}</span>
             </button>
 
         </form>

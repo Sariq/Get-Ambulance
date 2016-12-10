@@ -36,8 +36,8 @@
 
       <div class="list">
       
-              <table ng-repeat="item in providerPriceOffersList"  style="width:100%;margin-bottom: 25px;" >
-                  <tr style="color:#298ea3" class="item item-input panel item-floating-label">
+              <table ng-repeat="item in providerPriceOffersList"  style="width:100%;margin-bottom: 25px;" ng-init="item.active=true" ng-show="item.active">
+                  <tr style="color:#298ea3" class="item item-input panel item-floating-label" >
                       <td style="width:23%;vertical-align: middle;text-align:center">
                           <img style="width:55%" ng-src="img/{{item.logo}}">
                       </td>
@@ -49,9 +49,28 @@
                       </td>
                   </tr>
                   <tr >
-                      <td ng-click="setSelectedOffer(item)" style="background-color:#3bb649;width:25%;position:absolute;margin:-5px 10px 0 0px;text-align:center;padding:10px;color:white;" colspan="3">
+                      <td ng-click="setSelectedOffer(item);showCompleteBtn=!item.active" ng-init="showCompleteBtn=item.active" ng-show="showCompleteBtn" style="background-color:#3bb649;width:27%;position:absolute;margin:-5px 10px 0 0px;text-align:center;padding:10px;color:white;" colspan="3">
                           {{'Complete_Reservation' | translate }}
                       </td>
+                      <td  ng-show="!showCompleteBtn" style="background-color:#0b464d;width:80%;position:absolute;margin:-5px 10% 0 10%;text-align:center;padding:10px;color:white;font:bold" colspan="3">
+                          <span style="color:white"> {{'Reservation_Completed' | translate }}</span>
+                              <br />
+                              <h3 style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
+                              <br />
+                              <div style="text-align:right">
+                                  <span>{{'Provider_Will_contact_You_Soon' | translate }}</span>
+                                  <br /><br />
+                                  <span>{{'Reservation_Number' | translate }}</span>
+                                  <br />
+                                  <span>{{item.number}}1234</span>
+                              </div>
+
+                              <br /><br />
+                              <h3 style="color:white;margin-top:0">{{'Thank_You_For_Reservation' | translate }}</h3>
+                          <img src="../www/img/LOGO-1.5-BG3.svg" class="info-green-svg" style="width: 199px;height: 137px;;vertical-align: top;" />
+
+
+</td>
                   </tr>
               </table>
             

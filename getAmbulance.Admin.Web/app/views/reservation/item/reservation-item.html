@@ -20,13 +20,21 @@
 
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">{{reservation.Reservation_Form.First_Name}} {{reservation.Reservation_Form.Last_Name}}</h3>
+                <h3 class="panel-title">{{reservation.Full_Name}} :{{'Name'| translate}} </h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class=" col-md-12 col-lg-12 ">
                         <table class="table table-user-information">
                             <tbody>
+                                <tr>
+                                    <td>{{'Id_Number'| translate}}:</td>
+                                    <td>{{reservation.Id_Number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'Phone_Number'| translate}}:</td>
+                                    <td>{{reservation.Phone_Number}}</td>
+                                </tr>
                                 <tr ng-repeat="item in reservation.AdditionalProperties">
                                     <td>{{item._name | translate}}:</td>
                                     <td>{{item._value}}</td>
