@@ -138,6 +138,10 @@
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.bundle.min.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.min.js" />
+    <Content Include="getAmbulanceApp\www\states\map\routes.js" />
+    <Content Include="getAmbulanceApp\www\states\map\views\map.css" />
+    <Content Include="getAmbulanceApp\www\states\map\views\map.html" />
+    <Content Include="getAmbulanceApp\www\states\map\views\map.js" />
     <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\routes.js" />
     <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\step2\step2.css" />
     <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\step2\step2.html" />
