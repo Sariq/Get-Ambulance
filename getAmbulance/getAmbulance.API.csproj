@@ -199,14 +199,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="WhiteLabel\scripts\ai.0.15.0-build58334.js" />
+    <Content Include="WhiteLabel\scripts\ai.0.15.0-build58334.min.js" />
     <None Include="Properties\PublishProfiles\Get Ambulance.pubxml" />
-    <None Include="scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="scripts\jquery-1.6.4.js" />
-    <Content Include="scripts\jquery-1.6.4.min.js" />
-    <Content Include="scripts\jquery.signalR-2.2.1.js" />
-    <Content Include="scripts\jquery.signalR-2.2.1.min.js" />
+    <None Include="WhiteLabel\scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="WhiteLabel\scripts\jquery-1.6.4.js" />
+    <Content Include="WhiteLabel\scripts\jquery-1.6.4.min.js" />
+    <Content Include="WhiteLabel\scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="WhiteLabel\scripts\jquery.signalR-2.2.1.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +221,7 @@
     <Compile Include="AuthRepository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="DB\DatabaseObject.cs" />
+    <Compile Include="DB\DBService.cs" />
     <Compile Include="Enums\ApplicationTypes.cs" />
     <Compile Include="Enums\Enum.cs" />
     <Compile Include="Enums\eReservationAdditionalProperties.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\DBCounter.cs" />
     <Compile Include="Models\DynamicReservationForm.cs" />
     <Compile Include="Models\ReservationProperty.cs" />
     <Compile Include="Models\Resrvation.cs" />

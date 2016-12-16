@@ -31,6 +31,7 @@
       <script async defer
               src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhJIfnv1M8DAsXc9XyJECYMjSOoqF_pUY">
       </script>
+      <script src="../plugins/phonegap-facebook-plugin/facebookConnectPlugin.js"></script>
       <!--android-AIzaSyCdzloWHHLu8GL34a7YN_cpqSrU6BJzKCo-->
       <!--web-AIzaSyAhJIfnv1M8DAsXc9XyJECYMjSOoqF_pUY-->
     <!-- your app's js -->
@@ -95,15 +96,27 @@
       <script src="states/whitelabel-offers-list/routes.js"></script>
       <!--whitelabel-offers-list-->
       <script src="common/constant.js"></script>
-
+      <!--External-Login-->
+      <script src="components/external-login/facebook/facebook-cmp.js"></script>
+      <link href="components/external-login/facebook/facebook-cmp.css" rel="stylesheet" />
+      <!--External-Login-->
       <!--Map-->
       <link href="states/map/views/map.css" rel="stylesheet" />
       <script src="states/map/views/map.js"></script>
       <script src="states/map/routes.js"></script>
       <!--Map-->
+      <!--side-menu-->
+      <script src="states/side-menu/facebook/routes.js"></script>
+      <!--side-menu-->
+      <!--common-->
+      <!--services-->
+      <script src="common/services/user-service.js"></script>
+      <!--services-->
+      <!--common-->
   </head>
 
   <body ng-app="starter">
+
 <ion-nav-view  animation="slide-right-left"> </ion-nav-view>
  
   </body>

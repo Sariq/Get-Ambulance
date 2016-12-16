@@ -1,4 +1,5 @@
-﻿using getAmbulance.Enums;
+﻿using getAmbulance.DB;
+using getAmbulance.Enums;
 using getAmbulance.Interfaces;
 using getAmbulance.Models;
 using getAmbulance.WhiteLabel;
@@ -16,15 +17,19 @@ namespace getAmbulance.Reservation
     {
         private ApplicationIdentityContext _ctx;
         private WhiteLabelService _whiteLabelService;
+        private DBService _dbSerivce;
         public ReservationService()
         {
             _ctx = ApplicationIdentityContext.Create();
             _whiteLabelService = new WhiteLabelService();
-        }
+            _dbSerivce = new DBService();
+    }
         public void AddReservation(ReservationEntity reservation)
         {
             try
             {
+                int reservationNumber = _dbSerivce.getNextSequence("Reservation_Number");
+                reservation.Reservation_Number = reservationNumber;
                 _ctx.Reservations.InsertOneAsync(reservation);
             }
             catch (Exception ex)

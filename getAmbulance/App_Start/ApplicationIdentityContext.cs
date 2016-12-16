@@ -23,15 +23,15 @@
             var reservations = database.GetCollection<ReservationEntity>("Reservations");
             var whiteLabels = database.GetCollection<WhiteLabelEntity>("WhiteLabels");
             var whiteLabelUsers = database.GetCollection<WhiteLabelUser>("WhiteLabelUsers");
-
-            return new ApplicationIdentityContext(users, roles, browserClients, refreshTokens, reservations, whiteLabels, whiteLabelUsers);
+            var dbcounter = database.GetCollection<DBCounter>("counters");
+            return new ApplicationIdentityContext(users, roles, browserClients, refreshTokens, reservations, whiteLabels, whiteLabelUsers, dbcounter);
 		}
         public ApplicationIdentityContext()
         {
             Create();
         }
 
-        private ApplicationIdentityContext(IMongoCollection<ApplicationUser> users, IMongoCollection<IdentityRole> roles, IMongoCollection<BrowserClient> clients, IMongoCollection<RefreshToken> refreshTokens, IMongoCollection<ReservationEntity>  reservations, IMongoCollection<WhiteLabelEntity> whiteLabels, IMongoCollection<WhiteLabelUser> whiteLabelUsers)
+        private ApplicationIdentityContext(IMongoCollection<ApplicationUser> users, IMongoCollection<IdentityRole> roles, IMongoCollection<BrowserClient> clients, IMongoCollection<RefreshToken> refreshTokens, IMongoCollection<ReservationEntity>  reservations, IMongoCollection<WhiteLabelEntity> whiteLabels, IMongoCollection<WhiteLabelUser> whiteLabelUsers, IMongoCollection<DBCounter> dbcounter)
 		{
 			Users = users;
 			Roles = roles;
@@ -40,6 +40,7 @@
             Reservations = reservations;
             WhiteLabels = whiteLabels;
             WhiteLabelUsers = whiteLabelUsers;
+            DBCounter= dbcounter;
         }
         public IMongoCollection<ApplicationUser> Users { get; set; }
         public IMongoCollection<IdentityRole> Roles { get; set; }
@@ -48,6 +49,7 @@
         public IMongoCollection<ReservationEntity> Reservations { get; set; }
         public IMongoCollection<WhiteLabelEntity> WhiteLabels { get; set; }
         public IMongoCollection<WhiteLabelUser> WhiteLabelUsers { get; set; }
+        public IMongoCollection<DBCounter> DBCounter { get; set; }
         public Task<List<IdentityRole>> AllRolesAsync()
 		{
 			return Roles.Find(r => true).ToListAsync();

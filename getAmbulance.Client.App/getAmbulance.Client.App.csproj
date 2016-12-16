@@ -95,7 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="getAmbulanceApp\.gitignore" />
-    <Content Include="getAmbulanceApp\config.xml" />
+    <Content Include="getAmbulanceApp\config.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="getAmbulanceApp\gulpfile.js" />
     <Content Include="getAmbulanceApp\hooks\after_prepare\010_add_platform_class.js" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\dist\ionic-datepicker.js" />
@@ -111,6 +113,10 @@
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\src\style.css" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\src\template.html" />
     <Content Include="getAmbulanceApp\www\common\constant.js" />
+    <Content Include="getAmbulanceApp\www\common\services\user-service.js" />
+    <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.css" />
+    <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.html" />
+    <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.js" />
     <Content Include="getAmbulanceApp\www\css\ionic.css" />
     <Content Include="getAmbulanceApp\www\css\style.css" />
     <Content Include="getAmbulanceApp\www\img\ionic.png" />
@@ -138,10 +144,15 @@
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.bundle.min.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.min.js" />
+    <Content Include="getAmbulanceApp\www\states\login\views\login.css" />
+    <Content Include="getAmbulanceApp\www\states\login\views\login.html" />
+    <Content Include="getAmbulanceApp\www\states\login\views\login.js" />
     <Content Include="getAmbulanceApp\www\states\map\routes.js" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.css" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.html" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.js" />
+    <Content Include="getAmbulanceApp\www\states\side-menu\facebook\facebook.html" />
+    <Content Include="getAmbulanceApp\www\states\side-menu\facebook\routes.js" />
     <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\routes.js" />
     <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\step2\step2.css" />
     <Content Include="getAmbulanceApp\www\states\stairs-assistance-reservation\step2\step2.html" />
@@ -245,6 +256,7 @@
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\package.json" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\README.md" />
     <Content Include="getAmbulanceApp\www\translation\he.json" />
+    <Content Include="getAmbulanceApp\plugins\fetch.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

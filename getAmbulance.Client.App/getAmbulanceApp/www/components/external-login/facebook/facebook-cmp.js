@@ -37,7 +37,7 @@ var facebookCmp =function ($scope, $state, $q, UserService, $ionicLoading) {
     var getFacebookProfileInfo = function (authResponse) {
         var info = $q.defer();
 
-        facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
+        window.facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
           function (response) {
               console.log(response);
               info.resolve(response);
@@ -52,7 +52,7 @@ var facebookCmp =function ($scope, $state, $q, UserService, $ionicLoading) {
 
     //This method is executed when the user press the "Login with facebook" button
     $scope.facebookSignIn = function () {
-        facebookConnectPlugin.getLoginStatus(function (success) {
+        window.facebookConnectPlugin.getLoginStatus(function (success) {
             if (success.status === 'connected') {
                 // The user is logged in and has authenticated your app, and response.authResponse supplies
                 // the user's ID, a valid access token, a signed request, and the time the access token
@@ -90,13 +90,10 @@ var facebookCmp =function ($scope, $state, $q, UserService, $ionicLoading) {
 
                 console.log('getLoginStatus', success.status);
 
-                $ionicLoading.show({
-                    template: 'Logging in...'
-                });
-
+       
                 // Ask the permissions you need. You can learn more about
                 // FB permissions here: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
-                facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
+                window.facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
             }
         });
     };

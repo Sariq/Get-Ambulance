@@ -18,6 +18,7 @@ namespace getAmbulance.Models
     {
    
         public string WhiteLabel_ID { get; set; }
+        public int Reservation_Number { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
         public string Full_Name { get; set; }
