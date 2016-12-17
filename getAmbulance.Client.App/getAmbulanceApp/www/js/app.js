@@ -21,8 +21,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     }
   });
 }).constant('ngAuthSettings', {
-   apiServiceBaseUri: 'http://localhost:54543/'
-//apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/'
+   apiServiceBaseUri: 'http://localhost:54543/',
+    //apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
+    //clientId: 'ngAuthApp'
+ clientId: 'consoleApp',
+ clientSecret: '123@abc'
 }).config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $validationProvider) {
     $validationProvider.showSuccessMessage = false;
     $translateProvider.preferredLanguage('he');
@@ -35,12 +38,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     $ionicConfigProvider.backButton.previousTitleText(false).text(' ');
   $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+  //  .state('app', {
+  //  url: '/app',
+  //  abstract: true,
+  //  templateUrl: 'templates/side-menu.html',
+  //  controller: 'SideMenu'
+  //})
 
   .state('app.search', {
     url: '/search',
@@ -81,5 +84,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
 
   
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
-});
+  //$urlRouterProvider.otherwise('/app/home');
+}).run(['authService', '$state','$timeout', function (authService, $state, $timeout) {
+    authService.fillAuthData();
+    if (!authService.authentication.isAuth) {
+        $timeout(function () {
+            $state.go('app.login');
+        });
+     
+    }
+    console.log(authService)
+}]);
