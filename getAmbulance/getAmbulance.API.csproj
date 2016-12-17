@@ -219,6 +219,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthContext.cs" />
     <Compile Include="AuthRepository.cs" />
+    <Compile Include="Client\ClientController.cs" />
+    <Compile Include="Client\ClientModel.cs" />
+    <Compile Include="Client\ClientService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="DB\DatabaseObject.cs" />
     <Compile Include="DB\DBService.cs" />
@@ -229,10 +232,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="Helpers\HelperService.cs" />
     <Compile Include="Hubs\ReservationHub.cs" />
     <Compile Include="Interfaces\IReservationProperty.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ApplicationClientUser.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\DBCounter.cs" />
     <Compile Include="Models\DynamicReservationForm.cs" />

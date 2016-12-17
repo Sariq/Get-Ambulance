@@ -54,6 +54,9 @@ namespace getAmbulance.Models {
 
     public class RegisterViewModel {
         [Required]
+        [Display(Name = "WhiteLabelId")]
+        public string WhiteLabelId { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

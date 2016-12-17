@@ -16,6 +16,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using static getAmbulance.Client.ClientModel;
 using static getAmbulance.WhiteLabel.WhiteLabelModel;
 
 namespace getAmbulance.Controllers
@@ -75,14 +76,13 @@ namespace getAmbulance.Controllers
            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email ,WhiteLabelId=model.Email};
-                user.AddClaim(new Claim("WhiteLabelId", "0"));
-
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
             
-                //.Claims.Add(new IdentityUserClaim(new Claim("WhiteLabelId","1")));
                 if (result.Succeeded)
                 {
+                    await UserManager.AddClaimAsync(user.Id, new Claim("WhiteLabelId", model.WhiteLabelId));
+
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
 //                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code = code });
@@ -98,6 +98,42 @@ namespace getAmbulance.Controllers
             // If we got this far, something failed, redisplay form
             return (response);
         }
+        // POST: /Account/RegisterClient
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<HttpResponseMessage> RegisterClient(ClientRegisterModel model)
+        {
+            HttpResponseMessage response;
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+              
+                var result = await UserManager.CreateAsync(user, model.Password);
+                
+                if (result.Succeeded)
+                {
+
+                    await UserManager.AddClaimAsync(user.Id, new Claim("Full_Name", model.Full_Name));
+                     await UserManager.AddClaimAsync(user.Id, new Claim("Phone_Number", model.Age));
+                     await UserManager.AddClaimAsync(user.Id, new Claim("Id_Number", model.Id_Number));
+                    await UserManager.AddClaimAsync(user.Id, new Claim("Age", model.Age));
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    ////                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code = code });
+
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    // ViewBag.Link = callbackUrl;
+                    response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
+                    return response;
+                }
+                AddErrors(result);
+            }
+            response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            // If we got this far, something failed, redisplay form
+            return (response);
+        }
+
         //
         // GET: /Account/ConfirmEmail
         [HttpGet]
@@ -116,33 +152,7 @@ namespace getAmbulance.Controllers
           //  AddErrors(result);
           //  return View();
         }
-        //
-        // Post: /Account/GetUserProfile
-        [HttpPost]
-        [AllowAnonymous]
-        public HttpResponseMessage GetUserProfile(JObject jsonData)
-        {
-            HttpResponseMessage response;
-            dynamic jsonObj = jsonData;
-           // var currentPlace = jsonObj.currentPlace.Value;
-            //temp_applicationUser.Claims
-            var builder = Builders<ApplicationUser>.Filter;
-            var filter = builder.Eq("UserName", (string)jsonObj.userName.Value);
-            var temp_userData = _ctx.Users.Find(filter).ToListAsync().Result[0];
-            var whiteLabel = _whiteLabelService.GetWhiteLabelById(temp_userData.WhiteLabelId.ToString());
 
-
-            
-
-  
-      
-
-          
-            //List<IdentityUserClaim> userData = temp_userData.Claims;
-            //return userData;
-            response = Request.CreateResponse(HttpStatusCode.OK, whiteLabel);
-            return response;
-        }
 
         #region Helpers
         // Used for XSRF protection when adding external logins

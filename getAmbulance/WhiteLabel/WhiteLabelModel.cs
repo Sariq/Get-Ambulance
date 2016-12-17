@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,16 @@ namespace getAmbulance.WhiteLabel
             public string name { get; set; }
             public BsonDocument users { get; set; }
             public BsonDocument prices { get; set; }
+            public BsonArray supportedServices { get; set; }
+            public bool isOnline { get; set; }
+            public string logo { get; set; }
+        }
+        public class WhiteLabelResponseEntity : DatabaseObject
+        {
+            public string whiteLabelid { get; set; }
+            public string name { get; set; }
+            public JObject users { get; set; }
+            public JObject prices { get; set; }
             public BsonArray supportedServices { get; set; }
             public bool isOnline { get; set; }
             public string logo { get; set; }

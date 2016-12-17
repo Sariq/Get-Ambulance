@@ -61,9 +61,10 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
             //IF not Admin
             if (_authentication.userName != 'ambulance.admin@gmail.com') {
        
-            $http.post(serviceBase + 'api/account/GetUserProfile',data).success(function (res) {
+                $http.post(serviceBase + 'api/WhiteLabel/GetWhiteLabelData', data).success(function (res) {
        
-                _authentication.WhiteLabelData = res;
+                    _authentication.WhiteLabelData = (res);
+                    console.log(_authentication.WhiteLabelData);
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
                 localStorageService.set('authorizationData', authorizationData);
                 deferred.resolve(response);
