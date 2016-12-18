@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate','LocalStorageModule','ngCordova','validation','validation.rule'])
+angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate','LocalStorageModule','ngCordova','validation','validation.rule','SignalR'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -26,10 +26,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     //clientId: 'ngAuthApp'
  clientId: 'consoleApp',
  clientSecret: '123@abc'
-}).config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $validationProvider) {
+}).config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $validationProvider, $httpProvider) {
     $validationProvider.showSuccessMessage = false;
     $translateProvider.preferredLanguage('he');
-
+    $httpProvider.interceptors.push('authInterceptorService');
     $translateProvider.useStaticFilesLoader({
         prefix: 'translation/',
         suffix: '.json'
@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
   
   // if none of the above states are matched, use this as the fallback
   //$urlRouterProvider.otherwise('/app/home');
-}).run(['authService', '$state','$timeout', function (authService, $state, $timeout) {
+}).run( function (authService, $state, $timeout, ReservationHub) {
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {
         $timeout(function () {
@@ -94,4 +94,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
      
     }
     console.log(authService)
-}]);
+});

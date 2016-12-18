@@ -58,7 +58,8 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
             _authentication.userName = loginData.userName;
             localStorageService.set('authorizationData', authorizationData);
             $http.post(serviceBase + 'api/Client/GetUserProfile', data).success(function (res) {
-                localStorageService.set('UserProfile', res);
+  
+                _setUserProfile(res);
                 deferred.resolve(response);
             });
         }).error(function (err, status) {
@@ -173,6 +174,12 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
         $state.reload();
         $rootScope.$broadcast('state-reloaded-after-refreshToken');
     }
+    var _setUserProfile = function (userProfile) {
+        return localStorageService.set('UserProfile', userProfile);
+    }
+    var _getUserProfile = function () {
+        return localStorageService.get('UserProfile');
+    }
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
@@ -183,6 +190,8 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
     authServiceFactory.obtainAccessToken = _obtainAccessToken;
     authServiceFactory.externalAuthData = _externalAuthData;
     authServiceFactory.registerExternal = _registerExternal;
+    authServiceFactory.setUserProfile = _setUserProfile;
+    authServiceFactory.getUserProfile = _getUserProfile;
 
     return authServiceFactory;
 }]);

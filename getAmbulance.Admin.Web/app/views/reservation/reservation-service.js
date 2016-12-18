@@ -18,9 +18,10 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationById', data);
     };
-    var _acceptReservation = function (id) {
+    var _acceptReservation = function (reservation) {
         var data = {
-            reservationId: id
+            reservationId: reservation._id,
+            Client_Id: reservation.Client_ID
         }
         return $http.post(serviceBase + 'api/Reservation/AcceptReservation', data);
     }

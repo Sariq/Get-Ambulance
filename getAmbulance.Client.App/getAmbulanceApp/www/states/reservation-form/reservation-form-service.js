@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('starter.controllers').service('ReservationService', function ($http, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout) {
+angular.module('starter.controllers').service('ReservationService', function ($http,authService, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout, authService) {
     var self = this;
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     self.formData = {};
@@ -42,7 +42,14 @@ angular.module('starter.controllers').service('ReservationService', function ($h
         return $http.post(serviceBase + 'api/Reservation/GetStairsAssistanceOffersList', form);
     }
     
-
+    self.getReservations = function (status, type) {
+        var data = {
+            status: status,
+            ClientId: authService.getUserProfile()._id,
+            type: type
+        }
+        return $http.post(serviceBase + 'api/Reservation/GetReservationsListByClientId', data);
+    };
     self.setWhiteLabelOffer = function (offer) {
         self.whiteLabelOffer = offer;
     }
@@ -69,6 +76,7 @@ angular.module('starter.controllers').service('ReservationService', function ($h
         var reservation = {};
         var Reservation_Form = localStorageService.get('reservationFormData');
         reservation.WhiteLabel_ID = self.getWhiteLabelOffer().whiteLabelid;
+        reservation.Client_ID = authService.getUserProfile()._id;
         reservation.Type = localStorageService.get('reservationType');
         reservation.Status = "1";
         reservation.Full_Name =Reservation_Form.Full_Name;
@@ -86,10 +94,6 @@ angular.module('starter.controllers').service('ReservationService', function ($h
         angular.forEach(Reservation_Form, function (value, key) {
             reservation.AdditionalProperties.push({ Key: key, Value: value });
         })
-            
-
-    
-    
 switch (localStorageService.get('reservationType')) {
         case '1':
             self.removeFromLocalStorage('ambulancePriceOffersList');

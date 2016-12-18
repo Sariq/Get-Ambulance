@@ -23,6 +23,8 @@
     <!-- cordova script (this will be a 404 during development) -->
       <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
+      <script src="bower-components/jquery/dist/jquery.min.js"></script>
+      <script src="bower-components/jquery.signalR-2.0.0.js"></script>
       <script src="bower-components/angular-translate/dist/angular-translate.min.js"></script>
       <script src="bower-components/angular-local-storage/angular-local-storage.min.js"></script>
       <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
@@ -113,6 +115,7 @@
       <!--common-->
       <!--services-->
       <script src="common/services/user-service.js"></script>
+      <script src="services/authInterceptorService.js"></script>
       <!--services-->
       <!--common-->
 
@@ -127,6 +130,23 @@
       <script src="services/authService.js"></script>
       <script src="services/tokensManagerService.js"></script>
       <!--Services-->
+      <!--Hubs-->
+      <script src="Hubs/reservationHub.js"></script>
+      <!--Hubs-->
+      <!--SignalR-->
+      <script src="bower-components/angular-signalr-hub/signalr-hub.js"></script>
+      <!--SignalR-->
+
+      <!--Commponents-->
+      <script src="components/reservation/reservations-cmp.js"></script>
+      <link href="components/reservation/reservations-cmp.css" rel="stylesheet" />
+      <!--Commponents-->
+      <!--Reservation-->
+      <link href="states/reservation/views/list/reservations-list.css" rel="stylesheet" />
+      <script src="states/reservation/views/list/reservations-list.js"></script>
+  
+      <script src="states/reservation/routes.js"></script>
+      <!--Reservation-->
   </head>
 
   <body ng-app="starter">

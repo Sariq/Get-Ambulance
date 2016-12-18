@@ -1,0 +1,16 @@
+  table.all-reservations th{
+      text-align:right;
+  }
+    table.all-reservations .showBtn{
+      text-align:center;
+
+  }
+        table.all-reservations .showBtn .btn{
+      width:70%;
+
+  }
+
+       table.all-reservations td.text{
+      padding: 15px!important;
+
+  }

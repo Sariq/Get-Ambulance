@@ -76,6 +76,31 @@ namespace getAmbulance.Reservation
             
             return reservationsList;
         }
+
+        public List<ReservationEntity> GetReservationsListByClientId(string Client_ID, string reservationStatus = "0", string reservationType = "0")
+        {
+            var builder = Builders<ReservationEntity>.Filter;
+            var filter = builder.Empty;
+            if (Client_ID != "0")
+            {
+                filter = filter & builder.Eq("Client_ID", Client_ID);
+            }
+            if (reservationStatus != "0")
+            {
+                filter = filter & builder.Eq("Status", reservationStatus);
+            }
+            if (reservationType != "0")
+            {
+                filter = filter & builder.Eq("Type", reservationType);
+            }
+            var reservationsList = _ctx.Reservations.Find(filter).ToListAsync().Result;
+
+            reservationsList = hideClientInformation(reservationsList);
+
+            return reservationsList;
+        }
+
+
         public List<ReservationEntity> hideClientInformation(List<ReservationEntity> reservationsList)
         {
             var temp_reservationsList = reservationsList;

@@ -52,6 +52,7 @@ namespace getAmbulance.Reservation
                 
                 dynamic jsonObj = jsonData;
                 reservation.WhiteLabel_ID = jsonObj.WhiteLabel_ID.Value;
+                reservation.Client_ID = jsonObj.Client_ID.Value;
                 reservation.Type = jsonObj.Type.Value;
                 reservation.Status= jsonObj.Status.Value;
                 reservation.Full_Name= jsonObj.Full_Name.Value;
@@ -129,6 +130,47 @@ namespace getAmbulance.Reservation
             {
 
                 response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetReservationsListByWhiteLabelId Add Error");
+            }
+            return response;
+        }
+        
+        // Post: /Reservation/GetReservationsListByWhiteLabelId
+        [HttpPost]
+        public HttpResponseMessage GetReservationsListByClientId(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            string reservationStatus = "0";
+            string reservationType = "0";
+
+            int ClientId = 0;
+            try
+            {
+                dynamic jsonObj = jsonData;
+                if (jsonObj.status == null)
+                {
+                    reservationStatus = "0";
+                }
+                else
+                {
+                    reservationStatus = jsonObj.status.Value;
+                }
+                if (jsonObj.type == null)
+                {
+                    reservationType = "0";
+                }
+                else
+                {
+                    reservationType = jsonObj.type.Value;
+                }
+
+                List<ReservationEntity> reservationList = _reservationService.GetReservationsListByClientId(jsonObj.ClientId.Value.ToString(), reservationStatus, reservationType);
+
+                response = Request.CreateResponse(HttpStatusCode.OK, reservationList);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetReservationsListByClientId Add Error");
             }
             return response;
         }
@@ -219,6 +261,9 @@ namespace getAmbulance.Reservation
             {
                 dynamic jsonObj = jsonData;
                 _reservationService.AcceptReservation(jsonObj.reservationId.Value);
+
+                  Hub.Clients.Group(jsonObj.Client_Id.Value).reservationAccepted(jsonObj.reservationId.Value);
+
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)

@@ -14,9 +14,9 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations','$state', 
     }
     ctrl.getReservations();
 
-    ctrl.acceptReservation = function (id) {
-        ReservationService.setSelectedReservationId(id);
-        ReservationService.acceptReservation(id).then(function (res) {
+    ctrl.acceptReservation = function (reservation) {
+        ReservationService.setSelectedReservationId(reservation._id);
+        ReservationService.acceptReservation(reservation).then(function (res) {
             console.log(res.data);
             $state.go('dashboard.reservation-item');
         });
