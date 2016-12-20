@@ -24,26 +24,21 @@ namespace getAmbulance.Client
 
         public class ClientRegisterModel
         {
+            //[Required]
+            //[Display(Name = "Email")]
+            //public string Email { get; set; }
             [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
-            public string Email { get; set; }
-            [Required]
-            [EmailAddress]
             [Display(Name = "Full_Name")]
             public string Full_Name { get; set; }
             [Required]
-            [EmailAddress]
             [Display(Name = "Phone_Number")]
             public string Phone_Number { get; set; }
             [Required]
-            [EmailAddress]
             [Display(Name = "Id_Number")]
             public string Id_Number { get; set; }
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Age")]
-            public string Age { get; set; }
+            //[Required]
+            //[Display(Name = "Age")]
+            //public string Age { get; set; }
 
 
 

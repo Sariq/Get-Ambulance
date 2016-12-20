@@ -218,3 +218,8 @@ D:\Get-Ambulance\getAmbulance\bin\zh-Hant\System.Spatial.resources.dll
 D:\Get-Ambulance\getAmbulance\obj\Debug\getAmbulance.API.csprojResolveAssemblyReference.cache
 D:\Get-Ambulance\getAmbulance\obj\Debug\getAmbulance.dll
 D:\Get-Ambulance\getAmbulance\obj\Debug\getAmbulance.pdb
+D:\Get-Ambulance\getAmbulance\bin\RestSharp.dll
+D:\Get-Ambulance\getAmbulance\bin\Twilio.Api.dll
+D:\Get-Ambulance\getAmbulance\bin\RestSharp.xml
+D:\Get-Ambulance\getAmbulance\bin\Twilio.Api.pdb
+D:\Get-Ambulance\getAmbulance\bin\Twilio.Api.xml

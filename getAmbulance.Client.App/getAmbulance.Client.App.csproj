@@ -274,6 +274,10 @@
     <Content Include="getAmbulanceApp\www\states\map\views\map.css" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.html" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.js" />
+    <Content Include="getAmbulanceApp\www\states\register\routes.js" />
+    <Content Include="getAmbulanceApp\www\states\register\views\register.css" />
+    <Content Include="getAmbulanceApp\www\states\register\views\register.html" />
+    <Content Include="getAmbulanceApp\www\states\register\views\register.js" />
     <Content Include="getAmbulanceApp\www\states\reservation\views\item\reservation-item.css" />
     <Content Include="getAmbulanceApp\www\states\reservation\views\item\reservation-item.html" />
     <Content Include="getAmbulanceApp\www\states\reservation\views\item\reservation-item.js" />

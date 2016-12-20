@@ -107,17 +107,22 @@ namespace getAmbulance.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-              
+                var user = new ApplicationUser { UserName = model.Id_Number, PhoneNumber=model.Phone_Number };
+   
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 if (result.Succeeded)
                 {
 
                     await UserManager.AddClaimAsync(user.Id, new Claim("Full_Name", model.Full_Name));
-                     await UserManager.AddClaimAsync(user.Id, new Claim("Phone_Number", model.Age));
-                     await UserManager.AddClaimAsync(user.Id, new Claim("Id_Number", model.Id_Number));
                     await UserManager.AddClaimAsync(user.Id, new Claim("Age", model.Age));
+
+                    var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "PhoneCode");
+                    // See IdentityConfig.cs to plug in Email/SMS services to actually send the code
+                    var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "PhoneCode", token);
+                    await UserManager.NotifyTwoFactorTokenAsync(user.Id, "PhoneCode", token);
+                    var result3 = await UserManager.ChangePhoneNumberAsync(user.Id, user.PhoneNumber, token);
+
                     //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     ////                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     //var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code = code });
@@ -145,6 +150,7 @@ namespace getAmbulance.Controllers
                 //return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+
             if (result.Succeeded)
             {
                // return View("ConfirmEmail");
@@ -152,7 +158,52 @@ namespace getAmbulance.Controllers
           //  AddErrors(result);
           //  return View();
         }
+        [AllowAnonymous]
+        public async Task<HttpResponseMessage> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            HttpResponseMessage response;
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    response = Request.CreateResponse(HttpStatusCode.OK);
+                    return response;
+                    //return View("ForgotPasswordConfirmation");
+                }
 
+
+
+
+               var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+              var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ResetPassword", userId = user.Id, code = code });
+
+                //  await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+
+                //var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "PhoneCode");
+                //// See IdentityConfig.cs to plug in Email/SMS services to actually send the code
+                //var token2=await UserManager.VerifyTwoFactorTokenAsync(user.Id, "PhoneCode", token);
+                //await UserManager.NotifyTwoFactorTokenAsync(user.Id, "PhoneCode", token);
+
+               
+                ////var callbackUrl = Url.Action("ResetPassword", "Account",
+                ////new { UserId = user.Id, code = code }, protocol: Request.Url.Scheme);
+               await UserManager.SendEmailAsync(user.Id, "Reset Password",
+              "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                ////  return View("ForgotPasswordConfirmation");
+
+                //await UserManager.SetPhoneNumberAsync(user.Id, "+9720528602121");
+                //await UserManager.SendSmsAsync(user.Id, " GET AMBULANCE");
+
+                response = Request.CreateResponse(HttpStatusCode.OK, model);
+                return response;
+            }
+            response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
+            // If we got this far, something failed, redisplay form
+            return response;
+        }
 
         #region Helpers
         // Used for XSRF protection when adding external logins

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using AspNet.Identity.MongoDB;
 using System.Net.Mail;
-
+using Twilio;
 
 namespace getAmbulance.Models
 {
@@ -61,7 +61,10 @@ namespace getAmbulance.Models
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+                {
+                    TokenLifespan = TimeSpan.FromHours(3)
+                };
             }
             return manager;
         }
@@ -143,7 +146,7 @@ namespace getAmbulance.Models
         {
             // Plug in your email service here to send an email.
             var mailMessage = new MailMessage
-          ("sari.q34@gmail.com", message.Destination, message.Subject, message.Body);
+          ("no-reply@getambulance.com", message.Destination, message.Subject, message.Body);
 
             mailMessage.IsBodyHtml = true;
 
@@ -160,7 +163,17 @@ namespace getAmbulance.Models
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your sms service here to send a text message.
+            string AccountSid = "ACe9436bee483f0ceeb4d8ffb710ec982b";
+            string AuthToken = "5f360f808fda3645fdae1a9e698e1009";
+            string twilioPhoneNumber = "+12563048138";
+
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+
+            twilio.SendSmsMessage(twilioPhoneNumber, message.Destination, message.Body);
+
+            // Twilio does not return an async Task, so we need this:
             return Task.FromResult(0);
+           // return Task.FromResult(0);
         }
     }
 
