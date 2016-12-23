@@ -15,6 +15,7 @@ namespace getAmbulance.WhiteLabel
             public string name { get; set; }
             public BsonDocument users { get; set; }
             public BsonDocument prices { get; set; }
+            public List<SupportedArea> supportedAreas { get; set; }
             public BsonArray supportedServices { get; set; }
             public bool isOnline { get; set; }
             public string logo { get; set; }
@@ -28,6 +29,13 @@ namespace getAmbulance.WhiteLabel
             public BsonArray supportedServices { get; set; }
             public bool isOnline { get; set; }
             public string logo { get; set; }
+        }
+        public class SupportedArea
+        {
+            public string name { get; set; }
+            public double lat { get; set; }
+            public double lng { get; set; }
+            public double radius { get; set; }
         }
         public class WhiteLabelOfferEntity 
         {

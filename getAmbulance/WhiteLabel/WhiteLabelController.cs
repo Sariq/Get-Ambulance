@@ -61,7 +61,7 @@ namespace getAmbulance.WhiteLabel
             catch (Exception ex)
             {
 
-                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetReservationsListByWhiteLabelId Add Error");
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetWhiteLabelById  Error");
             }
             return response;
         }
@@ -116,6 +116,26 @@ namespace getAmbulance.WhiteLabel
             response = Request.CreateResponse(HttpStatusCode.OK, whiteLabelResponse);
             return response;
         }
+
+
+        // Post: /WhiteLabel/AddSupportedAreas
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage AddSupportedAreas(JObject jsonData)
+        {
+            HttpResponseMessage response;
+
+
+            dynamic jsonObj = jsonData;
+            List<SupportedArea> supportedAreaList = jsonObj.supportedAreaList.ToObject<List<SupportedArea>>();
+
+            _whiteLabelService.AddSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList);
+
+            response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
+
+
 
     }
 }

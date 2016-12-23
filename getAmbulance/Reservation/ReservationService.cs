@@ -7,9 +7,11 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Web;
 using static getAmbulance.WhiteLabel.WhiteLabelModel;
+
 
 namespace getAmbulance.Reservation
 {
@@ -46,6 +48,7 @@ namespace getAmbulance.Reservation
 
             //r1.status = 1;
             //r1.WhiteLabel_ID = 1;
+   
 
         }
         public List<ReservationEntity> GetReservationsList()

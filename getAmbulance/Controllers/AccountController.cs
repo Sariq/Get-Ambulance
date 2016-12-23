@@ -9,6 +9,7 @@ using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -87,7 +88,7 @@ namespace getAmbulance.Controllers
 //                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code = code });
 
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"http://localhost:57867/app/index.html#/confirm-email\">אשר חשבון</a>");
                     // ViewBag.Link = callbackUrl;
                     response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
                     return response;
@@ -104,7 +105,7 @@ namespace getAmbulance.Controllers
         public async Task<HttpResponseMessage> RegisterClient(ClientRegisterModel model)
         {
             HttpResponseMessage response;
-
+     
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Id_Number, PhoneNumber=model.Phone_Number };
@@ -115,7 +116,7 @@ namespace getAmbulance.Controllers
                 {
 
                     await UserManager.AddClaimAsync(user.Id, new Claim("Full_Name", model.Full_Name));
-                    await UserManager.AddClaimAsync(user.Id, new Claim("Age", model.Age));
+                //    await UserManager.AddClaimAsync(user.Id, new Claim("Age", model.Age));
 
                     var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "PhoneCode");
                     // See IdentityConfig.cs to plug in Email/SMS services to actually send the code
@@ -129,6 +130,7 @@ namespace getAmbulance.Controllers
 
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     // ViewBag.Link = callbackUrl;
+           
                     response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
                     return response;
                 }
@@ -150,6 +152,7 @@ namespace getAmbulance.Controllers
                 //return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+         
 
             if (result.Succeeded)
             {
@@ -157,6 +160,63 @@ namespace getAmbulance.Controllers
             }
           //  AddErrors(result);
           //  return View();
+        }
+        [AllowAnonymous]
+        public async Task<HttpResponseMessage> WhiteLabelForgotPassword(WhiteLabelForgotPasswordViewModel model)
+        {
+            HttpResponseMessage response;
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    response = Request.CreateResponse(HttpStatusCode.OK);
+                    return response;
+                    //return View("ForgotPasswordConfirmation");
+                }
+
+                var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "EmailCode");
+                // See IdentityConfig.cs to plug in Email/SMS services to actually send the code
+                var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "EmailCode", token);
+                await UserManager.NotifyTwoFactorTokenAsync(user.Id, "EmailCode", token);
+
+                response = Request.CreateResponse(HttpStatusCode.OK, model);
+                return response;
+            }
+            response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
+            // If we got this far, something failed, redisplay form
+            return response;
+        }
+
+        [AllowAnonymous]
+        public async Task<HttpResponseMessage> WhiteLabelCodeChangePassword(WhiteLabelForgotPasswordViewModel model)
+        {
+            HttpResponseMessage response;
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    response = Request.CreateResponse(HttpStatusCode.OK);
+                    return response;
+                    //return View("ForgotPasswordConfirmation");
+                }
+
+                var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "EmailCode");
+                // See IdentityConfig.cs to plug in Email/SMS services to actually send the code
+                var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "EmailCode", token);
+                await UserManager.NotifyTwoFactorTokenAsync(user.Id, "EmailCode", token);
+
+                response = Request.CreateResponse(HttpStatusCode.OK, model);
+                return response;
+            }
+            response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
+            // If we got this far, something failed, redisplay form
+            return response;
         }
         [AllowAnonymous]
         public async Task<HttpResponseMessage> ForgotPassword(ForgotPasswordViewModel model)

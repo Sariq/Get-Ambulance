@@ -407,6 +407,9 @@
     <Content Include="app\bower_components\signalr\jquery.signalR.js" />
     <Content Include="app\bower_components\signalr\jquery.signalR.min.js" />
     <Content Include="app\common\services\authInterceptorService.js" />
+    <Content Include="app\components\supported-area\views\supported-area.css" />
+    <Content Include="app\components\supported-area\views\supported-area.html" />
+    <Content Include="app\components\supported-area\views\supported-area.js" />
     <Content Include="app\components\prices\distance\distance-cmp.css" />
     <Content Include="app\components\prices\distance\distance-cmp.html" />
     <Content Include="app\components\prices\distance\distance-cmp..js" />
@@ -470,6 +473,9 @@
     <Content Include="app\views\pages\blank.html" />
     <Content Include="app\views\pages\login.html" />
     <Content Include="app\views\register\signupController.js" />
+    <Content Include="app\views\register\views\confirm-email\confirm-email.css" />
+    <Content Include="app\views\register\views\confirm-email\confirm-email.html" />
+    <Content Include="app\views\register\views\confirm-email\confirm-email.js" />
     <Content Include="app\views\reservation\item\reservation-item.css" />
     <Content Include="app\views\reservation\item\reservation-item.js" />
     <Content Include="app\views\reservation\reservation-service.js" />
@@ -477,6 +483,11 @@
     <Content Include="app\views\reservation\reservationHub.js" />
     <Content Include="app\views\reservation\item\reservation-item.html" />
     <Content Include="app\views\reservation\routes.js" />
+    <Content Include="app\views\services-settings\services-settings-service.js" />
+    <Content Include="app\views\services-settings\routes.js" />
+    <Content Include="app\views\services-settings\views\services-settings.css" />
+    <Content Include="app\views\services-settings\views\services-settings.html" />
+    <Content Include="app\views\services-settings\views\services-settings.js" />
     <Content Include="app\views\table.html" />
     <Content Include="app\views\ui-elements\buttons.html" />
     <Content Include="app\views\ui-elements\grid.html" />
@@ -487,6 +498,7 @@
     <Content Include="Gruntfile.js" />
     <Content Include="images\101.png" />
     <Content Include="images\ambulance_plain_red.png" />
+    <Content Include="images\blue-marker.png" />
     <Content Include="images\mada-logo.jpg" />
     <Content Include="node_modules\abbrev\abbrev.js" />
     <Content Include="node_modules\accepts\index.js" />

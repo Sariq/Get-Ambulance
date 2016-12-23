@@ -1,0 +1,15 @@
+﻿
+        <div id="map" data-tap-disabled="true"></div>      
+
+<div class="row">
+    <div class="col-md-12">
+        <button ng-init="showAddBtn=true" ng-show="showAddBtn" ng-click="showAddBtn=!showAddBtn">{{'Add_Supported_Area' | translate}} </button>
+    </div>
+
+    <div class="col-md-12"  ng-show="!showAddBtn">
+        {{'Address' | translate}} : <input ng-model="name" ng-blur="$ctrl.addAddressCircle(name,radius)"/><br />
+        {{'Radius' | translate}} :  <input ng-model="radius" ng-change="$ctrl.addAddressCircle(name,radius)" /><br />
+        <button ng-click="$ctrl.addSupportedArea()">{{'Add_Supported_Area' | translate}} </button>
+    </div>
+   
+</div>
