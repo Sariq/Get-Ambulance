@@ -9,6 +9,7 @@ using Microsoft.Owin.Security.OAuth;
 using getAmbulance.Providers;
 using System.Web.Http;
 using getAmbulance;
+using getAmbulance.App_Start;
 
 namespace getAmbulance {
     public partial class Startup {
@@ -17,7 +18,8 @@ namespace getAmbulance {
             // Configure the db context, user manager and role manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationIdentityContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+            app.CreatePerOwinContext<Models.ApplicationRoleManager>(Models.ApplicationRoleManager.Create);
+            app.CreatePerOwinContext<ApplicationClientUserManager>(ApplicationClientUserManager.Create);
 
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()

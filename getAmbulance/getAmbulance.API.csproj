@@ -220,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationIdentityContext.cs" />
+    <Compile Include="App_Start\ClientIdentityConfig.cs" />
     <Compile Include="App_Start\EnsureAuthIndexes.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Client\ClientModel.cs" />
     <Compile Include="Client\ClientService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientAccountController.cs" />
     <Compile Include="DB\DatabaseObject.cs" />
     <Compile Include="DB\DBService.cs" />
     <Compile Include="Enums\ApplicationTypes.cs" />

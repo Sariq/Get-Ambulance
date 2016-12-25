@@ -11,31 +11,30 @@ using System.Web;
 using AspNet.Identity.MongoDB;
 using System.Net.Mail;
 using Twilio;
+using getAmbulance.Models;
 
-namespace getAmbulance.Models
+namespace getAmbulance.App_Start
 {
-    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class ApplicationClientUserManager : UserManager<ApplicationClientUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+        public ApplicationClientUserManager(IUserStore<ApplicationClientUser> store)
             : base(store)
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        public static ApplicationClientUserManager Create(IdentityFactoryOptions<ApplicationClientUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationIdentityContext>().Users));
+            var manager = new ApplicationClientUserManager(new UserStore<ApplicationClientUser>(context.Get<ApplicationIdentityContext>().ClientUsers));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+            manager.UserValidator = new UserValidator<ApplicationClientUser>(manager)
             {
-                AllowOnlyAlphanumericUserNames = false
-         
+                
+           
             };
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6, 
+                RequiredLength = 6,
                 RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
@@ -47,11 +46,11 @@ namespace getAmbulance.Models
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug in here.
-            manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationClientUser>
             {
                 MessageFormat = "Your security code is: {0}"
             });
-            manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationClientUser>
             {
                 Subject = "SecurityCode",
                 BodyFormat = "Your security code is {0}"
@@ -61,7 +60,7 @@ namespace getAmbulance.Models
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationClientUser>(dataProtectionProvider.Create("ASP.NET Identity"))
                 {
                     TokenLifespan = TimeSpan.FromHours(3)
                 };
@@ -77,7 +76,7 @@ namespace getAmbulance.Models
         /// <returns></returns>
         public virtual async Task<IdentityResult> AddUserToRolesAsync(string userId, IList<string> roles)
         {
-            var userRoleStore = (IUserRoleStore<ApplicationUser, string>)Store;
+            var userRoleStore = (IUserRoleStore<ApplicationClientUser, string>)Store;
 
             var user = await FindByIdAsync(userId).ConfigureAwait(false);
             if (user == null)
@@ -104,7 +103,7 @@ namespace getAmbulance.Models
         /// <returns></returns>
         public virtual async Task<IdentityResult> RemoveUserFromRolesAsync(string userId, IList<string> roles)
         {
-            var userRoleStore = (IUserRoleStore<ApplicationUser, string>) Store;
+            var userRoleStore = (IUserRoleStore<ApplicationClientUser, string>)Store;
 
             var user = await FindByIdAsync(userId).ConfigureAwait(false);
             if (user == null)
@@ -127,14 +126,14 @@ namespace getAmbulance.Models
     // Configure the RoleManager used in the application. RoleManager is defined in the ASP.NET Identity core assembly
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {
-        public ApplicationRoleManager(IRoleStore<IdentityRole,string> roleStore)
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
             : base(roleStore)
         {
         }
 
         public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
         {
-			var manager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationIdentityContext>().Roles));
+            var manager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationIdentityContext>().Roles));
 
             return manager;
         }
@@ -173,7 +172,7 @@ namespace getAmbulance.Models
 
             // Twilio does not return an async Task, so we need this:
             return Task.FromResult(0);
-           // return Task.FromResult(0);
+            // return Task.FromResult(0);
         }
     }
 
@@ -188,16 +187,16 @@ namespace getAmbulance.Models
     // These help with sign and two factor (will possibly be moved into identity framework itself)
     public class SignInHelper
     {
-        public SignInHelper(ApplicationUserManager userManager, IAuthenticationManager authManager)
+        public SignInHelper(ApplicationClientUserManager userManager, IAuthenticationManager authManager)
         {
             UserManager = userManager;
             AuthenticationManager = authManager;
         }
 
-        public ApplicationUserManager UserManager { get; private set; }
+        public ApplicationClientUserManager UserManager { get; private set; }
         public IAuthenticationManager AuthenticationManager { get; private set; }
 
-        public async Task SignInAsync(ApplicationUser user, bool isPersistent, bool rememberBrowser)
+        public async Task SignInAsync(ApplicationClientUser user, bool isPersistent, bool rememberBrowser)
         {
             // Clear any partial cookies from external or two factor partial sign ins
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
@@ -284,7 +283,7 @@ namespace getAmbulance.Models
             return await SignInOrTwoFactor(user, isPersistent);
         }
 
-        private async Task<SignInStatus> SignInOrTwoFactor(ApplicationUser user, bool isPersistent)
+        private async Task<SignInStatus> SignInOrTwoFactor(ApplicationClientUser user, bool isPersistent)
         {
             if (await UserManager.GetTwoFactorEnabledAsync(user.Id) &&
                 !await AuthenticationManager.TwoFactorBrowserRememberedAsync(user.Id))

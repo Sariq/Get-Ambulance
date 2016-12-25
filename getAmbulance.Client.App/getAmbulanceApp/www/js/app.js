@@ -85,11 +85,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
   
   // if none of the above states are matched, use this as the fallback
   //$urlRouterProvider.otherwise('/app/home');
-}).run( function (authService, $state, $timeout, ReservationHub) {
+}).run( function (authService, $state, $timeout) {
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {
         $timeout(function () {
-            $state.go('app.login');
+            $state.go('login');
         });
      
     }

@@ -28,9 +28,9 @@ namespace getAmbulance.Client
         {
             HttpResponseMessage response;
             dynamic jsonObj = jsonData;
-            var builder = Builders<ApplicationUser>.Filter;
+            var builder = Builders<ApplicationClientUser>.Filter;
             var filter = builder.Eq("UserName", (string)jsonObj.userName.Value);
-            var temp_userData = _ctx.Users.Find(filter).ToListAsync().Result[0];
+            var temp_userData = _ctx.ClientUsers.Find(filter).ToListAsync().Result[0];
             var clientUser = _ClientService.CreateClientUserProfile(temp_userData);
             response = Request.CreateResponse(HttpStatusCode.OK, clientUser);
             return response;

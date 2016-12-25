@@ -1,14 +1,17 @@
 ﻿using AspNet.Identity.MongoDB;
+using getAmbulance.App_Start;
 using getAmbulance.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
-
+using static getAmbulance.Client.ClientModel;
 
 namespace getAmbulance
 {
@@ -17,12 +20,27 @@ namespace getAmbulance
         private ApplicationIdentityContext _ctx;
 
         private UserManager<ApplicationUser> _userManager;
-    
+        private UserManager<ApplicationClientUser> _ciientUserManager;
+        private ApplicationClientUserManager _clientUserManager= HttpContext.Current.GetOwinContext().GetUserManager<ApplicationClientUserManager>();
+        public ApplicationClientUserManager UserManager2
+        {
+
+            get
+            {
+                return _clientUserManager ?? HttpContext.Current.GetOwinContext().GetUserManager<ApplicationClientUserManager>();
+            }
+            private set
+            {
+                _clientUserManager = value;
+            }
+        }
 
         public AuthRepository()
         {
             _ctx = ApplicationIdentityContext.Create();
             _userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_ctx.Users));
+            _ciientUserManager = new UserManager<ApplicationClientUser>(new UserStore<ApplicationClientUser>(_ctx.ClientUsers));
+
             
         }
 
@@ -43,6 +61,26 @@ namespace getAmbulance
             IdentityUser user = await _userManager.FindAsync(userName, password);
 
             return user;
+        }
+
+
+        public async Task<bool> IsPhoneNumberConfirmed(string userName,string code)
+        {
+
+            var builder = Builders<ApplicationClientUser>.Filter;
+
+            var filter = builder.Eq("UserName", userName);
+            var user = _ctx.ClientUsers.Find(filter).ToListAsync().Result[0];
+            var codeVerfied = await _clientUserManager.VerifyTwoFactorTokenAsync(user.Id, "PhoneCode", code);
+            if (codeVerfied)
+            {
+                var update = Builders<ApplicationClientUser>.Update
+                    .Set("PhoneNumberConfirmed", true);
+                var result = _ctx.ClientUsers.UpdateOneAsync(filter, update);
+            }
+        //    var isPhoneConfirmed=await _ciientUserManager.IsPhoneNumberConfirmedAsync(user.Id);
+                 return codeVerfied;
+           
         }
 
         public BrowserClient FindClient(string clientId)

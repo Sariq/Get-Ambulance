@@ -108,9 +108,9 @@ namespace getAmbulance.Controllers
      
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Id_Number, PhoneNumber=model.Phone_Number };
+                var user = new ApplicationUser { UserName = model.Id_Number, PhoneNumber=model.Phone_Number,Email="null@null.com" };
    
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user);
                 
                 if (result.Succeeded)
                 {

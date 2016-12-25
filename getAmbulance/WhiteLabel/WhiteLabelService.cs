@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using getAmbulance.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -39,29 +40,46 @@ namespace getAmbulance.WhiteLabel
                 filter = filter & builder.Eq("supportedServices", serviceType);
                 var whiteLabelsList = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
 
-
-                double lat2 = 32.23823691911867, lng2 = 34.944726969285284, lat = 32.2394348, lng = 34.9503489;
                
 
-                List<WhiteLabelEntity> filterdWhiteLabelLiset = new List<WhiteLabelEntity >();
-                foreach (var whiteLabel in whiteLabelsList)
-                {
-                    List<SupportedArea> filterdList = new List<SupportedArea>();
-                    filterdList = whiteLabel.supportedAreas.Where(supportedArea =>
-                    new GeoCoordinate(lat, lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= Math.Sqrt(10) * 100              
-                    ).ToList();
-                    if(filterdList!=null && filterdList.Count() > 0)
-                    {
-                        filterdWhiteLabelLiset.Add(whiteLabel);
-                    }
-                }
-                return filterdWhiteLabelLiset;
+              
+                return whiteLabelsList;
             }
             catch (Exception ex)
             {
                 return null;
             }
 
+        }
+        public List<WhiteLabelEntity> filterWhiteLabelListBySupportedArea(List<WhiteLabelEntity> whiteLabelsList, dynamic reservationData)
+        {
+           // double lat2 = 32.23823691911867, lng2 = 34.944726969285284, lat = 32.2394348, lng = 34.9503489;
+            List<AddressLatLng> addressList = reservationData.addressList.ToObject<List<AddressLatLng>>();
+
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = new List<WhiteLabelEntity>();
+            List<SupportedArea> filterdList = new List<SupportedArea>();
+            int count;
+            foreach (var whiteLabel in whiteLabelsList)
+                {
+                count = 0;
+                foreach (var address in addressList)
+                {
+                    filterdList = whiteLabel.supportedAreas.Where(supportedArea =>
+                  new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= Math.Sqrt(10) * 100
+                  ).ToList();
+                    if(filterdList!=null && filterdList.Count() > 0)
+                    {
+                        count++;
+                    }
+                }
+                if (count== addressList.Count() && filterdList != null && filterdList.Count() > 0)
+                {
+                    filterdWhiteLabelLiset.Add(whiteLabel);
+
+                }
+               
+                }
+            return filterdWhiteLabelLiset;
         }
         public void UpdateWhiteLabelIsOnline(string whiteLabelId,bool status)
         {

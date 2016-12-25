@@ -78,7 +78,7 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
         _authentication.isAuth = false;
         _authentication.userName = "";
         _authentication.useRefreshTokens = _authentication.useRefreshTokens;
-        $state.go('app.login');
+        $state.go('login');
 
 
     };
@@ -170,6 +170,12 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
         return deferred.promise;
 
     };
+
+    
+    var _sendCodeToClientByPhone = function (phoneNumber) {
+        var data = { Phone_Number: phoneNumber }
+        return $http.post(serviceBase + 'api/ClientAccount/CreateUserSendCodeByPhone', data);
+    }
     var _reLoadState = function () {
         $state.reload();
         $rootScope.$broadcast('state-reloaded-after-refreshToken');
@@ -192,6 +198,7 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
     authServiceFactory.registerExternal = _registerExternal;
     authServiceFactory.setUserProfile = _setUserProfile;
     authServiceFactory.getUserProfile = _getUserProfile;
-
+    authServiceFactory.sendCodeToClientByPhone = _sendCodeToClientByPhone;
+    
     return authServiceFactory;
 }]);

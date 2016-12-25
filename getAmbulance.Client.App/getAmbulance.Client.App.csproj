@@ -270,6 +270,7 @@
     <Content Include="getAmbulanceApp\www\states\login\views\login.css" />
     <Content Include="getAmbulanceApp\www\states\login\views\login.html" />
     <Content Include="getAmbulanceApp\www\states\login\views\login.js" />
+    <Content Include="getAmbulanceApp\www\states\map\map-service.js" />
     <Content Include="getAmbulanceApp\www\states\map\routes.js" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.css" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.html" />

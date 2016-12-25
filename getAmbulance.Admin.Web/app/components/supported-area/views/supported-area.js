@@ -37,17 +37,6 @@ var supportedAreaCmp = ['$scope', '$http', 'Reservations', '$state','$timeout', 
     ctrl.addAddressCircle = function (address,radius) {
 
 
-            //var cityCircle = new google.maps.Circle({
-            //    strokeColor: '#8299ae',
-            //    strokeOpacity: 0.8,
-            //    strokeWeight: 2,
-            //    fillColor: '#91a0c3',
-            //    fillOpacity: 0.35,
-            //    map: $scope.map,
-            //    center: latLng,
-            //    radius: Math.sqrt(10) * 100,
-            //    draggable: true
-            //});
 
 
 
@@ -72,12 +61,12 @@ var supportedAreaCmp = ['$scope', '$http', 'Reservations', '$state','$timeout', 
                 if (status === 'OK') {
                 $scope.map.setCenter(results[0].geometry.location);
                     var latLng3 = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
-
+        
                     var markers = [
-           {
-               position: results[0].geometry.location,
-               type: 'info'
-           }
+                           {
+                               position: results[0].geometry.location,
+                               type: 'info'
+                           }
                     ]
                     if (ctrl.cityCircle2)
                         ctrl.cityCircle2.setMap(null);
@@ -86,7 +75,11 @@ var supportedAreaCmp = ['$scope', '$http', 'Reservations', '$state','$timeout', 
                     } else {
                         radius = parseInt(radius);
                     }
-                 ctrl.cityCircle2 = new google.maps.Circle({
+                    ctrl.areaData.name = address;
+                    ctrl.areaData.lat = results[0].geometry.location.lat();
+                    ctrl.areaData.lng = results[0].geometry.location.lng();
+                    ctrl.areaData.radius = radius;
+                    ctrl.cityCircle2 = new google.maps.Circle({
                         strokeColor: '#8299ae',
                         strokeOpacity: 0.8,
                         strokeWeight: 2,
@@ -109,7 +102,7 @@ var supportedAreaCmp = ['$scope', '$http', 'Reservations', '$state','$timeout', 
 }]
 angular.module('sbAdminApp').component('supportedAreaCmp', {
     bindings: {
-
+        areaData:'='
 
     },
     templateUrl: 'components/supported-area/views/supported-area.html',

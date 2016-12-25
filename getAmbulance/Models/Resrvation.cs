@@ -45,4 +45,10 @@ namespace getAmbulance.Models
         public string WhiteLabelLogo { get; set; }
         public string Price { get; set; }
     }
+    public class AddressLatLng
+    {
+        public double lat { get; set; }
+        public double lng { get; set; }
+    }
+    
 }

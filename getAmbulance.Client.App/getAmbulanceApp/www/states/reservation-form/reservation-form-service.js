@@ -38,8 +38,12 @@ angular.module('starter.controllers').service('ReservationService', function ($h
         return $http.post(serviceBase + 'api/Reservation/GetMedicalTherapistOffersList', form);
     }
 
-    self.getStairsAssistanceOffersList = function (form) {
-        return $http.post(serviceBase + 'api/Reservation/GetStairsAssistanceOffersList', form);
+    self.getStairsAssistanceOffersList = function (form,addressList) {
+        var data = {
+            form: form,
+            addressList: addressList
+        }
+        return $http.post(serviceBase + 'api/Reservation/GetStairsAssistanceOffersList', data);
     }
     
     self.getReservations = function (status, type) {

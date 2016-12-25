@@ -2,7 +2,7 @@
 
 angular.module('starter.controllers').controller('LogInCtrl', function ($scope, authService, ngAuthSettings, $state) {
 
-    $scope.loginData = {
+    $scope.loginForm = {
         userName: "",
         password: ""
     };
@@ -10,8 +10,8 @@ angular.module('starter.controllers').controller('LogInCtrl', function ($scope, 
     $scope.message = "";
 
     $scope.login = function () {
-
-        authService.login($scope.loginData).then(function (response) {
+        $scope.loginForm.userName= $scope.loginForm.Phone_Number;
+        authService.login($scope.loginForm).then(function (response) {
 
             $state.go('app.home');
 
@@ -20,6 +20,17 @@ angular.module('starter.controllers').controller('LogInCtrl', function ($scope, 
              $scope.message = err.error_description;
          });
     };
+
+    $scope.sendCodeToClientByPhone = function () {
+      
+        authService.sendCodeToClientByPhone($scope.loginForm.Phone_Number).then(function (response) {
+           // $state.go('app.home');
+        },
+       function (err) {
+           $scope.message = err.error_description;
+       });
+
+    }
 
 })
 

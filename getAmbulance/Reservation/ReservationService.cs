@@ -151,7 +151,9 @@ namespace getAmbulance.Reservation
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
             List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"3");
-            foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
+
+            foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
                 int extraServicesPrice = getStairsAssistancePriceByHour((BsonDocument)whiteLabel.prices, jsonObj);
                 int finalPrice = extraServicesPrice;

@@ -1,7 +1,11 @@
 ﻿
 
 angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope, ServicesSettingsService) {
-    ServicesSettingsService.UpdateSupportedAreas();
+    $scope.areaData = {};
+    $scope.UpdateSupportedAreas = function () {
+        ServicesSettingsService.UpdateSupportedAreas($scope.areaData);
+    }
+ 
   
 })
 

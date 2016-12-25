@@ -1,13 +1,10 @@
 angular.module('starter.controllers').config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-           .state('app.login', {
+           .state('login', {
                url: '/login',
-            views: {
-                'menuContent': {
-                    templateUrl: 'states/login/views/login.html',
-                    controller: 'LogInCtrl'
-                }
-            },
+               templateUrl: 'states/login/views/login.html',
+               controller: 'LogInCtrl'
+        
           
         });
   

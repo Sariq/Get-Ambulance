@@ -1,29 +1,42 @@
 ﻿<ion-view  view-title="{{'LogIn' | translate}}">
     <ion-content class="Login">
+        <div class="login">
 
-        <div class="login-page">
-
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-4">
-    
-                    <h1>Get Ambulance Admin</h1>
-                    <form role="form">
-                        <div class="form-content login-form">
-                            <div class="form-group">
-                                <input type="text" ng-model="loginData.userName" class="form-control input-underline input-lg" id="" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control input-underline input-lg" ng-model="loginData.password" id="" placeholder="Password">
-                            </div>
-                        </div>
-
-                        <a class="btn rounded-btn" ng-click="login()"> {{ 'התחבר' | translate}} </a>
-                        <!--&nbsp;
-                    <a type="submit" class="btn rounded-btn" href="#dashboard/home">Register</a>-->
-                    </form>
+            <div ng-show="!isLogin" ng-init="isLogin=false">
+                <div class="list">
+                    <label class="item item-input panel item-floating-label">
+                        <img src="../www/img/LOGO-1.5-NOBG.svg" class="info-green-svg" style="width:90%;padding-right: 22px;margin-top:25px;" />
+                    </label>
+                    <label class="item  " style="border-top:none;text-align:center;">
+                        <label style="text-align:center;" class="input-label">{{'Insert_Phone_Number'|translate}}</label>
+                    </label>
+                    <label class="item item-input panel">
+                        <input placeholder="{{'Phone_Number'|translate}}" type="text" name="Phone_Number" ng-model="loginForm.Phone_Number" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    </label>
                 </div>
+
+
+                <button ng-click="sendCodeToClientByPhone();isLogin=true" class="send-number-btn">{{'Send'|translate}}</button>
             </div>
+
+            <div ng-show="isLogin">
+                <div class="list">
+                    <label class="item item-input panel item-floating-label">
+                        <img src="../www/img/LOGO-1.5-NOBG.svg" class="info-green-svg" style="width:90%;padding-right: 22px;margin-top:25px;" />
+                    </label>
+                    <label class="item  " style="border-top:none;text-align:center;">
+                        <label style="text-align:center;" class="input-label">{{'Insert_Code'|translate}}</label>
+                    </label>
+                    <label class="item item-input panel">
+                        <input placeholder="{{'Code'|translate}}" type="number" name="Phone_Number" ng-model="loginForm.password" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    </label>
+                </div>
+
+
+                <button ng-click="login()" class="send-number-btn">{{'Log_In'|translate}}</button>            </div>
         </div>
-    
-    </ion-content>
+
+
+
+</ion-content>
 </ion-view>

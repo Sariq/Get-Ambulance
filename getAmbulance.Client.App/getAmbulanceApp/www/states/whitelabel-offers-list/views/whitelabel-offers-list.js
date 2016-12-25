@@ -1,9 +1,10 @@
 ﻿
 
-angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', function ($scope, $ionicModal, ReservationService, localStorageService) {
+angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', function ($scope, $ionicModal, ReservationService, localStorageService, MapService) {
     $scope.reservationForm = localStorageService.get('reservationFormData');
 
     $scope.getAmbulanceOffersList = function () {
+
         ReservationService.getAmbulanceOffersList($scope.reservationForm).then(function (res) {
             $scope.providerPriceOffersList = res.data;
             localStorageService.set('ambulancePriceOffersList', $scope.providerPriceOffersList);
@@ -18,10 +19,16 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
     }
 
     $scope.getStairsAssistanceOffersList = function () {
-        ReservationService.getStairsAssistanceOffersList($scope.reservationForm).then(function (res) {
-            $scope.providerPriceOffersList = res.data;
-            localStorageService.set('stairsAssistanceOffersList', $scope.providerPriceOffersList);
-        });
+        var addressList = [];
+        MapService.getLatLangByAddress($scope.reservationForm.Meeting_Address).then(function (result) {
+            var address = result;
+            addressList.push(address);
+            ReservationService.getStairsAssistanceOffersList($scope.reservationForm, addressList).then(function (res) {
+                $scope.providerPriceOffersList = res.data;
+                localStorageService.set('stairsAssistanceOffersList', $scope.providerPriceOffersList);
+            });
+        })
+        
     }
 
 

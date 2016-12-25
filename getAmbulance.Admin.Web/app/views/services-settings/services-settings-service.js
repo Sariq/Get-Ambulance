@@ -5,13 +5,8 @@ angular.module('sbAdminApp').factory('ServicesSettingsService', ['$http', 'ngAut
 
     var ServicesSettingsServiceFactory = {};
    
-    var _UpdateSupportedAreas = function (status, type) {
-        var supportedAreaList = [{
-            "name": "tira22",
-            "radius": 316.227766016838,
-            "lat": 33.23823691911867,
-            "lng": 35.944726969285284
-        }];
+    var _UpdateSupportedAreas = function (areaData ) {
+        var supportedAreaList = [areaData];
         var data={ 
             whiteLabelId: authService.authentication.WhiteLabelData.whiteLabelid,
             supportedAreaList: supportedAreaList

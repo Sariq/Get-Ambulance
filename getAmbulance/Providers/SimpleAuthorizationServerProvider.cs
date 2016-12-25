@@ -29,7 +29,7 @@ namespace getAmbulance.Providers
                 //Remove the comments from the below line context.SetError, and invalidate context 
                 //if you want to force sending clientId/secrects once obtain access tokens. 
                 context.Validated();
-                //context.SetError("invalid_clientId", "ClientId should be sent.");
+                context.SetError("invalid_clientId", "ClientId should be sent.");
                 //return Task.FromResult<object>(null);
             }
 
@@ -83,12 +83,27 @@ namespace getAmbulance.Providers
 
             using (AuthRepository _repo = new AuthRepository())
             {
+                if(context.ClientId == "ngAuthApp") { 
                 IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
-
+           
                 if (user == null)
                 {
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
+                }
+                }
+                else
+                {
+                    if(context.ClientId == "consoleApp")
+                    {
+                        bool IsPhoneNumberConfirmed = await _repo.IsPhoneNumberConfirmed(context.UserName, context.Password);
+
+                        if (!IsPhoneNumberConfirmed)
+                        {
+                            context.SetError("invalid_grant", "The user name or password is incorrect.");
+                            return;
+                        }
+                    }
                 }
             }
 
