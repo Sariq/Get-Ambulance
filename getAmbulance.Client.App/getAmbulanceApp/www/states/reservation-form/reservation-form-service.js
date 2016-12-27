@@ -30,12 +30,20 @@ angular.module('starter.controllers').service('ReservationService', function ($h
           }, callback);
     }
    
-    self.getAmbulanceOffersList = function (form) {
-        return $http.post(serviceBase + 'api/Reservation/GetAmbulanceOffersList', form);
+    self.getAmbulanceOffersList = function (form, addressList) {
+        var data = {
+            form: form,
+            addressList: addressList
+        }
+        return $http.post(serviceBase + 'api/Reservation/GetAmbulanceOffersList', data);
     }
 
-    self.getMedicalTherapistOffersList = function (form) {
-        return $http.post(serviceBase + 'api/Reservation/GetMedicalTherapistOffersList', form);
+    self.getMedicalTherapistOffersList = function (form, addressList) {
+        var data = {
+            form: form,
+            addressList: addressList
+        }
+        return $http.post(serviceBase + 'api/Reservation/GetMedicalTherapistOffersList', data);
     }
 
     self.getStairsAssistanceOffersList = function (form,addressList) {

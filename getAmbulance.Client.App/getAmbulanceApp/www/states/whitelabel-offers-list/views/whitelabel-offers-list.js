@@ -4,26 +4,36 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
     $scope.reservationForm = localStorageService.get('reservationFormData');
 
     $scope.getAmbulanceOffersList = function () {
-
-        ReservationService.getAmbulanceOffersList($scope.reservationForm).then(function (res) {
+        var addressNameList = [$scope.reservationForm.From_Address, $scope.reservationForm.To_Address];
+        MapService.getLatLangByAddress(addressNameList).then(function (result) {
+            var addressLatLngList = result;
+    
+            ReservationService.getAmbulanceOffersList($scope.reservationForm, addressLatLngList).then(function (res) {
             $scope.providerPriceOffersList = res.data;
             localStorageService.set('ambulancePriceOffersList', $scope.providerPriceOffersList);
         });
+        })
     }
 
     $scope.getMedicalTherapistOffersList = function () {
-        ReservationService.getMedicalTherapistOffersList($scope.reservationForm).then(function (res) {
+        var addressNameList = [$scope.reservationForm.Meeting_Address];
+        MapService.getLatLangByAddress(addressNameList).then(function (result) {
+            var addressLatLngList = result;
+
+            ReservationService.getMedicalTherapistOffersList($scope.reservationForm,addressLatLngList).then(function (res) {
             $scope.providerPriceOffersList = res.data;
             localStorageService.set('medicalTherapistOffersList', $scope.providerPriceOffersList);
         });
+        })
     }
 
     $scope.getStairsAssistanceOffersList = function () {
-        var addressList = [];
-        MapService.getLatLangByAddress($scope.reservationForm.Meeting_Address).then(function (result) {
-            var address = result;
-            addressList.push(address);
-            ReservationService.getStairsAssistanceOffersList($scope.reservationForm, addressList).then(function (res) {
+ 
+        var addressNameList = [$scope.reservationForm.Meeting_Address];
+        MapService.getLatLangByAddress(addressNameList).then(function (result) {
+            var addressLatLngList = result;
+
+            ReservationService.getStairsAssistanceOffersList($scope.reservationForm, addressLatLngList).then(function (res) {
                 $scope.providerPriceOffersList = res.data;
                 localStorageService.set('stairsAssistanceOffersList', $scope.providerPriceOffersList);
             });

@@ -124,10 +124,12 @@ namespace getAmbulance.Reservation
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList= new List<WhiteLabelOfferEntity>();
             List <WhiteLabelEntity> whiteLabelsList= _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"1");
-            foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
+
+            foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices["distance"], (int)jsonObj.distance.Value);
-                int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices,jsonObj);
+                int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices["distance"], (int)jsonObj.form.distance.Value);
+                int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices,jsonObj.form);
                 int finalPrice = distancePrice + extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
@@ -138,9 +140,11 @@ namespace getAmbulance.Reservation
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
             List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"2");
-            foreach (WhiteLabelEntity whiteLabel in whiteLabelsList)
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
+
+            foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                int extraServicesPrice = getMedicalTherapistPriceByHour((BsonDocument)whiteLabel.prices, jsonObj);
+                int extraServicesPrice = getMedicalTherapistPriceByHour((BsonDocument)whiteLabel.prices, jsonObj.form);
                 int finalPrice = extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
@@ -155,7 +159,7 @@ namespace getAmbulance.Reservation
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                int extraServicesPrice = getStairsAssistancePriceByHour((BsonDocument)whiteLabel.prices, jsonObj);
+                int extraServicesPrice = getStairsAssistancePriceByHour((BsonDocument)whiteLabel.prices, jsonObj.form);
                 int finalPrice = extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
