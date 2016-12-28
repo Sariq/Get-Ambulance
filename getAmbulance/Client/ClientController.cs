@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using static getAmbulance.Client.ClientModel;
 
 namespace getAmbulance.Client
 {
@@ -33,6 +34,16 @@ namespace getAmbulance.Client
             var temp_userData = _ctx.ClientUsers.Find(filter).ToListAsync().Result[0];
             var clientUser = _ClientService.CreateClientUserProfile(temp_userData);
             response = Request.CreateResponse(HttpStatusCode.OK, clientUser);
+            return response;
+        }
+        // Post: /Account/UpdateUserProfile
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage UpdateUserProfile(UpdateUserProfileModel userProfileData)
+        {
+            HttpResponseMessage response;
+            _ClientService.UpdateUserProfile(userProfileData);
+            response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
     }

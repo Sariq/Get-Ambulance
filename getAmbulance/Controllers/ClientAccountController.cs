@@ -4,6 +4,7 @@ using getAmbulance.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +70,7 @@ namespace getAmbulance.Controllers
             HttpResponseMessage response;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationClientUser { UserName = model.Phone_Number,ID_Number=model.Id_Number, PhoneNumber = model.Phone_Number, Email = "null@null.com" };
+                var user = new ApplicationClientUser { UserName = model.Phone_Number,Id_Number=model.Id_Number, PhoneNumber = model.Phone_Number, Email = "null@null.com" };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -94,6 +95,7 @@ namespace getAmbulance.Controllers
         public async Task<HttpResponseMessage> CreateUserSendCodeByPhone(CodeToClientModel model)
         {
             HttpResponseMessage response;
+        
             if (ModelState.IsValid)
             {
                 var clientUser = _ClientService.GetClientByUserName(model.Phone_Number);
@@ -105,7 +107,7 @@ namespace getAmbulance.Controllers
                     {
                         var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "PhoneCode");
                         await UserManager.NotifyTwoFactorTokenAsync(user.Id, "PhoneCode", token);
-                        response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
+                        response = Request.CreateResponse(HttpStatusCode.OK,"1");
                         return response;
                     }
                     AddErrors(result);
@@ -114,7 +116,7 @@ namespace getAmbulance.Controllers
                 {
                     var token = await UserManager.GenerateTwoFactorTokenAsync(clientUser.Id, "PhoneCode");
                     await UserManager.NotifyTwoFactorTokenAsync(clientUser.Id, "PhoneCode", token);
-                    response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
+                    response = Request.CreateResponse(HttpStatusCode.OK,"2");
                     return response;
                 }
 

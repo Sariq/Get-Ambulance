@@ -30,8 +30,9 @@ namespace getAmbulance.Client
            // clientUserProfile.Email = clientUser.Email;
             clientUserProfile.User_Name = clientUser.UserName;
             clientUserProfile.Full_Name= clientUser.Full_Name;
-            clientUserProfile.Id_Number = clientUser.ID_Number;
+            clientUserProfile.Id_Number = clientUser.Id_Number;
             clientUserProfile.Phone_Number = clientUser.PhoneNumber;
+            clientUserProfile._id=clientUser.Id;
 
             return clientUserProfile;
         }
@@ -45,5 +46,26 @@ namespace getAmbulance.Client
 
             return user;
         }
+
+        public void UpdateUserProfile(UpdateUserProfileModel userProfileData)
+        {
+            var id = new ObjectId(userProfileData.User_Id);
+            var filter = Builders<ApplicationClientUser>.Filter.Eq("_id", id);
+            if (userProfileData.Full_Name != null)
+            {
+                var update = Builders<ApplicationClientUser>.Update
+                         .Set("Full_Name", userProfileData.Full_Name);
+                _ctx.ClientUsers.UpdateOneAsync(filter, update); ;
+            }
+            if (userProfileData.Id_Number != null)
+            {
+                var update = Builders<ApplicationClientUser>.Update
+                         .Set("Id_Number", userProfileData.Id_Number);
+                _ctx.ClientUsers.UpdateOneAsync(filter, update); ;
+            }
+
+        }
+
+      
     }
 }

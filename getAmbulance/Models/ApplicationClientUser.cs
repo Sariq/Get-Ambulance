@@ -11,7 +11,7 @@ namespace getAmbulance.Models
 {
     public class ApplicationClientUser : IdentityUser
     {
-        public string ID_Number { get; set; }
+        public string Id_Number { get; set; }
         public string Full_Name { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationClientUser> manager)
         {

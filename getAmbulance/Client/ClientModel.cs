@@ -16,10 +16,16 @@ namespace getAmbulance.Client
            // public string Age { get; set; }
 
         }
-        public class ClientUserProfileEntity : ClientEntity
+        public class ClientUserProfileEntity 
         {
             public string User_Name { get; set; }
-           // public string Email { get; set; }
+            public string Full_Name { get; set; }
+            public string Phone_Number { get; set; }
+            public string Id_Number { get; set; }
+            public string _id { get; set; }
+
+
+            // public string Email { get; set; }
         }
 
 
@@ -29,7 +35,20 @@ namespace getAmbulance.Client
             [Display(Name = "Phone_Number")]
             public string Phone_Number { get; set; }
         }
-            public class ClientRegisterModel
+
+        public class UpdateUserProfileModel
+        {
+            [Required]
+            [Display(Name = "User_Id")]
+            public string User_Id { get; set; }
+            [Required]
+            [Display(Name = "Full_Name")]
+            public string Full_Name { get; set; }
+            [Required]
+            [Display(Name = "Id_Number")]
+            public string Id_Number { get; set; }
+        }
+        public class ClientRegisterModel
         {
             //[Required]
             //[Display(Name = "Email")]

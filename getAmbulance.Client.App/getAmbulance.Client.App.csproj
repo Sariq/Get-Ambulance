@@ -266,10 +266,13 @@
     <Content Include="getAmbulanceApp\www\services\authInterceptorService.js" />
     <Content Include="getAmbulanceApp\www\services\authService.js" />
     <Content Include="getAmbulanceApp\www\services\tokensManagerService.js" />
+    <Content Include="getAmbulanceApp\www\states\login\login-service.js" />
     <Content Include="getAmbulanceApp\www\states\login\routes.js" />
     <Content Include="getAmbulanceApp\www\states\login\views\login.css" />
     <Content Include="getAmbulanceApp\www\states\login\views\login.html" />
     <Content Include="getAmbulanceApp\www\states\login\views\login.js" />
+    <Content Include="getAmbulanceApp\www\states\login\views\verfiy-code\verfiy-code.js" />
+    <Content Include="getAmbulanceApp\www\states\login\views\verfiy-code\verfiy-code.html" />
     <Content Include="getAmbulanceApp\www\states\map\map-service.js" />
     <Content Include="getAmbulanceApp\www\states\map\routes.js" />
     <Content Include="getAmbulanceApp\www\states\map\views\map.css" />
@@ -322,6 +325,11 @@
     <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.js" />
     <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.html" />
     <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.css" />
+    <Content Include="getAmbulanceApp\www\states\user-profile\user-profile-service.js" />
+    <Content Include="getAmbulanceApp\www\states\user-profile\routes.js" />
+    <Content Include="getAmbulanceApp\www\states\user-profile\views\user-profile.css" />
+    <Content Include="getAmbulanceApp\www\states\user-profile\views\user-profile.html" />
+    <Content Include="getAmbulanceApp\www\states\user-profile\views\user-profile.js" />
     <Content Include="getAmbulanceApp\www\states\whitelabel-offers-list\routes.js" />
     <Content Include="getAmbulanceApp\www\states\whitelabel-offers-list\views\whitelabel-offers-list.js" />
     <Content Include="getAmbulanceApp\www\states\whitelabel-offers-list\views\whitelabel-offers-list.css" />

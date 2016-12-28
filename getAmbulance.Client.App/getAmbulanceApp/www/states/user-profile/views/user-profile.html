@@ -48,7 +48,43 @@
 
             </div>
         </section>
-            
+            <!-- <div class="login">
+
+           <div ng-show="!isLogin" ng-init="isLogin=false">
+                <div class="list">
+                    <label class="item item-input panel item-floating-label">
+                        <img src="../www/img/LOGO-1.5-NOBG.svg" class="info-green-svg" style="width:90%;padding-right: 22px;margin-top:25px;" />
+                    </label>
+                    <label class="item  " style="border-top:none;text-align:center;">
+                        <label style="text-align:center;" class="input-label">{{'Insert_Phone_Number'|translate}}</label>
+                    </label>
+                    <label class="item item-input panel">
+                        <input placeholder="{{'Phone_Number'|translate}}" type="text" name="Phone_Number" ng-model="loginForm.Phone_Number" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    </label>
+                </div>
+
+
+                <button ng-click="sendCodeToClientByPhone();isLogin=true" class="send-number-btn">{{'Send'|translate}}</button>
+            </div>
+
+            <div ng-show="isLogin">
+                <div class="list">
+                    <label class="item item-input panel item-floating-label">
+                        <img src="../www/img/LOGO-1.5-NOBG.svg" class="info-green-svg" style="width:90%;padding-right: 22px;margin-top:25px;" />
+                    </label>
+                    <label class="item  " style="border-top:none;text-align:center;">
+                        <label style="text-align:center;" class="input-label">{{'Insert_Code'|translate}}</label>
+                    </label>
+                    <label class="item item-input panel">
+                        <input placeholder="{{'Code'|translate}}" type="number" name="Phone_Number" ng-model="loginForm.password" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    </label>
+                </div>
+
+
+                <button ng-click="login()" class="send-number-btn">{{'Log_In'|translate}}</button>            </div>
+        </div>
+            -->
+
 
 </ion-content>
 </ion-view>
