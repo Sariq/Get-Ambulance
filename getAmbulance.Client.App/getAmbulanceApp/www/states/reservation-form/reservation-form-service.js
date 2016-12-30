@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('starter.controllers').service('ReservationService', function ($http,authService, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout, authService) {
+angular.module('starter.controllers').service('ReservationService', function ($filter,$http, authService, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout, authService) {
     var self = this;
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     self.formData = {};
@@ -120,6 +120,19 @@ switch (localStorageService.get('reservationType')) {
    
   
         return $http.post(serviceBase + 'api/Reservation/AddReservation', reservation);
+    }
+
+    self.setSelectedReservation = function (reservationData) {
+        localStorageService.set('selectedReservation', reservationData);
+    }
+    self.getSelectedReservation = function () {
+        return localStorageService.get('selectedReservation');
+    }
+
+    self.getValueByKey = function (dataObject, key) {
+        var item = $filter('filter')(dataObject, { _name: key }, true)[0]._value;
+        return item;
+
     }
 })
 

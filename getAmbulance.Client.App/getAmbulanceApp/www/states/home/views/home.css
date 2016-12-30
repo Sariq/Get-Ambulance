@@ -40,5 +40,33 @@
 }
 
 .side_menu_header{
-    background-color:#0fc6dc!important;
+    background-color:#263650!important;
+}
+.item-complex .item-content, .item-radio .item-content{
+        background-color: #263650;
+        color:white;
+}
+
+aside ion-item{
+     background-color: #263650!important;
+        color:white!important;
+        
+}
+
+aside ion-item a{
+        padding-right: 15px!important;
+}
+
+ion-side-menu { 
+     background-color: #263650!important;
+        color:white!important;
+}
+
+
+.home .img-container{
+       background-color: #263650;
+}
+.home .home-img{
+    width:60%;
+        margin: 10px;
 }

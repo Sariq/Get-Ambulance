@@ -19,6 +19,7 @@ namespace getAmbulance.WhiteLabel
             public BsonArray supportedServices { get; set; }
             public bool isOnline { get; set; }
             public string logo { get; set; }
+            public string phoneNumber { get; set; }
         }
         public class WhiteLabelResponseEntity : DatabaseObject
         {
@@ -36,6 +37,15 @@ namespace getAmbulance.WhiteLabel
             public double lat { get; set; }
             public double lng { get; set; }
             public double radius { get; set; }
+        }
+        public class WhiteLabelBasicDataModel
+        {
+            public string whiteLabel_Id { get; set; }
+            public string name { get; set; }
+            public string logo { get; set; }
+            public string phoneNumber { get; set; }
+
+            
         }
         public class WhiteLabelOfferEntity 
         {

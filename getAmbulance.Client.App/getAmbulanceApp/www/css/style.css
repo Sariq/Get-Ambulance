@@ -106,7 +106,7 @@ ion-content.home>div{
     color:white;
 }
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar{
-    background-color:#0fc6dc;
+    background-color:#263650;
 }
 [nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
     background-color:#0fc6dc;
@@ -142,4 +142,22 @@ select{
 
 .select-style select:focus {
     outline: none;
+}
+
+.width-100{
+    width:100%!important;
+    padding:0;
+    margin:0;
+}
+
+input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly] {
+        background-color: unset; 
+}
+
+.button-full{
+
+       width: 70%!important;
+    margin: auto!important;
+    border-radius: 40px!important;
+    background-color:#56cbff!important;
 }

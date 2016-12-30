@@ -24,6 +24,21 @@ namespace getAmbulance.WhiteLabel
             var whiteLabelsList = _ctx.WhiteLabels.Aggregate().ToListAsync().Result;
             return whiteLabelsList;
         }
+        public List<WhiteLabelBasicDataModel> GetWhiteLabelsBasicDataList(List<WhiteLabelEntity> whiteLabelsList)
+        {
+            List<WhiteLabelBasicDataModel> whiteLabelsBasicDataList = new List<WhiteLabelBasicDataModel>();
+            foreach (var whiteLabel in whiteLabelsList)
+            {
+                WhiteLabelBasicDataModel basicData = new WhiteLabelBasicDataModel();
+                basicData.logo = whiteLabel.logo;
+                basicData.name = whiteLabel.name;
+                basicData.whiteLabel_Id = whiteLabel.whiteLabelid;
+                basicData.phoneNumber=whiteLabel.phoneNumber;
+                whiteLabelsBasicDataList.Add(basicData);
+            }
+            return whiteLabelsBasicDataList;
+        }
+        
         public List<WhiteLabelEntity> GetWhiteLabelsListByStatus(bool status)
         {
             var builder = Builders<WhiteLabelEntity>.Filter;
@@ -99,6 +114,8 @@ namespace getAmbulance.WhiteLabel
             var whiteLabel = _ctx.WhiteLabels.Find(filter).ToListAsync().Result[0];
             return whiteLabel;
         }
+
+        
         public void UpdatePricesByCategory(BsonDocument jsonObj)
         {
 

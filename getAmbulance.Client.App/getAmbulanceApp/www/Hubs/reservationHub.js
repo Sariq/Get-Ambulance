@@ -45,9 +45,12 @@ angular.module('starter.controllers')
         token: self.getToken(),
         autoConnect: false
     });
-    $timeout(function () {
-        self.hub.connect();
-    }, 1000);
+    self.connectReservationHub = function () {
+        $timeout(function () {
+            self.hub.connect();
+        }, 1000);
+}
+
     $rootScope.$on('state-reloaded-after-refreshToken', function (event, args) {
         $timeout(function () {
             self.hub = new Hub('Reservation', {

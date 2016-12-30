@@ -11,7 +11,7 @@
 
 .reservation-form .panel{
 font-size: calc(0.75em + 2vmin);
-    background-color: #f0f0f0;
+    background-color: #f7fbfc;
     border: 1px solid transparent;
     border-radius: 40px;
     -webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
@@ -25,6 +25,7 @@ font-size: calc(0.75em + 2vmin);
 
 .item-floating-label .input-label.has-input{
     top: -28px!important;
+        color: #57caff;
 }
 .item-input{
     overflow:unset!important;

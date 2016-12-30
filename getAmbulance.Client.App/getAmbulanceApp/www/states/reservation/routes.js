@@ -9,7 +9,16 @@ angular.module('starter.controllers').config(function ($stateProvider, $urlRoute
                 }
             },
           
-        });
+           }).state('app.reservation-item', {
+               url: '/reservation-item',
+               views: {
+                   'menuContent': {
+                       templateUrl: 'states/reservation/views/item/reservation-item.html',
+                       controller: 'ReservationItemCtrl'
+                   }
+               },
+
+           });
   
 
 });

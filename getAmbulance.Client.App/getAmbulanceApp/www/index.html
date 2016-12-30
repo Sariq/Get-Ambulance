@@ -30,6 +30,7 @@
       <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
       <script src="lib/angular-validation/dist/angular-validation.min.js"></script>
       <script src="lib/angular-validation/dist/angular-validation-rule.min.js"></script>
+      <script src="bower-components/angular-filter-master/dist/angular-filter.min.js"></script>
       <script async defer
               src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhJIfnv1M8DAsXc9XyJECYMjSOoqF_pUY">
       </script>
@@ -147,8 +148,9 @@
       <!--Commponents-->
       <!--Reservation-->
       <link href="states/reservation/views/list/reservations-list.css" rel="stylesheet" />
+      <link href="states/reservation/views/item/reservation-item.css" rel="stylesheet" />
       <script src="states/reservation/views/list/reservations-list.js"></script>
-  
+      <script src="states/reservation/views/item/reservation-item.js"></script>
       <script src="states/reservation/routes.js"></script>
       <!--Reservation-->
 
@@ -157,6 +159,10 @@
       <script src="states/user-profile/user-profile-service.js"></script>
       <script src="states/user-profile/routes.js"></script>
       <!--User-Profile-->
+
+      <!--White-Label-->
+      <script src="services/whiteLabel-service.js"></script>
+      <!--White-Label-->
   </head>
 
   <body ng-app="starter">

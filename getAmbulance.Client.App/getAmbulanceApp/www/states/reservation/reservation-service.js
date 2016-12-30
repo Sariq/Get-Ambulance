@@ -12,6 +12,7 @@ angular.module('starter.controllers').factory('ReservationService', ['$http', 'n
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationsListByClientId', data);
     };
+
     var _getReservationById= function (reservationId) {
         var data = {
             reservationId: reservationId
@@ -25,6 +26,7 @@ angular.module('starter.controllers').factory('ReservationService', ['$http', 'n
         }
         return $http.post(serviceBase + 'api/Reservation/AcceptReservation', data);
     }
+    
 
     var _setSelectedReservationId = function (id) {
         localStorageService.set('selectedReservationId', id);
@@ -38,7 +40,8 @@ angular.module('starter.controllers').factory('ReservationService', ['$http', 'n
     var _getSelectedReservation = function () {
         return localStorageService.get('selectedReservation');
     }
-    ReservationServiceFactory.getReservations = _getReservations;
+    
+
     ReservationServiceFactory.getReservationById = _getReservationById;
     ReservationServiceFactory.acceptReservation = _acceptReservation;
     ReservationServiceFactory.setSelectedReservationId = _setSelectedReservationId;

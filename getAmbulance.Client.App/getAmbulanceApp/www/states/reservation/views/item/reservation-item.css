@@ -1,3 +1,20 @@
-.resrvation-item .pad-top{
+ .resrvation-item .pad-top{
         padding-top: 5%;
+}
+ .reservation-item .reservation-status{
+     margin-top:10%;
+     margin-bottom:10%;
+  
+    font-weight: bold;
+        font-size: large;
+ }
+
+ .reservation-item  .pending-color{
+    color:#efad4d;
+}
+ .reservation-item .ignored-color{
+    color:#e84e4e;
+}
+ .reservation-item  .accepted-color{
+    color:#6ab66b;
 }

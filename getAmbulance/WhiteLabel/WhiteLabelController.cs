@@ -65,6 +65,24 @@ namespace getAmbulance.WhiteLabel
             }
             return response;
         }
+        // Post: /WhiteLabel/GetWhiteLabelsList
+        [HttpPost]
+        public HttpResponseMessage GetWhiteLabelsList()
+        {
+            HttpResponseMessage response;
+            try
+            {
+                List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsList();
+                List<WhiteLabelBasicDataModel> whiteLabelsBasicDataList = _whiteLabelService.GetWhiteLabelsBasicDataList(whiteLabelsList);
+                response = Request.CreateResponse(HttpStatusCode.OK, whiteLabelsBasicDataList);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetWhiteLabelById  Error");
+            }
+            return response;
+        }
         // Post: /WhiteLabel/UpdatePricesByCategory
         [HttpPost]
         public HttpResponseMessage UpdatePricesByCategory(JObject jsonData)

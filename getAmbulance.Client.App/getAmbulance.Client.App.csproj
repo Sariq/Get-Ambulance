@@ -265,6 +265,7 @@
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.min.js" />
     <Content Include="getAmbulanceApp\www\services\authInterceptorService.js" />
     <Content Include="getAmbulanceApp\www\services\authService.js" />
+    <Content Include="getAmbulanceApp\www\services\whiteLabel-service.js" />
     <Content Include="getAmbulanceApp\www\services\tokensManagerService.js" />
     <Content Include="getAmbulanceApp\www\states\login\login-service.js" />
     <Content Include="getAmbulanceApp\www\states\login\routes.js" />
