@@ -99,6 +99,12 @@ ion-content.home>div{
         right: inherit!important;
             direction: ltr;
 }
+.title {
+    text-align:center!important;
+}
+.title.header-item{
+    text-align:center!important;
+}
 .item-radio{
     direction:ltr;
 }
@@ -109,7 +115,7 @@ ion-content.home>div{
     background-color:#263650;
 }
 [nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
-    background-color:#0fc6dc;
+    background-color:#263650;
 }
 .bar-stable .button.button-clear{
     color:white;
@@ -160,4 +166,8 @@ input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.clon
     margin: auto!important;
     border-radius: 40px!important;
     background-color:#56cbff!important;
+}
+
+.margin-top-15{
+    margin-top:15%;
 }

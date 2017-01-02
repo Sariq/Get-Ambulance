@@ -112,6 +112,18 @@
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\src\service.js" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\src\style.css" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\src\template.html" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\dist\autocomplete.min.css" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\dist\autocomplete.min.js" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\example\basic.html" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\example\custom-places.html" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\example\force-selection.html" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\example\options.html" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\example\scroll.html" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\Gruntfile.js" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\karma.conf.js" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\spec\autocomplete_spec.js" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\src\autocomplete.css" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\src\autocomplete.js" />
     <Content Include="getAmbulanceApp\www\bower-components\angular-signalr-hub\signalr-hub.js" />
     <Content Include="getAmbulanceApp\www\bower-components\angular-signalr-hub\signalr-hub.min.js" />
     <Content Include="getAmbulanceApp\www\bower-components\jquery.signalR-2.0.0.js" />
@@ -423,6 +435,12 @@
     <Content Include="getAmbulanceApp\www\bower-components\jquery\external\sizzle\dist\sizzle.min.map" />
     <Content Include="getAmbulanceApp\www\bower-components\jquery\README.md" />
     <Content Include="getAmbulanceApp\www\bower-components\jquery\src\.eslintrc" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\.gitignore" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\bower.json" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\LICENSE" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\package.json" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\README.md" />
+    <Content Include="getAmbulanceApp\www\bower-components\angular-google-places-autocomplete-master\spec\support\jasmine.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

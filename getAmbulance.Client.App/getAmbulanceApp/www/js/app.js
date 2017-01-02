@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter'])
+angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,7 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
   });
 }).constant('ngAuthSettings', {
    apiServiceBaseUri: 'http://localhost:54543/',
-    //apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
+    // apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
     //clientId: 'ngAuthApp'
  clientId: 'consoleApp',
  clientSecret: '123@abc'
@@ -92,8 +92,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
             $state.go('login');
         });
     } else {
-        ReservationHub.connectReservationHub();
-        WhiteLabelService.getWhiteLabelsList();
+       ReservationHub.connectReservationHub();
+       WhiteLabelService.getWhiteLabelsList();
+       $state.go('app.home');
     }
     console.log(authService)
 });

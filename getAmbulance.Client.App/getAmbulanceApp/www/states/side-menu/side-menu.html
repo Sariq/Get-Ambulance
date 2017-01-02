@@ -19,16 +19,16 @@
     <ion-content>
       <ion-list>
           <aside>
-              <ion-item menu-close href="#/app/home">
+              <ion-item menu-close   ui-sref="app.home">
                   {{'Main_Page' | translate}}
               </ion-item>
-              <ion-item menu-close href="#/app/map">
+              <ion-item menu-close ui-sref="app.map">
                   מפה
               </ion-item>
-              <ion-item menu-close href="#/app/facebook">
+              <ion-item menu-close  ui-sref="app.facebook">
                   facebook
               </ion-item>
-              <ion-item menu-close href="#/app/reservation-list">
+              <ion-item menu-close ui-sref="app.reservation-list">
                   {{'Reservations_List' | translate}}
               </ion-item>
               <ion-item menu-close ng-click="logOut()">

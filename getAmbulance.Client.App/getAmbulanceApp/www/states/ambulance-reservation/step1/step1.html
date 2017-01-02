@@ -26,43 +26,36 @@
         <form class="reservation-form" name="Step1Form" novalidate="" ng-submit="signIn(authorizationForm)">
 
             <div class="list">
-                <!--<label class="item item-input panel" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
-                    <input placeholder="{{'איסוף'|translate}}" type="text" name="collect" ng-model="form.From_Address" ng-minlength="2" ng-maxlength="20" required>
-                </label>
-                    <div class="error-container" ng-show="authorizationForm.username.$error" ng-messages="authorizationForm.username.$error">
-                        <div ng-messages-include="error-list.html"></div>
-                    </div>-->
-
-                <!--<label class="item item-input panel item-floating-label">
-                    <span class="input-label">{{'date'|translate}} :</span>
-                    <input placeholder="{{'date'|translate}}" type="text" name="date" onfocus="(this.type='date')"  ng-model="form.date">
-                </label>-->
+             
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Full_Name'|translate}} :</span>
-                    <input placeholder="{{'Full_Name'|translate}}" type="text" name="Full_Name" ng-model="form.Full_Name" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    <input placeholder="{{'Full_Name'|translate}}" type="text" name="Full_Name" ng-model="form.Full_Name" message-id="Full_Name" valid-method="blur" validator="required,minlength=2,maxlength=50">
                 </label>
-                <span id="message"></span>
+                <span id="Full_Name"></span>
+
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Id_Number'|translate}} :</span>
-                    <input placeholder="{{'Id_Number'|translate}}" type="text" name="Id_Number" ng-model="form.Id_Number" ng-minlength="2" ng-maxlength="20" validator="required">
+                    <input placeholder="{{'Id_Number'|translate}}" type="text" name="Id_Number" ng-model="form.Id_Number" message-id="Id_Number" valid-method="blur" validator="required,number,minlength=9,maxlength=9">
                 </label>
+                <span id="Id_Number"></span>
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Phone_Number'|translate}} :</span>
-                    <input placeholder="{{'Phone_Number'|translate}}" type="text" name="Phone_Number" ng-model="form.Phone_Number" ng-minlength="2" ng-maxlength="20" validator="required">
+                    <input placeholder="{{'Phone_Number'|translate}}" type="tel" name="Phone_Number" ng-model="form.Phone_Number" message-id="Phone_Number" valid-method="blur" validator="required,number,minlength=10,maxlength=10">
                 </label>
+                <span id="Phone_Number"></span>
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Age'|translate}} :</span>
-                    <input placeholder="{{'Age'|translate}}" type="text" name="Age" ng-model="form.Age" ng-minlength="2" ng-maxlength="20" validator="required">
+                    <input placeholder="{{'Age'|translate}}" type="text" name="Age" ng-model="form.Age"  message-id="Age" valid-method="blur" validator="required,number,minlength=2,maxlength=2">
                 </label>
-
+                <span id="Age"></span>
                 </div>
 
          
 
-            <button ng-click="continueToStep2()" class="button button-full next-btn button-positive">
+            <button validation-submit="Step1Form" ng-click="continueToStep2()" class="button button-full next-btn button-positive">
                 <span class="">{{'Continue' | translate}}</span>
             </button>
 

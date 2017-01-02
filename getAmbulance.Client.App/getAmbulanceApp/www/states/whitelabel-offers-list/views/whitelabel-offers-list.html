@@ -1,80 +1,68 @@
 ﻿<ion-view view-title="Browse">
   <ion-content class="whitelabel-offer-list ">
       <ion-list
-                can-swipe="listCanSwipe">
-          <!--<ion-item ng-repeat="item in ambulancePriceOffersList" ng-click="setSelectedOffer(item)"
-                    class="item-thumbnail-left">
-
-              <img ng-src="img/{{item.logo}}">
-              <h2 style="padding-top: 20px;">שם ספק : {{item.name}}</h2>
-              <p>{{item.description}}</p>
-              <p>מחיר נסיעה : {{item.price}}</p>-->
-
-
-
-
-       
-              <!--<ion-option-button class="button-positive"
-                                 ng-click="share(item)">
-                  Share
-              </ion-option-button>
-              <ion-option-button class="button-info"
-                                 ng-click="edit(item)">
-                  Edit
-              </ion-option-button>
-              <ion-delete-button class="ion-minus-circled"
-                                 ng-click="items.splice($index, 1)">
-              </ion-delete-button>
-              <ion-reorder-button class="ion-navicon"
-                                  on-reorder="reorderItem(item, $fromIndex, $toIndex)">
-              </ion-reorder-button>-->
-
-          <!--</ion-item>-->
-
-         
+                can-swipe="listCanSwipe">       
       </ion-list>
 
       <div class="list">
-      
-              <table ng-repeat="item in providerPriceOffersList"  style="width:100%;margin-bottom: 25px;" ng-init="item.active=true" ng-show="item.active">
-                  <tr style="color:#298ea3" class="item item-input panel item-floating-label" >
+          <div ng-repeat="item in providerPriceOffersList">
+
+
+              <table style="margin-bottom: 25px;" ng-init="item.active=true" ng-show="item.active">
+                  <tr style="color:#298ea3" class="item item-input panel item-floating-label">
                       <td style="width:23%;vertical-align: middle;text-align:center">
                           <img style="width:55%" ng-src="img/{{item.logo}}">
                       </td>
                       <td style="width:50%;vertical-align: middle;text-align:center">
                           <span>{{item.name}}</span>
                       </td>
-                      <td style="vertical-align: middle;text-align:center"">
+                      <td style="vertical-align: middle;text-align:center" ">
                           <span>{{item.price}}</span> <span style="font-size: 80%;">שח</span>
                       </td>
                   </tr>
-                  <tr >
+                  <tr>
                       <td ng-click="setSelectedOffer(item);showCompleteBtn=!item.active" ng-init="showCompleteBtn=item.active" ng-show="showCompleteBtn" style="background-color:#3bb649;width:27%;position:absolute;margin:-5px 10px 0 0px;text-align:center;padding:10px;color:white;" colspan="3">
                           {{'Complete_Reservation' | translate }}
                       </td>
-                      <td  ng-show="!showCompleteBtn" style="background-color:#0b464d;width:80%;position:absolute;margin:-5px 10% 0 10%;text-align:center;padding:10px;color:white;font:bold" colspan="3">
+                      <td ng-show="!showCompleteBtn" style="background-color:#0b464d;width:80%;margin:-5px 10% 0 10%;text-align:center;padding:10px;color:white;font:bold" colspan="3">
                           <span style="color:white"> {{'Reservation_Completed' | translate }}</span>
-                              <br />
-                              <h3 style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
-                              <br />
-                              <div style="text-align:right">
-                                  <span>{{'Provider_Will_contact_You_Soon' | translate }}</span>
-                                  <br /><br />
-                                  <span>{{'Reservation_Number' | translate }}</span>
-                                  <br />
-                                  <span>{{item.number}}1234</span>
-                              </div>
-
+                          <br />
+                          <h3 style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
+                          <br />
+                          <div style="text-align:right">
+                              <span>{{'Provider_Will_contact_You_Soon' | translate }}</span>
                               <br /><br />
-                              <h3 style="color:white;margin-top:0">{{'Thank_You_For_Reservation' | translate }}</h3>
-                          <img src="../www/img/LOGO-1.5-BG3.svg" class="info-green-svg" style="width: 199px;height: 137px;;vertical-align: top;" />
+                              <span>{{'Reservation_Number' | translate }}</span>
+                              <br />
+                              <span>{{item.number}}1234</span>
+                          </div>
+
+                          <br /><br />
+                          <h3 style="color:white;margin-top:0">{{'Thank_You_For_Reservation' | translate }}</h3>
+                          <img src="../www/img/LOGO-1.5-BG3.svg" class="info-green-svg" style="width: 199px;height: 137px;vertical-align: top;" />
 
 
-</td>
+                      </td>
                   </tr>
               </table>
-            
-     
+
+              <div ng-show="!showCompleteBtn" class="margin-top-15">
+                  <div class="row icon-row">
+                      <div class="col">
+                          <a ui-sref="app.home" class="button button-full next-btn button-positive">
+                              <span class="">{{'Home_Page' | translate}}</span>
+                          </a>
+                      </div>
+                  </div>
+                  <div class="row icon-row">
+                      <div class="col">
+                          <a ui-sref="app.reservation-list" class="button button-full next-btn button-positive">
+                              <span class="">{{'Reservation_List' | translate}}</span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
           </div>
 </ion-content>
 </ion-view>

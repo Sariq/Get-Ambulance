@@ -2,8 +2,9 @@ angular.module('starter.controllers')
 .factory('ReservationHub',function ($rootScope, Hub, localStorageService, $timeout, ReservationService, authService, ngAuthSettings) {
     var Employees = this;
     var self = this;
-
+    self.connectReservationHub = function () {
     //Employee ViewModel
+    if(authService.getUserProfile())
     var Client_ID = authService.getUserProfile()._id;
 
     self.getToken = function () {
@@ -45,7 +46,7 @@ angular.module('starter.controllers')
         token: self.getToken(),
         autoConnect: false
     });
-    self.connectReservationHub = function () {
+
         $timeout(function () {
             self.hub.connect();
         }, 1000);

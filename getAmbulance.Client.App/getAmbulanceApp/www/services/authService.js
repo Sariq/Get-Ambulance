@@ -106,7 +106,9 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
             if (authData.useRefreshTokens) {
 
                 var data = "grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + ngAuthSettings.clientId;
-
+                if (ngAuthSettings.clientSecret) {
+                    data = data + "&client_secret=" + ngAuthSettings.clientSecret;
+                }
                 localStorageService.remove('authorizationData');
 
                 $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {

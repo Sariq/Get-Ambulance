@@ -9,28 +9,28 @@
             <div class="list">
 
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label">{{'Stairs_Assistance_Options'|translate}} :</span>
-                    <select class="" name="Direction_Type" ng-model="form.Stairs_Assistance_Options">
+                    <span class="input-label" ng-class="{'has-input': Step2Form.Stairs_Assistance_Options.$dirty}">{{'Stairs_Assistance_Options'|translate}} :</span>
+                    <select class="" name="Stairs_Assistance_Options" ng-model="form.Stairs_Assistance_Options" message-id="Stairs_Assistance_Options" valid-method="blur" validator="required">
                         <option value="" hidden selected>{{'Stairs_Assistance_Options'|translate}}</option>
                         <option value="Stairs_Up">{{'Stairs_Up'|translate}}</option>
                         <option value="Stairs_Down">{{'Stairs_Down'|translate}}</option>
                         <option value="Stairs_Both">{{'Stairs_Both'|translate}}</option>
                     </select>
                 </label>
-
+                <span id="Stairs_Assistance_Options"></span>
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label">{{'Current_Status'|translate}} :</span>
-                    <select class="" name="Direction_Type" ng-model="form.Current_Status">
+                    <span class="input-label" ng-class="{'has-input': Step2Form.Current_Status.$dirty}">{{'Current_Status'|translate}} :</span>
+                    <select class="" name="Current_Status" ng-model="form.Current_Status" message-id="Current_Status" valid-method="blur" validator="required">
                         <option value="" hidden selected>{{'Current_Status'|translate}}</option>
                         <option value="Standing">{{'Standing'|translate}}</option>
                         <option value="Sitting">{{'Sitting'|translate}}</option>
                         <option value="Lying">{{'Lying'|translate}}</option>
                     </select>
                 </label>
-
+                <span id="Current_Status"></span>
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label">{{'Weight'|translate}} :</span>
-                    <select class="" name="Ambulance_Type" ng-model="form.Weight">
+                    <span class="input-label" ng-class="{'has-input': Step2Form.Weight.$dirty}">{{'Weight'|translate}} :</span>
+                    <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required">
                         <option value="" hidden selected>{{'Weight'|translate}}</option>
                         <option value="90">{{'till'|translate}} 90</option>
                         <option value="121">91-121</option>
@@ -38,29 +38,37 @@
 
                     </select>
                 </label>
-
+                <span id="Weight"></span>
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Meeting_Address'|translate}} :</span>
-                    <input placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
+                    <input g-places-autocomplete  force-selection="true" placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" message-id="Meeting_Address" valid-method="blur" validator="required">
                 </label>
-
+                <span id="Meeting_Address"></span>
 
                 <div class="row" style="padding:0;">
-                    <label class="item item-input panel item-floating-label col-45 date-time">
-                        <span class="input-label">{{'Date'|translate}} :</span>
-                        <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" onfocus="(this.type='date')" name="Date" ng-model="form.Date" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
-                    </label>
-                    <label class="item item-input panel item-floating-label col-45 date-time" >
-                        <span class="input-label">{{'Time'|translate}} :</span>
-                        <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" onfocus="(this.type='time')" name="Time" ng-model="form.Time" ng-minlength="2" ng-maxlength="20" message-id="message" validator="required">
-                    </label>
+                    <div class="col-45 width-100">
+                        <label class="item item-input panel item-floating-label  date-time">
+                            <span class="input-label">{{'Date'|translate}} :</span>
+                            <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" onfocus="(this.type='date')" name="Date" ng-model="form.Date" message-id="Date" valid-method="blur" validator="required">
+
+                        </label>
+                        <span id="Date"></span>
+                    </div>
+                    <div class="col-45 width-100">
+                        <label class="item item-input panel item-floating-label  date-time">
+                            <span class="input-label">{{'Time'|translate}} :</span>
+                            <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" onfocus="(this.type='time')" name="Time" ng-model="form.Time" message-id="Time" valid-method="blur" validator="required">
+
+                        </label>
+                        <span id="Time"></span>
+                    </div>
                 </div>
             </div>
 
 
 
-            <button ng-click="continueToStep3()" class="button button-full next-btn button-positive">
+            <button validation-submit="Step2Form" ng-click="continueToStep3()" class="button button-full next-btn button-positive">
                 <span class="">{{'Continue' | translate}}</span>
             </button>
 

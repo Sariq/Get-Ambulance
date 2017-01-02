@@ -13,5 +13,3 @@ angular.module('starter.controllers').controller('MedicalTherapistStep2Ctrl', fu
         }
     }
 })
-
-

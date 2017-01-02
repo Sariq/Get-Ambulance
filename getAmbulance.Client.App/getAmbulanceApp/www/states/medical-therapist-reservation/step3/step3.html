@@ -4,12 +4,12 @@
     <ion-content>
 
 
-        <form class="reservation-form" name="StepForm" novalidate="" ng-submit="signIn(authorizationForm)">
+        <form class="reservation-form" name="Step3Form" novalidate="" >
 
             <div class="list">
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label">{{'Meeting_Address'|translate}} :</span>
-                    <select class="" name="Direction_Type" ng-model="form.Accompaniment_Location">
+                    <span class="input-label" ng-class="{'has-input': Step3Form.Meeting_Address.$dirty}">{{'Meeting_Address'|translate}} :</span>
+                    <select class="" name="Meeting_Address" ng-model="form.Accompaniment_Location" message-id="Meeting_Address" valid-method="blur" validator="required">
                         <option value="" hidden selected>{{'Meeting_Address'|translate}}</option>
                         <option value="Home">{{'Home'|translate}}</option>
                         <option value="Clinic">{{'Clinic'|translate}}</option>
@@ -17,25 +17,22 @@
                         <option value="Other">{{'Other'|translate}}</option>
                     </select>
                 </label>
-
+                <span id="Meeting_Address"></span>
 
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label">{{'Current_Status'|translate}} :</span>
-                    <select class="" name="Direction_Type" ng-model="form.Current_Status">
+                    <span class="input-label" ng-class="{'has-input': Step3Form.Direction_Type.$dirty}">{{'Current_Status'|translate}} :</span>
+                    <select class="" name="Direction_Type" ng-model="form.Current_Status" message-id="Current_Status" valid-method="blur" validator="required">
                         <option value="" hidden selected>{{'Current_Status'|translate}}</option>
                         <option value="Standing">{{'Standing'|translate}}</option>
                         <option value="Sitting">{{'Sitting'|translate}}</option>
                         <option value="Lying">{{'Lying'|translate}}</option>
                     </select>
                 </label>
-
+                <span id="Current_Status"></span>
           
 
                 <label class="item item-input panel item-floating-label " style="padding:6px 0 5px 0px;">
                     <label  style="padding: 10px;">{{'Service_Options'|translate}} :</label>
-
-
-
                     <label class="item item-input panel item-floating-label " style="margin: 5px 10px 5px 10px;">
                         <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Medical_Examination"><label style="padding-right: 15%;">{{'Medical_Examination'|translate}}</label></ion-checkbox>
                     </label>
@@ -52,14 +49,9 @@
                         <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Shopping"><label style="padding-right: 15%;">{{'Shopping_Help'|translate}}</label></ion-checkbox>
                     </label>
                 </label>
-
-
-
-
-
           </div>
 
-                <button  ng-click="continueToStep3()" class="button button-full next-btn button-positive">
+                <button validation-submit="Step3Form" ng-click="continueToStep3()" class="button button-full next-btn button-positive">
                     <span class="">{{'Continue' | translate}}</span>
                 </button>
 
