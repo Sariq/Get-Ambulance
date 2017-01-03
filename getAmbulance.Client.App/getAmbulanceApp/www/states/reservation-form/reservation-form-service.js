@@ -8,10 +8,10 @@ angular.module('starter.controllers').service('ReservationService', function ($f
 
 
     self.mergeToFormData = function (formData) {
-        if (self.formData, length == 0) {
+        
             if (localStorageService.get('reservationFormData'))
             self.formData=localStorageService.get('reservationFormData');
-        }
+ 
         self.formData = angular.extend(self.formData, formData);
         localStorageService.set('reservationFormData', self.formData);
     }
@@ -75,11 +75,22 @@ angular.module('starter.controllers').service('ReservationService', function ($f
     self.getReservationData = function () {
         return self.reservationData;
     }
-    self.removeFromLocalStorage = function (key) {
-        localStorageService.remove(key)
-        localStorageService.remove('reservationFormData')
-        localStorageService.remove('ambulancePriceOffersList')
+    self.removeFromLocalStorage = function () {
 
+        switch (localStorageService.get('reservationType')) {
+            case '1':
+                localStorageService.remove('ambulancePriceOffersList');
+                break;
+            case '2':
+                localStorageService.remove('medicalTherapistOffersList');
+                break;
+            case '3':
+                localStorageService.remove('stairsAssistanceOffersList');
+                break;
+        }
+        localStorageService.remove('reservationFormData');
+        localStorageService.remove('selectedReservation');
+        localStorageService.remove('reservationType');
     }
 
   
@@ -93,8 +104,8 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation.Status = "1";
         reservation.Full_Name =Reservation_Form.Full_Name;
         reservation.Phone_Number =Reservation_Form.Phone_Number;
-        reservation.Age = Reservation_Form.Age;
-        reservation.Id_Number = Reservation_Form.Id_Number;
+        reservation.Age = Reservation_Form.Age.toString();
+        reservation.Id_Number = Reservation_Form.Id_Number.toString();
         
 
         delete Reservation_Form.Full_Name;
@@ -106,18 +117,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         angular.forEach(Reservation_Form, function (value, key) {
             reservation.AdditionalProperties.push({ Key: key, Value: value });
         })
-switch (localStorageService.get('reservationType')) {
-        case '1':
-            self.removeFromLocalStorage('ambulancePriceOffersList');
-            break;
-        case '2':
-            self.removeFromLocalStorage('medicalTherapistOffersList');
-            break;
-        case '3':
-            self.removeFromLocalStorage('stairsAssistanceOffersList');
-            break;
-    }
-   
+        self.removeFromLocalStorage();
   
         return $http.post(serviceBase + 'api/Reservation/AddReservation', reservation);
     }

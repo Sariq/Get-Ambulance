@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', function ($scope, $ionicModal, ReservationService, localStorageService, MapService) {
+angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', function ($ionicPopup,$scope, $ionicModal, ReservationService, localStorageService, MapService) {
     $scope.reservationForm = localStorageService.get('reservationFormData');
 
     $scope.getAmbulanceOffersList = function () {
@@ -65,15 +65,35 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
             }
         })
     }
-
-
-   // $scope.ambulancePriceOffersList = localStorageService.get('ambulancePriceOffersList');
+    $scope.showTyp=false;
+    $scope.isSelected = false;
     $scope.setSelectedOffer = function (whiteLabelOffer) {
+        
+        $scope.whiteLabelOffer = whiteLabelOffer;
+        $scope.myPopup = $ionicPopup.show({
+            template: '<button ng-click="approveReservation(whiteLabelOffer)">אשר</button>',
+            title: 'האם אתה מאשר את ההזמנה',
+            //subTitle: 'Please use normal things',
+            scope: $scope
+
+        })
+       
+    }
+    
+    
+    $scope.data = {};
+    $scope.approveReservation = function (whiteLabelOffer) {
+        $scope.isSelected = true;
+        $scope.myPopup.close();
         $scope.showOnlySelectedOffer(whiteLabelOffer);
         ReservationService.setWhiteLabelOffer(whiteLabelOffer);
-        ReservationService.sendReservationData();
-      //  $state.go('app.client-information')
+        ReservationService.sendReservationData().then(function (res) {
+            $scope.showTyp = true;
+            $scope.Reservation = res.data;
+        });
     }
+    // An elaborate, custom popup
+   
   
 })
 

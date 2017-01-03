@@ -64,8 +64,8 @@ namespace getAmbulance.Reservation
                 Hub.Clients.Group(reservation.WhiteLabel_ID.ToString()).addReservation(reservation);
                 Hub.Clients.Group("0").addReservation(reservation);
                 // Hub.Clients.All.addReservation(reservation);
-                _reservationService.AddReservation(reservation);
-                response = Request.CreateResponse(HttpStatusCode.OK);
+                ReservationEntity completedReservation= _reservationService.AddReservation(reservation);
+                response = Request.CreateResponse(HttpStatusCode.OK, completedReservation);
             }
             catch (Exception ex)
             {

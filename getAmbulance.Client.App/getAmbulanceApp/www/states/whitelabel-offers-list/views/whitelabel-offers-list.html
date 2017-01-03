@@ -1,14 +1,12 @@
-﻿<ion-view view-title="Browse">
+﻿<ion-view cache-view="false" view-title="Browse" hide-back-button="true">
   <ion-content class="whitelabel-offer-list ">
       <ion-list
                 can-swipe="listCanSwipe">       
       </ion-list>
 
       <div class="list">
-          <div ng-repeat="item in providerPriceOffersList">
-
-
-              <table style="margin-bottom: 25px;" ng-init="item.active=true" ng-show="item.active">
+          <div ng-repeat="item in providerPriceOffersList" ng-show="!isSelected">
+              <table style="margin-bottom: 25px;" >
                   <tr style="color:#298ea3" class="item item-input panel item-floating-label">
                       <td style="width:23%;vertical-align: middle;text-align:center">
                           <img style="width:55%" ng-src="img/{{item.logo}}">
@@ -21,10 +19,38 @@
                       </td>
                   </tr>
                   <tr>
-                      <td ng-click="setSelectedOffer(item);showCompleteBtn=!item.active" ng-init="showCompleteBtn=item.active" ng-show="showCompleteBtn" style="background-color:#3bb649;width:27%;position:absolute;margin:-5px 10px 0 0px;text-align:center;padding:10px;color:white;" colspan="3">
+                      <td ng-click="setSelectedOffer(item);"  style="background-color:#3bb649;width:27%;position:absolute;margin:-5px 10px 0 0px;text-align:center;padding:10px;color:white;" colspan="3">
                           {{'Complete_Reservation' | translate }}
                       </td>
-                      <td ng-show="!showCompleteBtn" style="background-color:#0b464d;width:80%;margin:-5px 10% 0 10%;text-align:center;padding:10px;color:white;font:bold" colspan="3">
+
+                  </tr>
+              </table>
+              </div>
+          
+          <div ng-show="isSelected">
+              <div class="row">
+                  <div class="col-100">
+                      <div>
+                          <table ng-show="showTyp">
+                              <tr style="color:#298ea3" class="item item-input panel item-floating-label">
+                                  <td style="width:23%;vertical-align: middle;text-align:center">
+                                      <img style="width:55%" ng-src="img/{{whiteLabelOffer.logo}}">
+                                  </td>
+                                  <td style="width:50%;vertical-align: middle;text-align:center">
+                                      <span>{{whiteLabelOffer.name}}</span>
+                                  </td>
+                                  <td style="vertical-align: middle;text-align:center" ">
+                                      <span>{{whiteLabelOffer.price}}</span> <span style="font-size: 80%;">שח</span>
+                                  </td>
+                              </tr>
+
+                          </table>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-100"  style="background-color:#0b464d;width:80%;margin:-5px 10% 0 10%;text-align:center;padding:10px;color:white;font:bold">
+                      <div ng-show="showTyp">
                           <span style="color:white"> {{'Reservation_Completed' | translate }}</span>
                           <br />
                           <h3 style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
@@ -34,19 +60,22 @@
                               <br /><br />
                               <span>{{'Reservation_Number' | translate }}</span>
                               <br />
-                              <span>{{item.number}}1234</span>
+                              <span>{{Reservation.Reservation_Number}}</span>
                           </div>
 
                           <br /><br />
                           <h3 style="color:white;margin-top:0">{{'Thank_You_For_Reservation' | translate }}</h3>
                           <img src="../www/img/LOGO-1.5-BG3.svg" class="info-green-svg" style="width: 199px;height: 137px;vertical-align: top;" />
 
+                      </div>
+                      <div ng-show="!showTyp">
+                          Loading...
+                      </div>
 
-                      </td>
-                  </tr>
-              </table>
-
-              <div ng-show="!showCompleteBtn" class="margin-top-15">
+                  </div>
+              </div>
+          </div>
+              <div ng-show="showTyp" class="margin-top-15">
                   <div class="row icon-row">
                       <div class="col">
                           <a ui-sref="app.home" class="button button-full next-btn button-positive">
@@ -63,6 +92,6 @@
                   </div>
               </div>
           </div>
-          </div>
+             
 </ion-content>
 </ion-view>

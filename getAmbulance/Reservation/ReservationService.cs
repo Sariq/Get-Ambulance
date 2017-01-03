@@ -26,30 +26,20 @@ namespace getAmbulance.Reservation
             _whiteLabelService = new WhiteLabelService();
             _dbSerivce = new DBService();
     }
-        public void AddReservation(ReservationEntity reservation)
+        public ReservationEntity AddReservation(ReservationEntity reservation)
         {
             try
             {
                 int reservationNumber = _dbSerivce.getNextSequence("Reservation_Number");
                 reservation.Reservation_Number = reservationNumber;
                 _ctx.Reservations.InsertOneAsync(reservation);
+               
             }
             catch (Exception ex)
             {
 
             }
-            //ReservationEntity r1 = new ReservationEntity { };
-
-            //ReservationFormEntity rf = new ReservationFormEntity { };
-
-            //rf.First_Name = "sari2";
-            //rf.Last_Name = "qash2";
-            //r1.Reservation_Form = rf;
-
-            //r1.status = 1;
-            //r1.WhiteLabel_ID = 1;
-   
-
+            return reservation;
         }
         public List<ReservationEntity> GetReservationsList()
         {
@@ -128,7 +118,7 @@ namespace getAmbulance.Reservation
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices["distance"], (int)jsonObj.form.distance.Value);
+                int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices["distance"], jsonObj);
                 int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices,jsonObj.form);
                 int finalPrice = distancePrice + extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
@@ -167,14 +157,26 @@ namespace getAmbulance.Reservation
         }
 
 
-        public int getWhiteLabelDistancePriceByKM(BsonDocument distancePricesList,int reservationDistance)
+        public int getWhiteLabelDistancePriceByKM(BsonDocument distancePricesList, dynamic jsonObj)
         {
             foreach (var distance in distancePricesList)
             {
-                if (reservationDistance <= Int32.Parse(distance.Name))
+                if ((int)jsonObj.form.distance.Value <= Int32.Parse(distance.Name))
                 {
-                    //TODO: send dayOrNight
-                    return (int)distance.Value["day"];
+   
+                    
+                    DateTime Reservation_Date = DateTime.Parse(jsonObj.form.Time.Value);
+                    DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
+                    DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
+
+                    if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
+                    {
+                        return (int)distance.Value["night"];
+                    }
+                    else
+                    {
+                        return (int)distance.Value["day"];
+                    }
                 }
             }
             return 0;
@@ -211,7 +213,19 @@ namespace getAmbulance.Reservation
         public int getStairsAssistancePriceByHour(BsonDocument prices, dynamic reservationData)
         {
             //TODO:add check night or day
-            return (int)prices["stairsAssistance"]["day"];
+       
+            DateTime Reservation_Date = DateTime.Parse(reservationData.Time.Value);
+            DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
+            DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
+
+            if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
+            {
+                return (int)prices["stairsAssistance"]["night"];
+            }
+            else
+            {
+                return (int)prices["stairsAssistance"]["day"];
+            }
         }
 
 

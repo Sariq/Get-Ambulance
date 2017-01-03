@@ -1,7 +1,7 @@
-﻿<ion-view  view-title="{{'Reservations_List' | translate}}">
+﻿<ion-view cache-view="false"  view-title="{{'Reservations_List' | translate}}" hide-back-button="true">
     <ion-content class="reservations-list">
         <div class="list-container">
-            <div class="row list-row" ng-repeat="reservation in reservationsList" ng-click="openReservationData(reservation)" ng-class="{'pending-background':reservation.Status=='1','accepted-background':reservation.Status=='2','ignored-background':reservation.Status=='3'}">
+            <div class="row list-row" ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-click="openReservationData(reservation)" ng-class="{'pending-background':reservation.Status=='1','accepted-background':reservation.Status=='2','ignored-background':reservation.Status=='3'}">
 
                 <div class="col-25 col-container text-center">
                     <div>

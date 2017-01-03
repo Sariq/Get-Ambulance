@@ -10,3 +10,14 @@ angular.module('starter.controllers').controller('AmbulanceStep2Ctrl', function 
 })
 
 
+angular.module('starter.controllers').filter('currentdate', ['$filter', function ($filter) {
+    return function () {
+        return $filter('date')(new Date(), 'yyyy-MM-dd');
+    };
+}])
+
+angular.module('starter.controllers').filter('currenttime', ['$filter', function ($filter) {
+    return function () {
+        return $filter('date')(new Date(), 'HH-MM-SS');
+    };
+}])

@@ -50,7 +50,7 @@
                     <div class="col-45 width-100">
                         <label class="item item-input panel item-floating-label  date-time">
                             <span class="input-label">{{'Date'|translate}} :</span>
-                            <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" onfocus="(this.type='date')" name="Date" ng-model="form.Date" message-id="Date" valid-method="blur" validator="required">
+                            <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" onfocus="(this.type='date')" name="Date" ng-model="form.Date" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required">
 
                         </label>
                         <span id="Date"></span>
@@ -58,7 +58,7 @@
                     <div class="col-45 width-100">
                         <label class="item item-input panel item-floating-label  date-time">
                             <span class="input-label">{{'Time'|translate}} :</span>
-                            <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" onfocus="(this.type='time')" name="Time" ng-model="form.Time" message-id="Time" valid-method="blur" validator="required">
+                            <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" onfocus="(this.type='time')" name="Time" ng-model="form.Time" min="{{'' | currenttime}}" message-id="Time" valid-method="blur" validator="required">
 
                         </label>
                         <span id="Time"></span>

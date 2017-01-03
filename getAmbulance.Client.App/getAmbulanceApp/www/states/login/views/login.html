@@ -36,7 +36,7 @@
                            
                             <label class="item item-input panel item-floating-label">
                                 <span class="input-label">{{'Phone_Number'|translate}} :</span>
-                                <input placeholder="{{'Phone_Number'|translate}}" type="text" name="Phone_Number" ng-model="loginForm.Phone_Number" ng-minlength="2" ng-maxlength="20" validator="required">
+                                <input placeholder="{{'Phone_Number'|translate}}" type="tel" name="Phone_Number" ng-model="loginForm.Phone_Number" ng-minlength="2" ng-maxlength="20" validator="required">
                             </label>
                         </div>
                         <button ng-click="sendCodeToClientByPhone()" class="button button-full next-btn button-positive">
