@@ -8,24 +8,29 @@
 .item-radio input:checked + .radio-content .item-content{
     background:unset;
 }
-
+.reservation-form{
+    margin-top: 2%;
+}
 .reservation-form .panel{
 font-size: calc(0.75em + 2vmin);
     background-color: #f7fbfc;
     border: 1px solid transparent;
     border-radius: 40px;
-    -webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
-    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    /*-webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);*/
     position: relative;
-        margin: 25px 10px 5px 10px;
+        margin: 9% auto 0 auto;
+        width: 81%;
 }
 .item-floating-label .input-label{
         position: absolute!important;
 }
 
 .item-floating-label .input-label.has-input{
-    top: -28px!important;
+    top: -32px!important;
         color: #57caff;
+            margin: 0% auto 0 auto;
+    width: 100%;
 }
 .item-input{
     overflow:unset!important;
@@ -43,6 +48,7 @@ font-size: calc(0.75em + 2vmin);
 
 .item-input.date-time{
     min-width:45%;
+        margin-top: 17%;
 }
 .checkbox-input-item{
         border-color: unset;
@@ -67,4 +73,37 @@ font-size: calc(0.75em + 2vmin);
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
         background: #0fc6dc;
     border-color: #0fc6dc;
+}
+
+form div span p{
+    margin: 0% auto 0 auto;
+    width: 72%;
+}
+.item-input.has-error{
+border: solid 1px #e74e4e!important;
+}
+
+p.validation-invalid{
+    color:#e74e4e;
+}
+label  input{
+        text-align: center!important;
+    font-size: larger!important;
+}
+label  select{
+        text-align: center!important;
+    font-size: larger!important;
+}
+
+.reservation-form .list{
+        margin-bottom: 15%!important;
+}
+
+.reservation-form .date-time input{
+        padding-right: 0px!important;
+    line-height: 100%!important;
+}
+
+.reservation-form .item-input.date-time{
+    padding: 6px 0 5px 0!important;
 }

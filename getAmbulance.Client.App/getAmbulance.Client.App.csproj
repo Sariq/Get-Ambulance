@@ -244,6 +244,9 @@
     <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.css" />
     <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.html" />
     <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.js" />
+    <Content Include="getAmbulanceApp\www\components\info-header\info-header-cmp.css" />
+    <Content Include="getAmbulanceApp\www\components\info-header\info-header-cmp.html" />
+    <Content Include="getAmbulanceApp\www\components\info-header\info-header-cmp.js" />
     <Content Include="getAmbulanceApp\www\components\reservation\reservations-cmp.css" />
     <Content Include="getAmbulanceApp\www\components\reservation\reservations-cmp.html" />
     <Content Include="getAmbulanceApp\www\components\reservation\reservations-cmp.js" />
@@ -279,6 +282,10 @@
     <Content Include="getAmbulanceApp\www\services\authService.js" />
     <Content Include="getAmbulanceApp\www\services\whiteLabel-service.js" />
     <Content Include="getAmbulanceApp\www\services\tokensManagerService.js" />
+    <Content Include="getAmbulanceApp\www\states\terms-and-conditions\routes.js" />
+    <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.css" />
+    <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.html" />
+    <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.js" />
     <Content Include="getAmbulanceApp\www\states\login\login-service.js" />
     <Content Include="getAmbulanceApp\www\states\login\routes.js" />
     <Content Include="getAmbulanceApp\www\states\login\views\login.css" />

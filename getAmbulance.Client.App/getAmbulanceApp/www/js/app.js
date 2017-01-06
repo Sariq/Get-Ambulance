@@ -21,8 +21,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     }
   });
 }).constant('ngAuthSettings', {
-    apiServiceBaseUri: 'http://localhost:54543/',
-    //  apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
+    // apiServiceBaseUri: 'http://localhost:54543/',
+    apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
     //clientId: 'ngAuthApp'
  clientId: 'consoleApp',
  clientSecret: '123@abc'
@@ -34,7 +34,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
         prefix: 'translation/',
         suffix: '.json'
     });
-
+    angular.extend($validationProvider, {
+        validCallback: function (element) {
+            $(element).parents('.item-input').removeClass('has-error');
+        },
+        invalidCallback: function (element) {
+            $(element).parents('.item-input').addClass('has-error');
+        }
+    });
     $ionicConfigProvider.backButton.previousTitleText(false).text(' ');
   $stateProvider
 
@@ -89,7 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {
         $timeout(function () {
-            $state.go('login');
+            $state.go('terms-and-conditions');
         });
     } else {
        ReservationHub.connectReservationHub();

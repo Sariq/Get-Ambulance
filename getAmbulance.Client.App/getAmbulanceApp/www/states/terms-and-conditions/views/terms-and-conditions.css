@@ -1,0 +1,25 @@
+.terms-and-conditions {
+    -webkit-align-items: center;
+    background-color: #263650;
+    color:#F7FBFC;
+}
+.terms-and-conditions h4{
+    color:#F7FBFC;
+}
+.terms-and-conditions .welcome-text{
+  margin-top: 10%;
+}
+.terms-and-conditions .logo-img{
+   width:80%;
+   margin-top: 20%;
+}
+
+.terms-and-conditions .container {
+        margin-top: 20%;
+}
+.terms-and-conditions-text .link{
+    color:#57cbff;
+}
+.terms-and-conditions .btn-container {
+
+}

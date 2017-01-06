@@ -48,7 +48,12 @@
   "Stairs_Assistance_Options": "צורך העזרה במדרגות",
   "Stairs_Up": "העלאה",
   "Stairs_Down": "הורדה",
-  "Stairs_Both": "העלאה והורדה"
+  "Stairs_Both": "העלאה והורדה",
+  "Private_Ambulance_Reservation": "הזמנת אמבולנס פרטי",
+  "Medical_Therapist_Reservation": "הזמנת מלווה",
+  "Stairs_AssistanceReservation": "הזמנת עזרה במדרגות",
+  "Accept_Terms_And_Conditions": "מאשר/ת",
+  "Header_Info_Common_Text": "ניתן להזמין אמבולנס פרטי בזמן שתרצה ומלווה לכל מטרה שתרצה וגם להזמין עזרה בהעלאה והורדה במדרגות ולחצן מצוקה"
 
 
 

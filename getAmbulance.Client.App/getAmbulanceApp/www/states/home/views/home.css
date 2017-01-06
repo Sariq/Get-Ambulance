@@ -8,11 +8,11 @@
 
 .home .panel{
      font-size:calc(0.75em + 2vmin);
-        background-color: ghostwhite;
+        background-color: #f7fbfc;
     border: 1px solid transparent;
     border-radius: 4px;
-    -webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
-    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    /*-webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);*/
    position:relative;
 }
 
@@ -22,10 +22,21 @@
 
 .home .cat{
     height:50px;
-   margin:5%!important;
+   margin:auto;
+   border-radius:40px;
+       width: 83%;
+    margin-bottom: 5%!important;
 }
-.home .cat-img{
 
+.home .cat .col-20{
+height: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+
+.home .cat-img{
+        height: 100%;
       margin-top: 5px;
         text-align:center;
 }
@@ -34,9 +45,7 @@
     text-align:center;
    margin: auto;
 	font-weight : bold;
-	color : #038AA1;
-	color : rgb(3, 138, 161);
-
+	color : #57cbff;
 }
 
 .side_menu_header{
@@ -69,4 +78,8 @@ ion-side-menu {
 .home .home-img{
     width:60%;
         margin: 10px;
+}
+
+.cat-list-container{
+    margin-top:5%;
 }

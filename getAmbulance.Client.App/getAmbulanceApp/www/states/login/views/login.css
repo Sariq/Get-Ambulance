@@ -25,6 +25,7 @@
      -webkit-align-items: center;
      background-color: #263650;
      height:30%;
+     min-height:151px;
 }
  
 .icon-row {

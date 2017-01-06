@@ -1,6 +1,7 @@
 
 
 angular.module('starter.controllers').controller('MedicalTherapistStep3Ctrl', function ($scope, $ionicModal, ReservationService, localStorageService, $state) {
+    $scope.headerInfoText = 'Header_Info_Common_Text';
     $scope.form = {};
 
 

@@ -136,7 +136,7 @@ select{
 
 .select-style select {
     padding: 5px 8px;
-    width: 130%;
+    width: 100%;
     border: none;
     box-shadow: none;
     background-color: transparent;
@@ -144,6 +144,7 @@ select{
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
+                text-align-last: center;
 }
 
 .select-style select:focus {
@@ -171,3 +172,8 @@ input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.clon
 .margin-top-15{
     margin-top:15%;
 }
+
+.input-label{
+    max-width:100%!important;
+}
+

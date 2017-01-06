@@ -1,7 +1,23 @@
+﻿
 
+angular.module('starter.controllers').controller('Step1Ctrl', function (UserProfileService, $scope, $ionicModal, ReservationService, localStorageService, $state, $translate) {
+    $scope.headerInfoText = 'Header_Info_Common_Text';
 
-angular.module('starter.controllers').controller('Step1Ctrl', function (UserProfileService,$scope, $ionicModal, ReservationService, localStorageService, $state) {
+        switch (localStorageService.get('reservationType')) {
+            case '1':
+                    $scope.titleText = 'Private_Ambulance_Reservation';
+                break;
+            case '2':
+                    $scope.titleText = 'Medical_Therapist_Reservation';
+                break;
+            case '3':
+                    $scope.titleText = 'Stairs_AssistanceReservation';
+                break;
+        }
+     
 
+  
+    
     $scope.form = {};
     $scope.userProfile = UserProfileService.getUserProfileLocal();
     $scope.form.Full_Name=$scope.userProfile.Full_Name;
