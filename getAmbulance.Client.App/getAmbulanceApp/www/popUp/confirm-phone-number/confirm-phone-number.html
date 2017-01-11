@@ -1,0 +1,29 @@
+﻿<div class="confirm-phone-popup" diir="rtl">
+    <div class="row title text-center">
+        <div class="col Confirm_Phone_Number">
+            {{'Confirm_Phone_Number' | translate}}
+        </div>
+    </div>
+
+    <div class="row text-center Is_This_Your_Phone_Number_row">
+        <div class="col Is_This_Your_Phone_Number">
+            ?{{'Is_This_Your_Phone_Number' | translate}}
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col phone_number">
+           {{loginForm.Phone_Number}}
+        </div>
+    </div>
+
+    <div class="row buttons-container">
+        <div class="col-50">
+            <button class="popup-btn button   button-positive" ng-click="myPopup.close();">{{'Fix'| translate}}</button>
+        </div>
+        <div class="col-50">
+            <button class="popup-btn button   button-positive" ng-click="myPopup.close();sendCodeToClientByPhone2();">{{'I_Confirm'| translate}}</button>
+        </div>
+
+    </div>
+</div>

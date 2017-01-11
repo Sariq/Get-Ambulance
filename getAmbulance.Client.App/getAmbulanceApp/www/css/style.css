@@ -177,3 +177,27 @@ input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.clon
     max-width:100%!important;
 }
 
+.platform-android .checkbox-platform input:before, .platform-android .checkbox-platform .checkbox-icon:before, .checkbox-square input:before, .checkbox-square .checkbox-icon:before{
+    border-color:#57caff;
+}
+.checkbox input:after, .checkbox-icon:after{
+    border: 1px solid #57caff;
+        border-top: 0;
+    border-right: 0;
+}
+.checkbox input:before, .checkbox-icon:before{
+    background:white;
+}
+.platform-android .checkbox-platform input:after, .platform-android .checkbox-platform .checkbox-icon:after, .checkbox-square input:after, .checkbox-square .checkbox-icon:after{
+   border-color:#57caff;
+}
+.arriveDate, .arriveTime  {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background:red;
+  direction:rtl;
+}
+.platform-ios input[type="datetime-local"], .platform-ios input[type="date"], .platform-ios input[type="month"], .platform-ios input[type="time"], .platform-ios input[type="week"], .platform-android input[type="datetime-local"], .platform-android input[type="date"], .platform-android input[type="month"], .platform-android input[type="time"], .platform-android input[type="week"]{
+    background-color:red!important;
+    border:solid 2px blue;
+}

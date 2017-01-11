@@ -1,5 +1,5 @@
 ﻿
-<ion-view view-title="הזמנת אמבולנס פרטי">
+<ion-view cache-view="false" view-title="הזמנת אמבולנס פרטי">
 
     <ion-content>
 
@@ -30,23 +30,23 @@
                 </label>
                 <span id="Current_Status"></span>
           
-
+      
                 <label class="item item-input panel item-floating-label " style="padding:6px 0 5px 0px;">
-                    <label  style="padding: 10px;">{{'Service_Options'|translate}} :</label>
-                    <label class="item item-input panel item-floating-label " style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Medical_Examination"><label style="padding-right: 15%;">{{'Medical_Examination'|translate}}</label></ion-checkbox>
+                    <span class="input-label" ng-class="{'has-input': true}">{{'Service_Options'|translate}}</span>
+                    <label class="item item-input panel item-floating-label " style="margin: 0px 10px 0px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Medical_Examination"><label style="padding-right: 18%;">{{'Medical_Examination'|translate}}</label></ion-checkbox>
                     </label>
-                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Shower"><label style="padding-right: 15%;">{{'Shower_Help'|translate}}</label></ion-checkbox>
+                    <label class="item item-input panel item-floating-label" style="margin: 0px 10px 0px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Shower"><label style="padding-right: 18%;">{{'Shower_Help'|translate}}</label></ion-checkbox>
                     </label>
-                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Stand_And_Move"><label style="padding-right: 15%;">{{'Stand_And_Move_Help'|translate}}</label></ion-checkbox>
+                    <label class="item item-input panel item-floating-label" style="margin: 0px 10px 0px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Stand_And_Move"><label style="padding-right: 18%;">{{'Stand_And_Move_Help'|translate}}</label></ion-checkbox>
                     </label>
-                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Supervision"><label style="padding-right: 15%;">{{'Supervision'|translate}}</label></ion-checkbox>
+                    <label class="item item-input panel item-floating-label" style="margin: 0px 10px 0px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Supervision"><label style="padding-right: 18%;">{{'Supervision'|translate}}</label></ion-checkbox>
                     </label>
-                    <label class="item item-input panel item-floating-label" style="margin: 5px 10px 5px 10px;">
-                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Shopping"><label style="padding-right: 15%;">{{'Shopping_Help'|translate}}</label></ion-checkbox>
+                    <label class="item item-input panel item-floating-label" style="margin: 0px 10px 0px 10px;">
+                        <ion-checkbox class="checkbox-input-item " ng-model="form.Service_Options.Shopping"><label style="padding-right: 18%;">{{'Shopping_Help'|translate}}</label></ion-checkbox>
                     </label>
                 </label>
           </div>

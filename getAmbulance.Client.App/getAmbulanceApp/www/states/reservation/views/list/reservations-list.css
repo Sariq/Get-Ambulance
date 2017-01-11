@@ -1,15 +1,15 @@
 .reservations-list .list-container{
-    margin-top:15%;
+    margin-top:5%;
         color: azure;
 }
 
-.reservations-list .pending-background{
+ .pending-background{
     background-color:#efad4d;
 }
-.reservations-list .ignored-background{
+ .ignored-background{
     background-color:#e84e4e;
 }
-.reservations-list .accepted-background{
+ .accepted-background{
     background-color:#6ab66b;
 }
 
@@ -22,5 +22,13 @@
  
 
 .reservations-list .list-row{
-    margin-bottom:15px;
+       margin-bottom: 15px!important;
+  
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.reservations-list .list-row .arrow{
+        margin-top: 5px;
 }

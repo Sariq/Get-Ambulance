@@ -3,7 +3,7 @@
 }
  .reservation-item .reservation-status{
      margin-top:10%;
-     margin-bottom:10%;
+
   
     font-weight: bold;
         font-size: large;
@@ -18,3 +18,46 @@
  .reservation-item  .accepted-color{
     color:#6ab66b;
 }
+
+ .reservation-status{
+         width: 90%;
+    margin: auto;
+
+    margin-top: 15%;
+    border-radius: 25px 25px 0 0;
+     background-color:#f7fbfc;
+ }
+
+ .reservation-status .cont{
+         padding: 1%;
+         width:100%;
+
+ }
+
+ .reservation-status .details-container{
+      padding-top: 2%;
+         width:85%;
+
+ }
+
+ .reservation-status .details-title{
+         text-decoration: underline;
+ }
+ .reservation-status .details-container .key{
+     color:#57cbff;
+ }
+
+
+  .reservation-status .details-container .row{
+    margin-bottom: 10px;
+
+ }
+  .reservation-status-btn{
+          border-radius: 0 0 25px 25px!important;
+    width: 90%!important;
+  }
+  .reservation-status .text-cont{
+    border-radius: 25px 25px 0 0;
+    padding: 10px;
+    color: white;
+  }

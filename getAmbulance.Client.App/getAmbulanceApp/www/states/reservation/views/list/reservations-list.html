@@ -1,5 +1,6 @@
 ﻿<ion-view cache-view="false"  view-title="{{'Reservations_List' | translate}}" hide-back-button="true">
     <ion-content class="reservations-list">
+        <info-header-cmp info-text="headerInfoText"></info-header-cmp>
         <div class="list-container">
             <div class="row list-row" ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-click="openReservationData(reservation)" ng-class="{'pending-background':reservation.Status=='1','accepted-background':reservation.Status=='2','ignored-background':reservation.Status=='3'}">
 
@@ -27,7 +28,7 @@
                         {{reservation.whiteLabelData.name}}
                     </div>
                 </div>
-                <div class="col-25 text-center">
+                <div class="col-25 text-left arrow">
                     <i class="fa fa-chevron-left fa-3x"></i>
                 </div>
             </div>

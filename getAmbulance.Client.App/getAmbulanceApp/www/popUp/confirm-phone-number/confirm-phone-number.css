@@ -1,0 +1,48 @@
+.popup {
+        width: 96%!important;
+    border-radius: 5px!important;
+}
+
+.popup-head{
+    display:none;
+}
+
+.confirm-phone-popup{
+    background-color:#263650;
+    color:white;
+}
+.confirm-phone-popup .buttons-container .col-50{
+    padding:1%;
+}
+ 
+
+    .confirm-phone-popup .buttons-container {
+   margin-top: 4%;
+}
+.confirm-phone-popup .buttons-container .popup-btn{
+    width:100%;
+    background-color: #56cbff!important;
+    line-height: normal!important;
+    min-height: 31px!important;
+}
+
+
+.popup-body{
+    padding:0;
+        border-radius: 5px!important;
+}
+.Is_This_Your_Phone_Number{
+    font-size: smaller;
+}
+.phone_number{
+    font-size: x-large;
+}
+
+.Confirm_Phone_Number{
+    font-size: large;
+}
+
+.Is_This_Your_Phone_Number_row{
+    padding-bottom:0;
+       padding-left: 14%;
+}

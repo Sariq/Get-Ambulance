@@ -1,7 +1,7 @@
 
 
 angular.module('starter.controllers').controller('ReservationListCtrl', function ($scope, authService, ngAuthSettings, $state, ReservationService, WhiteLabelService) {
-
+    $scope.headerInfoText = 'Header_Info_Common_Text';
     $scope.$on('update-reservations-list', function (event, args) {
         $scope.getReservations();
     });

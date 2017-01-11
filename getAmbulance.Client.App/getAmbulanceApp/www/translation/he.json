@@ -53,7 +53,33 @@
   "Medical_Therapist_Reservation": "הזמנת מלווה",
   "Stairs_AssistanceReservation": "הזמנת עזרה במדרגות",
   "Accept_Terms_And_Conditions": "מאשר/ת",
-  "Header_Info_Common_Text": "ניתן להזמין אמבולנס פרטי בזמן שתרצה ומלווה לכל מטרה שתרצה וגם להזמין עזרה בהעלאה והורדה במדרגות ולחצן מצוקה"
+  "Header_Info_Common_Text": "ניתן להזמין אמבולנס פרטי בזמן שתרצה ומלווה לכל מטרה שתרצה וגם להזמין עזרה בהעלאה והורדה במדרגות ולחצן מצוקה",
+  "Confirm_Phone_Number": "אישר מספר נייד",
+  "Is_This_Your_Phone_Number": "זה המספר שלך",
+  "I_Confirm": "מאשר/ת",
+  "Fix": "תקן",
+  "Reserve": "הזמן",
+  "Go_To_Reservation_List": "כניסה לדף ההזמנות",
+  "Waiting_for_Provider_Answer": "תשובה מהספק תתקבל בקרוב, אפשר להתעדכן בסטטוס ההזמנה בדף ההזמנות",
+  "You_Selected_Ambulance": "בחרת באמבולנס",
+  "Reservation_Price": "עלות ההזמנה",
+  "Back": "חזרה",
+  "Reservation_Number": "מספר הזמנה",
+  "Status": "סטטוס",
+  "Provider": "ספק",
+  "Reservations_List": "רשימת השמנות",
+  "Reservations_Num": "הזמנה מס'",
+  "Reservation_Status": "סטטוס הזמנה",
+  "Reservation_Pending": "בהמתנה",
+  "Reservation_Accepted": "אושרה",
+  "Reservation_Ignored": "נדחתה",
+  "Provider_Name": "שם ספק",
+  "Provider_Phone_Number": "מספר טלפון",
+  "Reservation_Details": "פרטי הזמנה",
+  "Provider_Details": "פרטי ספק",
+  "tel": "טל",
+  "name": "שם"
+
 
 
 

@@ -71,8 +71,8 @@ font-size: calc(0.75em + 2vmin);
     left: 40%;
 }
 .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
-        background: #0fc6dc;
-    border-color: #0fc6dc;
+        background: white;
+    border-color: white;
 }
 
 form div span p{

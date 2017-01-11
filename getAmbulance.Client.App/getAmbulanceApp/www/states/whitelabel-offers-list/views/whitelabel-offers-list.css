@@ -4,8 +4,34 @@ font-size: calc(0.75em + 2vmin);
     background-color: ghostwhite;
     border: 1px solid transparent;
     border-radius: 4px;
-    -webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
-    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    /*-webkit-box-shadow: 1px 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 1px 5px 5px rgba(0,0,0,0.2);*/
     position: relative;
-        margin: 25px 10px 5px 10px;
+    width: 89%;
+    margin: auto;
+}
+.offer-item{
+        background: -webkit-linear-gradient(right,#f7fbfc 70%, #5bba5e 30%)!important;
+}
+
+.middle-btn{
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: white;
+}
+
+.middle-btn .m-btn{
+        line-height: normal;
+    min-height: 40px;
+    margin: 1px;
+    width: 78%;
+    background-color: #56cbff!important;
+    color:white;
+}
+.col-100{
+    width:100%;
+}
+.offers-list{
+        margin-top: 10%;
 }

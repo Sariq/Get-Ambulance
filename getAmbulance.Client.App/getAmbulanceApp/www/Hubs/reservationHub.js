@@ -1,5 +1,5 @@
-angular.module('starter.controllers')
-.factory('ReservationHub',function ($rootScope, Hub, localStorageService, $timeout, ReservationService, authService, ngAuthSettings) {
+﻿angular.module('starter.controllers')
+.factory('ReservationHub', function ($rootScope, Hub, localStorageService, $timeout, ReservationService, authService, ngAuthSettings, $cordovaLocalNotification, $state) {
     var Employees = this;
     var self = this;
     self.connectReservationHub = function () {
@@ -29,8 +29,21 @@ angular.module('starter.controllers')
                 $rootScope.$broadcast('update-reservations-list');
             },
             'reservationAccepted': function (reservationId) {
-                console.log("reservationAccepted")
-                alert("reservationAccepted - " + reservationId)
+                console.log("reservationAccepted" + reservationId)
+                if (!reservationId) {
+                    reservationId = 111;
+                }
+               // alert("reservati{onAccepted - " + reservationId)
+                $cordovaLocalNotification.schedule({
+                                id: 1,
+                                title: 'ההזמנה התקבלה',
+                                text: 'התקבלה' + reservationId + 'הזמנה מס',
+                                data: {
+                                    reservationId: reservationId
+                                }
+                            }).then(function (result) {
+                                alert(reservationId)
+                            });
                 $rootScope.$broadcast('update-reservations-list');
                // $rootScope.$broadcast('update-reservations-list');
             }
@@ -51,7 +64,10 @@ angular.module('starter.controllers')
             self.hub.connect();
         }, 1000);
 }
-
+            $rootScope.$on('$cordovaLocalNotification:click',
+    function (event, notification, state) {
+        $state.go('app.reservation-item/:reservationId', { reservationId: angular.fromJson(notification.data).reservationId });
+    });
     $rootScope.$on('state-reloaded-after-refreshToken', function (event, args) {
         $timeout(function () {
             self.hub = new Hub('Reservation', {

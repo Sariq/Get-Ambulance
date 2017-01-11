@@ -1,6 +1,6 @@
+﻿
 
-
-angular.module('starter.controllers').controller('MedicalTherapistStep2Ctrl', function ($scope, $ionicModal, ReservationService, localStorageService, $state) {
+angular.module('starter.controllers').controller('MedicalTherapistStep2Ctrl', function ($filter,$scope, $ionicModal, ReservationService, localStorageService, $state) {
     $scope.headerInfoText = 'Header_Info_Common_Text';
     $scope.form = {};
     $scope.continueToStep3 = function () {
@@ -13,4 +13,9 @@ angular.module('starter.controllers').controller('MedicalTherapistStep2Ctrl', fu
             val = '0' + val;
         }
     }
+
+
+
+    
+
 })

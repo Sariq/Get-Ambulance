@@ -244,12 +244,16 @@
     <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.css" />
     <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.html" />
     <Content Include="getAmbulanceApp\www\components\external-login\facebook\facebook-cmp.js" />
+    <Content Include="getAmbulanceApp\www\components\date-time\date-time-cmp.css" />
+    <Content Include="getAmbulanceApp\www\components\date-time\date-time-cmp.html" />
+    <Content Include="getAmbulanceApp\www\components\date-time\date-time-cmp.js" />
     <Content Include="getAmbulanceApp\www\components\info-header\info-header-cmp.css" />
     <Content Include="getAmbulanceApp\www\components\info-header\info-header-cmp.html" />
     <Content Include="getAmbulanceApp\www\components\info-header\info-header-cmp.js" />
     <Content Include="getAmbulanceApp\www\components\reservation\reservations-cmp.css" />
     <Content Include="getAmbulanceApp\www\components\reservation\reservations-cmp.html" />
     <Content Include="getAmbulanceApp\www\components\reservation\reservations-cmp.js" />
+    <Content Include="getAmbulanceApp\www\css\checkboxes_style.css" />
     <Content Include="getAmbulanceApp\www\css\ionic.css" />
     <Content Include="getAmbulanceApp\www\css\style.css" />
     <Content Include="getAmbulanceApp\www\Hubs\reservationHub.js" />
@@ -278,6 +282,10 @@
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.bundle.min.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\js\ionic.min.js" />
+    <Content Include="getAmbulanceApp\www\popUp\confirm-sending-reservation\confirm-sending-reservation.css" />
+    <Content Include="getAmbulanceApp\www\popUp\confirm-sending-reservation\confirm-sending-reservation.html" />
+    <Content Include="getAmbulanceApp\www\popUp\confirm-phone-number\confirm-phone-number.html" />
+    <Content Include="getAmbulanceApp\www\popUp\confirm-phone-number\confirm-phone-number.css" />
     <Content Include="getAmbulanceApp\www\services\authInterceptorService.js" />
     <Content Include="getAmbulanceApp\www\services\authService.js" />
     <Content Include="getAmbulanceApp\www\services\whiteLabel-service.js" />

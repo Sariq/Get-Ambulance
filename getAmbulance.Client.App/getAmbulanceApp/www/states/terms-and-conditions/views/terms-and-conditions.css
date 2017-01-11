@@ -2,6 +2,7 @@
     -webkit-align-items: center;
     background-color: #263650;
     color:#F7FBFC;
+    height:100%;
 }
 .terms-and-conditions h4{
     color:#F7FBFC;
@@ -22,4 +23,23 @@
 }
 .terms-and-conditions .btn-container {
 
+}
+
+.text-bold{
+        font-weight: bold;
+}
+
+.bottom-button{
+     position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.footer-button{
+    background-color:#57cbff;
+    color:white;
+}
+.bar{
+    padding:0;
 }

@@ -62,6 +62,13 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationsListByClientId', data);
     };
+    self.getReservationById = function (ReservationId) {
+        var data = {
+            reservationId: ReservationId,
+        }
+        alert(ReservationId)
+        return $http.post(serviceBase + 'api/Reservation/GetReservationById', data);
+    };
     self.setWhiteLabelOffer = function (offer) {
         self.whiteLabelOffer = offer;
     }
@@ -126,7 +133,8 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         localStorageService.set('selectedReservation', reservationData);
     }
     self.getSelectedReservation = function () {
-        return localStorageService.get('selectedReservation');
+            return localStorageService.get('selectedReservation');
+     
     }
 
     self.getValueByKey = function (dataObject, key) {

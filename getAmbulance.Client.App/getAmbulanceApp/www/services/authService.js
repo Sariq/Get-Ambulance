@@ -78,7 +78,7 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
         _authentication.isAuth = false;
         _authentication.userName = "";
         _authentication.useRefreshTokens = _authentication.useRefreshTokens;
-        $state.go('login');
+        $state.go('terms-and-conditions');
 
 
     };

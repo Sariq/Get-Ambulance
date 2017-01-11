@@ -34,7 +34,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
         prefix: 'translation/',
         suffix: '.json'
     });
-    angular.extend($validationProvider, {
+    angular.extend($validationProvider, { 
         validCallback: function (element) {
             $(element).parents('.item-input').removeClass('has-error');
         },
