@@ -1,20 +1,23 @@
 ﻿<div class="login-page">
     
-    <div class="row">
+    <div class="row" style="padding-top: 6%;">
         <div class="col-lg-4 col-lg-offset-4">
-            <img src="../images/ambulance_plain_red.png" width="150px" class="user-avatar" />
-            <h1>Get Ambulance Admin</h1>
+            <img src="../images/general-logo.png" width="60%" class="user-avatar" />
+         
             <form role="form" >
                 <div class="form-content login-form">
-                    <div class="form-group">
+                    <div class=" inner-addon left-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+
                         <input type="text" ng-model="loginData.userName" class="form-control input-underline input-lg" id="" placeholder="Email">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group inner-addon left-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
                         <input type="password" class="form-control input-underline input-lg" ng-model="loginData.password" id="" placeholder="Password">
                     </div>
                 </div>
 
-                <a class="btn rounded-btn" ng-click="login()"> {{ 'התחבר' | translate}} </a>
+                <a class="btn rounded-btn" ng-click="login()"> {{ 'כניסה' | translate}} </a>
                 <!--&nbsp;
                 <a type="submit" class="btn rounded-btn" href="#dashboard/home">Register</a>-->
             </form>

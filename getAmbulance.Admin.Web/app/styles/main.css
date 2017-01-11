@@ -102,19 +102,21 @@ background-color: #eee;
   right: 0;
   bottom: 0;
   overflow: auto;
-  background: #222;
+  background: #263650;
   text-align: center;
   color: #fff;
   padding: 3em; }
   .login-page .col-lg-4 {
     padding: 0; }
   .login-page .input-lg {
+     
     height: 46px;
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.3333333;
     border-radius: 0; }
   .login-page .input-underline {
+       padding-left: 50px;
     background: 0 0;
     border: none;
     box-shadow: none;
@@ -127,7 +129,7 @@ background-color: #eee;
   .login-page .rounded-btn {
     border-radius: 50px;
     color: rgba(255, 255, 255, 0.8);
-    background: #222;
+    background: #263650;
     border: 2px solid rgba(255, 255, 255, 0.8);
     font-size: 18px;
     line-height: 40px;
