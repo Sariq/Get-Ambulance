@@ -257,9 +257,17 @@
     <Content Include="getAmbulanceApp\www\css\ionic.css" />
     <Content Include="getAmbulanceApp\www\css\style.css" />
     <Content Include="getAmbulanceApp\www\Hubs\reservationHub.js" />
+    <Content Include="getAmbulanceApp\www\img\accepted-icon.svg" />
+    <Content Include="getAmbulanceApp\www\img\ignored-icon.svg" />
     <Content Include="getAmbulanceApp\www\img\ionic.png" />
+    <Content Include="getAmbulanceApp\www\img\kahol-lavan-logo.jpg" />
+    <Content Include="getAmbulanceApp\www\img\kahol-lavan-logo.png" />
     <Content Include="getAmbulanceApp\www\img\mada-logo.jpg" />
+    <Content Include="getAmbulanceApp\www\img\pending-icon.svg" />
+    <Content Include="getAmbulanceApp\www\img\ron-logo.jpg" />
+    <Content Include="getAmbulanceApp\www\img\ron-logo.png" />
     <Content Include="getAmbulanceApp\www\img\shahal-logo.jpg" />
+    <Content Include="getAmbulanceApp\www\img\smartphone.svg" />
     <Content Include="getAmbulanceApp\www\index.html" />
     <Content Include="getAmbulanceApp\www\js\app.js" />
     <Content Include="getAmbulanceApp\www\js\controllers.js" />

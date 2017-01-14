@@ -1,57 +1,36 @@
-﻿<ion-view cache-view="false" view-title="Browse" hide-back-button="true">
+﻿<ion-view cache-view="false" view-title="{{'WhiteLabels_List' | translate}}" hide-back-button="true">
   <ion-content class="whitelabel-offer-list ">
-      <ion-list
-                can-swipe="listCanSwipe">       
-      </ion-list>
 
-      <div class="list">
+      <info-header-cmp info-text="headerInfoText"></info-header-cmp>
+      <div class="list state-container">
           <div ng-repeat="item in providerPriceOffersList" class="offers-list" ng-show="!isSelected">
 
 
-              <div class="item item-input panel item-floating-label offer-item" style="color:#298ea3;border-radius: 30px;">
+              <div class="item item-input panel item-floating-label offer-item" style="color:#298ea3;border-radius: 30px;padding: 0;">
                   <span class="input-label has-input">{{item.name|translate}}</span>
-                  <div class="row">
+                  <div class="row" style="min-height: 45px;max-height: 45px;">
                       <div class="col-33 " style="width:55%;vertical-align: middle;  margin: auto;   ">
-                          <img style="width:55%; height: 24px;" ng-src="img/{{item.logo}}">
+                          <img style="width: 100%;height: 100%;max-height: 35px;" ng-src="img/{{item.logo}}">
                       </div>
-                      <div class="col-33 text-center" style="vertical-align: middle;text-align:center;    margin: auto;">
+                      <div class="col-33 text-center" style="vertical-align: middle;text-align:center;    margin: auto;    color: #263650;">
                           &#8362;{{item.price}}
                       </div>
-                      <div class="col-33 text-center" ng-click="setSelectedOffer(item);"  style="margin: auto;color:white;padding-right:11%">
+                      <div class="col-30 text-center" ng-click="setSelectedOffer(item);"  style="margin: auto;color:white;">
                           {{'Reserve' | translate }}
                       </div>
                   </div>
               </div>
-              <!--<table style="margin-bottom: 25px;" >
-                  <tr style="color:#298ea3;border-radius: 30px;" class="item item-input panel item-floating-label">
-                      <td style="width:23%;vertical-align: middle;text-align:center">
-                          <img style="width:55%" ng-src="img/{{item.logo}}">
-                      </td>
-                      <td style="width:50%;vertical-align: middle;text-align:center">
-                          <span>{{item.name}}</span>
-                      </td>
-                      <td style="vertical-align: middle;text-align:center" ">
-                          <span>{{item.price}}</span> <span style="font-size: 80%;">שח</span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td ng-click="setSelectedOffer(item);"  style="background-color:#3bb649;width:27%;position:absolute;margin:-5px 10px 0 0px;text-align:center;padding:10px;color:white;" colspan="3">
-                          {{'Complete_Reservation' | translate }}
-                      </td>
-
-                  </tr>
-              </table>-->
-              </div>
+             </div>
           
           <div ng-show="isSelected">
               <div class="row">
                   <div class="col-100">
                       <div>
-                          <div  ng-show="showTyp" class="item item-input panel item-floating-label " style="color:black;border-radius: 30px;">
+                          <div  ng-show="showTyp" class="item item-input panel item-floating-label " style="color:black;border-radius: 30px;max-height: 45px;padding: 0;">
                               <span class="input-label has-input">{{item.name|translate}}</span>
-                              <div class="row">
+                              <div class="row" style="min-height: 45px;max-height: 45px;">
                                   <div class="col-33 " style="width:55%;vertical-align: middle;  margin: auto;   ">
-                                      <img style="width:55%;height: 24px;" ng-src="img/{{whiteLabelOffer.logo}}">
+                                      <img style="width: 100%;height: 100%;max-height: 35px;" ng-src="img/{{whiteLabelOffer.logo}}">
                                   </div>
                                   <div class="col-33 text-center" style="vertical-align: middle;text-align:center;    margin: auto;">
                                      {{whiteLabelOffer.name}}
@@ -65,36 +44,35 @@
                   </div>
               </div>
               <div class="row">
-                  <div class="col-100"  style="background-color:#263650;width:80%;margin:-5px 10% 0 10%;text-align:center;padding:10px;color:white;font:bold">
+                  <div class="col-100"  style="background-color:#263650;width:80%;margin:-5px 10% 0 10%;text-align:center;padding:10px;color:white;font:bold;    border-radius: 0 0 30px 30px;border-radius: 0 0 30px 30px;">
                       <div ng-show="showTyp">
-                          <span style="color:white"> {{'Reservation_Completed' | translate }}</span>
-                          <br />
-                          <h3 style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
-                          <br />
-                          <div style="text-align:right;margin-bottom: 10%;">
-                              <span>{{'Provider_Will_contact_You_Soon' | translate }}</span>
-                              <br /><br />
+                          <div style="margin-top: 10px;">
+                              <span style="color:white"> {{'Reservation_Completed' | translate }}</span>
+                              <br />
+                              <h3 style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
+                          </div>
+                     
+                          <div style="text-align:right;margin-bottom: 15px;">
                               <span>{{'Reservation_Number' | translate }}</span>
                               <br />
-                              <span>{{Reservation.Reservation_Number}}</span>
+                              <span style="font-weight: bold;color: #56cbff!important;font-size: 150%;">{{Reservation.Reservation_Number}}</span>
                           </div>
 
-                          <div style="margin-bottom: 13%;text-align:right">
+                          <div style="text-align:right;margin-bottom: 5px;">
                               <span>{{'Waiting_for_Provider_Answer' | translate }}</span>
                           </div>
                           <div class="middle-btn">
-
                               <div class="">
                                   <a ui-sref="app.reservation-list" class="popup-btn button  m-btn " style="padding: 2%;">
-                                      <span class="">{{'Go_To_Reservation_List' | translate}}</span>
+                                      <span class="" style="font-weight: bold;">{{'Go_To_Reservation_List' | translate}}</span>
                                   </a>
                                   <!--<button class="popup-btn button  m-btn button" ng-click="myPopup.close();">{{'Go_To_Reservation_List' | translate}}</button>-->
                               </div>
                           </div>
                        
-                          <div style="margin-top: 100px">
-                              <h3 style="color:white;margin-top:0">{{'Thank_You_For_Reservation' | translate }}</h3>
-                              <img src="../www/img/LOGO-1.5-BG3.svg" class="info-green-svg" style="width: 199px;height: 137px;vertical-align: top;" />
+                          <div style="margin-top: 60px;margin-bottom: 10px;">
+                              <div style="color:white;margin-top:0;    margin-bottom: 3px;">{{'Thank_You_For_Reservation' | translate }}</div>
+                              <img src="../www/img/general-logo.png" class="info-green-svg" style="width: 38%;height: 66px;vertical-align: top;" />
                           </div>
                          
                       </div>

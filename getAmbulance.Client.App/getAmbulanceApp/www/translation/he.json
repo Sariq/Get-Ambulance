@@ -20,9 +20,9 @@
   "Time": "שעה",
   "Direction_Type": "כיוון העלאה",
   "One_Way": "כיוון אחד",
-  "Two_Way": "שני כיוונים",
+  "Two_Way": "הלוך ושוב",
   "Weight": "משקל",
-  "Need_Help_With_Stairs": "יש צורך עזרה בהעלאה/הורדה במדרגות",
+  "Need_Help_With_Stairs": "עזרה במדרגות",
   "Yes": "כן",
   "No": "לא",
   "Meeting_Address": "כתובת מפגש",
@@ -30,7 +30,7 @@
   "till": "עד",
   "From_And_More": "מ",
   "And_More": "ומעלה",
-  
+
   "Home": "בית",
   "Clinic": "מרפאה",
   "Hospital": "בית חולים",
@@ -67,7 +67,7 @@
   "Reservation_Number": "מספר הזמנה",
   "Status": "סטטוס",
   "Provider": "ספק",
-  "Reservations_List": "רשימת השמנות",
+  "Reservations_List": "רשימת הזמנות",
   "Reservations_Num": "הזמנה מס'",
   "Reservation_Status": "סטטוס הזמנה",
   "Reservation_Pending": "בהמתנה",
@@ -78,7 +78,14 @@
   "Reservation_Details": "פרטי הזמנה",
   "Provider_Details": "פרטי ספק",
   "tel": "טל",
-  "name": "שם"
+  "name": "שם",
+  "Home_Welcome_Text": "ברוכים הבאים לגט אמבולנס",
+  "Drive_Direction_Type": "כיוון נסיעה",
+  "WhiteLabels_List": "רשימת ספקים",
+  "The_Reservation": "ההזמנה",
+  "Choose_Another_Provider": "בחר ספק אחר",
+  "Open_Reservation": "פתח הזמנה"
+                
 
 
 

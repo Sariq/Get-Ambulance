@@ -1,5 +1,5 @@
 ﻿<div class="row" style="padding:0;">
-    <div class="col-45 width-100">
+    <div class="col-45 width-100" style="padding-right: 6%;">
         <label class="item item-input panel item-floating-label  date-time">
             <span class="input-label">{{'Date'|translate}} :</span>
             <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" ng-click="$ctrl.openDatePicker();" name="Date" ng-model="$ctrl.form.Date" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required">
@@ -7,7 +7,7 @@
         </label>
         <span id="Date"></span>
     </div>
-    <div class="col-45 width-100">
+    <div class="col-45 width-100" style="padding-left: 6%;">
         <label class="item item-input panel item-floating-label  date-time">
             <span class="input-label">{{'Time'|translate}} :</span>
             <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" ng-click="$ctrl.openTimePicker();" name="Time" ng-model="$ctrl.form.Time" min="{{'' | currenttime}}" message-id="Time" valid-method="blur" validator="required">

@@ -18,7 +18,9 @@ var dateTimeCmp = function ($scope, $filter) {
         titleText: 'בחר תאריך'
     };
     ctrl.form = {};
-    
+
+    ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "h:mm");
+    ctrl.form.Time = ctrl.time;
     function onTimeSuccess(date) {
         ctrl.form.Time = $filter('date')(date, "h:mm");  // for type="date" binding
         ctrl.time = ctrl.form.Time;

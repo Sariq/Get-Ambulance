@@ -2,20 +2,34 @@
     <ion-content class="reservation-item">
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
         <div class="reservation-status">
-            <div class="text-center text-cont" ng-class="{'pending-background':selectedReservation.Status=='1','accepted-background':selectedReservation.Status=='2','ignored-background':selectedReservation.Status=='3'}">
-                <span ng-switch="selectedReservation.Status">
-                    <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
-                    <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
-                    <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
-                </span>
-            </div>
+
             <div class="row ">
                 <div class="cont">
 
                     <div class="reservation-details">
-                        <div class="row">
-                            <div class="col-100 details-title">
+                        <div class="row ">
+                            <div class="col-40 details-title margin-auto">
                                 {{'Reservation_Details' | translate}}
+                                <div class="solid-border-bottom-30">
+                                </div>
+                            </div>
+                            <div class="col-60 details-title">
+                                <div class="row">
+                                    <div class="col-20 col-container text-center" style="">
+                                        <span ng-switch="selectedReservation.Status">
+                                            <span ng-switch-when="1"><img src="../www/img/pending-icon.png" class="status-icon" /></span>
+                                            <span ng-switch-when="2"><img src="../www/img/accepted-icon.png" class="status-icon" /></span>
+                                            <span ng-switch-when="3"><img src="../www/img/ignored-icon.png" class="status-icon" /></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-90 margin-auto" ng-class="{'pending-color':selectedReservation.Status=='1','accepted-color':selectedReservation.Status=='2','ignored-color':selectedReservation.Status=='3'}">
+                                        {{'The_Reservation' | translate}} <span ng-switch="selectedReservation.Status">
+                                            <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
+                                            <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
+                                            <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="details-container">
@@ -79,9 +93,26 @@
 
 
                     <div class="provider-details">
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-100 details-title">
                                 {{'Provider_Details' | translate}}
+                                <div class="solid-border-bottom-30">
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="row ">
+                            <div class="col-40 details-title margin-auto">
+                                {{'Provider_Details' | translate}}
+                                <div class="solid-border-bottom-30">
+                                </div>
+                            </div>
+                            <div class="col-60 details-title">
+                                <div class="row">
+                                    <div class="col-20 col-container text-center" style="">
+                                    </div>
+                                    <div class="col-80 margin-auto" ng-class="{'pending-color':selectedReservation.Status=='1','accepted-color':selectedReservation.Status=='2','ignored-color':selectedReservation.Status=='3'}">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="details-container">

@@ -9,7 +9,7 @@
             <div class="list">
 
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label" ng-class="{'has-input': Step2Form.Ambulance_Type.$dirty}">{{'Ambulance_Type'|translate}} :</span>
+                    <span class="input-label" ng-class="{'has-input': Step2Form.Ambulance_Type.$dirty}">{{'Ambulance_Type'|translate}} </span>
                     <select class="" name="Ambulance_Type" ng-model="form.Ambulance_Type" message-id="Ambulance_Type" valid-method="blur" validator="required">
                         <option value="" hidden selected>{{'Ambulance_Type'|translate}}</option>
                         <option value="Private_Ambulance">{{'Private_Ambulance'|translate}}</option>
@@ -19,12 +19,12 @@
                 </label>
                 <span id="Ambulance_Type"></span>
                 <label class="item item-input panel item-floating-label">
-                    <span class="input-label">{{'From_Address'|translate}} :</span>
+                    <span class="input-label">{{'From_Address'|translate}} </span>
                     <input  g-places-autocomplete placeholder="{{'From_Address'|translate}}" type="text" name="From_Address" ng-model="form.From_Address" message-id="From_Address" valid-method="blur" validator="required">
                 </label>
                 <span id="From_Address"></span>
                 <label class="item item-input panel item-floating-label">
-                    <span class="input-label">{{'To_Address'|translate}} :</span>
+                    <span class="input-label">{{'To_Address'|translate}} </span>
                     <input  g-places-autocomplete force-selection="true" placeholder="{{'To_Address'|translate}}" type="text" name="To_Address" ng-model="form.To_Address" message-id="To_Address" valid-method="blur" validator="required">
                 </label>
                 <span id="To_Address"></span>

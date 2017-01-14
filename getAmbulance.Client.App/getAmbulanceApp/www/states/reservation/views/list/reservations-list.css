@@ -13,22 +13,60 @@
     background-color:#6ab66b;
 }
 
-
+ .percent-pending-background{
+      background: -webkit-linear-gradient(right,#f7fbfc 65%, #efad4d 25%)!important;
+}
+ .percent-ignored-background{
+      background: -webkit-linear-gradient(right,#f7fbfc 65%, #e84e4e 25%)!important;
+}
+ .percent-accepted-background{
+      background: -webkit-linear-gradient(right,#f7fbfc 65%, #6ab66b 25%)!important;
+}
 
 .reservations-list .col-container{
-       border-left: solid 1px;
-    border-left-color: beige;
+   
 }
  
 
 .reservations-list .list-row{
        margin-bottom: 15px!important;
-  
+
     width: 90%;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 40px;
+    padding:0;
+
 }
 
 .reservations-list .list-row .arrow{
-        margin-top: 5px;
+       margin: auto;
+
+    color:white;
+
+   
+ 
 }
+.reservations-list .status-icon{
+        width: 75%;
+margin-top: 5px;
+}
+.reservations-list .status-details{
+    font-size: smaller;line-height: 1.1;
+        text-align: center;
+              color: #57caff;
+}
+.reservations-list .status-details .inner{
+    color:black;
+}
+
+.col-45{
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 40%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 40%;
+    -ms-flex: 0 0 40%;
+    flex: 0 0 45%;
+    max-width: 45%;
+}
+
+

@@ -9,13 +9,13 @@
         font-size: large;
  }
 
- .reservation-item  .pending-color{
+.pending-color{
     color:#efad4d;
 }
- .reservation-item .ignored-color{
+ .ignored-color{
     color:#e84e4e;
 }
- .reservation-item  .accepted-color{
+  .accepted-color{
     color:#6ab66b;
 }
 
@@ -41,8 +41,13 @@
  }
 
  .reservation-status .details-title{
-         text-decoration: underline;
+         /*text-decoration: underline;*/
  }
+ .solid-border-bottom-30{
+     width:75%;
+     border-bottom:solid 1px;
+ }
+
  .reservation-status .details-container .key{
      color:#57cbff;
  }
@@ -61,3 +66,8 @@
     padding: 10px;
     color: white;
   }
+
+  .reservation-item .status-icon{
+        width: 75%;
+margin-top: 5px;
+}

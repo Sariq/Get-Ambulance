@@ -201,3 +201,10 @@ input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.clon
     background-color:red!important;
     border:solid 2px blue;
 }
+
+.state-container{
+    margin-top:10px;
+}
+.margin-auto{
+    margin: auto;
+}

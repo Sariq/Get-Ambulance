@@ -1,37 +1,52 @@
 ﻿<ion-view cache-view="false"  view-title="{{'Reservations_List' | translate}}" hide-back-button="true">
     <ion-content class="reservations-list">
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
-        <div class="list-container">
-            <div class="row list-row" ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-click="openReservationData(reservation)" ng-class="{'pending-background':reservation.Status=='1','accepted-background':reservation.Status=='2','ignored-background':reservation.Status=='3'}">
+        <div class="list-container">  
+            <div class="row list-row " ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-click="openReservationData(reservation)" style="color:red" ng-class="{'percent-pending-background':reservation.Status=='1','percent-accepted-background':reservation.Status=='2','percent-ignored-background':reservation.Status=='3'}">
 
-                <div class="col-25 col-container text-center">
-                    <div>
-                        {{'Reservation_Number' | translate}}
-                    </div>
-                    <div>
-                        {{reservation.Reservation_Number}}
+                <div class="col-20 col-container text-center" style="padding-right: 3%;">
+                    <span ng-switch="reservation.Status">
+                        <span ng-switch-when="1"><img src="../www/img/pending-icon.png" class="status-icon" /></span>
+                        <span ng-switch-when="2"><img src="../www/img/accepted-icon.png" class="status-icon"/></span>
+                        <span ng-switch-when="3"><img src="../www/img/ignored-icon.png" class="status-icon" /></span>
+                    </span>
+                </div>     
+                <div class="col-45 col-container ">
+                    <div class="row ">
+                        <div class="col-100" style="font-size: large;text-align:center" ng-class="{'pending-color':reservation.Status=='1','accepted-color':reservation.Status=='2','ignored-color':reservation.Status=='3'}">
+                            <div>
+                           {{'The_Reservation' | translate}} <span ng-switch="reservation.Status">
+    <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
+    <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
+    <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+</span>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="row  status-details" style="">
+                        <div class="col-60">
+                            {{'Reservation_Number' | translate}}<br />
+                            <span class="inner">{{reservation.Reservation_Number}}</span>
+                        </div>
+                        <div class="col-40">
+                            {{'Provider' | translate}}<br />
+                            <span class="inner">  {{reservation.whiteLabelData.name}}</span>
+</div>
                     </div>
                 </div>
-                <div class="col-25 col-container text-center">
-                    <div>
-                        {{'Status' | translate}}
-                    </div>
-                    <div>
-                        {{reservation.Status}}
-                    </div>
-                </div>
-                <div class="col-25 text-center">
-                    <div>
-                        {{'Provider' | translate}}
-                    </div>
-                    <div>
-                        {{reservation.whiteLabelData.name}}
-                    </div>
-                </div>
-                <div class="col-25 text-left arrow">
-                    <i class="fa fa-chevron-left fa-3x"></i>
+              
+                <div class="col-30 text-center arrow">
+                    <span ng-switch="reservation.Status">
+                        <span ng-switch-when="1">{{'Open_Reservation' | translate}}</span>
+                        <span ng-switch-when="2">{{'Open_Reservation' | translate}}</span>
+                        <span ng-switch-when="3">{{'Choose_Another_Provider' | translate}}</span>
+                    </span>
+                   
+                    
+                   
                 </div>
             </div>
+
         </div>
     </ion-content>
 </ion-view>

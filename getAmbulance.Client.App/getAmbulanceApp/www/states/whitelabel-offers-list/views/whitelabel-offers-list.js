@@ -1,6 +1,7 @@
 ﻿
 
 angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', function ($ionicPopup,$scope, $ionicModal, ReservationService, localStorageService, MapService) {
+    $scope.headerInfoText = 'Header_Info_Common_Text';
     $scope.reservationForm = localStorageService.get('reservationFormData');
 
     $scope.getAmbulanceOffersList = function () {
