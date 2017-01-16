@@ -1,5 +1,5 @@
 ﻿<ion-view  view-title="{{'LogIn' | translate}}">
-    <ion-content class="login">
+    <ion-content class="login verify-code">
 
        
 
@@ -21,12 +21,17 @@
             </div>
         <section class="insert-number-section">
             <div class="row icon-row">
-
-                <div class="col-60 col-center text-center">
-        
-                    {{'הקש מספר טלפון על מנת לקבל הודעה עם קוד אימות לטלפון שלך'| translate}}
+                <div class="col-100 col-center text-center top-title">
+                    {{'Verfiy_Code_Sent_To_Number'| translate}}
                 </div>
             </div>
+
+            <div class="row icon-row">
+                <div class="col-100 col-center text-center phone_number">
+                    {{logInData.Phone_Number}}
+                </div>
+            </div>
+
             <div class="row icon-row">
                 <div class="col">
 

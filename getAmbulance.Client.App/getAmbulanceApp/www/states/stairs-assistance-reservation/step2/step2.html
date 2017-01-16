@@ -10,7 +10,7 @@
 
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step2Form.Stairs_Assistance_Options.$dirty}">{{'Stairs_Assistance_Options'|translate}} :</span>
-                    <select class="" name="Stairs_Assistance_Options" ng-model="form.Stairs_Assistance_Options" message-id="Stairs_Assistance_Options" valid-method="blur" validator="required">
+                    <select class="" name="Stairs_Assistance_Options" ng-model="form.Stairs_Assistance_Options" message-id="Stairs_Assistance_Options" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Stairs_Assistance_Options'|translate}}">
                         <option value="" hidden selected>{{'Stairs_Assistance_Options'|translate}}</option>
                         <option value="Stairs_Up">{{'Stairs_Up'|translate}}</option>
                         <option value="Stairs_Down">{{'Stairs_Down'|translate}}</option>
@@ -20,7 +20,7 @@
                 <span id="Stairs_Assistance_Options"></span>
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step2Form.Current_Status.$dirty}">{{'Current_Status'|translate}} :</span>
-                    <select class="" name="Current_Status" ng-model="form.Current_Status" message-id="Current_Status" valid-method="blur" validator="required">
+                    <select class="" name="Current_Status" ng-model="form.Current_Status" message-id="Current_Status" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Current_Status'|translate}}">
                         <option value="" hidden selected>{{'Current_Status'|translate}}</option>
                         <option value="Standing">{{'Standing'|translate}}</option>
                         <option value="Sitting">{{'Sitting'|translate}}</option>
@@ -30,7 +30,7 @@
                 <span id="Current_Status"></span>
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step2Form.Weight.$dirty}">{{'Weight'|translate}} :</span>
-                    <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required">
+                    <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Weight'|translate}}">
                         <option value="" hidden selected>{{'Weight'|translate}}</option>
                         <option value="90">{{'till'|translate}} 90</option>
                         <option value="121">91-121</option>
@@ -42,7 +42,7 @@
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Meeting_Address'|translate}} :</span>
-                    <input g-places-autocomplete  force-selection="true" placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" message-id="Meeting_Address" valid-method="blur" validator="required">
+                    <input g-places-autocomplete  force-selection="true" placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" message-id="Meeting_Address" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
                 </label>
                 <span id="Meeting_Address"></span>
                 <date-time-cmp date="form.Date" time="form.Time"></date-time-cmp>

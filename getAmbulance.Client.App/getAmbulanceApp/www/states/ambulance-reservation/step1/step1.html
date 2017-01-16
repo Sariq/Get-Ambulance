@@ -11,25 +11,25 @@
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Full_Name'|translate}} </span>
-                    <input placeholder="{{'Full_Name'|translate}}" type="text" name="Full_Name" ng-model="form.Full_Name" message-id="Full_Name" valid-method="blur" validator="required,minlength=2,maxlength=50">
+                    <input placeholder="{{'Full_Name'|translate}}" type="text" name="Full_Name" ng-model="form.Full_Name" message-id="Full_Name" valid-method="blur" validator="required,minlength=2,maxlength=50" required-error-message="{{'Insert'|translate}} {{'Full_Name'|translate}}">
                 </label>
                 <span id="Full_Name"></span>
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Id_Number'|translate}} </span>
-                    <input placeholder="{{'Id_Number'|translate}}" type="number" name="Id_Number" ng-model="form.Id_Number" message-id="Id_Number" valid-method="blur" validator="required,number,minlength=9,maxlength=9">
+                    <input placeholder="{{'Id_Number'|translate}}" type="number" name="Id_Number" ng-model="form.Id_Number" message-id="Id_Number" valid-method="blur" validator="required,number,minlength=9,maxlength=9" required-error-message="{{'Insert'|translate}} {{'Id_Number'|translate}}">
                 </label>
                 <span id="Id_Number"></span>
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Phone_Number'|translate}} </span>
-                    <input placeholder="{{'Phone_Number'|translate}}" type="tel" name="Phone_Number" ng-model="form.Phone_Number" message-id="Phone_Number" valid-method="blur" validator="required,number,minlength=10,maxlength=10">
+                    <input placeholder="{{'Phone_Number'|translate}}" type="tel" name="Phone_Number" ng-model="form.Phone_Number" message-id="Phone_Number" valid-method="blur" validator="required,number,minlength=10,maxlength=10" required-error-message="{{'Insert'|translate}} {{'Phone_Number'|translate}}">
                 </label>
                 <span id="Phone_Number"></span>
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Age'|translate}} </span>
-                    <input placeholder="{{'Age'|translate}}" type="number" name="Age" ng-model="form.Age"  message-id="Age" valid-method="blur" validator="required,number,minlength=2,maxlength=2">
+                    <input placeholder="{{'Age'|translate}}" type="number" name="Age" ng-model="form.Age"  message-id="Age" valid-method="blur" validator="required,number,minlength=2,maxlength=2" required-error-message="{{'Insert'|translate}} {{'Age'|translate}}">
                 </label>
                 <span id="Age"></span>
                 </div>

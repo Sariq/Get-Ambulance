@@ -1,7 +1,7 @@
 ﻿{
   "Full_Name": "שם מלא",
   "Id_Number": "תעודת זהות",
-  "Phone_Number": "מספר טלפון/נייד",
+  "Phone_Number": "מספר טלפון נייד",
   "Age": "גיל",
   "Complete_Reservation": "השלם הזמנה",
   "Reservation_Completed": "ההזמנה נקלטה",
@@ -84,7 +84,12 @@
   "WhiteLabels_List": "רשימת ספקים",
   "The_Reservation": "ההזמנה",
   "Choose_Another_Provider": "בחר ספק אחר",
-  "Open_Reservation": "פתח הזמנה"
+  "Open_Reservation": "פתח הזמנה",
+  "Verfiy_Code_Sent_To_Number": "קוד אימות נשלח למספר",
+  "Insert_Code": "הכנס קוד",
+  "Phone_Number_Only": "מספר נייד",
+  "Insert": "הכנס",
+  "Home_Page": "דף הבית"
                 
 
 

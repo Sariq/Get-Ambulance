@@ -1,12 +1,21 @@
 ﻿
 
-angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', function ($ionicPopup,$scope, $ionicModal, ReservationService, localStorageService, MapService) {
+angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', function ($ionicPlatform,$ionicPopup, $scope, $ionicModal, ReservationService, localStorageService, MapService, CommonService) {
+
+
+
+
+    $scope.$on('$destroy', function () {
+        CommonService.deregisterHardBack();
+    });
     $scope.headerInfoText = 'Header_Info_Common_Text';
     $scope.reservationForm = localStorageService.get('reservationFormData');
 
     $scope.getAmbulanceOffersList = function () {
+        CommonService.showLoader();
         var addressNameList = [$scope.reservationForm.From_Address, $scope.reservationForm.To_Address];
         MapService.getLatLangByAddress(addressNameList).then(function (result) {
+            CommonService.hideLoader();
             var addressLatLngList = result;
     
             ReservationService.getAmbulanceOffersList($scope.reservationForm, addressLatLngList).then(function (res) {
@@ -17,8 +26,10 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
     }
 
     $scope.getMedicalTherapistOffersList = function () {
+        CommonService.showLoader();
         var addressNameList = [$scope.reservationForm.Meeting_Address];
         MapService.getLatLangByAddress(addressNameList).then(function (result) {
+            CommonService.hideLoader();
             var addressLatLngList = result;
 
             ReservationService.getMedicalTherapistOffersList($scope.reservationForm,addressLatLngList).then(function (res) {
@@ -29,9 +40,10 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
     }
 
     $scope.getStairsAssistanceOffersList = function () {
- 
+        CommonService.showLoader();
         var addressNameList = [$scope.reservationForm.Meeting_Address];
         MapService.getLatLangByAddress(addressNameList).then(function (result) {
+            CommonService.hideLoader();
             var addressLatLngList = result;
 
             ReservationService.getStairsAssistanceOffersList($scope.reservationForm, addressLatLngList).then(function (res) {
@@ -41,11 +53,6 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
         })
         
     }
-
-
-
-
-
 
     switch (localStorageService.get('reservationType')) {
         case '1':
@@ -82,13 +89,16 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
     
     $scope.data = {};
     $scope.approveReservation = function (whiteLabelOffer) {
+        CommonService.showLoader();
         $scope.isSelected = true;
         $scope.myPopup.close();
         $scope.showOnlySelectedOffer(whiteLabelOffer);
         ReservationService.setWhiteLabelOffer(whiteLabelOffer);
         ReservationService.sendReservationData().then(function (res) {
-            $scope.showTyp = true;
+            
             $scope.Reservation = res.data;
+            CommonService.hideLoader();
+            $scope.showTyp = true;
         });
     }
     // An elaborate, custom popup

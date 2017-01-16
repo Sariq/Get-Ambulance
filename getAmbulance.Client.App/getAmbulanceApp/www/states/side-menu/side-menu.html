@@ -14,34 +14,41 @@
 
   <ion-side-menu dir="rtl" side="right">
     <ion-header-bar class="bar-stable side_menu_header">
-      <h1 class="title">{{'Side_Menu' | translate}}</h1>
+        <div class="margin-auto" style="text-align: center;">
+            <img src="../www/img/user.svg" style="width:30%;padding: 10px;" />
+        </div>
+        <div class=" margin-auto" style="text-align: center;color:white">
+            <div class="">
+                סארי קשוע
+            </div>
+        </div>
     </ion-header-bar>
     <ion-content>
       <ion-list>
           <aside>
-              <ion-item menu-close   ui-sref="app.home">
-                  {{'Main_Page' | translate}}
+              <ion-item menu-toggle="right"  ui-sref-active="active"   ui-sref="app.home">
+                  {{'Home_Page' | translate}}
               </ion-item>
-              <!--<ion-item menu-close ui-sref="app.map">
+              <!--<ion-item menu-toggle="right" ui-sref="app.map">
                   מפה
               </ion-item>
-              <ion-item menu-close  ui-sref="app.facebook">
+              <ion-item menu-toggle="right"  ui-sref="app.facebook">
                   facebook
               </ion-item>-->
-              <ion-item menu-close ui-sref="app.reservation-list">
+              <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.reservation-list">
                   {{'Reservations_List' | translate}}
               </ion-item>
-              <ion-item menu-close ng-click="logOut()">
+              <ion-item menu-toggle="right" ng-click="logOut()">
                   {{'LogOut' | translate}}
               </ion-item>
           </aside>
-        <!--<ion-item menu-close href="#/app/map">
+        <!--<ion-item menu-toggle="right" href="#/app/map">
           Search
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
+        <ion-item menu-toggle="right" href="#/app/browse">
           Browse
         </ion-item>
-        <ion-item menu-close href="#/app/playlist">
+        <ion-item menu-toggle="right" href="#/app/playlist">
           Playlists
         </ion-item>-->
       </ion-list>

@@ -1,3 +1,17 @@
-.step2{
+﻿.step2{
+
+}
+
+ .input-container {
+
+}
+
+.input-container:after {
+ position: relative;
+    text-align: center;
+    content: 'שעות';
+    display: block;
+    margin-top: -30px;
+    margin-right: 43px;
 
 }

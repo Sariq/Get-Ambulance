@@ -108,8 +108,34 @@ ion-content.home>div{
 .item-radio{
     direction:ltr;
 }
+.item{
+        border-style: hidden;
+}
+.bar{
+    height:48px;
+}
+.menu .bar-header{
+    display:block;
+}
+ion-list .list{
+    padding-top:25%!important;
+}
+aside .item-complex .item-content, .item-radio .item-content{
+    padding: 10px 17px 10px 0;
+    margin-top: 15px;
+    border-right: solid 4px #e05254!important;
+}
+.item.active.item-complex > .item-content, .item.activated.item-complex > .item-content, .item-complex.active .item-content.item-complex > .item-content, .item-complex.activated .item-content.item-complex > .item-content, .item .item-content.active.item-complex > .item-content, .item .item-content.activated.item-complex > .item-content{
+    background-color: #213246;
+}
+aside .item-complex .item-content .active{
+    
+}
 .bar.bar-stable .title{
     color:white;
+}
+.bar.bar-stable{
+    border:none!important;
 }
 [nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar{
     background-color:#263650;
@@ -207,4 +233,21 @@ input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.clon
 }
 .margin-auto{
     margin: auto;
+}
+.loading-container .loading{
+    background-color:unset!important;
+}
+.loader-logo{
+    width:100%;
+    height: 240px;
+    min-width:375px;
+}
+.col-100{
+        -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
 }

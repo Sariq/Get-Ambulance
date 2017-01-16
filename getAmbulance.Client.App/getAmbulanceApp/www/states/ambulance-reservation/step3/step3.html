@@ -9,7 +9,7 @@
             <div class="list">
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step3Form.Direction_Type.$dirty}">{{'Drive_Direction_Type'|translate}} </span>
-                    <select class="" name="Direction_Type" ng-model="form.Direction_Type" message-id="Direction_Type" valid-method="blur" validator="required">
+                    <select class="" name="Direction_Type" ng-model="form.Direction_Type" message-id="Direction_Type" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Drive_Direction_Type'|translate}}">
                         <option value="" hidden selected>{{'Drive_Direction_Type'|translate}}</option>
                         <option value="One_Way">{{'One_Way'|translate}}</option>
                         <option value="Two_Way">{{'Two_Way'|translate}}</option>
@@ -20,7 +20,7 @@
 
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step3Form.Weight.$dirty}">{{'Weight'|translate}} </span>
-                    <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required">
+                    <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Weight'|translate}}">
                         <option value="" hidden selected>{{'Weight'|translate}}</option>
                         <option value="90">{{'till'|translate}} 90</option>
                         <option value="121">91-121</option>
@@ -31,7 +31,7 @@
 
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step3Form.Need_Help_With_Stairs.$dirty}">{{'Need_Help_With_Stairs'|translate}} </span>
-                    <select class="" name="Need_Help_With_Stairs" ng-model="form.Need_Help_With_Stairs" message-id="Need_Help_With_Stairs" valid-method="blur" validator="required">
+                    <select class="" name="Need_Help_With_Stairs" ng-model="form.Need_Help_With_Stairs" message-id="Need_Help_With_Stairs" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Need_Help_With_Stairs'|translate}}">
                         <option value="" hidden selected>{{'Need_Help_With_Stairs'|translate}}</option>
                         <option value="Yes">{{'Yes'|translate}}</option>
                         <option value="No">{{'No'|translate}}</option>
