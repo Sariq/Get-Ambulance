@@ -3,3 +3,16 @@
     padding: 15px 42px;
     cursor:pointer;
 }
+.nav-header{
+    display:flex
+}
+.nav-header span{
+    color:white;
+}
+.nav-header .log-out{
+    position: absolute;
+    left: 0;
+}
+.nav-header .toggle-div{
+    margin:auto;
+}

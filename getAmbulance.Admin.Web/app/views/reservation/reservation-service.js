@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'authService', 'localStorageService', function ($http, ngAuthSettings, authService, localStorageService) {
+angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', function ($http, ngAuthSettings, WhiteLabelService, localStorageService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -7,7 +7,7 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     
     var _getReservations = function (status,type) {
         var data={ status : status,
-            whiteLabelId: authService.authentication.WhiteLabelData.whiteLabelid,
+            whiteLabelId: WhiteLabelService.getWhiteLabelData().whiteLabelid,
             type: type
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationsListByWhiteLabelId', data);

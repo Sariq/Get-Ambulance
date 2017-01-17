@@ -122,6 +122,10 @@
     <Content Include="app\bower_components\angular-bootstrap-toggle-switch\style\bootstrap3\angular-toggle-switch-bootstrap-3.css" />
     <Content Include="app\bower_components\angular-bootstrap-toggle-switch\style\default\angular-toggle-switch.css" />
     <Content Include="app\bower_components\angular-bootstrap-toggle-switch\test\angular-toggle-switch.spec.js" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\dist\angular-bootstrap-toggle.css" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\dist\angular-bootstrap-toggle.js" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\dist\angular-bootstrap-toggle.min.css" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\dist\angular-bootstrap-toggle.min.js" />
     <Content Include="app\bower_components\angular-bootstrap\index.js" />
     <Content Include="app\bower_components\angular-bootstrap\ui-bootstrap-csp.css" />
     <Content Include="app\bower_components\angular-bootstrap\ui-bootstrap-tpls.js" />
@@ -438,6 +442,7 @@
     <Content Include="app\scripts\directives\header\header.js" />
     <Content Include="app\scripts\directives\notifications\notifications.html" />
     <Content Include="app\scripts\directives\notifications\notifications.js" />
+    <Content Include="app\scripts\directives\sidebar\sidebar.css" />
     <Content Include="app\scripts\directives\sidebar\sidebar-search\sidebar-search.html" />
     <Content Include="app\scripts\directives\sidebar\sidebar-search\sidebar-search.js" />
     <Content Include="app\scripts\directives\sidebar\sidebar.html" />
@@ -496,10 +501,19 @@
     <Content Include="app\views\ui-elements\panels-wells.html" />
     <Content Include="app\views\ui-elements\typography.html" />
     <Content Include="Gruntfile.js" />
-    <Content Include="images\101.png" />
-    <Content Include="images\ambulance_plain_red.png" />
-    <Content Include="images\blue-marker.png" />
-    <Content Include="images\mada-logo.jpg" />
+    <Content Include="img\101.png" />
+    <Content Include="img\ambulance.svg" />
+    <Content Include="img\ambulance_plain_red.png" />
+    <Content Include="img\blue-marker.png" />
+    <Content Include="img\doctor.svg" />
+    <Content Include="img\general-logo.png" />
+    <Content Include="img\kahol-lavan-logo.png" />
+    <Content Include="img\log-out.svg" />
+    <Content Include="img\mada-logo.jpg" />
+    <Content Include="img\reservations.svg" />
+    <Content Include="img\ron-logo.png" />
+    <Content Include="img\smartphone.svg" />
+    <Content Include="img\stairs.svg" />
     <Content Include="node_modules\abbrev\abbrev.js" />
     <Content Include="node_modules\accepts\index.js" />
     <Content Include="node_modules\accepts\node_modules\negotiator\index.js" />
@@ -10152,8 +10166,8 @@
     </Content>
     <Content Include="app\.buildignore" />
     <Content Include="app\.htaccess" />
-    <Content Include="images\mada-logo.jpg %281%29.crdownload" />
-    <Content Include="images\mada-logo.jpg.crdownload" />
+    <Content Include="img\mada-logo.jpg %281%29.crdownload" />
+    <Content Include="img\mada-logo.jpg.crdownload" />
     <Content Include="bower.json" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
@@ -16724,6 +16738,12 @@
     <Content Include="app\bower_components\signalr\bower.json" />
     <Content Include="app\bower_components\signalr\LICENSE.md" />
     <Content Include="app\bower_components\signalr\README.md" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\.bower.json" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\bower.json" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\CONTRIBUTING.md" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\LICENSE" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\package.json" />
+    <Content Include="app\bower_components\angular-bootstrap-toggle\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

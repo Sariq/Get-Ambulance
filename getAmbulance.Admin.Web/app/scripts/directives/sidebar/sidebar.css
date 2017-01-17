@@ -1,0 +1,16 @@
+.sidebar .cat-img{
+    width:15%;
+}
+.sidebar .li-text{
+    color:white;
+}
+
+.nav>li.active>a {
+
+    background-color: #733232;
+}
+
+.nav>li>a:hover{
+    cursor:pointer;
+    background-color: #733232;
+}

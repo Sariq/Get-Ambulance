@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope) {
+angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'WhiteLabelService', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, WhiteLabelService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -62,7 +62,7 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
             if (_authentication.userName != 'ambulance.admin@gmail.com') {
        
                 $http.post(serviceBase + 'api/WhiteLabel/GetWhiteLabelData', data).success(function (res) {
-       
+                    WhiteLabelService.setWhiteLabelData(res);
                     _authentication.WhiteLabelData = (res);
                     console.log(_authentication.WhiteLabelData);
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;

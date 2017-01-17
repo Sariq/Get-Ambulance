@@ -3,6 +3,7 @@ body {
     padding-bottom: 20px;
     direction:rtl;
     font-family: Tahoma!important;
+    background-color: #263650!important;
 }
 .navbar-header {
     float: right;
@@ -162,3 +163,6 @@ background-color: #eee;
   .login-page .form-content {
     padding: 40px 0; }
 
+  /*.navbar-default{
+      border:none!important;
+  }*/

@@ -20,7 +20,8 @@ angular.module('sbAdminApp')
         'colour': '@',
         'details':'@',
         'type':'@',
-        'goto':'@'
+        'goto': '@',
+         'img':'@'
   		}
   		
   	}
