@@ -63,7 +63,7 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
                 deferred.resolve(response);
             });
         }).error(function (err, status) {
-            _logOut();
+            //_logOut();
             deferred.reject(err);
         });
 

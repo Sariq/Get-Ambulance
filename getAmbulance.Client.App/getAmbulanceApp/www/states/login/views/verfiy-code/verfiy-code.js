@@ -7,11 +7,15 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
     };
     $scope.showUserInfoInputs = false;
     $scope.message = "";
+    $scope.error = {};
+    $scope.error.showMessage = false;
     $scope.logInData = LogInService.getLogInData();
     if ($scope.logInData.Client_Status == '1') {
         $scope.showUserInfoInputs = true;
     }
+
     $scope.login = function () {
+        $scope.error.showMessage = false;
         $scope.loginForm.userName = $scope.logInData.Phone_Number;
         authService.login($scope.loginForm).then(function (response) {
             $scope.userProfile = UserProfileService.getUserProfileLocal();
@@ -29,6 +33,8 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
         },
          function (err) {
              $scope.message = err.error_description;
+             $scope.error.showMessage = true;
+             $scope.errorMessage = 'Invalid_Code';
          });
     };
 

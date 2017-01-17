@@ -25,7 +25,7 @@
    margin:auto;
    border-radius:40px;
        width: 83%;
-    margin-bottom: 5%!important;
+    margin-top: 5%!important;
 }
 
 .home .cat .col-20{
@@ -81,7 +81,8 @@ ion-side-menu {
 }
 
 .cat-list-container{
-    margin-top:5%;
+   
+    margin-bottom:5px;
 }
 .copy-rights{
     color:#9b9c9d;

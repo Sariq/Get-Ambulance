@@ -1,5 +1,5 @@
 ﻿
-<ion-view view-title="הזמנת אמבולנס פרטי">
+<ion-view view-title="{{'Stairs_AssistanceReservation' | translate}}">
 
     <ion-content>
 
@@ -42,7 +42,7 @@
 
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'Meeting_Address'|translate}} :</span>
-                    <input g-places-autocomplete  force-selection="true" placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" message-id="Meeting_Address" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
+                    <input g-places-autocomplete  force-selection="true" placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" message-id="Meeting_Address" valid-method="submit" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
                 </label>
                 <span id="Meeting_Address"></span>
                 <date-time-cmp date="form.Date" time="form.Time"></date-time-cmp>

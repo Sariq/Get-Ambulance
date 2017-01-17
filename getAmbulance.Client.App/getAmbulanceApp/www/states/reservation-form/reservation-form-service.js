@@ -15,7 +15,13 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         self.formData = angular.extend(self.formData, formData);
         localStorageService.set('reservationFormData', self.formData);
     }
-
+    self.getReservationFormData = function () {
+        return localStorageService.get('reservationFormData');
+    }
+    self.deleteReservationFormDate = function () {
+        localStorageService.remove('reservationFormData');
+    }
+    
     self.getDistance = function (form, callback) {
         try {
             var service = new google.maps.DistanceMatrixService();

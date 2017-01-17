@@ -20,12 +20,12 @@
                 <span id="Ambulance_Type"></span>
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'From_Address'|translate}} </span>
-                    <input  g-places-autocomplete placeholder="{{'From_Address'|translate}}" type="text" name="From_Address" ng-model="form.From_Address" message-id="From_Address" valid-method="blur" validator="required"  required-error-message="{{'Insert'|translate}} {{'From_Address'|translate}}">
+                    <input  g-places-autocomplete placeholder="{{'From_Address'|translate}}" type="text" name="From_Address" ng-model="form.From_Address" message-id="From_Address" valid-method="submit" validator="required"  required-error-message="{{'Insert'|translate}} {{'From_Address'|translate}}">
                 </label>
                 <span id="From_Address"></span>
                 <label class="item item-input panel item-floating-label">
                     <span class="input-label">{{'To_Address'|translate}} </span>
-                    <input  g-places-autocomplete force-selection="true" placeholder="{{'To_Address'|translate}}" type="text" name="To_Address" ng-model="form.To_Address" message-id="To_Address" valid-method="blur" validator="required"  required-error-message="{{'Insert'|translate}} {{'To_Address'|translate}}">
+                    <input  g-places-autocomplete force-selection="true" placeholder="{{'To_Address'|translate}}" type="text" name="To_Address" ng-model="form.To_Address" message-id="To_Address" valid-method="submit" validator="required"  required-error-message="{{'Insert'|translate}} {{'To_Address'|translate}}">
                 </label>
                 <span id="To_Address"></span>
                 <date-time-cmp date="form.Date" time="form.Time"></date-time-cmp>

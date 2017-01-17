@@ -5,6 +5,9 @@ angular.module('starter.controllers').controller('HomeCtrl', function ($scope, $
 
 
     $scope.goToReservationForm = function (reservationType) {
+        if (localStorageService.get('reservationType') != reservationType) {
+            ReservationService.deleteReservationFormDate();
+        }
         localStorageService.set('reservationType', reservationType);
         $state.go('app.reservation-step1');
     }

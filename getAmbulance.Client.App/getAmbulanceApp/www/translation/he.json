@@ -89,7 +89,9 @@
   "Insert_Code": "הכנס קוד",
   "Phone_Number_Only": "מספר נייד",
   "Insert": "הכנס",
-  "Home_Page": "דף הבית"
+  "Home_Page": "דף הבית",
+  "Insert_Code_Error_MinMax": "הכנס קוד בן 4 ספרות",
+  "Invalid_Code": "הקוד שגוי"
                 
 
 

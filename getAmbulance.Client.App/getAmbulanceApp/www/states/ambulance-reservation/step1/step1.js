@@ -16,9 +16,13 @@ angular.module('starter.controllers').controller('Step1Ctrl', function (UserProf
         }
      
 
-  
-    
-    $scope.form = {};
+        var storageFormData=ReservationService.getReservationFormData();
+        if (storageFormData) {
+            $scope.form = storageFormData;
+        } else {
+            $scope.form = {};
+        }
+
     $scope.userProfile = UserProfileService.getUserProfileLocal();
     $scope.form.Full_Name=$scope.userProfile.Full_Name;
     $scope.form.Id_Number = parseInt($scope.userProfile.Id_Number, 10);

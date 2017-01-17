@@ -251,3 +251,8 @@ input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.clon
     flex: 0 0 100%;
     max-width: 100%;
 }
+p.errorMessage{
+        margin: 0% auto 0 auto;
+    width: 72%;
+    color: #e74e4e;
+}

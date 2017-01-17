@@ -1,5 +1,5 @@
 ﻿
-<ion-view cache-view="false" view-title="הזמנת אמבולנס פרטי">
+<ion-view cache-view="false" view-title="{{'Medical_Therapist_Reservation' | translate}}">
 
     <ion-content>
 
@@ -9,7 +9,7 @@
             <div class="list">
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step3Form.Meeting_Address.$dirty}">{{'Meeting_Address'|translate}} :</span>
-                    <select class="" name="Meeting_Address" ng-model="form.Accompaniment_Location" message-id="Meeting_Address" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
+                    <select class="" name="Meeting_Address" ng-model="form.Accompaniment_Location" message-id="Meeting_Address" valid-method="submit" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
                         <option value="" hidden selected>{{'Meeting_Address'|translate}}</option>
                         <option value="Home">{{'Home'|translate}}</option>
                         <option value="Clinic">{{'Clinic'|translate}}</option>
