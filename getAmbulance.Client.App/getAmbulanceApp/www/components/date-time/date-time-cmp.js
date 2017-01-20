@@ -46,7 +46,9 @@ var dateTimeCmp = function ($scope, $filter) {
 angular.module('starter.controllers').component('dateTimeCmp', {
     bindings: {
         date: '=',
-        time:'='
+        time: '=',
+        dateOnly: '@',
+        timeOnly:'@'
     },
     templateUrl: 'components/date-time/date-time-cmp.html',
     controller: dateTimeCmp

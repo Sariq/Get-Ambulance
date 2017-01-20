@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('starter.controllers').controller('Step1Ctrl', function (UserProfileService, $scope, $ionicModal, ReservationService, localStorageService, $state, $translate) {
+angular.module('starter.controllers').controller('Step1Ctrl', function (UserProfileService, $scope, $ionicModal, ReservationService, localStorageService, $state, $translate, $filter) {
     $scope.headerInfoText = 'Header_Info_Common_Text';
 
         switch (localStorageService.get('reservationType')) {
@@ -27,6 +27,7 @@ angular.module('starter.controllers').controller('Step1Ctrl', function (UserProf
     $scope.form.Full_Name=$scope.userProfile.Full_Name;
     $scope.form.Id_Number = parseInt($scope.userProfile.Id_Number, 10);
     $scope.form.Phone_Number = $scope.userProfile.User_Name;
+    $scope.form.Age =   $filter('ageFilter')($scope.userProfile.Date_Of_Birth);
     $scope.continueToStep2 = function () {
         ReservationService.mergeToFormData($scope.form);
        

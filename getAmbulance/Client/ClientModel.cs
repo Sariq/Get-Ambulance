@@ -23,7 +23,7 @@ namespace getAmbulance.Client
             public string Phone_Number { get; set; }
             public string Id_Number { get; set; }
             public string _id { get; set; }
-
+            public DateTime Date_Of_Birth { get; set; }
 
             // public string Email { get; set; }
         }
@@ -47,6 +47,9 @@ namespace getAmbulance.Client
             [Required]
             [Display(Name = "Id_Number")]
             public string Id_Number { get; set; }
+            [Required]
+            [Display(Name = "Date_Of_Birth")]
+            public DateTime Date_Of_Birth { get; set; }
         }
         public class ClientRegisterModel
         {

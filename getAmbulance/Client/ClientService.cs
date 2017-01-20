@@ -32,6 +32,8 @@ namespace getAmbulance.Client
             clientUserProfile.Full_Name= clientUser.Full_Name;
             clientUserProfile.Id_Number = clientUser.Id_Number;
             clientUserProfile.Phone_Number = clientUser.PhoneNumber;
+            clientUserProfile.Date_Of_Birth = clientUser.Date_Of_Birth;
+
             clientUserProfile._id=clientUser.Id;
 
             return clientUserProfile;
@@ -61,6 +63,12 @@ namespace getAmbulance.Client
             {
                 var update = Builders<ApplicationClientUser>.Update
                          .Set("Id_Number", userProfileData.Id_Number);
+                _ctx.ClientUsers.UpdateOneAsync(filter, update); ;
+            }
+            if (userProfileData.Date_Of_Birth != null)
+            {
+                var update = Builders<ApplicationClientUser>.Update
+                         .Set("Date_Of_Birth", userProfileData.Date_Of_Birth);
                 _ctx.ClientUsers.UpdateOneAsync(filter, update); ;
             }
 

@@ -123,7 +123,10 @@ ion-list .list{
 aside .item-complex .item-content, .item-radio .item-content{
     padding: 10px 17px 10px 0;
     margin-top: 15px;
-    border-right: solid 4px #e05254!important;
+ 
+}
+aside .item-complex.active  .item-content, .item-radio.active .item-content{
+       border-right: solid  #e05254!important;
 }
 .item.active.item-complex > .item-content, .item.activated.item-complex > .item-content, .item-complex.active .item-content.item-complex > .item-content, .item-complex.activated .item-content.item-complex > .item-content, .item .item-content.active.item-complex > .item-content, .item .item-content.activated.item-complex > .item-content{
     background-color: #213246;
@@ -255,4 +258,10 @@ p.errorMessage{
         margin: 0% auto 0 auto;
     width: 72%;
     color: #e74e4e;
+}
+.div-flex{
+    display:flex;
+}
+.bar{
+    background-image:none!important;
 }

@@ -56,6 +56,8 @@
                                     <input placeholder="{{'Id_Number'|translate}}" type="text" name="ID_Number" ng-model="loginForm.Id_Number" message-id="ID_Number" required-error-message="{{'Insert'|translate}} {{'Id_Number'|translate}}">
                                 </label>
                                 <span id="ID_Number"></span>
+                                <date-time-cmp date="form.Date" date-only="true" time="loginForm.Date_Of_Birth"></date-time-cmp>
+
                             </div>
                         </div>
                         <button  validation-submit="VerfiyCodeForm" ng-click="login()" class="button button-full next-btn button-positive">

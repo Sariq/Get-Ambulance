@@ -20,7 +20,7 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
         authService.login($scope.loginForm).then(function (response) {
             $scope.userProfile = UserProfileService.getUserProfileLocal();
             if ($scope.logInData.Client_Status == '1') {
-                var data = { "User_Id": $scope.userProfile._id, "Full_Name": $scope.loginForm.Full_Name, "Id_Number": $scope.loginForm.Id_Number }
+                var data = { "User_Id": $scope.userProfile._id, "Full_Name": $scope.loginForm.Full_Name, "Id_Number": $scope.loginForm.Id_Number, "Date_Of_Birth": $scope.loginForm.Date_Of_Birth }
                 UserProfileService.updateUserProfile(data).then(function (res) {
                     UserProfileService.RefreshUserProfile();
                 });

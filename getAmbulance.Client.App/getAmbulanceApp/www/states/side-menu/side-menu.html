@@ -26,18 +26,32 @@
     <ion-content>
       <ion-list>
           <aside>
-              <ion-item menu-toggle="right"  ui-sref-active="active"   ui-sref="app.home">
-                  {{'Home_Page' | translate}}
+              <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.home">
+                  <div class="div-flex">
+                      <div><img src="../www/img/home.svg" style="width: 22px;margin-left: 10px;" /></div>
+                      <div>{{'Home_Page' | translate}}</div>
+                  </div>
               </ion-item>
+              <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.user-profile">
+                  <div class="div-flex">
+                      <div><img src="../www/img/user.svg" style="width: 22px;margin-left: 10px;" /></div>
+                      <div>{{'Update_Profile' | translate}}</div>
+                  </div>
+              </ion-item>
+             
               <!--<ion-item menu-toggle="right" ui-sref="app.map">
                   מפה
               </ion-item>
               <ion-item menu-toggle="right"  ui-sref="app.facebook">
                   facebook
               </ion-item>-->
-              <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.reservation-list">
-                  {{'Reservations_List' | translate}}
-              </ion-item>
+              <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.reservation-list ">
+                  <div class="div-flex">
+                      <div><img src="../www/img/reservations.svg" style="width: 22px;margin-left: 10px;" /></div>
+                      <div>{{'Reservations_List' | translate}}</div>
+                  </div>
+</ion-item>
+             
               <ion-item menu-toggle="right" ng-click="logOut()">
                   {{'LogOut' | translate}}
               </ion-item>

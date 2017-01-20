@@ -257,6 +257,7 @@
     <Content Include="getAmbulanceApp\www\css\checkboxes_style.css" />
     <Content Include="getAmbulanceApp\www\css\ionic.css" />
     <Content Include="getAmbulanceApp\www\css\style.css" />
+    <Content Include="getAmbulanceApp\www\filters\age-filter.js" />
     <Content Include="getAmbulanceApp\www\Hubs\reservationHub.js" />
     <Content Include="getAmbulanceApp\www\img\accepted-icon.svg" />
     <Content Include="getAmbulanceApp\www\img\ignored-icon.svg" />
