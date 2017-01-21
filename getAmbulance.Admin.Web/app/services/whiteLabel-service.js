@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSettings', 'localStorageService', function ($http, ngAuthSettings, localStorageService) {
+angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSettings', 'localStorageService','$rootScope', function ($http, ngAuthSettings, localStorageService, $rootScope) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -14,14 +14,22 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
     };
     var _setWhiteLabelData = function (data) {
         localStorageService.set('WhiteLabelData', data);
+        _updateSupportedCatShow()
     };
     var _getWhiteLabelData = function () {
         return localStorageService.get('WhiteLabelData');
+    };
+    var _updateSupportedServicesOnRoot = function () {
+        var supportedServices = _getWhiteLabelData().supportedServices;
+        $rootScope.isAmbulanceCatSup = supportedServices.indexOf("1") > -1;
+        $rootScope.isMedicalTherapistCatSup = supportedServices.indexOf("2") > -1;
+        $rootScope.isStairsAssistanceCatSup = supportedServices.indexOf("3") > -1;
     };
 
     WhiteLabelServiceFactory.updateWhiteLabelIsOnline = _updateWhiteLabelIsOnline;
     WhiteLabelServiceFactory.setWhiteLabelData = _setWhiteLabelData;
     WhiteLabelServiceFactory.getWhiteLabelData = _getWhiteLabelData;
+    WhiteLabelServiceFactory.updateSupportedServicesOnRoot = _updateSupportedServicesOnRoot;
     return WhiteLabelServiceFactory;
 
 }]);

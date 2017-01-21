@@ -1,0 +1,48 @@
+﻿
+
+<div class="row distance-price">
+    <div class="col-lg-6 items">
+        <div class="row item-header">
+            <div class="col-lg-10">
+              
+                    {{'drive_price_fom_km' | translate}}
+          
+            </div>
+            <div class="col-lg-2">
+                {{'delete' | translate}}
+            </div>
+        </div>
+        <div class="row row-eq-height inner ">
+            <div class="col-lg-3 first-block column">
+      <div>
+          {{'drive_price_fom_km' | translate}}
+
+      </div>
+    
+            </div>
+            <div class="col-lg-3 column value-box">
+                <div>
+                    <span>ק"מ</span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="$ctrl.myValue==0" data-type="minus" ng-click="$ctrl.myValue=$ctrl.myValue-1">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </span>
+                    <div>
+                        <input type="text" name="quant[1]" class="value-input" class="form-control input-number" ng-model="$ctrl.myValue" min="1" max="10">
+                    </div>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="$ctrl.myValue=$ctrl.myValue+1">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </span>
+                </div>
+                <!--<label class="item item-input panel item-floating-label">
+                    <input placeholder="{{'Id_Number'|translate}}" type="number" name="Id_Number" ng-model="form.Id_Number" message-id="Id_Number" valid-method="blur" validator="required,number,minlength=9,maxlength=9" required-error-message="{{'Insert'|translate}} {{'Id_Number'|translate}}">
+                </label>-->
+            </div>
+        </div>
+    </div>
+</div>

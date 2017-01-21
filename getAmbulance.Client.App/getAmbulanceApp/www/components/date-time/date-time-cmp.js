@@ -27,7 +27,11 @@ var dateTimeCmp = function ($scope, $filter) {
         $scope.$apply();
     }
     function onDateSuccess(date) {
-        ctrl.form.Date = $filter('date')(date, "dd/MM/y");  // for type="date" binding
+        if (ctrl.notFormatedDate) {
+            ctrl.form.Date = date;  // for type="date" binding
+        } else {
+            ctrl.form.Date = $filter('date')(date, "dd/MM/y");  // for type="date" binding
+        }
         ctrl.date=ctrl.form.Date;
         $scope.$apply();
     }
@@ -48,7 +52,8 @@ angular.module('starter.controllers').component('dateTimeCmp', {
         date: '=',
         time: '=',
         dateOnly: '@',
-        timeOnly:'@'
+        timeOnly: '@',
+        notFormatedDate:'@'
     },
     templateUrl: 'components/date-time/date-time-cmp.html',
     controller: dateTimeCmp

@@ -7,6 +7,7 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations','$state', 
 
     ctrl.getReservations=function(){
         ReservationService.getReservations(ctrl.reservationStatus, ctrl.reservationType).then(function (res) {
+ 
         ctrl.reservationsList = res.data;
         }, function (err) {
             console.log(err);

@@ -16,7 +16,8 @@ angular
     'angular-loading-bar',
     'LocalStorageModule',
     'SignalR',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'angular.filter'
     
   ]).constant('ngAuthSettings', {
        apiServiceBaseUri: 'http://localhost:54543/',
@@ -87,8 +88,8 @@ angular
     })
       .state('dashboard.home',{
         url:'/home',
-        controller: 'MainCtrl',
-        templateUrl:'views/dashboard/home.html',
+        controller: 'HomeCtrl',
+        templateUrl:'views/dashboard/home/home.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({

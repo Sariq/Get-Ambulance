@@ -1,0 +1,77 @@
+
+.distance-price .items .item-header{
+    background-color:#263650!important;
+    color:white;
+    padding: 5px;
+}
+.distance-price  .item-input  input {
+    text-align:center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 220px;
+    -moz-box-flex: 1;
+    -moz-flex: 1 220px;
+    -ms-flex: 1 220px;
+    flex: 1 220px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.distance-price .panel {
+    font-size: calc(0.75em + 2vmin);
+    background-color: #f7fbfc;
+    width: 100%;
+       background-color: #f7fbfc;
+}
+.distance-price .value-input{
+        text-align: center!important;
+        padding:0!important;
+            width: 100%;
+             background-color: #f7fbfc;
+                 color: #3279b9;
+}
+.distance-price .inner{
+     color: #3279b9;
+}
+.item-input {
+    overflow: unset!important;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+    border: 0;
+    display: block;
+
+    padding-left: 0;
+    height: 34px;
+    color: #111;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 16px;
+
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.first-block{
+    padding: 1%;
+}
+
+.distance-price  .plus-min{
+    border:0!important;
+        color: #3279b9;
+}
+
+.distance-price  .row-eq-height .column{
+    min-height:55px;
+}
+
+.distance-price  .value-box{
+    text-align:center;
+}

@@ -9,6 +9,8 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -24,12 +26,13 @@
       <link href="views/login/login.css" rel="stylesheet" />
       <link href="views/reservation/item/reservation-item.css" rel="stylesheet" />
       <link href="components/header/header-cmp.css" rel="stylesheet" />
-      <link href="components/prices/distance/distance-cmp.css" rel="stylesheet" />
+      <link href="components/services-settings/prices/distance/distance-cmp.css" rel="stylesheet" />
       <link href="components/supported-area/views/supported-area.css" rel="stylesheet" />
       <link href="views/services-settings/views/services-settings.css" rel="stylesheet" />
       <link href="scripts/directives/sidebar/sidebar.css" rel="stylesheet" />
       <link href="scripts/directives/header/header.css" rel="stylesheet" />
       <link href="bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.css" rel="stylesheet" />
+
     <!-- endbuild -->
     
  
@@ -80,6 +83,8 @@
 <script src="bower_components/Chart.js/Chart.min.js"></script>
 <script src="bower_components/angular-translate/dist/angular-translate.min.js"></script>
 <script src="bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.js"></script>
+<script src="bower_components/angular-filter-master/dist/angular-filter.min.js"></script>
+
 <!-- endbower -->
 <!-- endbuild -->
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -127,9 +132,9 @@
 <!--Ambulance-->
 <!--Prices-cmp-->
 <!--distance-cmp-->
-<script src="components/prices/distance/distance-cmp..js"></script>
+<script src="components/services-settings/prices/distance/distance-cmp..js"></script>
 <!--distance-cmp-->
-<script src="components/prices/prices-service.js"></script>
+<script src="components/services-settings/prices/prices-service.js"></script>
 <!--Prices-cmp-->
 <!--supported-area-cmp-->
 <script src="components/supported-area/views/supported-area.js"></script>
@@ -140,4 +145,17 @@
 <script src="views/services-settings/services-settings-service.js"></script>
 <!--Services-Settings-->
 
+<!--medical-therapist-->
+<script src="views/medical-therapist/reservation/list/medical-therapist-reservation-list.js"></script>
+<script src="views/medical-therapist/routes.js"></script>
+<!--medical-therapist-->
+
+<!--stairs-assistance-->
+<script src="views/stairs-assistance/reservation/list/stairs-assistance-reservation-list.js"></script>
+<script src="views/stairs-assistance/routes.js"></script>
+<!--stairs-assistance-->
+<!--home-->
+<script src="views/dashboard/home/home.js"></script>
+
+<!--home-->
 </html>

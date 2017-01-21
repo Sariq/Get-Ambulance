@@ -11,9 +11,9 @@
       
 
         <!--<stats number="18" comments="{{'הזמנות מלווים' | translate}}" colour="yellow" type="heartbeat" img="doctor" goto="dashboard.reservation-item"></stats>-->
-        <stats number="24" comments="{{'הזמנות העלאה/הורדה מדרגות' | translate}}" colour="red" img="stairs" type="wheelchair"></stats>
-        <stats number="12" comments="{{'הזמנות מטפלים' | translate}}" colour="green" type="user-md" img="doctor"></stats>
-        <stats number="6" comments="{{'הזמנות אמבולנס' | translate}}" colour="primary" type="ambulance " img="ambulance" goto="dashboard.ambulance-list"></stats>
+        <stats ng-show="isStairsAssistanceCatSup" number="{{reservationsListFilterd['3'].length}}" comments="{{'הזמנות העלאה/הורדה מדרגות' | translate}}" colour="red" img="stairs" type="wheelchair"></stats>
+        <stats ng-show="isMedicalTherapistCatSup" number="{{reservationsListFilterd['2'].length}}" comments="{{'הזמנות מטפלים' | translate}}" colour="green" type="user-md" img="doctor"></stats>
+        <stats ng-show="isAmbulanceCatSup" number="{{reservationsListFilterd['1'].length}}" comments="{{'הזמנות אמבולנס' | translate}}" colour="primary" type="ambulance " img="ambulance" goto="dashboard.ambulance-list"></stats>
 
     </div>
     <!--<div ng-controller="ReservationCtrl"></div>-->

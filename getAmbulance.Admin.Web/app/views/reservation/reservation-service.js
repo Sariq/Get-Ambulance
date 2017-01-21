@@ -1,17 +1,30 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', function ($http, ngAuthSettings, WhiteLabelService, localStorageService) {
+angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', '$rootScope', '$q', function ($http, ngAuthSettings, WhiteLabelService, localStorageService, $rootScope, $q) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
     var ReservationServiceFactory = {};
-    
-    var _getReservations = function (status,type) {
+    var self=this;
+    var _getReservations = function (status, type) {
+        var deferred = $q.defer();
         var data={ status : status,
             whiteLabelId: WhiteLabelService.getWhiteLabelData().whiteLabelid,
             type: type
         }
-        return $http.post(serviceBase + 'api/Reservation/GetReservationsListByWhiteLabelId', data);
+        return $http.post(serviceBase + 'api/Reservation/GetReservationsListByWhiteLabelId', data).success(function (res) {
+
+            _setReservationsListLocal(res);
+        
+            deferred.resolve(res);
+        });
+        return deferred.promise;
     };
+
+   
+
+   
+
+
     var _getReservationById= function (reservationId) {
         var data = {
             reservationId: reservationId
@@ -38,6 +51,15 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     var _getSelectedReservation = function () {
         return localStorageService.get('selectedReservation');
     }
+ 
+    var _setReservationsListLocal = function (reservationsList) {
+        self.reservationsListLocal = reservationsList;
+        $rootScope.$broadcast('updated-reservations-list');
+    }
+    var _getReservationsListLocal = function () {
+        return self.reservationsListLocal;
+    }
+    
     ReservationServiceFactory.getReservations = _getReservations;
     ReservationServiceFactory.getReservationById = _getReservationById;
     ReservationServiceFactory.acceptReservation = _acceptReservation;
@@ -45,6 +67,8 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     ReservationServiceFactory.getSelectedReservationId = _getSelectedReservationId;
     ReservationServiceFactory.setSelectedReservation = _setSelectedReservation;
     ReservationServiceFactory.getSelectedReservation = _getSelectedReservation;
+    ReservationServiceFactory.setReservationsListLocal = _setReservationsListLocal;
+    ReservationServiceFactory.getReservationsListLocal = _getReservationsListLocal;
     return ReservationServiceFactory;
 
 }]);

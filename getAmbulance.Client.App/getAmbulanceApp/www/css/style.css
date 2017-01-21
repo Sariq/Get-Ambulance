@@ -265,3 +265,6 @@ p.errorMessage{
 .bar{
     background-image:none!important;
 }
+.font-bold{
+    font-weight:bold;
+}

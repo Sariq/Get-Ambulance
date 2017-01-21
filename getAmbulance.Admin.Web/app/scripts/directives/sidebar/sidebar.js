@@ -15,7 +15,10 @@ angular.module('sbAdminApp')
       replace: true,
       scope: {
       },
-      controller:function($scope){
+      controller: function ($scope, $rootScope) {
+          $scope.isAmbulanceCatSup = $rootScope.isAmbulanceCatSup;
+          $scope.isMedicalTherapistCatSup = $rootScope.isMedicalTherapistCatSup;
+          $scope.isStairsAssistanceCatSup = $rootScope.isStairsAssistanceCatSup;
         $scope.selectedMenu = 'dashboard';
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;

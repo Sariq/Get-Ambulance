@@ -20,7 +20,7 @@
 <div ng-if="$ctrl.dateOnly">
     <label class="item item-input panel item-floating-label  ">
         <span class="input-label">{{'Date'|translate}} :</span>
-        <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" ng-click="$ctrl.openDatePicker();" name="Date" ng-model="$ctrl.form.Date" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Date'|translate}}">
+        <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" ng-click="$ctrl.openDatePicker();" name="Date" ng-model="$ctrl.form.Date | date : 'dd/MM/yy'" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Date'|translate}}">
     </label>
     <span id="Date"></span>
 </div>
