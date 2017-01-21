@@ -8,7 +8,7 @@
 
             <div class="list">
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label" ng-class="{'has-input': Step3Form.Meeting_Address.$dirty}">{{'Meeting_Address'|translate}} :</span>
+                    <span class="input-label" ng-class="{'has-input': Step3Form.Meeting_Address.$dirty}">{{'Meeting_Address'|translate}} </span>
                     <select class="" name="Meeting_Address" ng-model="form.Accompaniment_Location" message-id="Meeting_Address" valid-method="submit" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
                         <option value="" hidden selected>{{'Meeting_Address'|translate}}</option>
                         <option value="Home">{{'Home'|translate}}</option>
@@ -20,7 +20,7 @@
                 <span id="Meeting_Address"></span>
 
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label" ng-class="{'has-input': Step3Form.Direction_Type.$dirty}">{{'Current_Status'|translate}} :</span>
+                    <span class="input-label" ng-class="{'has-input': Step3Form.Direction_Type.$dirty}">{{'Current_Status'|translate}} </span>
                     <select class="" name="Direction_Type" ng-model="form.Current_Status" message-id="Current_Status" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Current_Status'|translate}}">
                         <option value="" hidden selected>{{'Current_Status'|translate}}</option>
                         <option value="Standing">{{'Standing'|translate}}</option>

@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     }
   });
 }).constant('ngAuthSettings', {
-   // apiServiceBaseUri: 'http://localhost:54543/',
+    //apiServiceBaseUri: 'http://localhost:54543/',
      apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
     //clientId: 'ngAuthApp'
  clientId: 'consoleApp',

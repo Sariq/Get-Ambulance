@@ -9,18 +9,18 @@
             <div class="list">
              
                 <label class="item item-input panel item-floating-label">
-                    <span class="input-label">{{'Meeting_Address'|translate}} :</span>
+                    <span class="input-label">{{'Meeting_Address'|translate}} </span>
                     <input g-places-autocomplete options="autocompleteOptions" force-selection="true" placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" message-id="Meeting_Address" valid-method="submit" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
                 </label>
                 <span id="Meeting_Address"></span>
                 <label class="item item-input panel item-floating-label  col-45" ng-class="{'input-container':Step2Form.Therapist_Stayig_Time.$modelValue!=null}">
-                    <span class="input-label">{{'Therapist_Stayig_Time'|translate}} :</span>
+                    <span class="input-label">{{'Therapist_Stayig_Time'|translate}} </span>
                     <input style="padding-left: 15%;" placeholder="{{'Therapist_Stayig_Time'|translate}}" type="number" name="Therapist_Stayig_Time"  ng-model="form.Therapist_Stayig_Time" message-id="Therapist_Stayig_Time" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Therapist_Stayig_Time'|translate}}">
                 </label>
                 <span id="Therapist_Stayig_Time"></span>
                 
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label"  ng-class="{'has-input': Step2Form.Weight.$dirty}">{{'Weight'|translate}} :</span>
+                    <span class="input-label"  ng-class="{'has-input': Step2Form.Weight.$dirty}">{{'Weight'|translate}} </span>
                     <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Weight'|translate}}">
                         <option value="" hidden selected>{{'Weight'|translate}}</option>
                         <option value="90">{{'till'|translate}} 90</option>
