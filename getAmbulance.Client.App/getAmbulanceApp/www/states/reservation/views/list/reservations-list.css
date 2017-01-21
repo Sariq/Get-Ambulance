@@ -14,13 +14,13 @@
 }
 
  .percent-pending-background{
-      background: -webkit-linear-gradient(right,#f7fbfc 65%, #efad4d 25%)!important;
+      background: -webkit-linear-gradient(right,#f7fbfc 69%, #efad4d 31%)!important;
 }
  .percent-ignored-background{
-      background: -webkit-linear-gradient(right,#f7fbfc 65%, #e84e4e 25%)!important;
+      background: -webkit-linear-gradient(right,#f7fbfc 69%, #e84e4e 31%)!important;
 }
  .percent-accepted-background{
-      background: -webkit-linear-gradient(right,#f7fbfc 65%, #6ab66b 25%)!important;
+      background: -webkit-linear-gradient(right,#f7fbfc 69%, #6ab66b 31%)!important;
 }
 
 .reservations-list .col-container{

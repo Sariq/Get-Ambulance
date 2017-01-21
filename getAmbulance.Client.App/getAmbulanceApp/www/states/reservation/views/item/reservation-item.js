@@ -14,8 +14,12 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
                     Time: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Time'),
                     From_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'From_Address'),
                     To_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'To_Address'),
-                    Ambulance_Type: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Ambulance_Type')
+                    Ambulance_Type: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Ambulance_Type'),
+                    Direction_Type: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Direction_Type')
+                    
                 }
+             
+
                 break;
             case '2':
                 $scope.itemForm = {
@@ -23,7 +27,14 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
                     Provider_Phone_Number: $scope.selectedReservation.whiteLabelData.phoneNumber,
                     Date: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Date'),
                     Time: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Time'),
+                    Service_Options: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Service_Options'),
+                    Meeting_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Meeting_Address')
+
+                    
+                    
                 }
+        
+
                 break;
             case '3':
                 $scope.itemForm = {
@@ -31,7 +42,11 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
                     Provider_Phone_Number: $scope.selectedReservation.whiteLabelData.phoneNumber,
                     Date: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Date'),
                     Time: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Time'),
+                    Meeting_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Meeting_Address'),
+                    Stairs_Assistance_Options: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Stairs_Assistance_Options')
                 }
+           
+
                 break;
         }
      

@@ -5,7 +5,6 @@
 
             <div class="row ">
                 <div class="cont">
-
                     <div class="reservation-details">
                         <div class="row ">
                             <div class="col-40 details-title margin-auto">
@@ -33,12 +32,38 @@
                             </div>
                         </div>
                         <div class="details-container">
+
+                            <div ng-show="selectedReservation.Type" class="row">
+                                <div class="col-50 key">
+                                    <span class="">{{'Reservation_Type'|translate}}</span>
+                                </div>
+                                <div class="col-50 value">
+                                    <span ng-switch="selectedReservation.Type">
+                                        <span ng-switch-when="1">{{'Short_Ambulance_Reservation' | translate}}</span>
+                                        <span ng-switch-when="2">{{'Short_Medical_Therapist_Reservation' | translate}}</span>
+                                        <span ng-switch-when="3">{{'Short_Stairs_Assistance_Reservation' | translate}}</span>
+                                    </span>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div ng-show="selectedReservation.Reservation_Number" class="row">
                                 <div class="col-50 key">
                                     <span class="">{{'Reservations_Num'|translate}}</span>
                                 </div>
                                 <div class="col-50 value">
                                     <span class=""> {{selectedReservation.Reservation_Number}}</span><div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ng-show="selectedReservation.Price" class="row">
+                                <div class="col-50 key">
+                                    <span class="">{{'Price'|translate}}</span>
+                                </div>
+                                <div class="col-50 value">
+                                    <span class="">  &#8362;{{selectedReservation.Price}}</span><div>
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +112,60 @@
                                     </div>
                                 </div>
                             </div>
+                            <div style="margin-top: -9px;" ng-switch="selectedReservation.Type">
+                                <div ng-switch-when="1">
+                                    <div ng-show="itemForm.Direction_Type" class="row">
+                                        <div class="col-50 key">
+                                            <span class="">{{'Direction_Type'|translate}}</span>
+                                        </div>
+                                        <div class="col-50 value">
+                                            <span class=""> {{itemForm.Direction_Type | translate }}</span><div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div ng-switch-when="2">
+
+                                        <div ng-show="itemForm.Meeting_Address" class="row">
+                                            <div class="col-50 key">
+                                                <span class="">{{'Meeting_Address'|translate}}</span>
+                                            </div>
+                                            <div class="col-50 value">
+                                                <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-show="itemForm.Service_Options" class="row">
+                                            <div class="col-50 key">
+                                                <span class="">{{'Service_Options'|translate}}</span>
+                                            </div>
+                                            <div class="col-80 value">
+                                                <div ng-repeat="serviceItem in itemForm.Service_Options" class="">- {{serviceItem._name| translate }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="3">
+                                        <div ng-show="itemForm.Meeting_Address" class="row">
+                                            <div class="col-50 key">
+                                                <span class="">{{'Meeting_Address'|translate}}</span>
+                                            </div>
+                                            <div class="col-50 value">
+                                                <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-show="itemForm.Stairs_Assistance_Options" class="row">
+                                            <div class="col-50 key">
+                                                <span class="">{{'Stairs_Assistance_Options'|translate}}</span>
+                                            </div>
+                                            <div class="col-50 value">
+                                                <span class=""> {{itemForm.Stairs_Assistance_Options | translate }}</span><div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                         </div>
                     </div>
@@ -134,56 +213,57 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+            </div>
+            <!--<div class="col text-center" ng-class="{'pending-color':selectedReservation.Status=='1','accepted-color':selectedReservation.Status=='2','ignored-color':selectedReservation.Status=='3'}" >
+
+                    {{'Reservation_Status' | translate}} :
+                    <span ng-switch="selectedReservation.Status">
+                        <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
+                        <span  ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
+                        <span  ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                    </span>
                 </div>
-                <!--<div class="col text-center" ng-class="{'pending-color':selectedReservation.Status=='1','accepted-color':selectedReservation.Status=='2','ignored-color':selectedReservation.Status=='3'}" >
-
-                {{'Reservation_Status' | translate}} :
-                <span ng-switch="selectedReservation.Status">
-                    <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
-                    <span  ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
-                    <span  ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
-                </span>
             </div>
+            <div class="row icon-row">
+                <div class="col">
+
+                    <form class="reservation-form" name="Step1Form">
+
+                        <div class="list">
+
+                            <label class="item item-input panel item-floating-label">
+                                <span class="input-label">{{'Provider_Name'|translate}} :</span>
+                                <input type="text" name="Provider_Name" ng-model="itemForm.Provider_Name" disabled>
+                            </label>
+
+                            <label class="item item-input panel item-floating-label">
+                                <span class="input-label">{{'Provider_Phone_Number'|translate}} :</span>
+                                <input type="text" name="Provider_Phone_Number" ng-model="itemForm.Provider_Phone_Number" disabled>
+                            </label>
+
+                                <label class="item item-input panel item-floating-label col-45  date-time">
+                                    <span class="input-label">{{'Date'|translate}} :</span>
+                                    <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" disabled name="Date" ng-model="itemForm.Date">
+                                </label>
+                                <label class="item item-input panel item-floating-label col-45  date-time">
+                                    <span class="input-label">{{'Time'|translate}} :</span>
+                                    <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" disabled name="Time" ng-model="itemForm.Time">
+                                </label>
+
+                        </div>
+
+                        <button ng-click="backToReservationsList()" class="button button-full next-btn button-positive">
+                            <span class="">{{'Back' | translate}}</span>
+                        </button>
+
+                    </form>
+                </div>-->
+
         </div>
-        <div class="row icon-row">
-            <div class="col">
-
-                <form class="reservation-form" name="Step1Form">
-
-                    <div class="list">
-
-                        <label class="item item-input panel item-floating-label">
-                            <span class="input-label">{{'Provider_Name'|translate}} :</span>
-                            <input type="text" name="Provider_Name" ng-model="itemForm.Provider_Name" disabled>
-                        </label>
-
-                        <label class="item item-input panel item-floating-label">
-                            <span class="input-label">{{'Provider_Phone_Number'|translate}} :</span>
-                            <input type="text" name="Provider_Phone_Number" ng-model="itemForm.Provider_Phone_Number" disabled>
-                        </label>
-
-                            <label class="item item-input panel item-floating-label col-45  date-time">
-                                <span class="input-label">{{'Date'|translate}} :</span>
-                                <input style="text-align:center" placeholder="{{'Date'|translate}}" type="text" disabled name="Date" ng-model="itemForm.Date">
-                            </label>
-                            <label class="item item-input panel item-floating-label col-45  date-time">
-                                <span class="input-label">{{'Time'|translate}} :</span>
-                                <input style="text-align:center" placeholder="{{'Time'|translate}}" type="text" disabled name="Time" ng-model="itemForm.Time">
-                            </label>
-
-                    </div>
-
-                    <button ng-click="backToReservationsList()" class="button button-full next-btn button-positive">
-                        <span class="">{{'Back' | translate}}</span>
-                    </button>
-
-                </form>
-            </div>-->
-
-            </div>
         <button ng-click="backToReservationsList()" class="button button-full next-btn button-positive reservation-status-btn">
             <span class="">{{'Back' | translate}}</span>
         </button>

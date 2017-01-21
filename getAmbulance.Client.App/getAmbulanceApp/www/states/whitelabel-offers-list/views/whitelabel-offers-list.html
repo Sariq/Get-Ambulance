@@ -22,11 +22,11 @@
               </div>
              </div>
           
-          <div ng-show="isSelected">
-              <div class="row">
+          <div ng-show="isSelected && showTyp">
+              <div class="row" >
                   <div class="col-100">
                       <div>
-                          <div  ng-show="showTyp" class="item item-input panel item-floating-label " style="color:black;border-radius: 30px;max-height: 45px;padding: 0;">
+                          <div   class="item item-input panel item-floating-label " style="color:black;border-radius: 30px;max-height: 45px;padding: 0;">
                               <span class="input-label has-input">{{item.name|translate}}</span>
                               <div class="row" style="min-height: 45px;max-height: 45px;">
                                   <div class="col-33 " style="width:55%;vertical-align: middle;  margin: auto;   ">

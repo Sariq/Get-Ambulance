@@ -112,6 +112,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         var reservation = {};
         var Reservation_Form = localStorageService.get('reservationFormData');
         reservation.WhiteLabel_ID = self.getWhiteLabelOffer().whiteLabelid;
+        reservation.Price = self.getWhiteLabelOffer().price;
         reservation.Client_ID = authService.getUserProfile()._id;
         reservation.Type = localStorageService.get('reservationType');
         reservation.Status = "1";

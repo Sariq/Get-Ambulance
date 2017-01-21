@@ -53,6 +53,7 @@ namespace getAmbulance.Reservation
                 dynamic jsonObj = jsonData;
                 reservation.WhiteLabel_ID = jsonObj.WhiteLabel_ID.Value;
                 reservation.Client_ID = jsonObj.Client_ID.Value;
+                reservation.Price = (int)jsonObj.Price.Value;
                 reservation.Type = jsonObj.Type.Value;
                 reservation.Status= jsonObj.Status.Value;
                 reservation.Full_Name= jsonObj.Full_Name.Value;

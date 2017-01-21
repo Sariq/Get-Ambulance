@@ -42,18 +42,21 @@
   "Service_Options": "סוגי שירות",
   "Medical_Examination": "בדיקה",
   "Shower_Help": "מקלחת",
+    "Shower": "מקלחת",
   "Stand_And_Move_Help": "עזרה בהרמה או העברה",
+    "Stand_And_Move": "עזרה בהרמה או העברה",
   "Supervision": "השגחה",
   "Shopping_Help": "קניות",
+   "Shopping": "קניות",
   "Stairs_Assistance_Options": "צורך העזרה במדרגות",
   "Stairs_Up": "העלאה",
   "Stairs_Down": "הורדה",
   "Stairs_Both": "העלאה והורדה",
   "Private_Ambulance_Reservation": "הזמנת אמבולנס פרטי",
-  "Medical_Therapist_Reservation": "הזמנת מלווה",
+
   "Stairs_AssistanceReservation": "הזמנת עזרה במדרגות",
   "Accept_Terms_And_Conditions": "מאשר/ת",
-  "Header_Info_Common_Text": "ניתן להזמין אמבולנס פרטי בזמן שתרצה ומלווה לכל מטרה שתרצה וגם להזמין עזרה בהעלאה והורדה במדרגות ולחצן מצוקה",
+  "Header_Info_Common_Text": " הזמנת שירותי אמבולנסים פרטיים, עליה והורדה במדרגות, ליווי בבתי החולים ובמרכזים רפואיים.",
   "Confirm_Phone_Number": "אישר מספר נייד",
   "Is_This_Your_Phone_Number": "זה המספר שלך",
   "I_Confirm": "מאשר/ת",
@@ -92,7 +95,18 @@
   "Home_Page": "דף הבית",
   "Insert_Code_Error_MinMax": "הכנס קוד בן 4 ספרות",
   "Invalid_Code": "הקוד שגוי",
-  "Update_Profile": "עדכן פרטים"
+  "Update_Profile": "עדכן פרטים",
+  "Reservation": "הזמנה",
+  "Reservation_Type": "סוג הזמנה",
+  "Ambulance_Reservation": "הזמנת אמבולנס פרטי",
+  "Medical_Therapist_Reservation": "הזמנת מלווה",
+  "Stairs_Assistance_Reservation": "העלאה / הורדה במדרגות",
+  "Emergency_Button": "לחצן מצוקה",
+  "Short_Ambulance_Reservation": "אמבולנס פרטי",
+  "Short_Medical_Therapist_Reservation": "מלווה",
+  "Short_Stairs_Assistance_Reservation": "עזרה במדרגות",
+  "Name": "שם",
+  "Price": "מחיר"
                 
 
 

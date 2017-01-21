@@ -26,13 +26,16 @@ var dateTimeCmp = function ($scope, $filter) {
         ctrl.time = ctrl.form.Time;
         $scope.$apply();
     }
+    ctrl.date = $filter('date')(new Date(), "dd/MM/y");
     function onDateSuccess(date) {
+       
         if (ctrl.notFormatedDate) {
             ctrl.form.Date = date;  // for type="date" binding
         } else {
             ctrl.form.Date = $filter('date')(date, "dd/MM/y");  // for type="date" binding
+
         }
-        ctrl.date=ctrl.form.Date;
+        ctrl.date= $filter('date')(new Date(), "dd/MM/y");
         $scope.$apply();
     }
 
