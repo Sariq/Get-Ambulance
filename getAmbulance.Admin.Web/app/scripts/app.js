@@ -178,7 +178,7 @@ angular
     if (!authService.authentication.isAuth) {
         $state.go('login')
     }
-    WhiteLabelService.updateSupportedServicesOnRoot();
+   
     console.log(authService)
 }]);
 

@@ -67,6 +67,7 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
                     console.log(_authentication.WhiteLabelData);
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
                 localStorageService.set('authorizationData', authorizationData);
+                WhiteLabelService.updateSupportedServicesOnRoot();
                 deferred.resolve(response);
             });
             } else {
