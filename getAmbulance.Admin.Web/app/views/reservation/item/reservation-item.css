@@ -1,3 +1,47 @@
-.resrvation-item .pad-top{
-        padding-top: 5%;
+.resrvation-item .pad-top {
+    padding-top: 5%;
 }
+
+.resrvation-item .status {
+    text-align: center;
+    display: block;
+}
+
+.resrvation-item .opend-date {
+    float: left;
+}
+
+.resrvation-item .first-row {
+    padding: 0 1% 0 2%;
+}
+
+.pad-r-2 {
+    padding-right: 2%;
+}
+
+.resrvation-item .client-data {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+    .resrvation-item .client-data .row {
+        padding-bottom: 20px;
+    }
+
+.resrvation-item .key {
+    white-space: nowrap;
+}
+
+.resrvation-item .btn-container {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top:7%;
+}
+
+    .resrvation-item .btn-container button {
+        width: 15%;
+        height: 42px;
+            
+
+    }

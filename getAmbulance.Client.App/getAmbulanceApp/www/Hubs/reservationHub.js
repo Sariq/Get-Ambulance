@@ -33,7 +33,8 @@
                 if (!reservationId) {
                     reservationId = 111;
                 }
-               // alert("reservati{onAccepted - " + reservationId)
+                // alert("reservati{onAccepted - " + reservationId)
+                $rootScope.$broadcast('update-reservations-list');
                 $cordovaLocalNotification.schedule({
                                 id: 1,
                                 title: 'ההזמנה התקבלה',
@@ -44,7 +45,7 @@
                             }).then(function (result) {
                                 alert(reservationId)
                             });
-                $rootScope.$broadcast('update-reservations-list');
+  
                // $rootScope.$broadcast('update-reservations-list');
             }
             

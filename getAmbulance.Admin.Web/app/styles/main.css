@@ -216,15 +216,15 @@ body {
 }
 
 .pending-color {
-    color: #efad4d;
+    color: #efad4d!important;
 }
 
 .ignored-color {
-    color: #e84e4e;
+    color: #e84e4e!important;
 }
 
 .accepted-color {
-    color: #6ab66b;
+    color: #6ab66b!important;
 }
 
 .btn:focus, .btn:hover, .btn:active:focus, .btn.active:focus {
@@ -250,6 +250,38 @@ body {
     margin: 8px;
     width: 100%;
 }
+.red-btn {
+    background-color: #f45b63;
+    color: white;
+    border-radius: 40px;
+    margin: 8px;
+    width: 100%;
+}
+
 .ngdialog.ngdialog-theme-default .ngdialog-content{
     width:35%!important
+}
+
+.inner-div .div-head-blue{
+    background-color:#54a6de!important;
+    color:white;
+    min-height:40px;
+
+}
+
+.inner-div .div-head-default{
+    color:black;
+        padding: 1%;
+    min-height:40px;
+      
+}
+
+.inner-div{
+        margin-bottom: 5px;
+    border-radius: 5px 5px 0 0px;
+
+   
+}
+.font-large{
+      font-size: large;
 }

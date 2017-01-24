@@ -49,6 +49,7 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
             var endTime = new Date(value._date);
             endTime.setMinutes(endTime.getMinutes() + 5);
             ctrl.tableData.push({
+                Client_ID:value.Client_ID,
                 Status: value.Status,
                 Type: value.Type,
                 Reservation_Number: value.Reservation_Number,

@@ -1,21 +1,315 @@
-﻿<!--<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">{{'הזמנת אמבולנס' | translate}}</div>
-            <div class="panel-body">{{reservation}}</div>
-        </div>
-    </div>-->
-    <!-- /.col-lg-12 -->
-<!--</div>-->
+﻿<div class="resrvation-item inner-div">
 
-<div class="resrvation-item ">
+
+    <div class="row ">
+
+
+        <div class="first-row font-large">
+
+
+            <div class="col-lg-4">
+                <div class="div-head-default items-align-center">
+                    {{'Reservation_Number_Short' | translate}} :  {{reservation.Reservation_Number}}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="div-head-default items-align-center status" ng-class="{'pending-color':reservation.Status=='1','accepted-color':reservation.Status=='2','ignored-color':reservation.Status=='3'}">
+                    {{'Status' | translate}} : <span ng-switch="reservation.Status">
+                        <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
+                        <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
+                        <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="div-head-default items-align-center opend-date">
+                    {{'Opend_Date_Short' | translate}} : {{reservation._date | date :"dd/MM/yy" }} {{reservation._date | date :"HH:mm" }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row ">
+        <div class="col-lg-12 ">
+            <div class="div-head-blue items-align-center pad-r-2 ">
+                {{'Client_Data' | translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-lg-12 ">
+            <div class="pad-r-2 client-data">
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{'Full_Name' | translate}} :
+                    </div>
+                    <div class="col-lg-4">
+                        {{reservation.Full_Name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{'Id_Number' | translate}} :
+                    </div>
+                    <div class="col-lg-4">
+                        {{reservation.Id_Number}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{'Phone_Number' | translate}} :
+                    </div>
+                    <div class="col-lg-4">
+                        {{reservation.Phone_Number}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{'Age' | translate}} :
+                    </div>
+                    <div class="col-lg-4">
+                        {{reservation.Age}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-lg-12 ">
+            <div class="div-head-blue items-align-center pad-r-2 ">
+                {{'Call_Data' | translate}}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row " style="min-height: 175px;">
+        <div class="pad-r-2 client-data">
+            <div class="col-lg-3 ">
+                <div ng-switch="reservation.Type">
+                    <div ng-show="reservation.Type" class="row">
+                        <div class="col-lg-6 key">
+                            <span class="">{{'Reservation_Type'|translate}} :</span>
+                        </div>
+                        <div class="col-lg-6 value">
+                            <span ng-switch="reservation.Type">
+                                <span ng-switch-when="1">{{'Short_Ambulance_Reservation' | translate}}</span>
+                                <span ng-switch-when="2">{{'Short_Medical_Therapist_Reservation' | translate}}</span>
+                                <span ng-switch-when="3">{{'Short_Stairs_Assistance_Reservation' | translate}}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div ng-show="itemForm.Date" class="row">
+                        <div class="col-lg-6 key">
+                            <span class="">{{'Date'|translate}} :</span>
+                        </div>
+                        <div class="col-lg-6 value">
+                            <span class=""> {{itemForm.Date | date : "dd/MM/y"}}</span><div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="itemForm.Time" class="row">
+                        <div class="col-lg-6 key">
+                            <span class="">{{'Time'|translate}} :</span>
+                        </div>
+                        <div class="col-lg-6 value">
+                            <span class=""> {{itemForm.Time}}</span><div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-switch-when="1">
+                      
+                     
+                        <div ng-show="itemForm.From_Address" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'From_Address'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.From_Address}}</span>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.To_Address" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'To_Address'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.To_Address}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Ambulance_Type" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Ambulance_Type'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Ambulance_Type | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                      <div ng-switch-when="2">
+                        <div ng-show="itemForm.Meeting_Address" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Meeting_Address'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-switch-when="3">
+                        <div ng-show="itemForm.Meeting_Address" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Meeting_Address'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 ">
+                <div ng-switch="reservation.Type">
+                    <div ng-switch-when="1">
+                   
+                        <div ng-show="itemForm.Weight" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Weight'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Weight}}</span>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Need_Help_With_Stairs" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Need_Help_With_Stairs'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Need_Help_With_Stairs | translate }}</span>
+                            </div>
+                        </div>
+                        <!--<div ng-show="itemForm.distance" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Distance'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.distance}}</span><div>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+
+                    <div ng-switch-when="2">
+                        <div ng-show="itemForm.Therapist_Stayig_Time" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Therapist_Stayig_Time'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Therapist_Stayig_Time | translate }} {{'Hours'|translate}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Current_Status" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Current_Status'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Current_Status | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Weight" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Weight'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Weight | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-switch-when="3">
+                        <div ng-show="itemForm.Current_Status" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Current_Status'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Current_Status | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Stairs_Assistance_Options" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Stairs_Assistance_Options'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Stairs_Assistance_Options | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Weight" class="row">
+                            <div class="col-lg-6 key">
+                                <span class="">{{'Weight'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6 value">
+                                <span class=""> {{itemForm.Weight | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{'פרטי הזמנה' | translate}}</h1>
+            <div class="btn-container">
+                <button class="btn green-btn">{{'End_Reservation' | translate}}</button>
+                <button class="btn red-btn">{{'Cancel_Reservation' | translate}}</button>
+            </div>
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad pad-top">
+    <!--<div class="col-lg-6 ">
+        <div class="pad-r-2 client-data" >
+            <div class="row"  ng-repeat="item in AdditionalProperties.firstCol" >
+                <div class="col-lg-6">
+                  {{item._name | translate}}:
+                </div>
+                <div class="col-lg-6">
+                   {{item._value}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 ">
+        <div class="pad-r-2 client-data">
+            <div class="row" ng-repeat="item in AdditionalProperties.secondCol">
+                <div class="col-lg-6">
+                    {{item._name | translate}}:
+                </div>
+                <div ng-if="item._value!=typeOf.array" class="col-lg-6">
+                    {{item._value}}
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad pad-top">
 
 
         <div class="panel panel-info">
@@ -39,7 +333,7 @@
                                     <td>{{item._name | translate}}:</td>
                                     <td>{{item._value}}</td>
                                 </tr>
-                            
+
 
                             </tbody>
                         </table>
@@ -57,5 +351,5 @@
             </div>
 
         </div>
-    </div>
+    </div>-->
 </div>

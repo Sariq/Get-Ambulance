@@ -9,8 +9,12 @@ angular.module('starter.controllers').service('ReservationService', function ($f
 
     self.mergeToFormData = function (formData) {
         
-            if (localStorageService.get('reservationFormData'))
-            self.formData=localStorageService.get('reservationFormData');
+        if (localStorageService.get('reservationFormData')) {
+            self.formData = localStorageService.get('reservationFormData');
+        } else {
+            self.formData = {};
+        }
+            
  
         self.formData = angular.extend(self.formData, formData);
         localStorageService.set('reservationFormData', self.formData);

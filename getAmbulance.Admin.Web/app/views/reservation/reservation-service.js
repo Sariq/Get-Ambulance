@@ -39,6 +39,14 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         return $http.post(serviceBase + 'api/Reservation/AcceptReservation', data);
     }
 
+    var _updateReservationStatus = function (reservation) {
+        var data = {
+            reservationId: reservation._id,
+            Client_Id: reservation.Client_ID
+        }
+        return $http.post(serviceBase + 'api/Reservation/AcceptReservation', data);
+    }
+
     var _setSelectedReservationId = function (id) {
         localStorageService.set('selectedReservationId', id);
     }
