@@ -4,3 +4,28 @@
 
 /getAmbulance.Client.App/getAmbulanceApp/plugins
 
+/getAmbulance.Admin.Web/app/bower_components/angular
+/getAmbulance.Admin.Web/app/bower_components/angular-animate
+/getAmbulance.Admin.Web/app/bower_components/angular-bootstrap
+/getAmbulance.Admin.Web/app/bower_components/angular-chart.js
+/getAmbulance.Admin.Web/app/bower_components/angular-cookies
+/getAmbulance.Admin.Web/app/bower_components/angular-loading-bar
+/getAmbulance.Admin.Web/app/bower_components/angular-local-storage
+/getAmbulance.Admin.Web/app/bower_components/angular-mocks
+/getAmbulance.Admin.Web/app/bower_components/angular-signalr-hub
+/getAmbulance.Admin.Web/app/bower_components/angular-scenario
+/getAmbulance.Admin.Web/app/bower_components/angular-sanitize
+/getAmbulance.Admin.Web/app/bower_components/angular-route
+/getAmbulance.Admin.Web/app/bower_components/angular-resource
+/getAmbulance.Admin.Web/app/bower_components/es5-shim
+/getAmbulance.Admin.Web/app/bower_components/Chart.js
+/getAmbulance.Admin.Web/app/bower_components/bootstrap
+/getAmbulance.Admin.Web/app/bower_components/angular-ui-router
+/getAmbulance.Admin.Web/app/bower_components/angular-touch
+/getAmbulance.Admin.Web/app/bower_components/signalr
+/getAmbulance.Admin.Web/app/bower_components/oclazyload
+/getAmbulance.Admin.Web/app/bower_components/metisMenu
+/getAmbulance.Admin.Web/app/bower_components/json3
+/getAmbulance.Admin.Web/app/bower_components/jquery.signalR-2.0.0.js
+/getAmbulance.Admin.Web/app/bower_components/jquery
+/getAmbulance.Admin.Web/app/bower_components/font-awesome
