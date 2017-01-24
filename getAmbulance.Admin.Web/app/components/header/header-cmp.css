@@ -19,5 +19,6 @@
     margin:auto;
 }
 .nav-header .img-container{
-    width: 58%;
+       width: 50%;
+    float: left;
 }

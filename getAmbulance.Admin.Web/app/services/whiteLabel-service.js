@@ -20,10 +20,12 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
         return localStorageService.get('WhiteLabelData');
     };
     var _updateSupportedServicesOnRoot = function () {
+        if (_getWhiteLabelData()){
         var supportedServices = _getWhiteLabelData().supportedServices;
         $rootScope.isAmbulanceCatSup = supportedServices.indexOf("1") > -1;
         $rootScope.isMedicalTherapistCatSup = supportedServices.indexOf("2") > -1;
         $rootScope.isStairsAssistanceCatSup = supportedServices.indexOf("3") > -1;
+        }
     };
 
     WhiteLabelServiceFactory.updateWhiteLabelIsOnline = _updateWhiteLabelIsOnline;
