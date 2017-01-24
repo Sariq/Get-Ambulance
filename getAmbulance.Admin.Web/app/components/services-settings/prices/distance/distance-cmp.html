@@ -1,36 +1,32 @@
 ﻿
 
 <div class="row distance-price">
-    <div class="col-lg-6 items">
-        <div class="row item-header">
+    <div class="col-lg-12 items">
+        <div class="row item-header min-height-40 items-align-center">
             <div class="col-lg-10">
-              
-                    {{'drive_price_fom_km' | translate}}
-          
+                {{'drive_price_fom_km' | translate}}
             </div>
             <div class="col-lg-2">
                 {{'delete' | translate}}
             </div>
         </div>
         <div class="row row-eq-height inner ">
-            <div class="col-lg-3 first-block column">
-      <div>
-          {{'drive_price_fom_km' | translate}}
 
-      </div>
-    
-            </div>
-            <div class="col-lg-3 column value-box">
+            <div class="col-lg-3 first-block column">
                 <div>
-                    <span>ק"מ</span>
+                    {{'drive_price_fom_km' | translate}}
                 </div>
+            </div>
+
+            <div class="col-lg-3 column value-box">
+
                 <div class="input-group">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="$ctrl.myValue==0" data-type="minus" ng-click="$ctrl.myValue=$ctrl.myValue-1">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
-                    <div>
+                    <div class="input-km-text">
                         <input type="text" name="quant[1]" class="value-input" class="form-control input-number" ng-model="$ctrl.myValue" min="1" max="10">
                     </div>
                     <span class="input-group-btn">

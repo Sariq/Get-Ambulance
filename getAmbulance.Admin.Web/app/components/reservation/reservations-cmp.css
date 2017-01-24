@@ -14,3 +14,34 @@
       padding: 15px!important;
 
   }
+
+       .reservations-table-title{
+             margin-bottom: 5px;
+    border-radius: 5px 5px 0 0px;
+    font-size:large;
+    padding: 1%;
+       }
+
+       .show-reservation-btn{
+               background-color: #57c059;
+    color: white;
+    border-radius: 40px;
+    margin: 8px;
+    width: 100%;
+       }
+       
+.reservations-table-data .inner-td{
+      vertical-align: middle;
+}
+.th-title{
+    color:#b1b3c5;
+    min-width:20%;
+}
+
+.ng-table-pager{
+        display: inline-block;
+    width: 100%;
+}
+.ng-table-pagination{
+    float:left;
+}

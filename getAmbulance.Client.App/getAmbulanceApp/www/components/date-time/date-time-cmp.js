@@ -9,13 +9,17 @@ var dateTimeCmp = function ($scope, $filter) {
         is24Hour: true,
         titleText: 'בחר שעה'
     };
-
+    if (!ctrl.dateTitleText) {
+        ctrl.dateTitleText='Choose_Title'
+    }
     var dateOptions = {
 
         date: new Date(),
         mode: 'date',
         androidTheme: 2,
-        titleText: 'בחר תאריך'
+        titleText: 'בחר תאריך',
+        minDate: new Date().getTime(),
+        allowOldDates:false
     };
     ctrl.form = {};
 
@@ -56,7 +60,8 @@ angular.module('starter.controllers').component('dateTimeCmp', {
         time: '=',
         dateOnly: '@',
         timeOnly: '@',
-        notFormatedDate:'@'
+        notFormatedDate: '@',
+        dateTitleText:'@'
     },
     templateUrl: 'components/date-time/date-time-cmp.html',
     controller: dateTimeCmp

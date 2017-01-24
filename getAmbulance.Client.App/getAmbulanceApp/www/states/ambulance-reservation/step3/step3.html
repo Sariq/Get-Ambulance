@@ -19,9 +19,9 @@
                 <span id="Direction_Type"></span>
 
                 <label class="item item-input panel item-floating-label select-style">
-                    <span class="input-label" ng-class="{'has-input': Step3Form.Weight.$dirty}">{{'Weight'|translate}} </span>
+                    <span class="input-label" ng-class="{'has-input': Step3Form.Weight.$dirty}">{{'Weight'|translate}} ({{'KG' | translate}})</span>
                     <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Weight'|translate}}">
-                        <option value="" hidden selected>{{'Weight'|translate}}</option>
+                        <option value="" hidden selected>{{'Weight'|translate}} ({{'KG' | translate}})</option>
                         <option value="90">{{'till'|translate}} 90</option>
                         <option value="121">91-121</option>
                         <option value="122">{{'From_And_More'|translate}} 121 {{'And_More'|translate}}</option>

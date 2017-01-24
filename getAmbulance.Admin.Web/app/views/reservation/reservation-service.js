@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', '$rootScope', '$q', function ($http, ngAuthSettings, WhiteLabelService, localStorageService, $rootScope, $q) {
+angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', '$rootScope', '$q', '$filter', function ($http, ngAuthSettings, WhiteLabelService, localStorageService, $rootScope, $q, $filter) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -59,6 +59,24 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     var _getReservationsListLocal = function () {
         return self.reservationsListLocal;
     }
+    var _getStatusText = function (status) {
+        switch(status){
+            case '1':
+                return $filter('translate')('Reservation_Pending');
+                break
+            case '2':
+                return $filter('translate')('Reservation_Accepted');
+                break
+            case '3':
+                return $filter('translate')('Reservation_Ignored'); 
+                break
+            
+        }
+    }
+    var _getValueByKey = function (dataObject, key) {
+        var item = $filter('filter')(dataObject, { _name: key }, true)[0]._value;
+        return item;
+    }
     
     ReservationServiceFactory.getReservations = _getReservations;
     ReservationServiceFactory.getReservationById = _getReservationById;
@@ -69,6 +87,8 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     ReservationServiceFactory.getSelectedReservation = _getSelectedReservation;
     ReservationServiceFactory.setReservationsListLocal = _setReservationsListLocal;
     ReservationServiceFactory.getReservationsListLocal = _getReservationsListLocal;
+    ReservationServiceFactory.getStatusText = _getStatusText;
+    ReservationServiceFactory.getValueByKey = _getValueByKey;
     return ReservationServiceFactory;
 
 }]);

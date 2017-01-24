@@ -1,71 +1,73 @@
 ﻿<ion-side-menus enable-menu-with-back-views="true">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable" back-button-icon="ion-arrow-left-c">
-      <ion-nav-back-button side="left">
-      </ion-nav-back-button>
-
-      <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
-
-  <ion-side-menu dir="rtl" side="right">
-    <ion-header-bar class="bar-stable side_menu_header">
-        <div class="margin-auto" style="text-align: center;">
-            <img src="../www/img/user.svg" style="width:30%;padding: 10px;" />
-        </div>
-        <div class=" margin-auto" style="text-align: center;color:white">
-            <div class="">
-                <span class="font-bold"> {{userProfile.Full_Name}}</span>
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable" back-button-icon="ion-arrow-left-c">
+            <ion-nav-back-button side="left">
+            </ion-nav-back-button>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu dir="rtl" side="right">
+        <ion-header-bar class="bar-stable side_menu_header">
+            <div class="margin-auto" style="text-align: center;">
+                <img src="../www/img/user.svg" style="width:30%;padding: 10px;" />
             </div>
-        </div>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-          <aside>
-              <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.home">
-                  <div class="div-flex">
-                      <div><img src="../www/img/home.svg" style="width: 22px;margin-left: 10px;" /></div>
-                      <div>{{'Home_Page' | translate}}</div>
-                  </div>
-              </ion-item>
-              <!--<ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.user-profile">
-                  <div class="div-flex">
-                      <div><img src="../www/img/user.svg" style="width: 22px;margin-left: 10px;" /></div>
-                      <div>{{'Update_Profile' | translate}}</div>
-                  </div>
-              </ion-item>-->
-             
-              <!--<ion-item menu-toggle="right" ui-sref="app.map">
-                  מפה
-              </ion-item>
-              <ion-item menu-toggle="right"  ui-sref="app.facebook">
-                  facebook
-              </ion-item>-->
-              <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.reservation-list ">
-                  <div class="div-flex">
-                      <div><img src="../www/img/reservations.svg" style="width: 22px;margin-left: 10px;" /></div>
-                      <div>{{'Reservations_List' | translate}}</div>
-                  </div>
-</ion-item>
-             
-              <ion-item menu-toggle="right" ng-click="logOut()">
-                  {{'LogOut' | translate}}
-              </ion-item>
-          </aside>
-        <!--<ion-item menu-toggle="right" href="#/app/map">
-          Search
-        </ion-item>
-        <ion-item menu-toggle="right" href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-toggle="right" href="#/app/playlist">
-          Playlists
-        </ion-item>-->
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+            <div class=" margin-auto" style="text-align: center;color:white">
+                <div class="">
+                    <span class="font-bold"> {{userProfile.Full_Name}}</span>
+                </div>
+            </div>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list>
+                <aside>
+                    <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.home">
+                        <div class="div-flex">
+                            <div><img src="../www/img/home.svg" style="width: 22px;margin-left: 10px;" /></div>
+                            <div>{{'Home_Page' | translate}}</div>
+                        </div>
+                    </ion-item>
+                    <!--<ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.user-profile">
+                        <div class="div-flex">
+                            <div><img src="../www/img/user.svg" style="width: 22px;margin-left: 10px;" /></div>
+                            <div>{{'Update_Profile' | translate}}</div>
+                        </div>
+                    </ion-item>-->
+                    <!--<ion-item menu-toggle="right" ui-sref="app.map">
+                        מפה
+                    </ion-item>
+                    <ion-item menu-toggle="right"  ui-sref="app.facebook">
+                        facebook
+                    </ion-item>-->
+                    <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.reservation-list ">
+                        <div class="div-flex">
+                            <div><img src="../www/img/reservations.svg" style="width: 22px;margin-left: 10px;" /></div>
+                            <div>{{'Reservations_List' | translate}}</div>
+                        </div>
+                    </ion-item>
+                    <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.bug-report">
+                        <div class="div-flex">
+                            <div><img src="../www/img/reservations.svg" style="width: 22px;margin-left: 10px;" /></div>
+                            <div>{{'Bug_Report' | translate}}</div>
+                        </div>
+                    </ion-item>
+                 
+                    <ion-item menu-toggle="right" ng-click="logOut()">
+                        {{'LogOut' | translate}}
+                    </ion-item>
+                </aside>
+                <!--<ion-item menu-toggle="right" href="#/app/map">
+                  Search
+                </ion-item>
+                <ion-item menu-toggle="right" href="#/app/browse">
+                  Browse
+                </ion-item>
+                <ion-item menu-toggle="right" href="#/app/playlist">
+                  Playlists
+                </ion-item>-->
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
 </ion-side-menus>

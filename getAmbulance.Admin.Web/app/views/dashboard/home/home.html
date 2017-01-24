@@ -1,25 +1,21 @@
 ﻿<div>
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">{{'דף ראשי' | translate}}</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
-    <div class="row">
+
+    <div class="row services-boxes">
         
       
 
         <!--<stats number="18" comments="{{'הזמנות מלווים' | translate}}" colour="yellow" type="heartbeat" img="doctor" goto="dashboard.reservation-item"></stats>-->
-        <stats ng-show="isStairsAssistanceCatSup" number="{{reservationsListFilterd['3'].length}}" comments="{{'הזמנות העלאה/הורדה מדרגות' | translate}}" colour="red" img="stairs" type="wheelchair"></stats>
-        <stats ng-show="isMedicalTherapistCatSup" number="{{reservationsListFilterd['2'].length}}" comments="{{'הזמנות מטפלים' | translate}}" colour="green" type="user-md" img="doctor"></stats>
-        <stats ng-show="isAmbulanceCatSup" number="{{reservationsListFilterd['1'].length}}" comments="{{'הזמנות אמבולנס' | translate}}" colour="primary" type="ambulance " img="ambulance" goto="dashboard.ambulance-list"></stats>
+        <stats ng-show="isAmbulanceCatSup" number="{{reservationsListFilterd['1'].length}}" comments="{{'הזמנות אמבולנס' | translate}}" colour="primary" type="ambulance " img-width="60" img="ambulance" goto="dashboard.ambulance-list"></stats>
+        <stats ng-show="isMedicalTherapistCatSup" number="{{reservationsListFilterd['2'].length}}" comments="{{'הזמנות מטפלים' | translate}}" colour="green" type="user-md" img-width="40" img="doctor"></stats>
+        <stats ng-show="isStairsAssistanceCatSup" number="{{reservationsListFilterd['3'].length}}" comments="{{'הזמנות העלאה/הורדה מדרגות' | translate}}" colour="red" img="stairs" img-width="40" type="wheelchair"></stats>
+        <stats ng-show="isMedicalTherapistCatSup" number="{{reservationsListFilterd['2'].length}}" comments="{{'הזמנות מטפלים' | translate}}" colour="green" type="user-md" img-width="40" img="doctor"></stats>
+
 
     </div>
     <!--<div ng-controller="ReservationCtrl"></div>-->
-
-    <reservations-cmp reservation-status="'1'"></reservations-cmp>
-
+    <div style="">
+        <reservations-cmp reservation-status="'0'"></reservations-cmp>
+    </div>
     <!-- /.panel -->
     <!--<div class="row">
         <div class="col-lg-8">+

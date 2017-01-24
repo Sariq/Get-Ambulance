@@ -147,7 +147,6 @@ angular.module('starter.controllers').service('ReservationService', function ($f
     self.getValueByKey = function (dataObject, key) {
         var item = $filter('filter')(dataObject, { _name: key }, true)[0]._value;
         return item;
-
     }
 })
 

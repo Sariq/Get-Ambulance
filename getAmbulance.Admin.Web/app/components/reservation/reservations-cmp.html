@@ -1,43 +1,39 @@
-﻿<div class="row">
+﻿<div class="row ">
     <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                {{'כל ההזמנות' | translate}}
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <div class="dataTable_wrapper">
-                    <table class="table table-striped table-bordered table-hover all-reservations" id="dataTables-example">
-                        <thead>
-                            <tr>
-                                <th>{{'מספר' | translate}}</th>
-                                <th>{{'סוג' | translate}}</th>
-                                <th>{{'סטטוס' | translate}}</th>
-                                <th>{{'תאריך יצירה' | translate}}</th>
-                                <th>{{'' | translate}}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd gradeX" ng-repeat="reservation in $ctrl.reservationsList">
-                                <td class="text">{{reservation.Reservation_Number}}</td>
-                                <td class="text">{{reservation.Type}}</td>
-                                <td class="text">{{reservation.Status}}</td>
-                               
-                                <td class="text">{{reservation._date}}</td>
-                                <td class="center showBtn"><button ng-click="$ctrl.acceptReservation(reservation)" class="btn btn-primary">{{'הצג'| translate}}</button></td>
-                        
-                            </tr>
-                          
+        <div class="inner-div reservations-table-title">
+           
+            {{'Active_Reservation' | translate}}
+            <table ng-table-dynamic="$ctrl.tableParams  with $ctrl.cols" class="table" show-filter="true">
 
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.table-responsive -->
+                <tr ng-repeat="row in $data " class="reservations-table-data">
+                    <td style="text-align:center;width:12%" class="inner-td">{{row['Reservation_Number']}}</td>
+                    <td style="text-align:center;width:12%" class="inner-td" ng-class="{'pending-color':row['Status']=='1','accepted-color':row['Status']=='2','ignored-color':row['Status']=='3'}">
+                        <span ng-switch="row['Status']">
+                            <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
+                            <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
+                            <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                        </span>
+                    </td>
+                    <td style="text-align:center;width:12%" class="inner-td">
+                        <span ng-switch="row['Type']">
+                            <span ng-switch-when="1">{{'Short_Ambulance_Reservation' | translate}}</span>
+                            <span ng-switch-when="2">{{'Short_Medical_Therapist_Reservation' | translate}}</span>
+                            <span ng-switch-when="3">{{'Short_Stairs_Assistance_Reservation' | translate}}</span>
+                        </span>
+                    </td>
+                    <td style="text-align:center;width:12%" class="inner-td">{{row['Date']}}</td>
+                    <td style="text-align:center;width:12%" class="inner-td">{{row['Time']}}</td>
+                    <td style="text-align:center;width:12%" class="inner-td">{{row['Price']}}</td>
+                    <td style="text-align:center;width:10%" class="inner-td"><timer start-time="row['startTime']" end-time="row['endTime']"> {{mminutes}}:{{sseconds}} </timer></td>
+                    <td style="text-align:center;width:10%" class="inner-td"><button ng-click="$ctrl.openConfirmReservationDialog(row)" class="btn show-reservation-btn">{{'Show'| translate}}</button></td>
+                </tr>
 
-            </div>
-            <!-- /.panel-body -->
+
+
+
+
+            </table>
         </div>
-        <!-- /.panel -->
+        </div>
     </div>
-    <!-- /.col-lg-12 -->
-</div>
+

@@ -302,6 +302,11 @@
     <Content Include="getAmbulanceApp\www\services\common-service.js" />
     <Content Include="getAmbulanceApp\www\services\whiteLabel-service.js" />
     <Content Include="getAmbulanceApp\www\services\tokensManagerService.js" />
+    <Content Include="getAmbulanceApp\www\states\bug-report\bug-report-service.js" />
+    <Content Include="getAmbulanceApp\www\states\bug-report\routes.js" />
+    <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.css" />
+    <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.html" />
+    <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.js" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\routes.js" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.css" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.html" />

@@ -7,6 +7,7 @@
     using Models;
     using MongoDB.Driver;
     using static WhiteLabel.WhiteLabelModel;
+    using static Bug_Report.BugReportModel;
     public class ApplicationIdentityContext : IDisposable
 	{
 		public static ApplicationIdentityContext Create()
@@ -25,14 +26,16 @@
             var whiteLabels = database.GetCollection<WhiteLabelEntity>("WhiteLabels");
             var whiteLabelUsers = database.GetCollection<WhiteLabelUser>("WhiteLabelUsers");
             var dbcounter = database.GetCollection<DBCounter>("counters");
-            return new ApplicationIdentityContext(users, clientUsers, roles, browserClients, refreshTokens, reservations, whiteLabels, whiteLabelUsers, dbcounter);
+            var bugReport = database.GetCollection<BugReportEntity>("BugReports");
+
+            return new ApplicationIdentityContext(users, clientUsers, roles, browserClients, refreshTokens, reservations, whiteLabels, whiteLabelUsers, dbcounter, bugReport);
 		}
         public ApplicationIdentityContext()
         {
             Create();
         }
 
-        private ApplicationIdentityContext(IMongoCollection<ApplicationUser> users,IMongoCollection<ApplicationClientUser> clientUsers, IMongoCollection<IdentityRole> roles, IMongoCollection<BrowserClient> clients, IMongoCollection<RefreshToken> refreshTokens, IMongoCollection<ReservationEntity>  reservations, IMongoCollection<WhiteLabelEntity> whiteLabels, IMongoCollection<WhiteLabelUser> whiteLabelUsers, IMongoCollection<DBCounter> dbcounter)
+        private ApplicationIdentityContext(IMongoCollection<ApplicationUser> users,IMongoCollection<ApplicationClientUser> clientUsers, IMongoCollection<IdentityRole> roles, IMongoCollection<BrowserClient> clients, IMongoCollection<RefreshToken> refreshTokens, IMongoCollection<ReservationEntity>  reservations, IMongoCollection<WhiteLabelEntity> whiteLabels, IMongoCollection<WhiteLabelUser> whiteLabelUsers, IMongoCollection<DBCounter> dbcounter, IMongoCollection<BugReportEntity> bugReport)
 		{
 			Users = users;
             ClientUsers = clientUsers;
@@ -43,6 +46,7 @@
             WhiteLabels = whiteLabels;
             WhiteLabelUsers = whiteLabelUsers;
             DBCounter= dbcounter;
+            BugReport = bugReport;
         }
         public IMongoCollection<ApplicationUser> Users { get; set; }
         public IMongoCollection<ApplicationClientUser> ClientUsers { get; set; }
@@ -53,7 +57,8 @@
         public IMongoCollection<WhiteLabelEntity> WhiteLabels { get; set; }
         public IMongoCollection<WhiteLabelUser> WhiteLabelUsers { get; set; }
         public IMongoCollection<DBCounter> DBCounter { get; set; }
-        
+        public IMongoCollection<BugReportEntity> BugReport { get; set; }
+
         public Task<List<IdentityRole>> AllRolesAsync()
 		{
 			return Roles.Find(r => true).ToListAsync();

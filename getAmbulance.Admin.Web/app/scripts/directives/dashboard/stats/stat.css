@@ -1,13 +1,39 @@
-.stat{
-
-    cursor:pointer;
+.stat {
+    cursor: pointer;
 }
 
-.stat a{
-    color: unset;
-    text-decoration: none;
+
+
+    .stat a {
+        color: unset;
+        text-decoration: none;
+    }
+
+    .stat .panel-heading {
+        padding: 10px 15px 0px 30px;
+    }
+
+
+
+.service-title {
+    margin-bottom: 5px;
+    border-radius: 5px 5px 0 0px;
+    text-align: center;
+    padding: 1px;
 }
 
-.stat .panel-heading{
-    padding: 10px 15px 0px 30px;
+.stat .cat-img{
+   padding: 5%;padding-bottom:0;padding-top: 7%;
+}
+.stat .stat-btn{
+    background-color:#57c059;color:white;border-radius:40px;margin: 8px;width: 55%;
+}
+.stat .reservations-numer{
+        font-weight: bold;
+    font-size: x-large;
+    min-height:34px;
+}
+
+.services-boxes{
+    margin-bottom:2%;
 }

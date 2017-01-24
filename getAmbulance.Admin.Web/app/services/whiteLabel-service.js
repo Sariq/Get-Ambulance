@@ -14,7 +14,7 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
     };
     var _setWhiteLabelData = function (data) {
         localStorageService.set('WhiteLabelData', data);
-        _updateSupportedCatShow()
+        _updateSupportedServicesOnRoot()
     };
     var _getWhiteLabelData = function () {
         return localStorageService.get('WhiteLabelData');

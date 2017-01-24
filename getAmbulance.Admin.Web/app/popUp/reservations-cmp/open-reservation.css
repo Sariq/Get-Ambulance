@@ -1,0 +1,22 @@
+.popUp .title{
+        text-align: center;
+    font-size: x-large;
+}
+.popUp hr{
+        border-top: 1px solid #cecece!important;
+        margin-top:5px;
+        font-weight: bold;
+}
+.popUp .btn-container{
+        text-align: center;
+}
+
+.popUp .btn-container button{
+        width:30%;
+            height: 42px;
+    font-size: large;
+}
+.popUp .dialogBodyText{
+        padding: 0 15% 5% 15%;
+    font-size: large;
+}

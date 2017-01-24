@@ -1,0 +1,28 @@
+﻿<ion-view  view-title="{{'Bug_Report' | translate}}">
+    <ion-content class="bug-report">
+
+       
+        <info-header-cmp info-text="headerInfoText"></info-header-cmp>
+        <form class="reservation-form" name="BugReportForm" novalidate="" ng-submit="signIn(authorizationForm)">
+
+            <div class="list">
+
+
+                <label class="item item-input panel item-floating-label">
+                    <span class="input-label"  ng-class="{'has-input': true}">{{'Bug_Report'|translate}} </span>
+                    <input  type="text" name="Bug_Report" ng-model="form.Bug_Report" message-id="Bug_Report" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Bug_Report'|translate}}">
+                </label>
+                <span id="Bug_Report"></span>
+            </div>
+
+
+
+            <button validation-submit="BugReportForm" ng-click="SendBugReport()" class="button button-full next-btn button-positive">
+                <span class="">{{'Send' | translate}}</span>
+            </button>
+
+        </form>
+            
+
+</ion-content>
+</ion-view>

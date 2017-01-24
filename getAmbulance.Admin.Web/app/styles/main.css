@@ -1,168 +1,255 @@
 /* Space out content a bit */
 body {
     padding-bottom: 20px;
-    direction:rtl;
-    font-family: Tahoma!important;
-    background-color: #263650!important;
+    direction: rtl;
+    font-family: Tahoma !important;
+    background-color: #e5ebf7 !important;
 }
+
 .navbar-header {
     float: right;
 }
-.navbar-brand{
+
+.navbar-brand {
     padding: 15px 15px;
 }
+
 .nav {
     padding-right: 0;
 }
 
+#page-wrapper {
+    background-color: #e5ebf7 !important;
+}
 
+    #page-wrapper .inner-wrapper {
+        background-color: #f2f6fc;
+    }
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
+    /* Make the masthead heading the same height as the navigation */
+    .header h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 19px;
+    }
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
 }
 
 /* Customize container */
 @media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+    .container {
+        max-width: 730px;
+    }
 }
+
 .container-narrow > hr {
-  margin: 30px 0;
+    margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
 }
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
+
+    .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+    }
 
 /* Supporting marketing content */
 .marketing {
-  margin: 40px 0;
+    margin: 40px 0;
 }
-.marketing p + h4 {
-  margin-top: 28px;
-}
+
+    .marketing p + h4 {
+        margin-top: 28px;
+    }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
 }
 
-.nav>li.active>a {
-text-decoration: none;
-background-color: #eee;
+.nav > li.active > a {
+    text-decoration: none;
+    background-color: #eee;
 }
 
 
 .login-page {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: auto;
-  background: #263650;
-  text-align: center;
-  color: #fff;
-  padding: 3em; }
-  .login-page .col-lg-4 {
-    padding: 0; }
-  .login-page .input-lg {
-     
-    height: 46px;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    border-radius: 0; }
-  .login-page .input-underline {
-       padding-left: 50px;
-    background: 0 0;
-    border: none;
-    box-shadow: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-    color: #FFF;
-    border-radius: 0; }
-  .login-page .input-underline:focus {
-    border-bottom: 2px solid #fff;
-    box-shadow: none; }
-  .login-page .rounded-btn {
-    border-radius: 50px;
-    color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
     background: #263650;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    font-size: 18px;
-    line-height: 40px;
-    padding: 0 25px; 
-    width:50%;
-  }
-  .login-page .rounded-btn:hover, .login-page .rounded-btn:focus, .login-page .rounded-btn:active, .login-page .rounded-btn:visited {
-    color: white;
-    border: 2px solid white;
-    outline: none; }
-  .login-page h1 {
-    font-weight: 300;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 36px; }
-    .login-page h1 small {
-      color: rgba(255, 255, 255, 0.7); }
-  .login-page .form-group {
-    padding: 8px 0; }
-    .login-page .form-group input::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.6) !important; }
-    .login-page .form-group input:-moz-placeholder {
-      /* Firefox 18- */
-      color: rgba(255, 255, 255, 0.6) !important; }
-    .login-page .form-group input::-moz-placeholder {
-      /* Firefox 19+ */
-      color: rgba(255, 255, 255, 0.6) !important; }
-    .login-page .form-group input:-ms-input-placeholder {
-      color: rgba(255, 255, 255, 0.6) !important; }
-  .login-page .form-content {
-    padding: 40px 0; }
+    text-align: center;
+    color: #fff;
+    padding: 3em;
+}
 
-  /*.navbar-default{
+    .login-page .col-lg-4 {
+        padding: 0;
+    }
+
+    .login-page .input-lg {
+        height: 46px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 0;
+    }
+
+    .login-page .input-underline {
+        padding-left: 50px;
+        background: 0 0;
+        border: none;
+        box-shadow: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        color: #FFF;
+        border-radius: 0;
+    }
+
+        .login-page .input-underline:focus {
+            border-bottom: 2px solid #fff;
+            box-shadow: none;
+        }
+
+    .login-page .rounded-btn {
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.8);
+        background: #263650;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        font-size: 18px;
+        line-height: 40px;
+        padding: 0 25px;
+        width: 50%;
+    }
+
+        .login-page .rounded-btn:hover, .login-page .rounded-btn:focus, .login-page .rounded-btn:active, .login-page .rounded-btn:visited {
+            color: white;
+            border: 2px solid white;
+            outline: none;
+        }
+
+    .login-page h1 {
+        font-weight: 300;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 36px;
+    }
+
+        .login-page h1 small {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+    .login-page .form-group {
+        padding: 8px 0;
+    }
+
+        .login-page .form-group input::-webkit-input-placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .login-page .form-group input:-moz-placeholder {
+            /* Firefox 18- */
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .login-page .form-group input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .login-page .form-group input:-ms-input-placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+    .login-page .form-content {
+        padding: 40px 0;
+    }
+
+/*.navbar-default{
       border:none!important;
   }*/
+
+.min-height-40 {
+    min-height: 40px;
+}
+
+.items-align-center {
+    display: flex;
+    align-items: center;
+}
+
+.pending-color {
+    color: #efad4d;
+}
+
+.ignored-color {
+    color: #e84e4e;
+}
+
+.accepted-color {
+    color: #6ab66b;
+}
+
+.btn:focus, .btn:hover, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+    color: white;
+}
+
+.inner-div {
+    background-color: #f2f6fc;
+}
+
+.green-btn {
+    background-color: #57c059;
+    color: white;
+    border-radius: 40px;
+    margin: 8px;
+    width: 100%;
+}
+.blue-btn {
+    background-color: #54a6de;
+    color: white;
+    border-radius: 40px;
+    margin: 8px;
+    width: 100%;
+}
+.ngdialog.ngdialog-theme-default .ngdialog-content{
+    width:35%!important
+}

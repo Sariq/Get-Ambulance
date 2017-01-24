@@ -341,6 +341,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthContext.cs" />
     <Compile Include="AuthRepository.cs" />
+    <Compile Include="Bug_Report\BugReportController.cs" />
+    <Compile Include="Bug_Report\BugReportModel.cs" />
+    <Compile Include="Bug_Report\BugReportService.cs" />
     <Compile Include="Client\ClientController.cs" />
     <Compile Include="Client\ClientModel.cs" />
     <Compile Include="Client\ClientService.cs" />

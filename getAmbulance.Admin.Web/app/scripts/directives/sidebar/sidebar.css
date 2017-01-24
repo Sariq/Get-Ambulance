@@ -14,3 +14,14 @@
     cursor:pointer;
     background-color: #733232;
 }
+.sidebar{
+    margin-top: 0!important;
+        position: fixed;
+    top: 0;
+}
+.sidebar .general-logo{
+        width: 75%;
+    display: block;
+    margin: auto;
+    padding: 9%;
+}

@@ -1,8 +1,8 @@
-
+﻿
 .distance-price .items .item-header{
-    background-color:#263650!important;
+    background-color:#54a6de!important;
     color:white;
-    padding: 5px;
+    min-height:40px;
 }
 .distance-price  .item-input  input {
     text-align:center;
@@ -17,7 +17,6 @@
     background-color: transparent;
     width: 100%;
 }
-
 .distance-price .panel {
     font-size: calc(0.75em + 2vmin);
     background-color: #f7fbfc;
@@ -33,6 +32,7 @@
 }
 .distance-price .inner{
      color: #3279b9;
+         padding: 1% 1% 2% 1%;
 }
 .item-input {
     overflow: unset!important;
@@ -74,4 +74,14 @@ input[type="number"] {
 
 .distance-price  .value-box{
     text-align:center;
+}
+
+.input-km-text:after {
+ position: relative;
+    text-align: center;
+    content: 'ק"מ';
+    display: block;
+    margin-top: -30px;
+    margin-right: 53px;
+
 }
