@@ -2,7 +2,8 @@
     <div class="col-lg-12">
         <div class="inner-div reservations-table-title">
            
-            {{'Active_Reservation' | translate}}
+           <h4>{{$ctrl.tableName | translate}}</h4> 
+            <hr />
             <table ng-table-dynamic="$ctrl.tableParams  with $ctrl.cols" class="table" show-filter="true">
 
                 <tr ng-repeat="row in $data " class="reservations-table-data">
@@ -14,7 +15,7 @@
                             <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
                         </span>
                     </td>
-                    <td style="text-align:center;width:12%" class="inner-td">
+                    <td ng-if="row['Type']" style="text-align:center;width:12%" class="inner-td">
                         <span ng-switch="row['Type']">
                             <span ng-switch-when="1">{{'Short_Ambulance_Reservation' | translate}}</span>
                             <span ng-switch-when="2">{{'Short_Medical_Therapist_Reservation' | translate}}</span>

@@ -116,7 +116,7 @@
   "KM": "ק\"מ",
   "Show": "הצג",
   "Timer": "זמן המתנה",
-  "Active_Reservation": "הזמנות פעילות",
+  "Active_Reservations": "הזמנות פעילות",
   "Type": "סוג",
   "Number": "מספר",
   "Confirm_Reservation_Accept": "אישור קבלת קריאה",
@@ -130,7 +130,10 @@
   "Yes": "כן",
   "No": "לא",
   "Hours": "שעות",
-  "Reservation_Done": "בוצעה"
+  "Reservation_Done": "בוצעה",
+  "Ambulance_Reservations": "הזמנות אמבולנס",
+  "Medical_Therapist_Reservations": "הזמנות מלווה",
+    "Stairs_Assistance_Reservations": "הזמנות עזרה במדרגות"
 
                 
 

@@ -4,7 +4,7 @@
 
     
         <div class="inner-div service-title" >
-            <h4>הזמנות אמבולנס</h4>
+            <h4>{{name}}</h4>
         </div>
 
         <div class="inner-div text-center" >
@@ -12,10 +12,12 @@
            <div>הזמנות</div>
             <div class="reservations-numer">{{number}}</div>
             <div>
-                <button class="btn stat-btn" style="">כניסה להזמנות</button>
+                <a class="btn stat-btn" ui-sref="{{goto}}" style="">כניסה להזמנות</a>
             </div>
         </div>
 
-   
 
 </div>
+
+
+

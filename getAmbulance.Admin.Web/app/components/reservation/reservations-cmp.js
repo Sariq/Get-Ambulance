@@ -55,7 +55,7 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
             ctrl.tableData.push({
                 Client_ID:value.Client_ID,
                 Status: value.Status,
-                Type: value.Type,
+                
                 Reservation_Number: value.Reservation_Number,
                 Price: value.Price,
                 Date: ReservationService.getValueByKey(value.AdditionalProperties, "Date"),
@@ -65,6 +65,10 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
                 Timer: $filter('date')(Math.round((new Date() - new Date(value._date))), 'mm:ss'),
                 _id: value._id
             });
+            if (ctrl.reservationType=='0') {
+                ctrl.tableData[0].Type = value.Type;
+            }
+            ctrl.tableData[0]
             ctrl.filter = {};
 
             var tempStatusFilterData = $filter('groupBy')(ctrl.reservationsList, "Status");
@@ -82,14 +86,18 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
         ctrl.cols = [
          { field: "Reservation_Number", title: $filter('translate')('Number'), show: true, filter: { Reservation_Number: "text" } },
          { "class": "th-title", field: "Status", title: $filter('translate')('Status'), show: true, filter: { Status: "select" }, filterData: ctrl.filter.Status },
-         { field: "Type", title: $filter('translate')('Type'), show: true, filter: { Type: "text" } },
          { field: "Date", title: $filter('translate')('Date'), show: true, filter: { Date: "text" } },
          { field: "Time", title: $filter('translate')('Time'), show: true, filter: { Time: "text" } },
 
-         { field: "Price", title: $filter('translate')('Price'), show: true, filter: { Price: "text" } },
-         { field: "Timer", title: $filter('translate')('Timer'), show: true },
-         { field: "Show_Reservation", title: '', show: true }
+        
         ];
+        if (ctrl.reservationType == '0') {
+            ctrl.cols.push({ field: "Type", title: $filter('translate')('Type'), show: true, filter: { Type: "text" } })
+        }
+        ctrl.cols.push(
+            { field: "Price", title: $filter('translate')('Price'), show: true, filter: { Price: "text" } },
+       { field: "Timer", title: $filter('translate')('Timer'), show: true },
+       { field: "Show_Reservation", title: '', show: true })
         var data = [{ Show_Reservation: $sce.trustAsHtml('<button>hghg</button>'), Status: 50 }];
         ctrl.tableParams = new NgTableParams({ count: 5, sorting: { Timer: "asc" } }, { dataset: ctrl.tableData });
         console.log(ctrl.tableParams.page())
@@ -111,6 +119,7 @@ angular.module('sbAdminApp').component('reservationsCmp', {
     bindings: {
         reservationStatus: '=',
         reservationType: '=',
+        tableName:'@'
 
     },
     templateUrl: 'components/reservation/reservations-cmp.html',

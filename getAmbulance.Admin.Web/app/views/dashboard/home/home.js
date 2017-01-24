@@ -8,10 +8,14 @@ angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, Reservatio
     });
 
     $scope.filterByType = function () {
-        $scope.reservationsListFilterd = $filter('groupBy')($scope.reservationsList, "Type");
-        console.log($scope.reservationsListFilterd)
+        $scope.reservationsListFilterd = ReservationService.groupByType(($scope.reservationsList));
+        angular.forEach($scope.reservationsListFilterd,function(value,key){
+            $scope.reservationsListFilterd[key] = ReservationService.filterByStatus(value, '1');
+        })
     }
 
+
+    
 
 })
 

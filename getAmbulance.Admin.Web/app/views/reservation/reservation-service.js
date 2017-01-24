@@ -88,6 +88,13 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         return item;
     }
     
+    var _groupByType = function (reservationsList) {
+       return $filter('groupBy')(reservationsList, "Type");
+    }
+    var _filterByStatus = function (reservationsList,status) {
+        return $filter('filterBy')(reservationsList, ["Status"], status );
+    }
+
     ReservationServiceFactory.getReservations = _getReservations;
     ReservationServiceFactory.getReservationById = _getReservationById;
     ReservationServiceFactory.acceptReservation = _acceptReservation;
@@ -100,7 +107,8 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     ReservationServiceFactory.getStatusText = _getStatusText;
     ReservationServiceFactory.getValueByKey = _getValueByKey;
     ReservationServiceFactory.updateReservationStatus = _updateReservationStatus;
-    
+    ReservationServiceFactory.groupByType = _groupByType;
+    ReservationServiceFactory.filterByStatus = _filterByStatus;
     return ReservationServiceFactory;
 
 }]);
