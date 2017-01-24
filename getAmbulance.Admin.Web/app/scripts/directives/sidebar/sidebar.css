@@ -7,12 +7,12 @@
 
 .nav>li.active>a {
 
-    background-color: #733232;
+    background-color: #697284 !important;
 }
 
 .nav>li>a:hover{
     cursor:pointer;
-    background-color: #733232;
+      background-color: #697284 !important;
 }
 .sidebar{
     margin-top: 0!important;

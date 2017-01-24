@@ -38,14 +38,16 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         }
         return $http.post(serviceBase + 'api/Reservation/AcceptReservation', data);
     }
-
-    var _updateReservationStatus = function (reservation) {
+    var _updateReservationStatus = function (reservation,status) {
         var data = {
             reservationId: reservation._id,
-            Client_Id: reservation.Client_ID
+            Client_Id: reservation.Client_ID,
+            Status:status
         }
-        return $http.post(serviceBase + 'api/Reservation/AcceptReservation', data);
+        return $http.post(serviceBase + 'api/Reservation/UpdateReservationStatus', data);
     }
+    
+
 
     var _setSelectedReservationId = function (id) {
         localStorageService.set('selectedReservationId', id);
@@ -97,6 +99,8 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     ReservationServiceFactory.getReservationsListLocal = _getReservationsListLocal;
     ReservationServiceFactory.getStatusText = _getStatusText;
     ReservationServiceFactory.getValueByKey = _getValueByKey;
+    ReservationServiceFactory.updateReservationStatus = _updateReservationStatus;
+    
     return ReservationServiceFactory;
 
 }]);

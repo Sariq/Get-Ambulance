@@ -12,7 +12,7 @@ angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, Reservatio
         console.log($scope.reservationsListFilterd)
     }
 
-    WhiteLabelService.updateSupportedServicesOnRoot();
+
 })
 
 

@@ -23,6 +23,10 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
             $state.go('dashboard.reservation-item');
         });
     }
+
+    
+
+    
     ctrl.openConfirmReservationDialog = function (reservation) {
         ngDialog.open({
             template: 'popUp/reservations-cmp/open-reservation.html',

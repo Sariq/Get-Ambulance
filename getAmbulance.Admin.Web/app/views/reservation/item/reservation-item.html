@@ -18,6 +18,7 @@
                         <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
                         <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
                         <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                        <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
                     </span>
                 </div>
             </div>
@@ -280,8 +281,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="btn-container">
-                <button class="btn green-btn">{{'End_Reservation' | translate}}</button>
-                <button class="btn red-btn">{{'Cancel_Reservation' | translate}}</button>
+                <button ng-click="updateReservationStatus(reservation,'4')" class="btn green-btn">{{'End_Reservation' | translate}}</button>
+                <button ng-click="updateReservationStatus(reservation,'3')" class="btn red-btn">{{'Cancel_Reservation' | translate}}</button>
             </div>
         </div>
     </div>

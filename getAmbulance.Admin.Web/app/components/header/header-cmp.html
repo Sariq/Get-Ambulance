@@ -12,6 +12,7 @@
     <div class="nav-header">
 
         <div class="">
+            <img class="img-container" style="" src="../img/{{$ctrl.whiteLabel.logo}}" />
         </div>
         <div class="toggle-div">
             <toggle on="{{'OnLine' | translate}}" off="{{'Busy' | translate}}" ng-model="$ctrl.isOnline" ng-change="$ctrl.updateWhiteLabelIsOnline($ctrl.isOnline)" onstyle="btn-success" offstyle="btn-danger"></toggle>

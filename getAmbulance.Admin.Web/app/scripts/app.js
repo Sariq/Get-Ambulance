@@ -24,8 +24,8 @@ angular
     'ngDialog'
     
   ]).constant('ngAuthSettings', {
-      // apiServiceBaseUri: 'http://localhost:54543/',
-   apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
+      apiServiceBaseUri: 'http://localhost:54543/',
+      //apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
        clientId: 'ngAuthApp'
       // clientId: 'consoleApp',
      // clientSecret: '123@abc'
@@ -173,11 +173,12 @@ angular
        templateUrl:'views/ui-elements/grid.html',
        url:'/grid'
    })
-}]).run(['authService', '$state', function (authService, $state) {
+  }]).run(['authService', '$state','WhiteLabelService', function (authService, $state, WhiteLabelService) {
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {
         $state.go('login')
     }
+    WhiteLabelService.updateSupportedServicesOnRoot();
     console.log(authService)
 }]);
 

@@ -1,8 +1,10 @@
 ﻿using getAmbulance.DB;
 using getAmbulance.Enums;
+using getAmbulance.Hubs;
 using getAmbulance.Interfaces;
 using getAmbulance.Models;
 using getAmbulance.WhiteLabel;
+using Microsoft.AspNet.SignalR;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -26,6 +28,15 @@ namespace getAmbulance.Reservation
             _whiteLabelService = new WhiteLabelService();
             _dbSerivce = new DBService();
     }
+
+        Lazy<IHubContext> hub = new Lazy<IHubContext>(
+() => GlobalHost.ConnectionManager.GetHubContext<ReservationHub>()
+);
+        protected IHubContext Hub
+        {
+            get { return hub.Value; }
+        }
+
         public ReservationEntity AddReservation(ReservationEntity reservation)
         {
             try
@@ -240,11 +251,43 @@ namespace getAmbulance.Reservation
                 .Set("Status", "2");
              
             var result =  _ctx.Reservations.UpdateOneAsync(filter, update);
-     
-
-
-
         }
+
+        public void UpdateReservationStatus(string reservationId, string status)
+        {
+            var id = new ObjectId(reservationId);
+            var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
+            var update = Builders<ReservationEntity>.Update
+                .Set("Status", status);
+            var result = _ctx.Reservations.UpdateOneAsync(filter, update);
+        }
+        public void HubUpdateClient(string clientId, string reservationId,string status)
+        {
+            switch (status)
+            {
+                //Pending
+                case "1":
+                    Hub.Clients.Group(clientId).reservationAccepted(reservationId);
+                    break;
+                //Accepted
+                case "2":
+                    Hub.Clients.Group(clientId).reservationAccepted(reservationId);
+                    break;
+                //Ignored
+                case "3":
+                    Hub.Clients.Group(clientId).reservationIgnored(reservationId);
+                    break;
+                //Done
+                case "4":
+                    Hub.Clients.Group(clientId).reservationDone(reservationId);
+                    break;
+                //Canceled
+                case "5":
+                    Hub.Clients.Group(clientId).reservationCanceled(reservationId);
+                    break;
+            }
+        }
+
         public ReservationEntity GetReservationById(string reservationId)
         {
 

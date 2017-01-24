@@ -250,8 +250,27 @@ namespace getAmbulance.Reservation
             }
             return response;
         }
+        // Post: /Reservation/UpdateReservationStatus
+        [HttpPost]
+        public HttpResponseMessage UpdateReservationStatus(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                dynamic jsonObj = jsonData;
+                _reservationService.UpdateReservationStatus(jsonObj.reservationId.Value, jsonObj.Status.Value);
+                _reservationService.HubUpdateClient(jsonObj.Client_Id.Value, jsonObj.reservationId.Value, jsonObj.Status.Value);
 
-        
+                response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "AcceptReservation Add Error");
+            }
+            return response;
+        }
+
 
         // Post: /Reservation/AcceptReservation
         [HttpPost]

@@ -4,15 +4,20 @@
     cursor:pointer;
 }
 .nav-header{
-    display:flex
+    display:flex;
+    width: 85%;
+    float: left;
 }
 .nav-header span{
     color:white;
 }
 .nav-header .log-out{
-    position: absolute;
+ 
     left: 0;
 }
 .nav-header .toggle-div{
     margin:auto;
+}
+.nav-header .img-container{
+    width: 58%;
 }

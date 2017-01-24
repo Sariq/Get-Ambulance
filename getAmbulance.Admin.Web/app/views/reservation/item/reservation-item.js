@@ -17,7 +17,12 @@ angular.module('sbAdminApp')
           $scope.initItemForm();
 
       })
-
+      $scope.updateReservationStatus = function (reservation,status) {
+          ReservationService.setSelectedReservationId(reservation._id);
+          ReservationService.updateReservationStatus(reservation, status).then(function (res) {
+              console.log(res.data);
+          });
+      }
       $scope.initItemForm = function () {
 
           switch ($scope.reservation.Type) {
