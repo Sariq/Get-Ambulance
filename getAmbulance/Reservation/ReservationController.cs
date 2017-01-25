@@ -12,6 +12,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.Cors;
 using static getAmbulance.WhiteLabel.WhiteLabelModel;
+using MongoDB.Bson;
 
 namespace getAmbulance.Reservation
 {
@@ -49,23 +50,38 @@ namespace getAmbulance.Reservation
             HttpResponseMessage response;
             try
             {
-                
+                ReservationEntity completedReservation = null;
                 dynamic jsonObj = jsonData;
-                reservation.WhiteLabel_ID = jsonObj.WhiteLabel_ID.Value;
-                reservation.Client_ID = jsonObj.Client_ID.Value;
-                reservation.Price = (int)jsonObj.Price.Value;
-                reservation.Type = jsonObj.Type.Value;
-                reservation.Status= jsonObj.Status.Value;
-                reservation.Full_Name= jsonObj.Full_Name.Value;
-                reservation.Phone_Number = jsonObj.Phone_Number.Value;
-                reservation.Age = jsonObj.Age.Value;
-                reservation.Id_Number = jsonObj.Id_Number.Value;
-                reservation.AdditionalProperties = _reservationService.ConvertJsonAdditionalProperties(jsonObj);
+  
+                
 
-                Hub.Clients.Group(reservation.WhiteLabel_ID.ToString()).addReservation(reservation);
-                Hub.Clients.Group("0").addReservation(reservation);
-                // Hub.Clients.All.addReservation(reservation);
-                ReservationEntity completedReservation= _reservationService.AddReservation(reservation);
+    
+                if ((jsonObj.Reservation_Number)!=null)
+                {
+                    reservation.Client_ID = jsonObj.Client_ID.Value;
+                    reservation.WhiteLabel_ID = jsonObj.WhiteLabel_ID.Value;
+                    reservation.Status = "1";
+                    reservation._id = new ObjectId(jsonObj._id.Value);
+                    completedReservation = _reservationService.UpdateReservation(reservation);
+                }
+                else
+                {
+                    reservation.WhiteLabel_ID = jsonObj.WhiteLabel_ID.Value;
+                    reservation.Client_ID = jsonObj.Client_ID.Value;
+                    reservation.Price = (int)jsonObj.Price.Value;
+                    reservation.Type = jsonObj.Type.Value;
+                    reservation.Status = jsonObj.Status.Value;
+                    reservation.Full_Name = jsonObj.Full_Name.Value;
+                    reservation.Phone_Number = jsonObj.Phone_Number.Value;
+                    reservation.Age = jsonObj.Age.Value;
+                    reservation.Id_Number = jsonObj.Id_Number.Value;
+                    reservation.AdditionalProperties = _reservationService.ConvertJsonAdditionalProperties(jsonObj);
+
+                    completedReservation = _reservationService.AddReservation(reservation);
+                    Hub.Clients.Group(reservation.WhiteLabel_ID.ToString()).addReservation(reservation);
+                    Hub.Clients.Group("0").addReservation(reservation);
+                }
+             
                 response = Request.CreateResponse(HttpStatusCode.OK, completedReservation);
             }
             catch (Exception ex)
@@ -259,7 +275,27 @@ namespace getAmbulance.Reservation
             {
                 dynamic jsonObj = jsonData;
                 _reservationService.UpdateReservationStatus(jsonObj.reservationId.Value, jsonObj.Status.Value);
-                _reservationService.HubUpdateClient(jsonObj.Client_Id.Value, jsonObj.whiteLabelId.Value, jsonObj.reservationId.Value, jsonObj.Status.Value);
+                _reservationService.HubUpdateWLAndClientReservationStatus(jsonObj.Client_Id.Value, jsonObj.whiteLabelId.Value, jsonObj.reservationId.Value, jsonObj.Status.Value);
+
+                response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "AcceptReservation Add Error");
+            }
+            return response;
+        }
+        // Post: /Reservation/UpdateReservationStatusWLId
+        [HttpPost]
+        public HttpResponseMessage UpdateReservationStatusWLId(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                dynamic jsonObj = jsonData;
+                _reservationService.UpdateReservationWLId(jsonObj.reservationId.Value, jsonObj.WhiteLabelId.Value);
+                _reservationService.HubUpdateWLAndClientReservationStatus(jsonObj.Client_Id.Value, jsonObj.whiteLabelId.Value, jsonObj.reservationId.Value, jsonObj.Status.Value);
 
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }

@@ -52,6 +52,33 @@ namespace getAmbulance.Reservation
             }
             return reservation;
         }
+        public ReservationEntity UpdateReservation(ReservationEntity reservation)
+        {
+            try
+            {
+           
+                UpdateReservationWLId(reservation._id.ToString(), reservation.WhiteLabel_ID);
+                UpdateReservationStatus(reservation._id.ToString(), reservation.Status);
+                UpdateReservationDateToNow(reservation._id.ToString());
+                HubUpdateWLAndClientReservationStatus(reservation.Client_ID,reservation.WhiteLabel_ID, reservation._id.ToString(), reservation.Status);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return reservation;
+        }
+        public void UpdateReservationDateToNow(string reservationId) {
+            var id = new ObjectId(reservationId);
+            var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
+            var update = Builders<ReservationEntity>.Update
+                .Set("_date", DateTime.Now);
+
+            var result = _ctx.Reservations.UpdateOneAsync(filter, update);
+        }
+        
+
         public List<ReservationEntity> GetReservationsList()
         {
             var reservationsList = _ctx.Reservations.Aggregate().ToListAsync().Result;
@@ -74,10 +101,9 @@ namespace getAmbulance.Reservation
             {
                 filter = filter & builder.Eq("Type", reservationType);
             }
+            filter = filter & builder.Not(builder.Eq("Status", "3"));
             var reservationsList = _ctx.Reservations.Find(filter).ToListAsync().Result;
-          
-                reservationsList = hideClientInformation(reservationsList);
-            
+            reservationsList = hideClientInformation(reservationsList);
             return reservationsList;
         }
 
@@ -261,7 +287,16 @@ namespace getAmbulance.Reservation
                 .Set("Status", status);
             var result = _ctx.Reservations.UpdateOneAsync(filter, update);
         }
-        public void HubUpdateClient(string clientId,string whiteLAbelId, string reservationId,string status)
+        public void UpdateReservationWLId(string reservationId, string whiteLabelId=null)
+        {
+            var id = new ObjectId(reservationId);
+            var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
+            var update = Builders<ReservationEntity>.Update
+                .Set("WhiteLabel_ID", whiteLabelId);
+            var result = _ctx.Reservations.UpdateOneAsync(filter, update);
+        }
+        
+        public void HubUpdateWLAndClientReservationStatus(string clientId,string whiteLAbelId, string reservationId,string status)
         {
             switch (status)
             {
@@ -277,6 +312,7 @@ namespace getAmbulance.Reservation
                     break;
                 //Ignored
                 case "3":
+                   // UpdateReservationStatusWLId(reservationId);
                     Hub.Clients.Group(clientId).reservationIgnored(reservationId);
                     Hub.Clients.Group(whiteLAbelId).reservationIgnored(reservationId);
                     break;

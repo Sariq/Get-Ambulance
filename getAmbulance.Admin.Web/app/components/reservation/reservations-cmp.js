@@ -28,7 +28,13 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
     ctrl.updateReservationStatus = function (reservation, status) {
         ReservationService.setSelectedReservationId(reservation._id);
         ReservationService.updateReservationStatus(reservation, status).then(function (res) {
-            console.log(res.data);
+            switch (value) {
+                case '3':
+                    break
+                default:
+                    $state.go('dashboard.reservation-item');
+                    break
+            }
         });
     }
     
@@ -41,7 +47,7 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
                 if (value) {
                     ctrl.updateReservationStatus(reservation, value);
                 }
-               
+   
             }
         });
     }

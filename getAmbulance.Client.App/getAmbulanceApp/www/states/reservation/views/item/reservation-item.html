@@ -1,7 +1,9 @@
 ﻿<ion-view cache-view="false" view-title="{{'Reservation' | translate}}">
     <ion-content class="reservation-item">
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
+
         <div class="reservation-status">
+            <button ng-show="selectedReservation.Status=='3'" style="border-radius: 25px 25px 0 0!important;    width: 100%!important;" ng-click="chooseOtherProvider()" class="button button-full next-btn button-positive reservation-status-btn">{{'Choose_Another_Provider' | translate}}</button>
 
             <div class="row ">
                 <div class="cont">
@@ -121,7 +123,7 @@
                                         <div class="col-50 value">
                                             <span class=""> {{itemForm.Direction_Type | translate }}</span><div>
                                             </div>
-                                        </div>itemForm
+                                        </div>
                                     </div>
                                 </div>
                                 <div ng-switch-when="2">

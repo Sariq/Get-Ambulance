@@ -47,6 +47,18 @@
                             });
   
                // $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationPending': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationIgnored': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationDone': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationCanceled': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
             }
             
         },
@@ -85,6 +97,18 @@
                     },
                     'addReservation': function (reservation) {
                         alert("addReservation")
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationPending': function (reservation) {
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationIgnored': function (reservation) {
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationDone': function (reservation) {
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationCanceled': function (reservation) {
                         $rootScope.$broadcast('update-reservations-list');
                     }
                 },

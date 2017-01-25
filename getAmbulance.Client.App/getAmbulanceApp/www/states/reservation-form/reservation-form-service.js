@@ -19,6 +19,9 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         self.formData = angular.extend(self.formData, formData);
         localStorageService.set('reservationFormData', self.formData);
     }
+    self.setReservationFormData = function (formData) {
+        return localStorageService.set('reservationFormData', formData);
+    }
     self.getReservationFormData = function () {
         return localStorageService.get('reservationFormData');
     }
@@ -124,8 +127,13 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation.Phone_Number =Reservation_Form.Phone_Number;
         reservation.Age = Reservation_Form.Age.toString();
         reservation.Id_Number = Reservation_Form.Id_Number.toString();
-        
-
+        reservation._id = Reservation_Form._id;
+        if (Reservation_Form.Reservation_Number) {
+            reservation.Reservation_Number = Reservation_Form.Reservation_Number;
+        }
+        if (Reservation_Form._id) {
+            reservation.Reservation_Number = Reservation_Form._id;
+        }
         delete Reservation_Form.Full_Name;
         delete Reservation_Form.Phone_Number;
         delete Reservation_Form.Age;
@@ -139,13 +147,45 @@ angular.module('starter.controllers').service('ReservationService', function ($f
   
         return $http.post(serviceBase + 'api/Reservation/AddReservation', reservation);
     }
+    self.convertFormToOfferRequest = function () {
+        var reservation = {};
+        var Reservation_Form = self.getReservationFormData();
+
+   
+        reservation.Client_ID = authService.getUserProfile()._id;
+        reservation.Type = localStorageService.get('reservationType');
+        reservation.Status = "1";
+        reservation.Full_Name = Reservation_Form.Full_Name;
+        reservation.Phone_Number = Reservation_Form.Phone_Number;
+        reservation.Age = Reservation_Form.Age;
+        reservation.Id_Number = Reservation_Form.Id_Number.toString();
+        reservation.Reservation_Number = Reservation_Form.Reservation_Number;
+        reservation._id = Reservation_Form._id;
+
+
+ 
+
+        angular.forEach(Reservation_Form.AdditionalProperties, function (value, key) {
+            reservation[value._name] = value._value;
+        })
+        delete Reservation_Form.AdditionalProperties;
+        console.log(reservation)
+        self.setReservationFormData(reservation);
+
+    }
+
 
     self.setSelectedReservation = function (reservationData) {
         localStorageService.set('selectedReservation', reservationData);
     }
     self.getSelectedReservation = function () {
             return localStorageService.get('selectedReservation');
-     
+    }
+    self.setReservationType = function (reservationType) {
+        localStorageService.set('reservationType', reservationType);
+    }
+    self.getReservationTypen = function () {
+        return localStorageService.get('reservationType');
     }
 
     self.getValueByKey = function (dataObject, key) {
