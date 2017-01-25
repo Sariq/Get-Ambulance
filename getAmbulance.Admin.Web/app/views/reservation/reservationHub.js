@@ -49,6 +49,21 @@ angular.module('sbAdminApp')
                 console.log("addReservation")
                 alert("addReservation")
                 $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationAccepted': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationPending': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationIgnored': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationDone': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
+            },
+            'reservationCanceled': function (reservation) {
+                $rootScope.$broadcast('update-reservations-list');
             }
         },
         methods: ['lock', 'unlock'],
@@ -79,7 +94,21 @@ angular.module('sbAdminApp')
                         $rootScope.$apply();
                     },
                     'addReservation': function (reservation) {
-                        alert("addReservation")
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationAccepted': function (reservation) {
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationPending': function (reservation) {
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationIgnored': function (reservation) {
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationDone': function (reservation) {
+                        $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'reservationCanceled': function (reservation) {
                         $rootScope.$broadcast('update-reservations-list');
                     }
                 },

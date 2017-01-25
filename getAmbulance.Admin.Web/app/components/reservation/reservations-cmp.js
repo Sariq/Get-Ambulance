@@ -25,7 +25,12 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
     }
 
     
-
+    ctrl.updateReservationStatus = function (reservation, status) {
+        ReservationService.setSelectedReservationId(reservation._id);
+        ReservationService.updateReservationStatus(reservation, status).then(function (res) {
+            console.log(res.data);
+        });
+    }
     
     ctrl.openConfirmReservationDialog = function (reservation) {
         ngDialog.open({
@@ -33,14 +38,10 @@ var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state',
             className: 'ngdialog-theme-default',
             scope: $scope,
             preCloseCallback: function (value) {
-                switch (value) {
-                    case 1:
-                        ctrl.acceptReservation(reservation);
-                        break
-                    case 2:
-
-                        break
+                if (value) {
+                    ctrl.updateReservationStatus(reservation, value);
                 }
+               
             }
         });
     }

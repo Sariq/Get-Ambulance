@@ -261,29 +261,34 @@ namespace getAmbulance.Reservation
                 .Set("Status", status);
             var result = _ctx.Reservations.UpdateOneAsync(filter, update);
         }
-        public void HubUpdateClient(string clientId, string reservationId,string status)
+        public void HubUpdateClient(string clientId,string whiteLAbelId, string reservationId,string status)
         {
             switch (status)
             {
                 //Pending
                 case "1":
-                    Hub.Clients.Group(clientId).reservationAccepted(reservationId);
+                    Hub.Clients.Group(clientId).reservationPending(reservationId);
+                    Hub.Clients.Group(whiteLAbelId).reservationPending(reservationId);
                     break;
                 //Accepted
                 case "2":
                     Hub.Clients.Group(clientId).reservationAccepted(reservationId);
+                    Hub.Clients.Group(whiteLAbelId).reservationAccepted(reservationId);
                     break;
                 //Ignored
                 case "3":
                     Hub.Clients.Group(clientId).reservationIgnored(reservationId);
+                    Hub.Clients.Group(whiteLAbelId).reservationIgnored(reservationId);
                     break;
                 //Done
                 case "4":
                     Hub.Clients.Group(clientId).reservationDone(reservationId);
+                    Hub.Clients.Group(whiteLAbelId).reservationDone(reservationId);
                     break;
                 //Canceled
                 case "5":
                     Hub.Clients.Group(clientId).reservationCanceled(reservationId);
+                    Hub.Clients.Group(whiteLAbelId).reservationCanceled(reservationId);
                     break;
             }
         }

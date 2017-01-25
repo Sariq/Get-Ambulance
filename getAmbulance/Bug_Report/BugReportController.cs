@@ -1,4 +1,4 @@
-﻿using getAmbulance.Helpers;
+﻿ using getAmbulance.Helpers;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;

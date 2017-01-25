@@ -42,7 +42,8 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         var data = {
             reservationId: reservation._id,
             Client_Id: reservation.Client_ID,
-            Status:status
+            Status: status,
+            whiteLabelId: WhiteLabelService.getWhiteLabelData().whiteLabelid,
         }
         return $http.post(serviceBase + 'api/Reservation/UpdateReservationStatus', data);
     }

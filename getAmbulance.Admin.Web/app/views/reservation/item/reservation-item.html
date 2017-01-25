@@ -283,75 +283,8 @@
         <div class="col-lg-12">
             <div class="btn-container">
                 <button ng-click="updateReservationStatus(reservation,'4')" class="btn green-btn">{{'End_Reservation' | translate}}</button>
-                <button ng-click="updateReservationStatus(reservation,'3')" class="btn red-btn">{{'Cancel_Reservation' | translate}}</button>
             </div>
         </div>
     </div>
-    <!--<div class="col-lg-6 ">
-        <div class="pad-r-2 client-data" >
-            <div class="row"  ng-repeat="item in AdditionalProperties.firstCol" >
-                <div class="col-lg-6">
-                  {{item._name | translate}}:
-                </div>
-                <div class="col-lg-6">
-                   {{item._value}}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 ">
-        <div class="pad-r-2 client-data">
-            <div class="row" ng-repeat="item in AdditionalProperties.secondCol">
-                <div class="col-lg-6">
-                    {{item._name | translate}}:
-                </div>
-                <div ng-if="item._value!=typeOf.array" class="col-lg-6">
-                    {{item._value}}
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad pad-top">
-
-
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{reservation.Full_Name}} :{{'Name'| translate}} </h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class=" col-md-12 col-lg-12 ">
-                        <table class="table table-user-information">
-                            <tbody>
-                                <tr>
-                                    <td>{{'Id_Number'| translate}}:</td>
-                                    <td>{{reservation.Id_Number}}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{'Phone_Number'| translate}}:</td>
-                                    <td>{{reservation.Phone_Number}}</td>
-                                </tr>
-                                <tr ng-repeat="item in reservation.AdditionalProperties">
-                                    <td>{{item._name | translate}}:</td>
-                                    <td>{{item._value}}</td>
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                <span class="pull-right">
-                    <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                    <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                </span>
-            </div>
-
-        </div>
-    </div>-->
+ 
 </div>

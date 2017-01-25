@@ -259,7 +259,7 @@ namespace getAmbulance.Reservation
             {
                 dynamic jsonObj = jsonData;
                 _reservationService.UpdateReservationStatus(jsonObj.reservationId.Value, jsonObj.Status.Value);
-                _reservationService.HubUpdateClient(jsonObj.Client_Id.Value, jsonObj.reservationId.Value, jsonObj.Status.Value);
+                _reservationService.HubUpdateClient(jsonObj.Client_Id.Value, jsonObj.whiteLabelId.Value, jsonObj.reservationId.Value, jsonObj.Status.Value);
 
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }
