@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('starter.controllers').service('UserProfileService', function ($rootScope,$q, $http, authService, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout, authService) {
+angular.module('starter.controllers').service('UserProfileService', function ($rootScope,$q, $http, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout) {
     var self = this;
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 

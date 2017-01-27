@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('starter.controllers').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope) {
+angular.module('starter.controllers').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'ReservationHub', 'UserProfileService', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, ReservationHub, UserProfileService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -59,7 +59,8 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
             localStorageService.set('authorizationData', authorizationData);
             $http.post(serviceBase + 'api/Client/GetUserProfile', data).success(function (res) {
   
-                _setUserProfile(res);
+                UserProfileService.setUserProfileLocal(res);
+                ReservationHub.connectReservationHub();
                 deferred.resolve(response);
             });
         }).error(function (err, status) {

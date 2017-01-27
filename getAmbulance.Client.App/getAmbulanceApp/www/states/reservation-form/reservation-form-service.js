@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('starter.controllers').service('ReservationService', function ($filter,$http, authService, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout, authService) {
+angular.module('starter.controllers').service('ReservationService', function ($filter,$http, UserProfileService, ngAuthSettings, localStorageService, eReservationAdditionalProperties, $timeout) {
     var self = this;
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     self.formData = {};
@@ -70,7 +70,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
     self.getReservations = function (status, type) {
         var data = {
             status: status,
-            ClientId: authService.getUserProfile()._id,
+            ClientId: UserProfileService.getUserProfileLocal()._id,
             type: type
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationsListByClientId', data);
@@ -79,7 +79,6 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         var data = {
             reservationId: ReservationId,
         }
-        alert(ReservationId)
         return $http.post(serviceBase + 'api/Reservation/GetReservationById', data);
     };
     self.setWhiteLabelOffer = function (offer) {
@@ -120,7 +119,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         var Reservation_Form = localStorageService.get('reservationFormData');
         reservation.WhiteLabel_ID = self.getWhiteLabelOffer().whiteLabelid;
         reservation.Price = self.getWhiteLabelOffer().price;
-        reservation.Client_ID = authService.getUserProfile()._id;
+        reservation.Client_ID = UserProfileService.getUserProfileLocal()._id;
         reservation.Type = localStorageService.get('reservationType');
         reservation.Status = "1";
         reservation.Full_Name =Reservation_Form.Full_Name;
@@ -152,7 +151,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         var Reservation_Form = self.getReservationFormData();
 
    
-        reservation.Client_ID = authService.getUserProfile()._id;
+        reservation.Client_ID = UserProfileService.getUserProfileLocal()._id;
         reservation.Type = localStorageService.get('reservationType');
         reservation.Status = "1";
         reservation.Full_Name = Reservation_Form.Full_Name;

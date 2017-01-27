@@ -1,11 +1,11 @@
 ﻿angular.module('starter.controllers')
-.factory('ReservationHub', function ($rootScope, Hub, localStorageService, $timeout, ReservationService, authService, ngAuthSettings, $cordovaLocalNotification, $state) {
+.factory('ReservationHub', function ($rootScope, Hub, localStorageService, $timeout, ReservationService, UserProfileService, ngAuthSettings, $cordovaLocalNotification, $state) {
     var Employees = this;
     var self = this;
     self.connectReservationHub = function () {
     //Employee ViewModel
-    if(authService.getUserProfile())
-    var Client_ID = authService.getUserProfile()._id;
+        if (UserProfileService.getUserProfileLocal())
+            var Client_ID = UserProfileService.getUserProfileLocal()._id;
 
     self.getToken = function () {
        return localStorageService.get('authorizationData').token;
@@ -25,26 +25,30 @@
             },
             'addReservation': function (reservation) {
                 console.log("addReservation")
-                alert("addReservation")
+        
                 $rootScope.$broadcast('update-reservations-list');
             },
             'reservationAccepted': function (reservationId) {
-                console.log("reservationAccepted" + reservationId)
+   
                 if (!reservationId) {
                     reservationId = 111;
                 }
                 // alert("reservati{onAccepted - " + reservationId)
                 $rootScope.$broadcast('update-reservations-list');
-                $cordovaLocalNotification.schedule({
-                                id: 1,
-                                title: 'ההזמנה התקבלה',
-                                text: 'התקבלה' + reservationId + 'הזמנה מס',
-                                data: {
-                                    reservationId: reservationId
-                                }
-                            }).then(function (result) {
-                                alert(reservationId)
-                            });
+                ReservationService.getReservationById(reservationId).then(function (res) {
+                    var reservation = res.data;
+                    $cordovaLocalNotification.schedule({
+                        id: 1,
+                        title: 'ההזמנה התקבלה',
+                        text: 'הזמנה מס' + ' ' + reservation.Reservation_Number+ ' ' + 'התקבלה',
+                        data: {
+                            reservationId: reservationId
+                        }
+                    }).then(function (result) {
+
+                    });
+                })
+
   
                // $rootScope.$broadcast('update-reservations-list');
             },
@@ -96,7 +100,7 @@
                         $rootScope.$apply();
                     },
                     'addReservation': function (reservation) {
-                        alert("addReservation")
+                       
                         $rootScope.$broadcast('update-reservations-list');
                     },
                     'reservationPending': function (reservation) {
