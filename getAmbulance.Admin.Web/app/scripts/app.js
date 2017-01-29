@@ -173,13 +173,16 @@ angular
        templateUrl:'views/ui-elements/grid.html',
        url:'/grid'
    })
-  }]).run(['authService', '$state','WhiteLabelService', function (authService, $state, WhiteLabelService) {
+  }]).run(['authService', '$state', 'WhiteLabelService', 'ReservationHub', function (authService, $state, WhiteLabelService, ReservationHub) {
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {
         $state.go('login')
     }
-    WhiteLabelService.updateSupportedServicesOnRoot();
-    console.log(authService)
+    else {
+        ReservationHub.connectReservationHub();
+        WhiteLabelService.updateSupportedServicesOnRoot();
+    }
+
 }]);
 
     

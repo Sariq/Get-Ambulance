@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('starter.controllers').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'ReservationHub', 'UserProfileService', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, ReservationHub, UserProfileService) {
+angular.module('starter.controllers').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'ReservationHub', 'UserProfileService', 'CommonService', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, ReservationHub, UserProfileService, CommonService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -79,6 +79,7 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
         _authentication.isAuth = false;
         _authentication.userName = "";
         _authentication.useRefreshTokens = _authentication.useRefreshTokens;
+        CommonService.hideLoader();
         $state.go('terms-and-conditions');
 
 

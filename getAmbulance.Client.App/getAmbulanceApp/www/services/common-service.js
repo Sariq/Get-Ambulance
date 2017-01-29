@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('starter.controllers').factory('CommonService', ['$rootScope', '$q', '$http', 'ngAuthSettings', 'authService', 'localStorageService', '$filter', '$ionicLoading', '$ionicPlatform', function ($rootScope, $q, $http, ngAuthSettings, authService, localStorageService, $filter, $ionicLoading, $ionicPlatform) {
+angular.module('starter.controllers').factory('CommonService', ['$rootScope', '$q', 'ngAuthSettings', 'localStorageService', '$filter', '$ionicLoading', '$ionicPlatform', function ($rootScope, $q, ngAuthSettings, localStorageService, $filter, $ionicLoading, $ionicPlatform) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 

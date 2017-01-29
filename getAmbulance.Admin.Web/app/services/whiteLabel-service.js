@@ -1,4 +1,5 @@
-﻿'use strict';
+﻿/// <reference path="whiteLabel-service.js" />
+'use strict';
 angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSettings', 'localStorageService','$rootScope', function ($http, ngAuthSettings, localStorageService, $rootScope) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;

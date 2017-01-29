@@ -1,6 +1,6 @@
 ﻿
 'use strict';
-var supportedAreaCmp = ['$scope', '$http', 'Reservations', '$state','$timeout', function ($scope, $http, Reservations, $state, $timeout) {
+var supportedAreaCmp = ['$scope', '$http', '$state','$timeout', function ($scope, $http, $state, $timeout) {
     var ctrl = this;
 
     if (navigator.geolocation) {

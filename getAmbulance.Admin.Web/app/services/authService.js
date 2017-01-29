@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'WhiteLabelService', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, WhiteLabelService) {
+angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'WhiteLabelService', 'ReservationHub', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, WhiteLabelService, ReservationHub) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -68,12 +68,14 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
                 localStorageService.set('authorizationData', authorizationData);
                 WhiteLabelService.updateSupportedServicesOnRoot();
+                ReservationHub.connectReservationHub();
                 deferred.resolve(response);
             });
             } else {
                 _authentication.WhiteLabelData = { "whiteLabelid": "0" };
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
                 localStorageService.set('authorizationData', authorizationData);
+                ReservationHub.connectReservationHub();
                 deferred.resolve(response);
             }
 

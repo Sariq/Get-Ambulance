@@ -1,5 +1,5 @@
 ﻿'use strict';
-var reservationsCmp = ['$scope', 'ReservationService', 'Reservations', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', function ($scope, ReservationService, Reservations, $state, NgTableParams, $filter, $sce, ngDialog) {
+var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog) {
     var ctrl = this;
     $scope.$on('update-reservations-list', function (event, args) {
         ctrl.getReservations();
