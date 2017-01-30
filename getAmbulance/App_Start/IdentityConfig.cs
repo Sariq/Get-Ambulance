@@ -63,7 +63,7 @@ namespace getAmbulance.Models
             {
                 manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
                 {
-                    TokenLifespan = TimeSpan.FromHours(3)
+                    TokenLifespan = TimeSpan.FromHours(200)
                 };
             }
             return manager;
