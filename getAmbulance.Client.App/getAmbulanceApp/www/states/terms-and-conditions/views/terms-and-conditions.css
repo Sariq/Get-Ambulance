@@ -13,6 +13,7 @@
 .terms-and-conditions .logo-img{
    width:80%;
    margin-top: 20%;
+   max-width:275px;
 }
 
 .terms-and-conditions .container {

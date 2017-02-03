@@ -18,6 +18,7 @@
     "cordova-plugin-datepicker"
   ],
   "cordovaPlatforms": [
-    "android"
+    "android",
+    "ios"
   ]
 }

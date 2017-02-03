@@ -276,3 +276,13 @@ p.errorMessage{
 .font-bold{
     font-weight:bold;
 }
+
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"]{
+    height:auto!important;
+    line-height:inherit!important;
+}
+
+.platform-ipad div.scroll{
+    -webkit-transform: translate3d(0px, 30%, 0px) scale(1)!important;
+}
