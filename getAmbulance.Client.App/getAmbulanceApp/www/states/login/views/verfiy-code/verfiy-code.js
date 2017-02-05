@@ -38,7 +38,13 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
          });
     };
 
-
+    var initMinMaxDate = function () {
+        $scope.minDate = new Date();
+        $scope.minDate.setYear($scope.minDate.getFullYear() - 120);
+        $scope.maxDate = new Date();
+        $scope.maxDate.setYear($scope.maxDate.getFullYear() - 18);
+    }
+    initMinMaxDate();
 })
 
 

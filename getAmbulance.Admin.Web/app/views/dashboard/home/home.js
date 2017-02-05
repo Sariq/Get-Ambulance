@@ -12,6 +12,19 @@ angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, Reservatio
         angular.forEach($scope.reservationsListFilterd,function(value,key){
             $scope.reservationsListFilterd[key] = ReservationService.filterByStatus(value, '1');
         })
+            if(!$scope.reservationsListFilterd['1']){
+                $scope.reservationsListFilterd['1'] = [];
+            }
+            if (!$scope.reservationsListFilterd['2']) {
+                $scope.reservationsListFilterd['2'] = [];
+            }
+            if (!$scope.reservationsListFilterd['3']) {
+                $scope.reservationsListFilterd['3'] = [];
+            }
+       
+   
+      
+
     }
 
 

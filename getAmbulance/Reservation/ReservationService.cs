@@ -106,6 +106,43 @@ namespace getAmbulance.Reservation
             reservationsList = hideClientInformation(reservationsList);
             return reservationsList;
         }
+        public List<ReservationEntity> GetReservationsListByWhiteLabelIdByStatusByType(string whiteLabel_ID, dynamic statusArray, dynamic typeArray)
+        {
+            var builder = Builders<ReservationEntity>.Filter;
+            var filter = builder.Empty;
+            if (whiteLabel_ID != "0")
+            {
+                filter = filter & builder.Eq("WhiteLabel_ID", whiteLabel_ID);
+            }
+            if (statusArray!=null && statusArray.Count > 0) {
+                var statusFilter = builder.Empty;
+                statusFilter = builder.Eq("Status", statusArray[0].Value);
+                for (int i = 1; i <= statusArray.Count-1; i++)
+                {
+                    statusFilter = statusFilter | builder.Eq("Status", statusArray[i].Value);
+
+                }
+                filter = filter & statusFilter;
+            }
+            if (typeArray != null && typeArray.Count>0)
+            {
+                var typeFilter = builder.Empty;
+                typeFilter = builder.Eq("Type", typeArray[0].Value);
+                for (int i = 1; i <= typeArray.Count - 1; i++)
+                {
+                    typeFilter = typeFilter | builder.Eq("Type", typeArray[i].Value);
+
+                }
+                filter = filter & typeFilter;
+            }
+
+
+            var reservationsList = _ctx.Reservations.Find(filter).ToListAsync().Result;
+            reservationsList = hideClientInformation(reservationsList);
+            return reservationsList;
+        }
+
+        
 
         public List<ReservationEntity> GetReservationsListByClientId(string Client_ID, string reservationStatus = "0", string reservationType = "0")
         {

@@ -133,7 +133,9 @@
   "Reservation_Done": "בוצעה",
   "Ambulance_Reservations": "הזמנות אמבולנס",
   "Medical_Therapist_Reservations": "הזמנות מלווה",
-    "Stairs_Assistance_Reservations": "הזמנות עזרה במדרגות"
+  "Stairs_Assistance_Reservations": "הזמנות עזרה במדרגות",
+  "No_Reservations_Found": "לא התקבלו הזמנות",
+  "Services_Settings": "הגדרות"
 
                 
 

@@ -270,6 +270,7 @@
     <Content Include="getAmbulanceApp\www\img\ron-logo.png" />
     <Content Include="getAmbulanceApp\www\img\shahal-logo.jpg" />
     <Content Include="getAmbulanceApp\www\img\smartphone.svg" />
+    <Content Include="getAmbulanceApp\www\img\trofot.svg" />
     <Content Include="getAmbulanceApp\www\img\user.svg" />
     <Content Include="getAmbulanceApp\www\index.html" />
     <Content Include="getAmbulanceApp\www\js\app.js" />

@@ -1,6 +1,8 @@
 ﻿'use strict';
 var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog) {
     var ctrl = this;
+    ctrl.noReservations = false;
+
     $scope.$on('update-reservations-list', function (event, args) {
         ctrl.getReservations();
     });
@@ -39,26 +41,47 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
     }
     
     ctrl.openConfirmReservationDialog = function (reservation) {
-        ngDialog.open({
-            template: 'popUp/reservations-cmp/open-reservation.html',
-            className: 'ngdialog-theme-default',
-            scope: $scope,
-            preCloseCallback: function (value) {
-                if (value) {
-                    ctrl.updateReservationStatus(reservation, value);
+        $scope.selectedReservation = reservation;
+        if ($scope.selectedReservation.Status == '1') {
+            ngDialog.open({
+                template: 'popUp/reservations-cmp/open-reservation.html',
+                className: 'ngdialog-theme-default',
+                scope: $scope,
+                preCloseCallback: function (value) {
+                    if (value) {
+                        ctrl.updateReservationStatus(reservation, value);
+                    }
+
                 }
-   
-            }
-        });
+            });
+        } else {
+            ctrl.updateReservationStatus(reservation, $scope.selectedReservation.Status);
+
+        }
+       
     }
   
     ctrl.prepareTableCols = function () {
-        ctrl.tableData = [];
+        if (ctrl.reservationsList.length>0) {
+            ctrl.tableData = [];
+        } else {
+            ctrl.tableData = null;
+        }
+        
+
         angular.forEach(ctrl.reservationsList, function (value, key) {
 
             var startTime = new Date(value._date).getTime();
-            var endTime = new Date(value._date);
-            endTime.setMinutes(endTime.getMinutes() + 5);
+            var endTime = new Date();
+            var dif = new Date(endTime).getTime() - new Date(value._date).getTime();
+            var Seconds_from_T1_to_T2 = dif / 1000;
+            var Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
+            Seconds_Between_Dates = 300 - Seconds_Between_Dates ;
+            //console.log(value.Reservation_Number + '===' + Seconds_Between_Dates + '===' + endTime + '===' +  new Date(value._date))
+            if (Seconds_Between_Dates > 300 || Seconds_Between_Dates <0) {
+                Seconds_Between_Dates = 0.1;
+            }
+            
             ctrl.tableData.push({
                 Client_ID:value.Client_ID,
                 Status: value.Status,
@@ -67,8 +90,8 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 Price: value.Price,
                 Date: ReservationService.getValueByKey(value.AdditionalProperties, "Date"),
                 Time: ReservationService.getValueByKey(value.AdditionalProperties, "Time"),
-                startTime: startTime,
-                endTime: endTime,
+                startTime: 1451628000000,
+                endTime: Seconds_Between_Dates,
                 Timer: $filter('date')(Math.round((new Date() - new Date(value._date))), 'mm:ss'),
                 _id: value._id
             });
@@ -85,11 +108,23 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 
             })
 
+            var tempTypeFilterData = $filter('groupBy')(ctrl.reservationsList, "Type");
+            ctrl.filter.Type = [];
+            angular.forEach(tempTypeFilterData, function (value, key) {
+                if (value[0])
+                ctrl.filter.Type.push({ id: key, title: ReservationService.getTypeText(value[0].Type) });
+
+            })
+
 
 
         })
 
+       
+        if (ctrl.tableData) {
 
+      
+       
         ctrl.cols = [
          { field: "Reservation_Number", title: $filter('translate')('Number'), show: true, filter: { Reservation_Number: "text" } },
          { "class": "th-title", field: "Status", title: $filter('translate')('Status'), show: true, filter: { Status: "select" }, filterData: ctrl.filter.Status },
@@ -98,7 +133,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
         
         ];
         if (!ctrl.reservationType) {
-            ctrl.cols.push({ field: "Type", title: $filter('translate')('Type'), show: true, filter: { Type: "text" } })
+            ctrl.cols.push({ field: "Type", title: $filter('translate')('Type'), show: true, filter: { Type: "select" }, filterData: ctrl.filter.Type })
         }
         ctrl.cols.push(
                      { field: "Date", title: $filter('translate')('Date'), show: true, filter: { Date: "text" } },
@@ -106,10 +141,18 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
             { field: "Price", title: $filter('translate')('Price'), show: true, filter: { Price: "text" } },
        { field: "Timer", title: $filter('translate')('Timer'), show: true },
        { field: "Show_Reservation", title: '', show: true })
+        }
         var data = [{ Show_Reservation: $sce.trustAsHtml('<button>hghg</button>'), Status: 50 }];
-        ctrl.tableParams = new NgTableParams({ count: 5, sorting: { Timer: "asc" } }, { dataset: ctrl.tableData });
-        console.log(ctrl.tableParams.page())
-        console.log(ctrl.tableParams.count())
+        if (ctrl.tableData) {
+            ctrl.tableParams = new NgTableParams({ count: 5, sorting: { Timer: "asc" } }, { dataset: ctrl.tableData });
+            ctrl.noReservations = false;
+        } else {
+            $ctrl.noReservations = true;
+            ctrl.tableParams = null;
+
+        }
+
+      
     }
     ctrl.NextPage = function () {
         ctrl.tableParams.page(2);

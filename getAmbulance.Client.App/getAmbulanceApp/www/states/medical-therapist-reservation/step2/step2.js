@@ -8,6 +8,7 @@ angular.module('starter.controllers').controller('MedicalTherapistStep2Ctrl', fu
     } else {
         $scope.form = {};
     }
+    $scope.Meeting_Address = null;
     $scope.continueToStep3 = function () {
         ReservationService.mergeToFormData($scope.form);
         $state.go('app.medical-therapist-reservation-step3');

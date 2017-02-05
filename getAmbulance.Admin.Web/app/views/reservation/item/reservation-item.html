@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="div-head-default items-align-center status" ng-class="{'pending-color':reservation.Status=='1','accepted-color':reservation.Status=='2','ignored-color':reservation.Status=='3'}">
+                <div class="div-head-default items-align-center status" ng-class="{'pending-color':reservation.Status=='1','accepted-color':reservation.Status=='2','ignored-color':reservation.Status=='3','done-color':reservation.Status=='4'}">
                     {{'Status' | translate}} : <span ng-switch="reservation.Status">
                         <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
                         <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
@@ -43,36 +43,36 @@
     <div class="row ">
     
             <div class="pad-r-2 client-data">
-                <div class="col-lg-3 ">
+                <div class="col-lg-4 ">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{'Full_Name' | translate}} :
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{reservation.Full_Name}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{'Id_Number' | translate}} :
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{reservation.Id_Number}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{'Phone_Number' | translate}} :
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{reservation.Phone_Number}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{'Age' | translate}} :
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6  col-md-6 ">
                             {{reservation.Age}}
                         </div>
                     </div>
@@ -91,13 +91,13 @@
 
     <div class="row " style="min-height: 175px;">
         <div class="pad-r-2 client-data">
-            <div class="col-lg-3 ">
+            <div class="col-lg-4 ">
                 <div ng-switch="reservation.Type">
                     <div ng-show="reservation.Type" class="row">
-                        <div class="col-lg-6 key">
+                        <div class="col-lg-6  col-md-6  key">
                             <span class="">{{'Reservation_Type'|translate}} :</span>
                         </div>
-                        <div class="col-lg-6 value">
+                        <div class="col-lg-6  col-md-6  value">
                             <span ng-switch="reservation.Type">
                                 <span ng-switch-when="1">{{'Short_Ambulance_Reservation' | translate}}</span>
                                 <span ng-switch-when="2">{{'Short_Medical_Therapist_Reservation' | translate}}</span>
@@ -106,19 +106,19 @@
                         </div>
                     </div>
                     <div ng-show="itemForm.Date" class="row">
-                        <div class="col-lg-6 key">
+                        <div class="col-lg-6  col-md-6  key">
                             <span class="">{{'Date'|translate}} :</span>
                         </div>
-                        <div class="col-lg-6 value">
+                        <div class="col-lg-6  col-md-6  value">
                             <span class=""> {{itemForm.Date | date : "dd/MM/y"}}</span><div>
                             </div>
                         </div>
                     </div>
                     <div ng-show="itemForm.Time" class="row">
-                        <div class="col-lg-6 key">
+                        <div class="col-lg-6  col-md-6  key">
                             <span class="">{{'Time'|translate}} :</span>
                         </div>
-                        <div class="col-lg-6 value">
+                        <div class="col-lg-6  col-md-6  value">
                             <span class=""> {{itemForm.Time}}</span><div>
                             </div>
                         </div>
@@ -127,27 +127,27 @@
                       
                      
                         <div ng-show="itemForm.From_Address" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'From_Address'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.From_Address}}</span>
                             </div>
                         </div>
                         <div ng-show="itemForm.To_Address" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'To_Address'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.To_Address}}</span><div>
                                 </div>
                             </div>
                         </div>
                         <div ng-show="itemForm.Ambulance_Type" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Ambulance_Type'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Ambulance_Type | translate }}</span><div>
                                 </div>
                             </div>
@@ -156,10 +156,10 @@
 
                       <div ng-switch-when="2">
                         <div ng-show="itemForm.Meeting_Address" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Meeting_Address'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
                                 </div>
                             </div>
@@ -168,10 +168,10 @@
 
                     <div ng-switch-when="3">
                         <div ng-show="itemForm.Meeting_Address" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Meeting_Address'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
                                 </div>
                             </div>
@@ -181,31 +181,31 @@
             </div>
 
 
-            <div class="col-lg-3 ">
+            <div class="col-lg-4 ">
                 <div ng-switch="reservation.Type">
                     <div ng-switch-when="1">
                    
                         <div ng-show="itemForm.Weight" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Weight'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Weight}}</span>
                             </div>
                         </div>
                         <div ng-show="itemForm.Need_Help_With_Stairs" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Need_Help_With_Stairs'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Need_Help_With_Stairs | translate }}</span>
                             </div>
                         </div>
                         <!--<div ng-show="itemForm.distance" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Distance'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.distance}}</span><div>
                                 </div>
                             </div>
@@ -214,57 +214,67 @@
 
                     <div ng-switch-when="2">
                         <div ng-show="itemForm.Therapist_Stayig_Time" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Therapist_Stayig_Time'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Therapist_Stayig_Time | translate }} {{'Hours'|translate}}</span><div>
                                 </div>
                             </div>
                         </div>
                         <div ng-show="itemForm.Current_Status" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Current_Status'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Current_Status | translate }}</span><div>
                                 </div>
                             </div>
                         </div>
                         <div ng-show="itemForm.Weight" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Weight'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Weight | translate }}</span><div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div ng-show="itemForm.Service_Options" class="row">
+                            <div class="col-lg-6  col-md-6  key">
+                                <span class="">{{'Service_Options'|translate}} :</span>
+                            </div>
+                            <div class="col-lg-6  col-md-6  value">
+                                <div ng-repeat="serviceItem in itemForm.Service_Options" class="">- {{serviceItem._name| translate }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+              
                     <div ng-switch-when="3">
                         <div ng-show="itemForm.Current_Status" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Current_Status'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Current_Status | translate }}</span><div>
                                 </div>
                             </div>
                         </div>
                         <div ng-show="itemForm.Stairs_Assistance_Options" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Stairs_Assistance_Options'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Stairs_Assistance_Options | translate }}</span><div>
                                 </div>
                             </div>
                         </div>
                         <div ng-show="itemForm.Weight" class="row">
-                            <div class="col-lg-6 key">
+                            <div class="col-lg-6  col-md-6  key">
                                 <span class="">{{'Weight'|translate}} :</span>
                             </div>
-                            <div class="col-lg-6 value">
+                            <div class="col-lg-6  col-md-6  value">
                                 <span class=""> {{itemForm.Weight | translate }}</span><div>
                                 </div>
                             </div>
@@ -282,7 +292,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="btn-container">
-                <button ng-click="updateReservationStatus(reservation,'4')" class="btn green-btn">{{'End_Reservation' | translate}}</button>
+                <button ng-hide="reservation.Status=='4'" ng-click="updateReservationStatus(reservation,'4')" class="btn green-btn">{{'End_Reservation' | translate}}</button>
             </div>
         </div>
     </div>

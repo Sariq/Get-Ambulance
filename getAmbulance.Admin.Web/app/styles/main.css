@@ -226,6 +226,9 @@ body {
 .accepted-color {
     color: #6ab66b!important;
 }
+.done-color {
+    color: #54a6de!important;
+}
 
 .btn:focus, .btn:hover, .btn:active:focus, .btn.active:focus {
     outline: 0 none;

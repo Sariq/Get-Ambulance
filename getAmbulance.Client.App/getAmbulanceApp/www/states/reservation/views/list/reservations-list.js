@@ -30,6 +30,7 @@ function (event, toState, toParams, fromState, fromParams, options) {
 
     $scope.convertWLIdToFullWLData = function () {
         angular.forEach($scope.reservationsList, function (value, key) {
+            if (value.WhiteLabel_ID)
             $scope.reservationsList[key].whiteLabelData=WhiteLabelService.convertWLIdToFullWLData(value.WhiteLabel_ID)
         })
     }

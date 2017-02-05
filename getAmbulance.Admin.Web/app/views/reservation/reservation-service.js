@@ -5,13 +5,14 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
 
     var ReservationServiceFactory = {};
     var self=this;
-    var _getReservations = function (status, type) {
+    var _getReservations = function (statusArray, typeArray) {
         var deferred = $q.defer();
-        var data={ status : status,
+        var data = {
+            statusArray: statusArray,
             whiteLabelId: WhiteLabelService.getWhiteLabelData().whiteLabelid,
-            type: type
+            typeArray: typeArray
         }
-        return $http.post(serviceBase + 'api/Reservation/GetReservationsListByWhiteLabelId', data).success(function (res) {
+        return $http.post(serviceBase + 'api/Reservation/GetReservationsListByWhiteLabelIdByStatusByType', data).success(function (res) {
 
             _setReservationsListLocal(res);
         
@@ -81,8 +82,26 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
             case '3':
                 return $filter('translate')('Reservation_Ignored'); 
                 break
+            case '4':
+                return $filter('translate')('Reservation_Done');
+                break
             
         }
+    }
+    var _getTypeText = function (status) {
+        switch (status) {
+            case '1':
+                return $filter('translate')('Short_Ambulance_Reservation');
+                break
+            case '2':
+                return $filter('translate')('Short_Medical_Therapist_Reservation');
+                break
+            case '3':
+                return $filter('translate')('Short_Stairs_Assistance_Reservation');
+                break
+
+        }
+
     }
     var _getValueByKey = function (dataObject, key) {
         var item = $filter('filter')(dataObject, { _name: key }, true)[0]._value;
@@ -106,6 +125,9 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     ReservationServiceFactory.setReservationsListLocal = _setReservationsListLocal;
     ReservationServiceFactory.getReservationsListLocal = _getReservationsListLocal;
     ReservationServiceFactory.getStatusText = _getStatusText;
+    ReservationServiceFactory.getTypeText = _getTypeText;
+
+    
     ReservationServiceFactory.getValueByKey = _getValueByKey;
     ReservationServiceFactory.updateReservationStatus = _updateReservationStatus;
     ReservationServiceFactory.groupByType = _groupByType;

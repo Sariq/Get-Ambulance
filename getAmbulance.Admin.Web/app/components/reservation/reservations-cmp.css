@@ -46,3 +46,15 @@ table.all-reservations td.text {
 .ng-table-pagination {
     float: left;
 }
+
+.No_Reservations_Found{
+        text-align: center;
+    font-weight: bold;
+    font-size: larger;
+        color: #515974;
+}
+
+.time-over-background{
+    background-color:#fd4a13;
+    color:white;
+}

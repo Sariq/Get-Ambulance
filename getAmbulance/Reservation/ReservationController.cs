@@ -150,7 +150,51 @@ namespace getAmbulance.Reservation
             }
             return response;
         }
-        
+
+        // Post: /Reservation/GetReservationsListByWhiteLabelIdByStatusByType
+        [HttpPost]
+        public HttpResponseMessage GetReservationsListByWhiteLabelIdByStatusByType(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            string reservationStatus = "0";
+            string reservationType = "0";
+
+            int whiteLabelId = 0;
+            try
+            {
+                dynamic jsonObj = jsonData;
+
+
+
+                    if (jsonObj.status == null)
+                {
+                    reservationStatus = "0";
+                }
+                else
+                {
+                    reservationStatus = jsonObj.status.Value;
+                }
+                if (jsonObj.type == null)
+                {
+                    reservationType = "0";
+                }
+                else
+                {
+                    reservationType = jsonObj.type.Value;
+                }
+
+                List<ReservationEntity> reservationList = _reservationService.GetReservationsListByWhiteLabelIdByStatusByType(jsonObj.whiteLabelId.Value.ToString(), jsonObj.statusArray, jsonObj.typeArray);
+
+                response = Request.CreateResponse(HttpStatusCode.OK, reservationList);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetReservationsListByWhiteLabelId Add Error");
+            }
+            return response;
+        }
+
         // Post: /Reservation/GetReservationsListByWhiteLabelId
         [HttpPost]
         public HttpResponseMessage GetReservationsListByClientId(JObject jsonData)

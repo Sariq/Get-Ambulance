@@ -13,6 +13,7 @@
                     <input g-places-autocomplete options="autocompleteOptions" force-selection="true" placeholder="{{'Meeting_Address'|translate}}" type="text" name="Meeting_Address" ng-model="form.Meeting_Address" message-id="Meeting_Address" valid-method="submit" validator="required" required-error-message="{{'Insert'|translate}} {{'Meeting_Address'|translate}}">
                 </label>
                 <span id="Meeting_Address"></span>
+           
                 <label class="item item-input panel item-floating-label  col-45" ng-class="{'input-container':Step2Form.Therapist_Stayig_Time.$modelValue!=null}">
                     <span class="input-label">{{'Therapist_Stayig_Time'|translate}} </span>
                     <input style="padding-left: 15%;" placeholder="{{'Therapist_Stayig_Time'|translate}}" type="number" name="Therapist_Stayig_Time"  ng-model="form.Therapist_Stayig_Time" message-id="Therapist_Stayig_Time" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Therapist_Stayig_Time'|translate}}">
@@ -35,7 +36,6 @@
             <button validation-submit="Step2Form" ng-click="continueToStep3()" class="button button-full next-btn button-positive">
                 <span class="">{{'Continue' | translate}}</span>
             </button>
-
         </form>
     </ion-content>
 </ion-view>

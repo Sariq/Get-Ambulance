@@ -8,15 +8,24 @@
  */
 angular.module('sbAdminApp')
   .controller('ReservationItemCtrl', function ($scope, ReservationService) {
-      $scope.selectedReservationId = ReservationService.getSelectedReservationId();
-      ReservationService.getReservationById($scope.selectedReservationId).then(function (res) {
-          $scope.reservation = res.data;
-          $scope.AdditionalProperties = {};
-          //$scope.AdditionalProperties.firstCol=$scope.reservation.AdditionalProperties.slice(0, ($scope.reservation.AdditionalProperties.length / 2)+1);
-          //$scope.AdditionalProperties.secondCol = $scope.reservation.AdditionalProperties.slice($scope.reservation.AdditionalProperties.length / 2, $scope.reservation.AdditionalProperties.length-1);
-          $scope.initItemForm();
 
-      })
+      $scope.getReservationById = function () {
+          $scope.selectedReservationId = ReservationService.getSelectedReservationId();
+          ReservationService.getReservationById($scope.selectedReservationId).then(function (res) {
+              $scope.reservation = res.data;
+              $scope.AdditionalProperties = {};
+              //$scope.AdditionalProperties.firstCol=$scope.reservation.AdditionalProperties.slice(0, ($scope.reservation.AdditionalProperties.length / 2)+1);
+              //$scope.AdditionalProperties.secondCol = $scope.reservation.AdditionalProperties.slice($scope.reservation.AdditionalProperties.length / 2, $scope.reservation.AdditionalProperties.length-1);
+              $scope.initItemForm();
+          })
+
+      }
+      $scope.getReservationById();
+
+      $scope.$on('update-reservations-list', function (event, args) {
+          $scope.getReservationById();
+      });
+     
       $scope.updateReservationStatus = function (reservation,status) {
           ReservationService.setSelectedReservationId(reservation._id);
           ReservationService.updateReservationStatus(reservation, status).then(function (res) {

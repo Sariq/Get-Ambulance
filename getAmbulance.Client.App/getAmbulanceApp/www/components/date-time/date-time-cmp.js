@@ -1,6 +1,10 @@
 ﻿'use strict';
 var dateTimeCmp = function ($scope, $filter) {
     var ctrl = this;
+
+    if (!ctrl.dateTitleText) {
+        ctrl.dateTitleText = 'Date';
+    }
     var timeOptions = {
 
         date: new Date(),
@@ -12,13 +16,30 @@ var dateTimeCmp = function ($scope, $filter) {
     if (!ctrl.dateTitleText) {
         ctrl.dateTitleText='Choose_Title'
     }
-    var dateOptions = {
 
+
+
+
+
+    if (!ctrl.minDate) {
+        ctrl.minDate = new Date().getTime();
+    } else {
+        ctrl.minDate = (new Date(JSON.parse(ctrl.minDate))).getTime();
+    }
+
+    if (!ctrl.maxDate) {
+        ctrl.maxDate =null;
+    } else {
+        ctrl.maxDate = (new Date(JSON.parse(ctrl.maxDate))).getTime();
+    }
+
+    var dateOptions = {
         date: new Date(),
         mode: 'date',
         androidTheme: 2,
         titleText: 'בחר תאריך',
-        minDate: new Date().getTime(),
+        minDate: ctrl.minDate,
+        maxDate: ctrl.maxDate,
         allowOldDates:false
     };
     ctrl.form = {};
@@ -44,7 +65,7 @@ var dateTimeCmp = function ($scope, $filter) {
     }
 
     function onError(error) { // Android only
-        alert('Error: ' + error);
+      //  alert('Error: ' + error);
     }
     ctrl.openTimePicker = function () {
         datePicker.show(timeOptions, onTimeSuccess, onError);
@@ -61,7 +82,9 @@ angular.module('starter.controllers').component('dateTimeCmp', {
         dateOnly: '@',
         timeOnly: '@',
         notFormatedDate: '@',
-        dateTitleText:'@'
+        dateTitleText: '@',
+        minDate: '@',
+        maxDate:'@'
     },
     templateUrl: 'components/date-time/date-time-cmp.html',
     controller: dateTimeCmp

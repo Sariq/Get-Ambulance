@@ -48,7 +48,7 @@ namespace getAmbulance.App_Start
             // You can write your own provider and plug in here.
             manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationClientUser>
             {
-                MessageFormat = "Your security code is: {0}"
+                MessageFormat = "קוד האימות לחשבון גט אמבולנס : " + "{0}"  //"Your security code is: {0}"
             });
             manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationClientUser>
             {
