@@ -24,8 +24,8 @@ angular
     'ngDialog'
     
   ]).constant('ngAuthSettings', {
-    apiServiceBaseUri: 'http://localhost:54543/',
-      // apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
+      //  apiServiceBaseUri: 'http://localhost:54543/',
+     apiServiceBaseUri: 'http://ec2-35-160-57-240.us-west-2.compute.amazonaws.com/server/',
        clientId: 'ngAuthApp'
       // clientId: 'consoleApp',
      // clientSecret: '123@abc'
@@ -40,7 +40,12 @@ angular
       debug:false,
       events:true,
     });
+    configureDefaults.$inject = ["ngTableDefaults"];
 
+    function configureDefaults(ngTableDefaults) {
+        ngTableDefaults.params.count = 5;
+        ngTableDefaults.settings.counts = [];
+    }
     $urlRouterProvider.otherwise('/dashboard/home');
 
     $stateProvider
@@ -174,6 +179,7 @@ angular
        url:'/grid'
    })
   }]).run(['authService', '$state', 'WhiteLabelService', 'ReservationHub', function (authService, $state, WhiteLabelService, ReservationHub) {
+
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {
         $state.go('login')
