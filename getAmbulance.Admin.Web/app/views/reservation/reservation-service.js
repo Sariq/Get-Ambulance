@@ -39,12 +39,13 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         }
         return $http.post(serviceBase + 'api/Reservation/AcceptReservation', data);
     }
-    var _updateReservationStatus = function (reservation,status) {
+    var _updateReservationStatus = function (reservation, status, reason) {
         var data = {
             reservationId: reservation._id,
             Client_Id: reservation.Client_ID,
             Status: status,
             whiteLabelId: WhiteLabelService.getWhiteLabelData().whiteLabelid,
+            reason: reason
         }
         return $http.post(serviceBase + 'api/Reservation/UpdateReservationStatus', data);
     }
@@ -104,7 +105,11 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
 
     }
     var _getValueByKey = function (dataObject, key) {
-        var item = $filter('filter')(dataObject, { _name: key }, true)[0]._value;
+        var item = null;
+        item = $filter('filter')(dataObject, { _name: key }, true)[0];
+        if (item) {
+            item = item._value;
+        }
         return item;
     }
     

@@ -320,7 +320,10 @@ namespace getAmbulance.Reservation
                 dynamic jsonObj = jsonData;
                 _reservationService.UpdateReservationStatus(jsonObj.reservationId.Value, jsonObj.Status.Value);
                 _reservationService.HubUpdateWLAndClientReservationStatus(jsonObj.Client_Id.Value, jsonObj.whiteLabelId.Value, jsonObj.reservationId.Value, jsonObj.Status.Value);
-
+                if (jsonObj.reason!=null && jsonObj.reason.Value !="")
+                {
+                    _reservationService.UpdateReservationReason(jsonObj.reservationId.Value, jsonObj.Status.Value,jsonObj.reason.Value);
+                }
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)

@@ -15,7 +15,9 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
                     From_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'From_Address'),
                     To_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'To_Address'),
                     Ambulance_Type: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Ambulance_Type'),
-                    Direction_Type: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Direction_Type')
+                    Direction_Type: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Direction_Type'),
+                    Cancel_Reason: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Cancel_Reason')
+
                     
                 }
              
@@ -28,7 +30,9 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
                     Date: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Date'),
                     Time: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Time'),
                     Service_Options: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Service_Options'),
-                    Meeting_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Meeting_Address')
+                    Meeting_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Meeting_Address'),
+                    Cancel_Reason: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Cancel_Reason')
+
 
                     
                     
@@ -43,7 +47,9 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
                     Date: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Date'),
                     Time: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Time'),
                     Meeting_Address: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Meeting_Address'),
-                    Stairs_Assistance_Options: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Stairs_Assistance_Options')
+                    Stairs_Assistance_Options: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Stairs_Assistance_Options'),
+                    Cancel_Reason: ReservationService.getValueByKey($scope.selectedReservation.AdditionalProperties, 'Cancel_Reason')
+
                 }
            
 

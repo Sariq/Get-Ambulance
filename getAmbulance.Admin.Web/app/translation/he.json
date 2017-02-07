@@ -135,7 +135,11 @@
   "Medical_Therapist_Reservations": "הזמנות מלווה",
   "Stairs_Assistance_Reservations": "הזמנות עזרה במדרגות",
   "No_Reservations_Found": "לא התקבלו הזמנות",
-  "Services_Settings": "הגדרות"
+  "Services_Settings": "הגדרות",
+  "Reservation_Canceled": "בוטלה",
+  "Cancel_Reservation": "בטל הזמנה",
+  "Cancel_Reason": "סיבת ביטול קריאה",
+  "Ended": "הסתיים"
 
                 
 

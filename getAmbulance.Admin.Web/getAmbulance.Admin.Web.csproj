@@ -713,6 +713,8 @@
     <Content Include="app\favicon.ico" />
     <Content Include="app\index.html" />
     <Content Include="app\js\sb-admin-2.js" />
+    <Content Include="app\popUp\reservation-item\reservation-cancel-reason.css" />
+    <Content Include="app\popUp\reservation-item\reservation-cancel-reason.html" />
     <Content Include="app\popUp\reservations-cmp\open-reservation.css" />
     <Content Include="app\popUp\reservations-cmp\open-reservation.html" />
     <Content Include="app\robots.txt" />

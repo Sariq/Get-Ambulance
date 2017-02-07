@@ -6,7 +6,7 @@
             <hr />
             <table ng-table-dynamic="$ctrl.tableParams  with $ctrl.cols" class="table" show-filter="true">
 
-                <tr ng-repeat="row in $data " class="reservations-table-data" >
+                <tr ng-repeat="row in $data " class="reservations-table-data" ng-class="{'time-over-background':row['timerEnd']===true}">
                     <td style="text-align:center;width:12%" class="inner-td">{{row['Reservation_Number']}}</td>
                     <td style="text-align:center;width:12%" class="inner-td" ng-class="{'pending-color':row['Status']=='1','accepted-color':row['Status']=='2','ignored-color':row['Status']=='3','done-color':row['Status']=='4'}">
                         <span ng-switch="row['Status']">
@@ -14,6 +14,7 @@
                             <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
                             <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
                             <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
+                            <span ng-switch-when="5">{{'Reservation_Canceled' | translate}}</span>
                         </span>
                     </td>
                     <td ng-if="$ctrl.reservationType==undefined" style="text-align:center;width:12%" class="inner-td">
@@ -26,7 +27,7 @@
                     <td style="text-align:center;width:12%" class="inner-td">{{row['Date']}}</td>
                     <td style="text-align:center;width:12%" class="inner-td">{{row['Time']}}</td>
                     <td style="text-align:center;width:12%" class="inner-td">{{row['Price']}}</td>
-                    <td style="text-align:center;width:10%" class="inner-td" ng-class="{'time-over-background':row['endTime']<=0.1}"><timer countdown="row['endTime']" max-time-unit="'minute'" interval="1000">{{sseconds}} : {{mminutes}} </timer></td>
+                    <td style="text-align:center;width:10%" class="inner-td" ><timer ng-show="!row['timerEnd']===true" countdown="row['endTime']" max-time-unit="'minute'" interval="1000" finish-callback="$ctrl.callbackTimer(row['Reservation_Number'])"><span ng-show="!row['timerEnd']===true">{{sseconds}} : {{mminutes}}</span> </timer><span ng-show="row['timerEnd']===true">{{'Ended' | translate}}</span></td>
                     <td style="text-align:center;width:10%" class="inner-td"><button ng-click="$ctrl.openConfirmReservationDialog(row)" class="btn show-reservation-btn">{{'Show'| translate}}</button></td>
                 </tr>
 

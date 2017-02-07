@@ -2,22 +2,26 @@
     <ion-content class="reservations-list">
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
         <div class="list-container">
-            <div class="row list-row " ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-click="openReservationData(reservation)" style="color:red" ng-class="{'percent-pending-background':reservation.Status=='1','percent-accepted-background':reservation.Status=='2','percent-ignored-background':reservation.Status=='3'}">
+            <div class="row list-row " ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-click="openReservationData(reservation)" style="color:red" ng-class="{'percent-pending-background':reservation.Status=='1','percent-accepted-background':reservation.Status=='2'|| reservation.Status=='4','percent-ignored-background':reservation.Status=='3' || reservation.Status=='5'}">
                 <div class="col-20 col-container text-center" style="padding-right: 3%;">
                     <span ng-switch="reservation.Status">
                         <span ng-switch-when="1"><img src="../www/img/pending-icon.png" class="status-icon" /></span>
                         <span ng-switch-when="2"><img src="../www/img/accepted-icon.png" class="status-icon" /></span>
                         <span ng-switch-when="3"><img src="../www/img/ignored-icon.png" class="status-icon" /></span>
+                        <span ng-switch-when="4"><img src="../www/img/accepted-icon.png" class="status-icon" /></span>
+                        <span ng-switch-when="5"><img src="../www/img/ignored-icon.png" class="status-icon" /></span>
                     </span>
                 </div>
                 <div class="col-45 col-container ">
                     <div class="row ">
-                        <div class="col-100" style="font-size: large;text-align:center" ng-class="{'pending-color':reservation.Status=='1','accepted-color':reservation.Status=='2','ignored-color':reservation.Status=='3'}">
+                        <div class="col-100" style="font-size: large;text-align:center" ng-class="{'pending-color':reservation.Status=='1','accepted-color':reservation.Status=='2' || reservation.Status=='4','ignored-color':reservation.Status=='3' || reservation.Status=='5'}">
                             <div>
                                 {{'The_Reservation' | translate}} <span ng-switch="reservation.Status">
                                     <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
                                     <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
                                     <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                                    <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
+                                     <span ng-switch-when="5">{{'Reservation_Canceled' | translate}}</span>
                                 </span>
                             </div>
                         </div>
@@ -44,7 +48,9 @@
                     <span ng-switch="reservation.Status">
                         <span ng-switch-when="1">{{'Open_Reservation' | translate}}</span>
                         <span ng-switch-when="2">{{'Open_Reservation' | translate}}</span>
-                        <span ng-switch-when="3">{{'Choose_Another_Provider' | translate}}</span>
+                        <span ng-switch-when="3">{{'Open_Reservation' | translate}}</span>
+                        <span ng-switch-when="4">{{'Open_Reservation' | translate}}</span>
+                        <span ng-switch-when="5">{{'Open_Reservation' | translate}}</span>
                         <!--<span ng-switch-when="3">{{'Choose_Another_Provider' | translate}}</span>-->
                     </span>
 

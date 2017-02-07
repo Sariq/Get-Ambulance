@@ -3,7 +3,7 @@
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
 
         <div class="reservation-status">
-            <button ng-show="selectedReservation.Status=='3'" style="border-radius: 25px 25px 0 0!important;    width: 100%!important;" ng-click="chooseOtherProvider()" class="button button-full next-btn button-positive reservation-status-btn">{{'Choose_Another_Provider' | translate}}</button>
+            <button ng-show="selectedReservation.Status=='3' || selectedReservation.Status=='5'" style="border-radius: 25px 25px 0 0!important;    width: 100%!important;" ng-click="chooseOtherProvider()" class="button button-full next-btn button-positive reservation-status-btn">{{'Choose_Another_Provider' | translate}}</button>
 
             <div class="row ">
                 <div class="cont">
@@ -21,6 +21,8 @@
                                             <span ng-switch-when="1"><img src="../www/img/pending-icon.png" class="status-icon" /></span>
                                             <span ng-switch-when="2"><img src="../www/img/accepted-icon.png" class="status-icon" /></span>
                                             <span ng-switch-when="3"><img src="../www/img/ignored-icon.png" class="status-icon" /></span>
+                                            <span ng-switch-when="4"><img src="../www/img/accepted-icon.png" class="status-icon" /></span>
+                                            <span ng-switch-when="5"><img src="../www/img/ignored-icon.png" class="status-icon" /></span>
                                         </span>
                                     </div>
                                     <div class="col-90 margin-auto" ng-class="{'pending-color':selectedReservation.Status=='1','accepted-color':selectedReservation.Status=='2','ignored-color':selectedReservation.Status=='3'}">
@@ -28,6 +30,9 @@
                                             <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
                                             <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
                                             <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                                            <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
+                                            <span ng-switch-when="5">{{'Reservation_Canceled' | translate}}</span>
+
                                         </span>
                                     </div>
                                 </div>
@@ -219,6 +224,23 @@
                             </div>
 
                         </div>
+                    </div>
+
+                    <div ng-show="itemForm.Cancel_Reason">
+                        <div class="row ">
+                            <div class="col-60 details-title">
+                                {{'Cancel_Reason' | translate}}
+                                <div class="solid-border-bottom-30">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col ">
+                                {{itemForm.Cancel_Reason}}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

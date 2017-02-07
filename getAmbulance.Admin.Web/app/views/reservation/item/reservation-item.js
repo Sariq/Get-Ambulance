@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('ReservationItemCtrl', function ($scope, ReservationService) {
+  .controller('ReservationItemCtrl', function ($scope, ReservationService, ngDialog) {
 
       $scope.getReservationById = function () {
           $scope.selectedReservationId = ReservationService.getSelectedReservationId();
@@ -26,10 +26,24 @@ angular.module('sbAdminApp')
           $scope.getReservationById();
       });
      
-      $scope.updateReservationStatus = function (reservation,status) {
+      $scope.updateReservationStatus = function (reservation, status, reason) {
           ReservationService.setSelectedReservationId(reservation._id);
-          ReservationService.updateReservationStatus(reservation, status).then(function (res) {
+          ReservationService.updateReservationStatus(reservation, status, reason).then(function (res) {
               console.log(res.data);
+          });
+      }
+      
+      $scope.openCancelReasonDialog = function (reservation, status) {
+          ngDialog.open({
+              template: 'popUp/reservation-item/reservation-cancel-reason.html',
+              className: 'ngdialog-theme-default',
+              scope: $scope,
+              preCloseCallback: function (value) {
+                  if (value && value != "$closeButton") {
+                      $scope.updateReservationStatus(reservation, status, $scope.reservation.reason);
+                  }
+
+              }
           });
       }
       $scope.initItemForm = function () {
@@ -46,6 +60,7 @@ angular.module('sbAdminApp')
                       Direction_Type: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Direction_Type'),
                       Need_Help_With_Stairs: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Need_Help_With_Stairs'),
                       distance: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'distance'),
+                      Cancel_Reason: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Cancel_Reason')
                   }
                   break;
               case '2':
@@ -54,10 +69,11 @@ angular.module('sbAdminApp')
                       Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Time'),
                       Meeting_Address: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Meeting_Address'),
                       Current_Status: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Current_Status'),
-                      Accompaniment_Location: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Accompaniment_Location'),
+                  //    Accompaniment_Location: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Accompaniment_Location'),
                       Service_Options: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Service_Options'),
                       Therapist_Stayig_Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Therapist_Stayig_Time'),
-                      Weight: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Weight')
+                      Weight: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Weight'),
+                      Cancel_Reason: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Cancel_Reason')
                   }
                   break;
               case '3':
@@ -65,7 +81,8 @@ angular.module('sbAdminApp')
                       Date: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Date'),
                       Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Time'),
                       Meeting_Address: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Meeting_Address'),
-                      Stairs_Assistance_Options: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Stairs_Assistance_Options')
+                      Stairs_Assistance_Options: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Stairs_Assistance_Options'),
+                      Cancel_Reason: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Cancel_Reason')
                   }
                   break;
           }

@@ -324,6 +324,50 @@ namespace getAmbulance.Reservation
                 .Set("Status", status);
             var result = _ctx.Reservations.UpdateOneAsync(filter, update);
         }
+        public void UpdateReservationReason(string reservationId, string status, string reason)
+        {
+            var id = new ObjectId(reservationId);
+            var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
+           
+
+
+            switch (status)
+            {
+                //Pending
+                case "1":
+                    var update = Builders<ReservationEntity>.Update
+                          .Set("Pending_Reason", reason);
+                    _ctx.Reservations.UpdateOneAsync(filter, update);
+                    break;
+                //Accepted
+                case "2":
+                    var updateAccepted = Builders<ReservationEntity>.Update
+               .Set("Accepted_Reason", reason);
+                   _ctx.Reservations.UpdateOneAsync(filter, updateAccepted);
+                    break;
+                //Ignored
+                case "3":
+                    var updateIgnored = Builders<ReservationEntity>.Update
+               .Set("Ignored_Reason", reason);
+               _ctx.Reservations.UpdateOneAsync(filter, updateIgnored);
+                    break;
+                //Done
+                case "4":
+                    var updateDone = Builders<ReservationEntity>.Update
+               .Set("Done_Reason", reason);
+                    _ctx.Reservations.UpdateOneAsync(filter, updateDone);
+                    break;
+                //Canceled
+                case "5":
+                     var updateCanceled = Builders<ReservationEntity>.Update
+                .Set("AdditionalProperties.Cancel_Reason", reason);
+                   _ctx.Reservations.UpdateOneAsync(filter, updateCanceled);
+                    break;
+            }
+           
+          
+        }
+        
         public void UpdateReservationWLId(string reservationId, string whiteLabelId=null)
         {
             var id = new ObjectId(reservationId);

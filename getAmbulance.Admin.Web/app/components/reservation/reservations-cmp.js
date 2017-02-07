@@ -1,5 +1,5 @@
 ﻿'use strict';
-var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog) {
+var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', '$timeout', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog, $timeout) {
     var ctrl = this;
     ctrl.noReservations = false;
 
@@ -48,7 +48,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 className: 'ngdialog-theme-default',
                 scope: $scope,
                 preCloseCallback: function (value) {
-                    if (value) {
+                    if (value && value != "$closeButton") {
                         ctrl.updateReservationStatus(reservation, value);
                     }
 
@@ -70,7 +70,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
         
 
         angular.forEach(ctrl.reservationsList, function (value, key) {
-
+            var timerEnd = false;
             var startTime = new Date(value._date).getTime();
             var endTime = new Date();
             var dif = new Date(endTime).getTime() - new Date(value._date).getTime();
@@ -80,6 +80,8 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
             //console.log(value.Reservation_Number + '===' + Seconds_Between_Dates + '===' + endTime + '===' +  new Date(value._date))
             if (Seconds_Between_Dates > 300 || Seconds_Between_Dates <0) {
                 Seconds_Between_Dates = 0.1;
+                 timerEnd = true;
+
             }
             
             ctrl.tableData.push({
@@ -92,7 +94,8 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 Time: ReservationService.getValueByKey(value.AdditionalProperties, "Time"),
                 startTime: 1451628000000,
                 endTime: Seconds_Between_Dates,
-                Timer: $filter('date')(Math.round((new Date() - new Date(value._date))), 'mm:ss'),
+                timerEnd: timerEnd,
+                Timer: $filter('date')(Math.round((new Date() - new Date())), 'mm:ss'),
                 _id: value._id
             });
             if (!ctrl.reservationType) {
@@ -120,7 +123,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 
         })
 
-       
+       console.log(ctrl.tableData)
         if (ctrl.tableData) {
 
       
@@ -144,10 +147,10 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
         }
         var data = [{ Show_Reservation: $sce.trustAsHtml('<button>hghg</button>'), Status: 50 }];
         if (ctrl.tableData) {
-            ctrl.tableParams = new NgTableParams({ count: 5, sorting: { Timer: "asc" } }, { dataset: ctrl.tableData });
+            ctrl.tableParams = new NgTableParams({ count: 50, sorting: { Timer: "asc" } }, { dataset: ctrl.tableData });
             ctrl.noReservations = false;
         } else {
-            $ctrl.noReservations = true;
+            ctrl.noReservations = true;
             ctrl.tableParams = null;
 
         }
@@ -156,6 +159,19 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
     }
     ctrl.NextPage = function () {
         ctrl.tableParams.page(2);
+    }
+
+    ctrl.callbackTimer = function (reservationNumber) {
+
+        var reservation = $filter('filter')(ctrl.tableData, { Reservation_Number: reservationNumber }, true)[0];
+        if (reservation) {
+            $timeout(function () {
+                reservation.timerEnd = true;
+            })
+         
+        }
+           
+
     }
     //var today = new Date();
     //var Christmas = new Date("12-25-2012");

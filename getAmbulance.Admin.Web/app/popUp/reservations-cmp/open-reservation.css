@@ -12,11 +12,11 @@
 }
 
 .popUp .btn-container button{
-        width:30%;
+        width:25%;
             height: 42px;
-    font-size: large;
+    /*font-size: large;*/
 }
 .popUp .dialogBodyText{
-        padding: 0 15% 5% 15%;
-    font-size: large;
+        padding: 0 10% 5% 10%;
+    /*font-size: large;*/
 }

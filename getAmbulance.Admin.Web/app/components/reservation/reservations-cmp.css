@@ -55,6 +55,6 @@ table.all-reservations td.text {
 }
 
 .time-over-background{
-    background-color:#fd4a13;
-    color:white;
+    /*background-color:#fd4a13;*/
+    color:#fd4a13;
 }

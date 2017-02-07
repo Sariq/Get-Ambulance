@@ -19,6 +19,7 @@
                         <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
                         <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
                         <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
+                        <span ng-switch-when="5">{{'Reservation_Canceled' | translate}}</span>
                     </span>
                 </div>
             </div>
@@ -289,11 +290,31 @@
         </div>
 
     </div>
+    <div ng-show="reservation.Status=='5'">
+
+
+        <div class="row ">
+            <div class="col-lg-12 ">
+                <div class="div-head-blue items-align-center pad-r-2 ">
+                    {{'Cancel_Reason' | translate}}
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="pad-r-2 ">
+                <br />
+                {{itemForm.Cancel_Reason}}
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="btn-container">
-                <button ng-hide="reservation.Status=='4'" ng-click="updateReservationStatus(reservation,'4')" class="btn green-btn">{{'End_Reservation' | translate}}</button>
-            </div>
+                <button ng-show="reservation.Status=='2'" ng-click="updateReservationStatus(reservation,'4')" class="btn green-btn">{{'End_Reservation' | translate}}</button>
+                <button ng-show="reservation.Status=='2'" ng-click="openCancelReasonDialog(reservation,'5')" class="btn red-btn">{{'Cancel_Reservation' | translate}}</button>
+
+             </div>
         </div>
     </div>
  
