@@ -1,6 +1,6 @@
 
 
-angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($scope, authService, ngAuthSettings, $state, LogInService, UserProfileService) {
+angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($scope, authService, ngAuthSettings, $state, LogInService, UserProfileService, CommonService) {
 
     $scope.loginForm = {
 
@@ -17,7 +17,9 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
     $scope.login = function () {
         $scope.error.showMessage = false;
         $scope.loginForm.userName = $scope.logInData.Phone_Number;
+        CommonService.showLoader();
         authService.login($scope.loginForm).then(function (response) {
+            CommonService.hideLoader();
             $scope.userProfile = UserProfileService.getUserProfileLocal();
             if ($scope.logInData.Client_Status == '1') {
                 var data = { "User_Id": $scope.userProfile._id, "Full_Name": $scope.loginForm.Full_Name, "Id_Number": $scope.loginForm.Id_Number, "Date_Of_Birth": $scope.loginForm.Date_Of_Birth }

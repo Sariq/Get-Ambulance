@@ -15,11 +15,21 @@ function (event, toState, toParams, fromState, fromParams, options) {
     $scope.$on('update-reservations-list', function (event, args) {
         $scope.getReservations();
     });
+    $scope.noReservationsFound = false;
+    $scope.setNoReservationsFound = function (data) {
+        if (data.length > 0) {
+            $scope.noReservationsFound = false;
+        } else {
+            $scope.noReservationsFound = true;
+        }
+    }
+
     $scope.getReservations = function () {
         CommonService.showLoader();
         ReservationService.getReservations($scope.reservationStatus, $scope.reservationType).then(function (res) {
            
             $scope.reservationsList = res.data;
+            $scope.setNoReservationsFound($scope.reservationsList);
             $scope.convertWLIdToFullWLData();
             CommonService.hideLoader();
         }, function (err) {

@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('starter.controllers').controller('LogInCtrl', function ($ionicPopup,$scope, authService, ngAuthSettings, $state, LogInService) {
+angular.module('starter.controllers').controller('LogInCtrl', function ($ionicPopup, $scope, authService, ngAuthSettings, $state, LogInService, CommonService) {
 
     $scope.loginForm = {
         userName: "",
@@ -20,7 +20,9 @@ angular.module('starter.controllers').controller('LogInCtrl', function ($ionicPo
     }
 
     $scope.sendCodeToClientByPhone2 = function () {
-         authService.sendCodeToClientByPhone($scope.loginForm.Phone_Number).then(function (response) {
+        CommonService.showLoader();
+        authService.sendCodeToClientByPhone($scope.loginForm.Phone_Number).then(function (response) {
+            CommonService.hideLoader();
              var logInData = { "Phone_Number": $scope.loginForm.Phone_Number, "Client_Status": response.data };
              LogInService.setLogInData(logInData);
              $state.go('verify-code');

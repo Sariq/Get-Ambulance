@@ -3,10 +3,10 @@
 
       <info-header-cmp info-text="headerInfoText"></info-header-cmp>
       <div class="list state-container">
-          <div ng-repeat="item in providerPriceOffersList" class="offers-list" ng-show="!isSelected">
+          <div ng-repeat="item in providerPriceOffersList" class="offers-list" ng-show="!isSelected" >
 
 
-              <div class="item item-input panel item-floating-label offer-item" style="color:#298ea3;border-radius: 30px;padding: 0;">
+              <div class="item item-input panel item-floating-label offer-item" style="color:#298ea3;border-radius: 30px;padding: 0;" ng-click="setSelectedOffer(item);">
                   <span class="input-label has-input">{{item.name|translate}}</span>
                   <div class="row" style="min-height: 45px;max-height: 45px;">
                       <div class="col-33 " style="width:55%;vertical-align: middle;  margin: auto;   ">
@@ -15,7 +15,7 @@
                       <div class="col-33 text-center" style="vertical-align: middle;text-align:center;    margin: auto;    color: #263650;">
                           &#8362;{{item.price}}
                       </div>
-                      <div class="col-30 text-center" ng-click="setSelectedOffer(item);"  style="margin: auto;color:white;">
+                      <div class="col-30 text-center"   style="margin: auto;color:white;">
                           {{'Reserve' | translate }}
                       </div>
                   </div>
@@ -81,23 +81,12 @@
                   </div>
               </div>
           </div>
-              <!--<div ng-show="showTyp" class="margin-top-15">
-                  <div class="row icon-row">
-                      <div class="col">
-                          <a ui-sref="app.home" class="button button-full next-btn button-positive">
-                              <span class="">{{'Home_Page' | translate}}</span>
-                          </a>
-                      </div>
-                  </div>
-                  <div class="row icon-row">
-                      <div class="col">
-                          <a ui-sref="app.reservation-list" class="button button-full next-btn button-positive">
-                              <span class="">{{'Reservation_List' | translate}}</span>
-                          </a>
-                      </div>
-                  </div>
-              </div>-->
           </div>
+
+      <div ng-show="noProviderFound" style="text-align:center;">
+          {{"No_Provider_Found" | translate}}<br />
+          {{"Please_Try_Again_Later" | translate}}
+      </div>
              
 </ion-content>
 </ion-view>

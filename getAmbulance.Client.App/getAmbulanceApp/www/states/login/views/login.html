@@ -30,16 +30,19 @@
             <div class="row icon-row">
                 <div class="col">
 
-                    <form class="reservation-form" name="Step1Form" novalidate="" ng-submit="signIn(authorizationForm)">
+                    <form class="reservation-form" name="LoginForm" novalidate="" ng-submit="signIn(authorizationForm)">
 
                         <div class="list">
                            
                             <label class="item item-input panel item-floating-label">
                                 <span class="input-label">{{'Phone_Number'|translate}} :</span>
-                                <input placeholder="{{'Phone_Number_Only'|translate}}" type="tel" name="Phone_Number" ng-model="loginForm.Phone_Number" ng-minlength="2" ng-maxlength="20" validator="required">
+                                <input placeholder="{{'Phone_Number_Only'|translate}}" type="tel" name="Phone_Number" ng-model="loginForm.Phone_Number" message-id="Phone_Number" valid-method="blur" validator="required"  required-error-message="{{'Insert'|translate}} {{'Phone_Number'|translate}}">
                             </label>
+                            <span id="Phone_Number"></span>
+
                         </div>
-                        <button ng-disabled="loginForm.Phone_Number==null" ng-click="sendCodeToClientByPhone()" class="button button-full next-btn button-positive">
+
+                        <button  validation-submit="LoginForm"  ng-disabled="loginForm.Phone_Number==null" ng-click="sendCodeToClientByPhone()" class="button button-full next-btn button-positive">
                             <span class="">{{'Continue' | translate}}</span>
                         </button>
 

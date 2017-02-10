@@ -23,8 +23,13 @@ angular.module('starter.controllers').factory('WhiteLabelService', ['$rootScope'
     }
 
     var _convertWLIdToFullWLData = function (whiteLabelId) {
-        var whiteLabelsList=_getWhiteLabelsListLocal();
-        var item = $filter('filter')(whiteLabelsList, { whiteLabel_Id: whiteLabelId }, true)[0];
+        var whiteLabelsList = _getWhiteLabelsListLocal();
+        var item = null;
+         item = $filter('filter')(whiteLabelsList, { whiteLabel_Id: whiteLabelId }, true)
+        if (item) {
+            item= item[0];
+        }
+           
         return item;
     }
     WhiteLabelServiceFactory.getWhiteLabelsList = _getWhiteLabelsList;

@@ -115,8 +115,12 @@
   "Reservation_Canceled": "בוטלה",
   "Reservation_Done": "בוצעה",
   "Cancel_Reason": "סיבת ביטול קריאה",
-  "Trofot": "מוצרים רפואיים ותרופות"
-                
+  "Trofot": "מוצרים רפואיים ותרופות",
+  "No_Provider_Found": "לצערנו לא נמצא ספק פנוי כרגע",
+  "Please_Try_Again_Later": "נא לנסות מאוחר יותר",
+  "No_Reservations_Found": "לא נמצאו הזמנות",
+  "Number_between": "מספר בן",
+  "Digits": "ספרות"          
 
 
 

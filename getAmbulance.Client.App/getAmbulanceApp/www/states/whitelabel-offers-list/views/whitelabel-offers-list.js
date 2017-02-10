@@ -10,6 +10,14 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
     });
     $scope.headerInfoText = 'Header_Info_Common_Text';
     $scope.reservationForm = localStorageService.get('reservationFormData');
+    $scope.noProviderFound = false;
+    $scope.setNoProviderFound = function (data) {
+        if (data.length>0) {
+            $scope.noProviderFound = false;
+        } else {
+            $scope.noProviderFound = true;
+        }
+    }
 
     $scope.getAmbulanceOffersList = function () {
         CommonService.showLoader();
@@ -19,7 +27,8 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
             var addressLatLngList = result;
     
             ReservationService.getAmbulanceOffersList($scope.reservationForm, addressLatLngList).then(function (res) {
-            $scope.providerPriceOffersList = res.data;
+                $scope.providerPriceOffersList = res.data;
+                $scope.setNoProviderFound($scope.providerPriceOffersList);
             localStorageService.set('ambulancePriceOffersList', $scope.providerPriceOffersList);
         });
         })
@@ -33,7 +42,9 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
             var addressLatLngList = result;
 
             ReservationService.getMedicalTherapistOffersList($scope.reservationForm,addressLatLngList).then(function (res) {
-            $scope.providerPriceOffersList = res.data;
+                $scope.providerPriceOffersList = res.data;
+                $scope.setNoProviderFound($scope.providerPriceOffersList);
+
             localStorageService.set('medicalTherapistOffersList', $scope.providerPriceOffersList);
         });
         })
@@ -48,6 +59,8 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
 
             ReservationService.getStairsAssistanceOffersList($scope.reservationForm, addressLatLngList).then(function (res) {
                 $scope.providerPriceOffersList = res.data;
+                $scope.setNoProviderFound($scope.providerPriceOffersList);
+
                 localStorageService.set('stairsAssistanceOffersList', $scope.providerPriceOffersList);
             });
         })

@@ -80,7 +80,7 @@ namespace getAmbulance.WhiteLabel
                 foreach (var address in addressList)
                 {
                     filterdList = whiteLabel.supportedAreas.Where(supportedArea =>
-                  new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= Math.Sqrt(10) * 100
+                  new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= supportedArea.radius
                   ).ToList();
                     if(filterdList!=null && filterdList.Count() > 0)
                     {
