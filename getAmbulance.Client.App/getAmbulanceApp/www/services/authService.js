@@ -58,7 +58,8 @@ angular.module('starter.controllers').factory('authService', ['$http', '$q', 'lo
             _authentication.userName = loginData.userName;
             localStorageService.set('authorizationData', authorizationData);
             $http.post(serviceBase + 'api/Client/GetUserProfile', data).success(function (res) {
-  
+                $rootScope.$broadcast('logged-In');
+
                 UserProfileService.setUserProfileLocal(res);
                 ReservationHub.connectReservationHub();
                 deferred.resolve(response);

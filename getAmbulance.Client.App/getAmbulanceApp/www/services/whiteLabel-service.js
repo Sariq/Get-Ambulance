@@ -32,6 +32,10 @@ angular.module('starter.controllers').factory('WhiteLabelService', ['$rootScope'
            
         return item;
     }
+    $rootScope.$on('logged-In', function (event, args) {
+        _getWhiteLabelsList();
+    });
+
     WhiteLabelServiceFactory.getWhiteLabelsList = _getWhiteLabelsList;
     WhiteLabelServiceFactory.setWhiteLabelsListLocal = _setWhiteLabelsListLocal;
     WhiteLabelServiceFactory.getWhiteLabelsListLocal = _getWhiteLabelsListLocal;
