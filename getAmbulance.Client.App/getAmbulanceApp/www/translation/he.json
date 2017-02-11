@@ -120,7 +120,8 @@
   "Please_Try_Again_Later": "נא לנסות מאוחר יותר",
   "No_Reservations_Found": "לא נמצאו הזמנות",
   "Number_between": "מספר בן",
-  "Digits": "ספרות"          
+  "Digits": "ספרות",
+  "Length_Error_Msg": "הערך לא תקין"          
 
 
 

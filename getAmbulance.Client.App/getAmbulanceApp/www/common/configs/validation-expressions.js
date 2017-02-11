@@ -1,5 +1,5 @@
 ﻿
-angular.module('starter.controllers')
+angular.module('starter')
 .config(['$validationProvider', function ($validationProvider) {
 
     $validationProvider.showSuccessMessage = false; // or true(default)
@@ -7,18 +7,7 @@ angular.module('starter.controllers')
 
 
 
-    $validationProvider
-       .setExpression({
-           required: function (value, scope, element, param) {
-               console.log()
-           }
-       })
-       .setDefaultMsg({
-           required: function (value, scope, element, param){
-               error: 'Name is not valid',
-               success: 'Thanks!'
-           }
-       });
+
 
     $validationProvider
         .setExpression({
@@ -59,18 +48,30 @@ angular.module('starter.controllers')
                 }
             })
 
-
+    var lengthErrorMsg = 'הערך לא תקין';
     $validationProvider
-        .setExpression({
-            maxvalue: function (value, scope, element, attrs, param) {
-                return value <= param;
+      .setExpression({
+          minlength: function (value, scope, element, attrs, param) {
+              return value.toString().length >= parseInt(param);
+                }
+            })
+      .setDefaultMsg({
+            minlength: {
+                error: lengthErrorMsg
             }
-        }).setDefaultMsg({
-            maxvalue: {
-                error: 'Need to be smaller',
-                success: 'Thanks!'
-            }
-        });
+      });
+  
+    $validationProvider
+    .setExpression({
+        maxlength: function (value, scope, element, attrs, param) {
+            return value.toString().length <= parseInt(param);
+        }
+    })
+      .setDefaultMsg({
+          maxlength: {
+              error: lengthErrorMsg
+          }
+      });
 
     $validationProvider
        .setExpression({
