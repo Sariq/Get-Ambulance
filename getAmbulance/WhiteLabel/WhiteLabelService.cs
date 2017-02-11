@@ -109,10 +109,14 @@ namespace getAmbulance.WhiteLabel
         {
 
             var builder = Builders<WhiteLabelEntity>.Filter;
-       
-            var filter = builder.Eq("whiteLabelid", whiteLabelId);
-            var whiteLabel = _ctx.WhiteLabels.Find(filter).ToListAsync().Result[0];
-            return whiteLabel;
+            WhiteLabelEntity result = null;
+                 var filter = builder.Eq("whiteLabelid", whiteLabelId);
+            var whiteLabel = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
+            if (whiteLabel != null && whiteLabel.Count>0)
+            {
+                result = whiteLabel[0];
+    }
+            return result;
         }
 
         
@@ -125,6 +129,26 @@ namespace getAmbulance.WhiteLabel
                 .Set("prices."+jsonObj["category"].ToString(), jsonObj["updatedData"]);
             var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
         }
+        public void DeletePricesByCategory(BsonDocument jsonObj)
+        {
+            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"]);
+            filter = filter & Builders<WhiteLabelEntity>.Filter.Eq("prices.Private_Ambulance.distance","2");
+
+            var update = Builders<WhiteLabelEntity>.Update
+                .Unset("prices." + jsonObj["category"].ToString());
+            var result = _ctx.WhiteLabels.DeleteOneAsync(filter);
+        }
+
+        public void UpdateAmbulancePrices(BsonDocument jsonObj)
+        {
+
+            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"]);
+
+            var update = Builders<WhiteLabelEntity>.Update
+                .Set("prices.Private_Ambulance.distance."+ jsonObj["index"].ToString(), jsonObj["updatedData"]);
+            var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
+        }
+
         public void AddSupportedAreas(string whiteLabelId,List<SupportedArea> supportedAreaList)
         {
     

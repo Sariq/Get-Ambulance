@@ -4,7 +4,7 @@ var headerCmp = ['authService','WhiteLabelService', function (authService, White
     ctrl.logOut = function () {
         authService.logOut();
     }
-    ctrl.whiteLabel = WhiteLabelService.getWhiteLabelData();
+    ctrl.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
     ctrl.isOnline = ctrl.whiteLabel.isOnline;
     ctrl.updateWhiteLabelIsOnline = function (status) {
         WhiteLabelService.updateWhiteLabelIsOnline(status).then(function (res) {

@@ -14,7 +14,13 @@ angular.module('sbAdminApp').factory('ServicesSettingsService', ['$http', 'ngAut
         return $http.post(serviceBase + 'api/WhiteLabel/AddSupportedAreas', data);
     };
    
+
+
+    
+ 
+
     ServicesSettingsServiceFactory.UpdateSupportedAreas = _UpdateSupportedAreas;
+ 
     return ServicesSettingsServiceFactory;
 
 }]);

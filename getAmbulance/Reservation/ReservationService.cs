@@ -27,7 +27,7 @@ namespace getAmbulance.Reservation
             _ctx = ApplicationIdentityContext.Create();
             _whiteLabelService = new WhiteLabelService();
             _dbSerivce = new DBService();
-    }
+        }
 
         Lazy<IHubContext> hub = new Lazy<IHubContext>(
 () => GlobalHost.ConnectionManager.GetHubContext<ReservationHub>()
@@ -44,7 +44,7 @@ namespace getAmbulance.Reservation
                 int reservationNumber = _dbSerivce.getNextSequence("Reservation_Number");
                 reservation.Reservation_Number = reservationNumber;
                 _ctx.Reservations.InsertOneAsync(reservation);
-               
+
             }
             catch (Exception ex)
             {
@@ -56,11 +56,11 @@ namespace getAmbulance.Reservation
         {
             try
             {
-           
+
                 UpdateReservationWLId(reservation._id.ToString(), reservation.WhiteLabel_ID);
                 UpdateReservationStatus(reservation._id.ToString(), reservation.Status);
                 UpdateReservationDateToNow(reservation._id.ToString());
-                HubUpdateWLAndClientReservationStatus(reservation.Client_ID,reservation.WhiteLabel_ID, reservation._id.ToString(), reservation.Status);
+                HubUpdateWLAndClientReservationStatus(reservation.Client_ID, reservation.WhiteLabel_ID, reservation._id.ToString(), reservation.Status);
 
             }
             catch (Exception ex)
@@ -69,7 +69,8 @@ namespace getAmbulance.Reservation
             }
             return reservation;
         }
-        public void UpdateReservationDateToNow(string reservationId) {
+        public void UpdateReservationDateToNow(string reservationId)
+        {
             var id = new ObjectId(reservationId);
             var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
             var update = Builders<ReservationEntity>.Update
@@ -77,7 +78,7 @@ namespace getAmbulance.Reservation
 
             var result = _ctx.Reservations.UpdateOneAsync(filter, update);
         }
-        
+
 
         public List<ReservationEntity> GetReservationsList()
         {
@@ -88,7 +89,7 @@ namespace getAmbulance.Reservation
         public List<ReservationEntity> GetReservationsListByWhiteLabelId(string whiteLabel_ID, string reservationStatus = "0", string reservationType = "0")
         {
             var builder = Builders<ReservationEntity>.Filter;
-            var filter= builder.Empty;
+            var filter = builder.Empty;
             if (whiteLabel_ID != "0")
             {
                 filter = filter & builder.Eq("WhiteLabel_ID", whiteLabel_ID);
@@ -114,17 +115,18 @@ namespace getAmbulance.Reservation
             {
                 filter = filter & builder.Eq("WhiteLabel_ID", whiteLabel_ID);
             }
-            if (statusArray!=null && statusArray.Count > 0) {
+            if (statusArray != null && statusArray.Count > 0)
+            {
                 var statusFilter = builder.Empty;
                 statusFilter = builder.Eq("Status", statusArray[0].Value);
-                for (int i = 1; i <= statusArray.Count-1; i++)
+                for (int i = 1; i <= statusArray.Count - 1; i++)
                 {
                     statusFilter = statusFilter | builder.Eq("Status", statusArray[i].Value);
 
                 }
                 filter = filter & statusFilter;
             }
-            if (typeArray != null && typeArray.Count>0)
+            if (typeArray != null && typeArray.Count > 0)
             {
                 var typeFilter = builder.Empty;
                 typeFilter = builder.Eq("Type", typeArray[0].Value);
@@ -142,7 +144,7 @@ namespace getAmbulance.Reservation
             return reservationsList;
         }
 
-        
+
 
         public List<ReservationEntity> GetReservationsListByClientId(string Client_ID, string reservationStatus = "0", string reservationType = "0")
         {
@@ -186,14 +188,14 @@ namespace getAmbulance.Reservation
         }
         public List<WhiteLabelOfferEntity> GetAmbulanceOffersList(dynamic jsonObj)
         {
-            List<WhiteLabelOfferEntity> whiteLabelsOfferList= new List<WhiteLabelOfferEntity>();
-            List <WhiteLabelEntity> whiteLabelsList= _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"1");
+            List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "1");
             List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices["distance"], jsonObj);
-                int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices,jsonObj.form);
+                int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices, jsonObj);
+                int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices, jsonObj.form);
                 int finalPrice = distancePrice + extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
@@ -203,7 +205,7 @@ namespace getAmbulance.Reservation
         public List<WhiteLabelOfferEntity> GetMedicalTherapistOffersList(dynamic jsonObj)
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
-            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"2");
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "2");
             List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
@@ -218,7 +220,7 @@ namespace getAmbulance.Reservation
         public List<WhiteLabelOfferEntity> GetStairsAssistanceOffersList(dynamic jsonObj)
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
-            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true,"3");
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "3");
             List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
@@ -231,27 +233,33 @@ namespace getAmbulance.Reservation
         }
 
 
-        public int getWhiteLabelDistancePriceByKM(BsonDocument distancePricesList, dynamic jsonObj)
+        public int getWhiteLabelDistancePriceByKM(dynamic distancePricesList, dynamic jsonObj)
         {
-            foreach (var distance in distancePricesList)
-            {
-                if ((int)jsonObj.form.distance.Value <= Int32.Parse(distance.Name))
-                {
-   
-                    
-                    DateTime Reservation_Date = DateTime.Parse(jsonObj.form.Time.Value);
-                    DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
-                    DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
+            string Ambulance_Type = (jsonObj.form.Ambulance_Type).Value;
+            dynamic temp_distancePricesList = distancePricesList[Ambulance_Type]["distance"];
+         
 
-                    if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
+            foreach (var distance in temp_distancePricesList)
+            {
+             
+                    if ((int)jsonObj.form.distance.Value <= distance["distance"])
                     {
-                        return (int)distance.Value["night"];
+
+
+                        DateTime Reservation_Date = DateTime.Parse(jsonObj.form.Time.Value);
+                        DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
+                        DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
+
+                        if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
+                        {
+                            return (int)distance["night"];
+                        }
+                        else
+                        {
+                            return (int)distance["day"];
+                        }
                     }
-                    else
-                    {
-                        return (int)distance.Value["day"];
-                    }
-                }
+                
             }
             return 0;
         }
@@ -281,13 +289,13 @@ namespace getAmbulance.Reservation
         }
         public int getMedicalTherapistPriceByHour(BsonDocument prices, dynamic reservationData)
         {
-                    return ((int)prices["medicaTherapist"]) * ((int)reservationData["Therapist_Stayig_Time"]);
+            return ((int)prices["medicaTherapist"]) * ((int)reservationData["Therapist_Stayig_Time"]);
         }
 
         public int getStairsAssistancePriceByHour(BsonDocument prices, dynamic reservationData)
         {
             //TODO:add check night or day
-       
+
             DateTime Reservation_Date = DateTime.Parse(reservationData.Time.Value);
             DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
             DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
@@ -312,8 +320,8 @@ namespace getAmbulance.Reservation
             var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
             var update = Builders<ReservationEntity>.Update
                 .Set("Status", "2");
-             
-            var result =  _ctx.Reservations.UpdateOneAsync(filter, update);
+
+            var result = _ctx.Reservations.UpdateOneAsync(filter, update);
         }
 
         public void UpdateReservationStatus(string reservationId, string status)
@@ -328,7 +336,7 @@ namespace getAmbulance.Reservation
         {
             var id = new ObjectId(reservationId);
             var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
-           
+
 
 
             switch (status)
@@ -343,13 +351,13 @@ namespace getAmbulance.Reservation
                 case "2":
                     var updateAccepted = Builders<ReservationEntity>.Update
                .Set("Accepted_Reason", reason);
-                   _ctx.Reservations.UpdateOneAsync(filter, updateAccepted);
+                    _ctx.Reservations.UpdateOneAsync(filter, updateAccepted);
                     break;
                 //Ignored
                 case "3":
                     var updateIgnored = Builders<ReservationEntity>.Update
                .Set("Ignored_Reason", reason);
-               _ctx.Reservations.UpdateOneAsync(filter, updateIgnored);
+                    _ctx.Reservations.UpdateOneAsync(filter, updateIgnored);
                     break;
                 //Done
                 case "4":
@@ -359,16 +367,16 @@ namespace getAmbulance.Reservation
                     break;
                 //Canceled
                 case "5":
-                     var updateCanceled = Builders<ReservationEntity>.Update
-                .Set("AdditionalProperties.Cancel_Reason", reason);
-                   _ctx.Reservations.UpdateOneAsync(filter, updateCanceled);
+                    var updateCanceled = Builders<ReservationEntity>.Update
+               .Set("AdditionalProperties.Cancel_Reason", reason);
+                    _ctx.Reservations.UpdateOneAsync(filter, updateCanceled);
                     break;
             }
-           
-          
+
+
         }
-        
-        public void UpdateReservationWLId(string reservationId, string whiteLabelId=null)
+
+        public void UpdateReservationWLId(string reservationId, string whiteLabelId = null)
         {
             var id = new ObjectId(reservationId);
             var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
@@ -376,8 +384,8 @@ namespace getAmbulance.Reservation
                 .Set("WhiteLabel_ID", whiteLabelId);
             var result = _ctx.Reservations.UpdateOneAsync(filter, update);
         }
-        
-        public void HubUpdateWLAndClientReservationStatus(string clientId,string whiteLAbelId, string reservationId,string status)
+
+        public void HubUpdateWLAndClientReservationStatus(string clientId, string whiteLAbelId, string reservationId, string status)
         {
             switch (status)
             {
@@ -393,7 +401,7 @@ namespace getAmbulance.Reservation
                     break;
                 //Ignored
                 case "3":
-                   // UpdateReservationStatusWLId(reservationId);
+                    // UpdateReservationStatusWLId(reservationId);
                     Hub.Clients.Group(clientId).reservationIgnored(reservationId);
                     Hub.Clients.Group(whiteLAbelId).reservationIgnored(reservationId);
                     break;
@@ -429,19 +437,19 @@ namespace getAmbulance.Reservation
 
             // IList<IReservationProperty> propesties = new List<IReservationProperty>();
             BsonDocument doc = BsonDocument.Parse(jsonObjDepositRequest.ToString());
-            BsonDocument propesties =new BsonDocument{ };
+            BsonDocument propesties = new BsonDocument { };
             if (jsonObjDepositRequest.AdditionalProperties == null)
                 return propesties;
-        
+
             for (int i = 0; i < jsonObjDepositRequest.AdditionalProperties.Count; i++)
             {
 
                 // var key = (eReservationAdditionalProperties)jsonObjDepositRequest.AdditionalProperties[i].Key;
                 var key = (String)jsonObjDepositRequest.AdditionalProperties[i].Key;
-             
+
                 //if (key=="date")
                 //{
-                  
+
                 //    var value = (DateTime)jsonObjDepositRequest.AdditionalProperties[i].Value;
                 //    propesties.Add(key.ToString(), value);
                 //}
@@ -454,16 +462,16 @@ namespace getAmbulance.Reservation
                 //        propesties.Add(key.ToString(), value);
                 //    }else
                 //    {
-                        // var value = (string)jsonObjDepositRequest.AdditionalProperties[i].Value;
-                        var value = doc["AdditionalProperties"][i]["Value"];
-                        propesties.Add(key.ToString(), value);
+                // var value = (string)jsonObjDepositRequest.AdditionalProperties[i].Value;
+                var value = doc["AdditionalProperties"][i]["Value"];
+                propesties.Add(key.ToString(), value);
 
-                   // }
+                // }
 
-             //   }
+                //   }
                 // IReservationProperty property = CreateRequestProperty(key, value);
-        
-              
+
+
             }
 
             return propesties;

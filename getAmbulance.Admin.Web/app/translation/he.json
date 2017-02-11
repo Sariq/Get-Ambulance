@@ -112,7 +112,8 @@
   "Bug_Report": "דווח תקלה",
   "KG": "ק\"ג",
   "Ambulance_Price_Update": "טבלת מחירים אמבולנס",
-  "drive_price_fom_km": "עלות נסיעה מהק\"מ",
+  "Drive_Price_From_Km": "עלות נסיעה מהק\"מ",
+    "Drive_Price_After_Km": "עלות נסיעה ארוכה מ",
   "KM": "ק\"מ",
   "Show": "הצג",
   "Timer": "זמן המתנה",
@@ -139,8 +140,14 @@
   "Reservation_Canceled": "בוטלה",
   "Cancel_Reservation": "בטל הזמנה",
   "Cancel_Reason": "סיבת ביטול קריאה",
-  "Ended": "הסתיים"
-
+  "Ended": "הסתיים",
+  "Day_Price": "מחיר יום",
+  "Night_Price": "מחיר לילה",
+  "The_First": "הראשון",
+  "Till": "עד",
+  "Add_Price": "הוספת מחיר",
+  "Save" :"שמור",
+  "Delete": "מחיקה"
                 
 
 

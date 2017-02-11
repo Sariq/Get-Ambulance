@@ -9,7 +9,7 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         var deferred = $q.defer();
         var data = {
             statusArray: statusArray,
-            whiteLabelId: WhiteLabelService.getWhiteLabelData().whiteLabelid,
+            whiteLabelId: WhiteLabelService.getWhiteLabelDataLocal().whiteLabelid,
             typeArray: typeArray
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationsListByWhiteLabelIdByStatusByType', data).success(function (res) {
@@ -44,7 +44,7 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
             reservationId: reservation._id,
             Client_Id: reservation.Client_ID,
             Status: status,
-            whiteLabelId: WhiteLabelService.getWhiteLabelData().whiteLabelid,
+            whiteLabelId: WhiteLabelService.getWhiteLabelDataLocal().whiteLabelid,
             reason: reason
         }
         return $http.post(serviceBase + 'api/Reservation/UpdateReservationStatus', data);

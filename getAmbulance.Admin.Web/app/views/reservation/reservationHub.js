@@ -5,6 +5,7 @@ angular.module('sbAdminApp')
     var self = this;
     self.connectReservationHub = function () {
         self.whiteLabelData = WhiteLabelService.getWhiteLabelData();
+        if (self.whiteLabelData)
         var WL_ID = self.whiteLabelData.whiteLabelid;
         var Employee = function (employee) {
             if (!employee) employee = {};

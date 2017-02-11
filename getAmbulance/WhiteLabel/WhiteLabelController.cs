@@ -93,12 +93,54 @@ namespace getAmbulance.WhiteLabel
                 dynamic jsonObj = jsonData;
                 BsonDocument doc = BsonDocument.Parse(jsonData.ToString());
                 _whiteLabelService.UpdatePricesByCategory(doc);
+               
 
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
 
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "UpdatePricesByCategory Error");
+            }
+            return response;
+        }
+        // Post: /WhiteLabel/DeletePricesByCategory
+        [HttpPost]
+        public HttpResponseMessage DeletePricesByCategory(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                dynamic jsonObj = jsonData;
+                BsonDocument doc = BsonDocument.Parse(jsonData.ToString());
+                _whiteLabelService.DeletePricesByCategory(doc);
+
+                response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "UpdatePricesByCategory Error");
+            }
+            return response;
+        }
+
+        
+
+        // Post: /WhiteLabel/UpdateAmbulancePrices
+        [HttpPost]
+        public HttpResponseMessage UpdateAmbulancePrices(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                dynamic jsonObj = jsonData;
+                BsonDocument doc = BsonDocument.Parse(jsonData.ToString());
+                _whiteLabelService.UpdateAmbulancePrices(doc);
+                response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
                 response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "UpdatePricesByCategory Error");
             }
             return response;
@@ -115,10 +157,24 @@ namespace getAmbulance.WhiteLabel
             dynamic jsonObj = jsonData;
             // var currentPlace = jsonObj.currentPlace.Value;
             //temp_applicationUser.Claims
-            var builder = Builders<ApplicationUser>.Filter;
-            var filter = builder.Eq("UserName", (string)jsonObj.userName.Value);
-            var temp_userData = _ctx.Users.Find(filter).ToListAsync().Result[0];
-            var WhiteLabelId = _HelperService.GetValueByTypeFromClaims(temp_userData.Claims, "WhiteLabelId").Value;
+            string WhiteLabelId = null;
+            if (jsonObj.userName != null)
+            {
+                var builder = Builders<ApplicationUser>.Filter;
+                var filter = builder.Eq("UserName", (string)jsonObj.userName.Value);
+                var temp_userData = _ctx.Users.Find(filter).ToListAsync().Result[0];
+                 WhiteLabelId = _HelperService.GetValueByTypeFromClaims(temp_userData.Claims, "WhiteLabelId").Value;
+
+            }
+            else
+            {
+                if (jsonObj.whiteLabelId != null)
+                {
+                    WhiteLabelId = (string)jsonObj.whiteLabelId.Value;
+
+                }
+            }
+
             WhiteLabelEntity whiteLabel = _whiteLabelService.GetWhiteLabelById(WhiteLabelId.ToString());
             WhiteLabelResponseEntity whiteLabelResponse = new WhiteLabelResponseEntity();
             whiteLabelResponse.prices = JObject.Parse(whiteLabel.prices.ToJson<MongoDB.Bson.BsonDocument>());

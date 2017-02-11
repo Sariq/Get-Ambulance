@@ -1,43 +1,100 @@
 ﻿
+<div>
 
-<div class="row distance-price">
-    <div class="col-lg-12 items">
-        <div class="row item-header min-height-40 items-align-center">
-            <div class="col-lg-10">
-                {{'drive_price_fom_km' | translate}}
+
+    <div class="row distance-price" ng-repeat="distance in $ctrl.rangePriceData">
+     
+        <div class="col-lg-12 items">
+            <div class="row item-header min-height-40 items-align-center">
+                <div class="col-lg-10">
+                    <span ng-show="$index==0">{{'Drive_Price_From_Km' | translate}} {{'The_First' | translate}}</span><span ng-show="$index!=0"> {{'Drive_Price_After_Km' | translate}}  {{$ctrl.whiteLabelData.prices.Private_Ambulance.distance[$index-1].distance}} {{'KM' | translate}}</span>
+                </div>
+                <div class="col-lg-1">
+                    <span ng-click="$ctrl.deleteItem($index)">{{'Delete' | translate}}</span>
+                </div>
+                <div class="col-lg-1">
+                    <span ng-click="$ctrl.saveItem($index)">{{'Save' | translate}}</span>
+                </div>
             </div>
-            <div class="col-lg-2">
-                {{'delete' | translate}}
+            <div class="row row-eq-height inner ">
+
+                <div class="col-lg-2 first-block column">
+                    <br />
+                    <div>
+                        {{'Drive_Price_From_Km' | translate}} <span ng-show="$index==0">{{'The_First' | translate}}</span><span ng-show="$index!=0">{{$ctrl.whiteLabelData.prices.Private_Ambulance.distance[$index-1].distance}}  {{"Till" | translate}}</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 column value-box">
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="key==0" data-type="minus" ng-click="distance.distance=distance.distance-1">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+                        <div class="input-with-km">
+                            <input type="number" name="quant[1]" class="value-input  input-number" ng-model="distance.distance">
+                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input input-number" value="{{'KM' | translate}}" min="1" max="10">
+
+                        </div>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.distance=distance.distance+1">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-3 column value-box">
+                    <span>{{'Day_Price' | translate}}</span>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="distance.day==0" data-type="minus" ng-click="distance.day=distance.day-1">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+
+                        <div class="input-with-km">
+                            <input type="text" name="quant[1]" class="value-input  input-number" ng-model="distance.day" min="1" max="10">
+                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input input-number" value="&#8362;" min="1" max="10">
+
+                        </div>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.day=distance.day+1">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 column value-box">
+                    <span>{{'Night_Price' | translate}}</span>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="distance.night==0" data-type="minus" ng-click="distance.night=distance.night-1">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+
+                        <div class="input-with-km">
+                            <input type="text" name="quant[1]" class="value-input  input-number" ng-model="distance.night" min="1" max="10">
+                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input input-number" value="&#8362;" min="1" max="10">
+
+                        </div>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.night=distance.night+1">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row row-eq-height inner ">
-
-            <div class="col-lg-3 first-block column">
-                <div>
-                    {{'drive_price_fom_km' | translate}}
-                </div>
-            </div>
-
-            <div class="col-lg-3 column value-box">
-
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="$ctrl.myValue==0" data-type="minus" ng-click="$ctrl.myValue=$ctrl.myValue-1">
-                            <span class="glyphicon glyphicon-minus"></span>
-                        </button>
-                    </span>
-                    <div class="input-km-text">
-                        <input type="text" name="quant[1]" class="value-input" class="form-control input-number" ng-model="$ctrl.myValue" min="1" max="10">
-                    </div>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="$ctrl.myValue=$ctrl.myValue+1">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                <!--<label class="item item-input panel item-floating-label">
-                    <input placeholder="{{'Id_Number'|translate}}" type="number" name="Id_Number" ng-model="form.Id_Number" message-id="Id_Number" valid-method="blur" validator="required,number,minlength=9,maxlength=9" required-error-message="{{'Insert'|translate}} {{'Id_Number'|translate}}">
-                </label>-->
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="btn-container ">
+                <button class="btn green-btn add-drive-price" ng-click="$ctrl.addNewRangePrice()">{{'Add_Price' | translate}} <span>+</span></button>
             </div>
         </div>
     </div>

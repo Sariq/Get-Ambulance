@@ -23,16 +23,11 @@
     width: 100%;
        background-color: #f7fbfc;
 }
-.distance-price .value-input{
-        text-align: center!important;
-        padding:0!important;
-            width: 100%;
-             background-color: #f7fbfc;
-                 color: #3279b9;
-}
+
 .distance-price .inner{
      color: #3279b9;
          padding: 1% 1% 2% 1%;
+         margin-top: 20px;
 }
 .item-input {
     overflow: unset!important;
@@ -60,7 +55,9 @@ input[type="number"] {
 }
 
 .first-block{
-    padding: 1%;
+margin-top: 10px;
+padding-left:0;
+padding-right:0;
 }
 
 .distance-price  .plus-min{
@@ -77,11 +74,40 @@ input[type="number"] {
 }
 
 .input-km-text:after {
- position: relative;
+ /*position: relative;
     text-align: center;
     content: 'ק"מ';
     display: block;
     margin-top: -30px;
-    margin-right: 53px;
+    margin-right: 53px;*/
 
 }
+.distance-price .input-with-km{
+    display:flex;
+        padding: 1%;
+}
+.distance-price .input-with-km input
+{
+            width: 100%;
+             background-color: #f7fbfc;
+                 color: #3279b9;
+}
+
+.distance-price .input-with-km .value-input{
+
+    text-align:left!important;
+    direction:ltr!important;
+}
+.distance-price .input-with-km .static-text-input{
+    padding-right:5px;
+    text-align:right!important;
+}
+ input[type="text"]:focus{
+  border-width:0 ;
+
+  outline: 0 none;
+}
+ .add-drive-price{
+          max-width: 200px;
+   
+ }

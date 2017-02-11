@@ -5,25 +5,29 @@ angular.module('sbAdminApp').factory('PricesService', ['$http', 'ngAuthSettings'
 
     var PricesServiceFactory = {};
     
-    var _updatePricesByCategory = function (category) {
+    var _updatePricesByCategory = function (category,updatedData) {
 
         var data = {
             "whiteLabelId": authService.authentication.WhiteLabelData.whiteLabelid,
             "category": category,
-            "updatedData":15
-            //"updatedData": {
-            //    "20": {
-            //        "day": "11",
-            //        "night": "48"
-            //    },
-            //    "60": {
-            //        "day": "48",
-            //        "night": "51"
-            //    }
-            //},
+            "updatedData": updatedData
+
         }
         return $http.post(serviceBase + 'api/WhiteLabel/UpdatePricesByCategory', data);
     };
+
+    var _deletePricesByCategory = function (index) {
+
+        var data = {
+            "whiteLabelId": authService.authentication.WhiteLabelData.whiteLabelid,
+            "category": "Private_Ambulance.distance." + index
+                    }
+        return $http.post(serviceBase + 'api/WhiteLabel/DeletePricesByCategory', data);
+    };
+
+    
+    PricesServiceFactory.deletePricesByCategory = _deletePricesByCategory;
+
     PricesServiceFactory.updatePricesByCategory = _updatePricesByCategory;
 
     return PricesServiceFactory;

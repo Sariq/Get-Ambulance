@@ -126,3 +126,4 @@ D:\Get-Ambulance\getAmbulance\bin\getAmbulance.dll
 D:\Get-Ambulance\getAmbulance\bin\getAmbulance.pdb
 D:\Get-Ambulance\getAmbulance\obj\Debug\getAmbulance.dll
 D:\Get-Ambulance\getAmbulance\obj\Debug\getAmbulance.pdb
+D:\Get-Ambulance\getAmbulance\obj\Debug\getAmbulance.API.csprojResolveAssemblyReference.cache
