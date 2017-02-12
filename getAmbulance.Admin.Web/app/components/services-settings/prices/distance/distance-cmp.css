@@ -1,6 +1,6 @@
 ﻿
 .distance-price .items .item-header{
-    background-color:#54a6de!important;
+    background-color:#54a6de;
     color:white;
     min-height:40px;
 }
@@ -110,4 +110,7 @@ padding-right:0;
  .add-drive-price{
           max-width: 200px;
    
+ }
+ .inValid-Background{
+     background-color:red!important;
  }

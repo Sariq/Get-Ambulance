@@ -1,3 +1,4 @@
+/// <reference path="distance-cmp..js" />
 'use strict';
 var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService', function ($scope, PricesService, $state, WhiteLabelService) {
     var ctrl = this;
@@ -16,14 +17,15 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     ctrl.addNumber = function (key, number) {
         return (parseInt(key) + number).toString();
     }
-
+    ctrl.priceStep = 10;
+    ctrl.distanceStep = 5;
     ctrl.addNewRangePrice = function () {
         if (ctrl.rangePriceData[ctrl.rangePriceData.length - 1] != null) {
             ctrl.rangePriceData.push(
                 {
-                    "distance": ctrl.rangePriceData[ctrl.rangePriceData.length - 1].distance + 1,
-                    "day": ctrl.rangePriceData[ctrl.rangePriceData.length - 1].day + 1,
-                    "night": ctrl.rangePriceData[ctrl.rangePriceData.length - 1].night + 1
+                    "distance": ctrl.rangePriceData[ctrl.rangePriceData.length - 1].distance + ctrl.distanceStep,
+                    "day": ctrl.rangePriceData[ctrl.rangePriceData.length - 1].day + ctrl.priceStep,
+                    "night": ctrl.rangePriceData[ctrl.rangePriceData.length - 1].night + ctrl.priceStep
                 })
         } else {
             ctrl.rangePriceData.push(
@@ -33,6 +35,7 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
                    "night": 150
                })
         }
+        ctrl.validateDistance(ctrl.rangePriceData.length - 1);
     }
 
 
@@ -44,8 +47,21 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     }
     ctrl.saveItem = function (index) {
         var category = "Private_Ambulance.distance." + index;
+        if (ctrl.rangePriceData[index].validations)
+        delete ctrl.rangePriceData[index].validations;
         PricesService.updatePricesByCategory(category,ctrl.rangePriceData[index])
-      //  UpdateAmbulancePrices(ctrl.rangePriceData[index - 1]);
+    }
+
+    ctrl.validateDistance = function (index) {
+   
+        ctrl.rangePriceData[index].validations = {};
+        if (ctrl.rangePriceData[index + 1]) {
+            ctrl.rangePriceData[index].validations.isDistanceValid= ctrl.rangePriceData[index + 1].distance > ctrl.rangePriceData[index].distance;
+        }
+        if (ctrl.rangePriceData[index -1]) {
+            ctrl.rangePriceData[index].validations.isDistanceValid = ctrl.rangePriceData[index - 1].distance < ctrl.rangePriceData[index].distance;
+        }
+        
     }
 }]
 angular.module('sbAdminApp').component('distancePriceCmp', {

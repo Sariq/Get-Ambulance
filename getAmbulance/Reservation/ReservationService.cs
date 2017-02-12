@@ -233,35 +233,46 @@ namespace getAmbulance.Reservation
         }
 
 
+        public bool isDay(string Time)
+        {
+            DateTime Reservation_Date = DateTime.Parse(Time);
+            DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
+            DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
+
+            if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public int getWhiteLabelDistancePriceByKM(dynamic distancePricesList, dynamic jsonObj)
         {
             string Ambulance_Type = (jsonObj.form.Ambulance_Type).Value;
             dynamic temp_distancePricesList = distancePricesList[Ambulance_Type]["distance"];
-         
+            string DayOrNight = null;
+            if (isDay(jsonObj.form.Time.Value))
+            {
+                DayOrNight = "day";
+            }
+            else
+            {
+                DayOrNight = "night";
+            }
 
             foreach (var distance in temp_distancePricesList)
             {
-             
-                    if ((int)jsonObj.form.distance.Value <= distance["distance"])
-                    {
 
+                if ((int)jsonObj.form.distance.Value <= distance["distance"])
+                {
+                    return (int)distance[DayOrNight];
+                }
 
-                        DateTime Reservation_Date = DateTime.Parse(jsonObj.form.Time.Value);
-                        DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
-                        DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
-
-                        if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
-                        {
-                            return (int)distance["night"];
-                        }
-                        else
-                        {
-                            return (int)distance["day"];
-                        }
-                    }
-                
             }
-            return 0;
+
+            return ((temp_distancePricesList[temp_distancePricesList.Count - 1][DayOrNight].Value));
         }
         public int getAmbulanceExtraServicesPrice(BsonDocument prices, dynamic reservationData)
         {
