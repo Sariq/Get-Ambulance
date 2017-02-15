@@ -85,6 +85,8 @@ padding-right:0;
 .distance-price .input-with-km{
     display:flex;
         padding: 1%;
+        max-width: 97px;
+        margin:auto;
 }
 .distance-price .input-with-km input
 {
@@ -114,3 +116,49 @@ padding-right:0;
  .inValid-Background{
      background-color:red!important;
  }
+.distance-price .btn-default, .distance-price .btn-default:hover, .distance-price .btn-default:focus, .distance-price .btn-default:active{
+     background-color:inherit!important;
+  box-shadow: none;
+     border:none;
+     border-style:none;
+      outline: none;
+ }
+
+.distance-price .input-number.price{
+    background:#525975!important;
+    color:white;
+        border-bottom-right-radius:10px;
+    border-top-right-radius:10px;
+        width: 130%;
+}
+
+.static-text-input.price{
+       background:#525975!important;
+    color:white!important;
+    border-bottom-left-radius:10px;
+    border-top-left-radius:10px;
+}
+
+
+.distance-price .input-number.km{
+        border-bottom-right-radius:10px;
+    border-top-right-radius:10px;
+        width: 100%;
+}
+.static-text-input.km{
+
+    border-bottom-left-radius:10px;
+    border-top-left-radius:10px;
+}
+.distance-price .input-number:focus, .distance-price .input-number:active{
+ border-color: none;
+  box-shadow: none;
+  outline: 0 none;
+
+}
+.distance-price .input-group{
+    margin:auto;
+}
+.cursor-pointer{
+    cursor:pointer;
+}

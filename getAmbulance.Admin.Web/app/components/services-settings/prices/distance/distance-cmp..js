@@ -1,4 +1,4 @@
-/// <reference path="distance-cmp..js" />
+
 'use strict';
 var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService', function ($scope, PricesService, $state, WhiteLabelService) {
     var ctrl = this;
@@ -48,7 +48,9 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     ctrl.saveItem = function (index) {
         var category = "Private_Ambulance.distance." + index;
         if (ctrl.rangePriceData[index].validations)
-        delete ctrl.rangePriceData[index].validations;
+            delete ctrl.rangePriceData[index].validations;
+        if (ctrl.rangePriceData[index].edit)
+            delete ctrl.rangePriceData[index].edit;
         PricesService.updatePricesByCategory(category,ctrl.rangePriceData[index])
     }
 

@@ -262,7 +262,7 @@ namespace getAmbulance.Reservation
                 DayOrNight = "night";
             }
 
-            foreach (var distance in temp_distancePricesList)
+           foreach (var distance in temp_distancePricesList)
             {
 
                 if ((int)jsonObj.form.distance.Value <= distance["distance"])

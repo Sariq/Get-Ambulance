@@ -2,10 +2,10 @@
 <div>
 
 
-    <div class="row distance-price" ng-repeat="distance in $ctrl.rangePriceData">
+    <div class="row distance-price"  ng-repeat="distance in $ctrl.rangePriceData">
      
         <div class="col-lg-12 items">
-            <div class="row item-header min-height-40 items-align-center" ng-class="{'inValid-Background':distance.validations.isDistanceValid==false}">
+            <div class="row item-header min-height-40 items-align-center cursor-pointer" ng-class="{'inValid-Background':distance.validations.isDistanceValid==false}">
                 <div class="col-lg-10">
                     <span ng-show="$index==0">{{'Drive_Price_From_Km' | translate}} {{'The_First' | translate}}</span><span ng-show="$index!=0"> {{'Drive_Price_After_Km' | translate}}  {{$ctrl.whiteLabelData.prices.Private_Ambulance.distance[$index-1].distance}} {{'KM' | translate}}</span>
                 </div>
@@ -13,7 +13,8 @@
                     <span ng-if="$last" ng-click="$ctrl.deleteItem($index)">{{'Delete' | translate}}</span>
                 </div>
                 <div class="col-lg-1">
-                    <span ng-show="distance.validations.isDistanceValid!=false" ng-click="$ctrl.saveItem($index)">{{'Save' | translate}}</span>
+                    <span ng-show="distance.validations.isDistanceValid!=false && distance.edit==true" ng-click="$ctrl.saveItem($index)">{{'Save' | translate}}</span>
+                    <span ng-show="distance.edit!=true" ng-click="distance.edit=true">{{'Edit' | translate}}</span>
                 </div>
             </div>
             <div class="row row-eq-height inner ">
@@ -21,68 +22,68 @@
                 <div class="col-lg-2 first-block column">
                     <br />
                     <div>
-                        {{'Drive_Price_From_Km' | translate}} <span ng-show="$index==0">{{'The_First' | translate}}</span><span ng-show="$index!=0">{{$ctrl.whiteLabelData.prices.Private_Ambulance.distance[$index-1].distance}}  {{"Till" | translate}}</span>
+                        {{'Drive_Price_From_Km' | translate}} <span ng-show="$index==0">{{'The_First' | translate}} {{"Till" | translate}}</span><span ng-show="$index!=0">{{$ctrl.whiteLabelData.prices.Private_Ambulance.distance[$index-1].distance}}  {{"Till" | translate}}</span>
                     </div>
                 </div>
 
-                <div class="col-lg-3 column value-box">
+                <div class="col-lg-2 column value-box">
                     <br />
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="key==0" data-type="minus" ng-click="distance.distance=distance.distance-$ctrl.distanceStep;$ctrl.validateDistance($index)">
+                            <button type="button" ng-show="distance.edit==true" class="btn btn-default btn-number plus-min" ng-disabled="key==0" data-type="minus" ng-click="distance.distance=distance.distance-$ctrl.distanceStep;$ctrl.validateDistance($index)">
                                 <span class="glyphicon glyphicon-minus"></span>
                             </button>
                         </span>
                         <div class="input-with-km">
-                            <input type="number" name="quant[1]" class="value-input  input-number" ng-model="distance.distance" ng-blur="$ctrl.validateDistance($index)">
-                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input input-number" value="{{'KM' | translate}}" min="1" max="10">
+                            <input ng-disabled="false" type="number" ng-disabled="distance.edit!=true" name="quant[1]" class="value-input  input-number km" ng-model="distance.distance" ng-blur="$ctrl.validateDistance($index)">
+                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input  km" value="{{'KM' | translate}}" min="1" max="10">
 
                         </div>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.distance=distance.distance+$ctrl.distanceStep;$ctrl.validateDistance($index)">
+                            <button type="button" ng-show="distance.edit==true" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.distance=distance.distance+$ctrl.distanceStep;$ctrl.validateDistance($index)">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </span>
                     </div>
                 </div>
-                <div class="col-lg-3 column value-box">
+                <div class="col-lg-2 column value-box">
                     <span>{{'Day_Price' | translate}}</span>
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="distance.day==0" data-type="minus" ng-click="distance.day=distance.day-$ctrl.priceStep">
+                            <button type="button" ng-show="distance.edit==true" class="btn btn-default btn-number plus-min" ng-disabled="distance.day==0" data-type="minus" ng-click="distance.day=distance.day-$ctrl.priceStep">
                                 <span class="glyphicon glyphicon-minus"></span>
                             </button>
                         </span>
 
                         <div class="input-with-km">
-                            <input type="text" name="quant[1]" class="value-input  input-number" ng-model="distance.day" min="1" max="10">
-                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input input-number" value="&#8362;" min="1" max="10">
+                            <input type="number" ng-disabled="distance.edit!=true" name="quant[1]" class="value-input  input-number price" ng-model="distance.day" min="1">
+                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input  price" value="&#8362;" min="1" max="10">
 
                         </div>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.day=distance.day+$ctrl.priceStep">
+                            <button type="button" ng-show="distance.edit==true" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.day=distance.day+$ctrl.priceStep">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </span>
                     </div>
                 </div>
 
-                <div class="col-lg-3 column value-box">
+                <div class="col-lg-2 column value-box">
                     <span>{{'Night_Price' | translate}}</span>
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number plus-min" ng-disabled="distance.night==0" data-type="minus" ng-click="distance.night=distance.night-$ctrl.priceStep">
+                            <button type="button" ng-show="distance.edit==true" class="btn btn-default btn-number plus-min" ng-disabled="distance.night==0" data-type="minus" ng-click="distance.night=distance.night-$ctrl.priceStep">
                                 <span class="glyphicon glyphicon-minus"></span>
                             </button>
                         </span>
 
                         <div class="input-with-km">
-                            <input type="text" name="quant[1]" class="value-input  input-number" ng-model="distance.night" min="1" max="10">
-                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input input-number" value="&#8362;" min="1" max="10">
+                            <input type="number" ng-disabled="distance.edit!=true" name="quant[1]" class="value-input  input-number price" ng-model="distance.night" min="1" >
+                            <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input  price" value="&#8362;" min="1" max="10">
 
                         </div>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.night=distance.night+$ctrl.priceStep">
+                            <button type="button" ng-show="distance.edit==true" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="distance.night=distance.night+$ctrl.priceStep">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </span>
