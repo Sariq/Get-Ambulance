@@ -4,15 +4,12 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     var ctrl = this;
     //PricesService.updatePricesByCategory("stairsBuilding");
     ctrl.myValue = 1;
-    WhiteLabelService.getWhiteLabelData().then(function (res) {
-        ctrl.whiteLabelData = res;
-        switch ("Private_Ambulance") {
-            case "Private_Ambulance":
-                ctrl.rangePriceData = ctrl.whiteLabelData.prices.Private_Ambulance.distance;
-                break;
-        }
-    });
-
+    ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
+    switch ("Private_Ambulance") {
+        case "Private_Ambulance":
+            ctrl.rangePriceData = ctrl.whiteLabelData.prices.Private_Ambulance.distance;
+            break;
+    }
 
     ctrl.addNumber = function (key, number) {
         return (parseInt(key) + number).toString();

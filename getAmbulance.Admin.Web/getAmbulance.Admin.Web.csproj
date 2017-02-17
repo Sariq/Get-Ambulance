@@ -696,6 +696,9 @@
     <Content Include="app\bower_components\signalr\jquery.signalR.min.js" />
     <Content Include="app\common\services\authInterceptorService.js" />
     <Content Include="app\components\reservation\header-cmp.css" />
+    <Content Include="app\components\services-settings\prices\weight\weight-cmp..js" />
+    <Content Include="app\components\services-settings\prices\weight\weight-cmp.css" />
+    <Content Include="app\components\services-settings\prices\weight\weight-cmp.html" />
     <Content Include="app\components\services-settings\prices\distance\distance-cmp..js" />
     <Content Include="app\components\services-settings\prices\distance\distance-cmp.css" />
     <Content Include="app\components\services-settings\prices\distance\distance-cmp.html" />
@@ -10466,7 +10469,7 @@
     <Content Include="app\.htaccess" />
     <Content Include="img\mada-logo.jpg %281%29.crdownload" />
     <Content Include="img\mada-logo.jpg.crdownload" />
-    <Content Include="bower.json" />
+    <Content Include="bower2.json" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
     <Content Include="node_modules\.bin\acorn" />

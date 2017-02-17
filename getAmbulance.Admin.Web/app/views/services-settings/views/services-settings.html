@@ -4,11 +4,33 @@
     <!--<supported-area-cmp area-data="areaData"></supported-area-cmp>
     <button ng-click="UpdateSupportedAreas()">{{'Add_Supported_Area' | translate}} </button>-->
     <div class="inner-wrapper row">
-        <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header">{{'Ambulance_Price_Update' | translate}}</h4>
+        </div>
+        <div class="col-lg-12 price-cmp ">
+            <div class="items">
+                <div class="row  item-header min-height-40 items-align-center cursor-pointer" ng-class="{'inValid-Background':distance.validations.isDistanceValid==false}">
+                    <div class="col-lg-10">
+                        <span >{{'Price_Drice_Addition' | translate}}</span>
+                    </div>
+                    <div class="col-lg-1">
+                        <span ng-if="$last" ng-click="$ctrl.deleteItem($index)">{{'Delete' | translate}}</span>
+                    </div>
+                    <div class="col-lg-1">
+                        <span ng-show="distance.validations.isDistanceValid!=false && distance.edit==true" ng-click="$ctrl.saveItem($index)">{{'Save' | translate}}</span>
+                        <span ng-show="distance.edit!=true" ng-click="distance.edit=true">{{'Edit' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <weight-price-cmp></weight-price-cmp>
+        </div>
+
+    </div>
+    <br />
+    <div class="inner-wrapper row">
             <div class="col-lg-12">
                 <h4 class="page-header">{{'Ambulance_Price_Update' | translate}}</h4>
             </div>
-        </div>
         <div class="col-lg-12">
             <distance-price-cmp></distance-price-cmp>
         </div>

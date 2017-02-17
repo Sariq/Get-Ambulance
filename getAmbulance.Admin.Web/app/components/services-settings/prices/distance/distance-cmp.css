@@ -1,10 +1,10 @@
 ﻿
-.distance-price .items .item-header{
+.price-cmp .items .item-header{
     background-color:#54a6de;
     color:white;
     min-height:40px;
 }
-.distance-price  .item-input  input {
+.price-cmp  .item-input  input {
     text-align:center;
     -webkit-box-flex: 1;
     -webkit-flex: 1 220px;
@@ -17,17 +17,14 @@
     background-color: transparent;
     width: 100%;
 }
-.distance-price .panel {
-    font-size: calc(0.75em + 2vmin);
-    background-color: #f7fbfc;
-    width: 100%;
-       background-color: #f7fbfc;
+.price-cmp .panel {
+
 }
 
-.distance-price .inner{
-     color: #3279b9;
-         padding: 1% 1% 2% 1%;
-         margin-top: 20px;
+.price-cmp .inner{
+    
+         padding: 1% 1% 1% 1%;
+        
 }
 .item-input {
     overflow: unset!important;
@@ -60,16 +57,16 @@ padding-left:0;
 padding-right:0;
 }
 
-.distance-price  .plus-min{
+.price-cmp  .plus-min{
     border:0!important;
         color: #3279b9;
 }
 
-.distance-price  .row-eq-height .column{
+.price-cmp  .row-eq-height .column{
     min-height:55px;
 }
 
-.distance-price  .value-box{
+.price-cmp  .value-box{
     text-align:center;
 }
 
@@ -82,25 +79,25 @@ padding-right:0;
     margin-right: 53px;*/
 
 }
-.distance-price .input-with-km{
+.price-cmp .input-with-km{
     display:flex;
         padding: 1%;
         max-width: 97px;
         margin:auto;
 }
-.distance-price .input-with-km input
+.price-cmp .input-with-km input
 {
             width: 100%;
              background-color: #f7fbfc;
                  color: #3279b9;
 }
 
-.distance-price .input-with-km .value-input{
+.price-cmp .input-with-km .value-input{
 
     text-align:left!important;
     direction:ltr!important;
 }
-.distance-price .input-with-km .static-text-input{
+.price-cmp .input-with-km .static-text-input{
     padding-right:5px;
     text-align:right!important;
 }
@@ -116,7 +113,7 @@ padding-right:0;
  .inValid-Background{
      background-color:red!important;
  }
-.distance-price .btn-default, .distance-price .btn-default:hover, .distance-price .btn-default:focus, .distance-price .btn-default:active{
+.price-cmp .btn-default, .price-cmp .btn-default:hover, .price-cmp .btn-default:focus, .price-cmp .btn-default:active{
      background-color:inherit!important;
   box-shadow: none;
      border:none;
@@ -124,7 +121,7 @@ padding-right:0;
       outline: none;
  }
 
-.distance-price .input-number.price{
+.price-cmp .input-number.price{
     background:#525975!important;
     color:white;
         border-bottom-right-radius:10px;
@@ -140,7 +137,7 @@ padding-right:0;
 }
 
 
-.distance-price .input-number.km{
+.price-cmp .input-number.km{
         border-bottom-right-radius:10px;
     border-top-right-radius:10px;
         width: 100%;
@@ -150,13 +147,13 @@ padding-right:0;
     border-bottom-left-radius:10px;
     border-top-left-radius:10px;
 }
-.distance-price .input-number:focus, .distance-price .input-number:active{
+.price-cmp .input-number:focus, .price-cmp .input-number:active{
  border-color: none;
   box-shadow: none;
   outline: 0 none;
 
 }
-.distance-price .input-group{
+.price-cmp .input-group{
     margin:auto;
 }
 .cursor-pointer{
