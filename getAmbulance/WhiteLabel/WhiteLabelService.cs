@@ -1,4 +1,6 @@
-﻿using getAmbulance.Models;
+﻿using getAmbulance.Hubs;
+using getAmbulance.Models;
+using Microsoft.AspNet.SignalR;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -18,7 +20,13 @@ namespace getAmbulance.WhiteLabel
             _ctx = ApplicationIdentityContext.Create();
             
         }
-
+        Lazy<IHubContext> hub = new Lazy<IHubContext>(
+() => GlobalHost.ConnectionManager.GetHubContext<ReservationHub>()
+);
+        protected IHubContext Hub
+        {
+            get { return hub.Value; }
+        }
         public List<WhiteLabelEntity> GetWhiteLabelsList()
         {
             var whiteLabelsList = _ctx.WhiteLabels.Aggregate().ToListAsync().Result;
@@ -107,16 +115,25 @@ namespace getAmbulance.WhiteLabel
 
         public WhiteLabelEntity GetWhiteLabelById(string whiteLabelId)
         {
-
-            var builder = Builders<WhiteLabelEntity>.Filter;
             WhiteLabelEntity result = null;
-                 var filter = builder.Eq("whiteLabelid", whiteLabelId);
-            var whiteLabel = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
-            if (whiteLabel != null && whiteLabel.Count>0)
+            try
             {
-                result = whiteLabel[0];
-    }
+                var builder = Builders<WhiteLabelEntity>.Filter;
+               
+                var filter = builder.Eq("whiteLabelid", whiteLabelId);
+                var whiteLabel = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
+                if (whiteLabel != null && whiteLabel.Count > 0)
+                {
+                    result = whiteLabel[0];
+                }
+                return result;
+            }
+            catch (AggregateException e)
+            {
+                Console.WriteLine(e);
+            }
             return result;
+
         }
 
         
@@ -128,6 +145,7 @@ namespace getAmbulance.WhiteLabel
             var update = Builders<WhiteLabelEntity>.Update
                 .Set("prices."+jsonObj["category"].ToString(), jsonObj["updatedData"]);
             var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
+            HubUpdateWLAndClientReservationStatus((string)jsonObj["whiteLabelId"]);
         }
         public void DeletePricesByCategory(BsonDocument jsonObj)
         {
@@ -148,11 +166,13 @@ namespace getAmbulance.WhiteLabel
                 .Set("prices.Private_Ambulance.distance."+ jsonObj["index"].ToString(), jsonObj["updatedData"]);
             var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
         }
-
+        public void HubUpdateWLAndClientReservationStatus(string whiteLAbelId)
+        {
+            Hub.Clients.Group(whiteLAbelId).whiteLabelDataUpdated();
+        }
         public void AddSupportedAreas(string whiteLabelId,List<SupportedArea> supportedAreaList)
         {
-    
-            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
+                var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
 
             //var update = Builders<WhiteLabelEntity>.Update
             //    .Set("supportedAreas", supportedAreaList);
@@ -161,11 +181,17 @@ namespace getAmbulance.WhiteLabel
                 var update = Builders<WhiteLabelEntity>.Update
                    .Push(e => e.supportedAreas, supportedArea);
                 var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
-            }
-
-
-
+            } 
         }
-
+        public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList)
+        {
+            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
+            foreach (var supportedArea in supportedAreaList)
+            {
+                filter = filter & Builders<WhiteLabelEntity>.Filter.Where(x => x.supportedAreas.Any(i => i.name == supportedArea.name));
+                var update = Builders<WhiteLabelEntity>.Update.Set(x => x.supportedAreas[-1], supportedArea);
+                var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
+            }
+        }
     }
 }

@@ -21,11 +21,12 @@ angular
     'ngTable',
     'ngSanitize',
     'timer',
-    'ngDialog'
+    'ngDialog',
+    'rzModule'
     
   ]).constant('ngAuthSettings', {
-      //  apiServiceBaseUri: 'http://localhost:54543/',
-      apiServiceBaseUri: 'http://ec2-52-40-160-101.us-west-2.compute.amazonaws.com/',
+      // apiServiceBaseUri: 'http://localhost:54543/',
+       apiServiceBaseUri: 'http://ec2-52-40-160-101.us-west-2.compute.amazonaws.com/',
        clientId: 'ngAuthApp'
       // clientId: 'consoleApp',
      // clientSecret: '123@abc'

@@ -20,7 +20,9 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
         }
     };
 
-  
+    $rootScope.$on('update-whiteLabel-data', function (event, args) {
+        _getWhiteLabelData();
+    });
     
     var _updateWhiteLabelIsOnline = function (status) {
         var data = {

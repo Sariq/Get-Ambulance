@@ -288,3 +288,6 @@ body {
 .font-large{
       font-size: large;
 }
+.white-background{
+    background-color:white;
+}

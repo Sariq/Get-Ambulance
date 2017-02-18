@@ -1,15 +1,48 @@
 ﻿
         <div id="map" data-tap-disabled="true"></div>      
 
-<div class="row">
-    <div class="col-md-12">
-        <button ng-init="showAddBtn=true" ng-show="showAddBtn" ng-click="showAddBtn=!showAddBtn">{{'Add_Supported_Area' | translate}} </button>
-    </div>
+<!--<div class="row">
+    <div class="col-md-12">-->
+        <!--<button ng-init="showAddBtn=true" ng-show="showAddBtn" ng-click="showAddBtn=!showAddBtn">{{'Add_Supported_Area' | translate}} </button>-->
+    <!--</div>
 
-    <div class="col-md-12"  ng-show="!showAddBtn">
-        {{'Address' | translate}} : <input ng-model="name" ng-blur="$ctrl.addAddressCircle(name,radius)"/><br />
-        {{'Radius' | translate}} :  <input ng-model="radius" ng-change="$ctrl.addAddressCircle(name,radius)" /><br />
-        <button ng-click="$ctrl.addSupportedArea()">{{'Add_Supported_Area' | translate}} </button>
+    <div class="col-md-12"  >
+        {{'Address' | translate}} : <input ng-model="name" ng-blur="$ctrl.addNewArea(name,radius)"/><br />
+        {{'Radius' | translate}} :  <input ng-model="radius"  /><br />
+        <button ng-click="$ctrl.addSupportedAreas()">{{'Add_Supported_Area' | translate}} </button>
+        <button ng-click="$ctrl.updateCircle($ctrl.whiteLabelData.supportedAreas[0])">{{'updateCircle' | translate}} </button>
+       
     </div>
    
+</div>-->
+<br />
+<div class="row">
+    <div class="col-lg-2">
+        <div class="form-group">
+
+            <select ng-change="$ctrl.areaChanged()" class="form-control" ng-model="$ctrl.selectedArea" ng-options="area.name for area in $ctrl.whiteLabelData.supportedAreas">
+                <option value="">{{'Choose_Area_Name' | translate}}</option>
+            </select>
+        </div>
+    </div>
 </div>
+<div class="row" ng-show="$ctrl.selectedArea">
+    
+    <div class="col-lg-2">
+        <label>{{'Area_City_Name'|translate}}</label>
+        <div class="form-group">
+            <input  ng-model="$ctrl.selectedArea.name">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <rzslider rz-slider-model="$ctrl.slider.value"
+                  rz-slider-options="$ctrl.slider.options"></rzslider>
+
+       </div>
+    <div class="col-lg-2">
+       <button class="btn btn-success" ng-click="$ctrl.updateSupportedAreas()">{{"Save"|translate}}</button>
+    </div>
+    </div> 
+
+
+   

@@ -18,7 +18,7 @@
     width: 100%;
 }
 .price-cmp .panel {
-
+        min-height: 185px;
 }
 
 .price-cmp .inner{

@@ -4,7 +4,9 @@ angular.module('sbAdminApp')
     var Employees = this;
     var self = this;
     self.connectReservationHub = function () {
-        self.whiteLabelData = WhiteLabelService.getWhiteLabelData();
+         WhiteLabelService.getWhiteLabelData().then(function (res) {
+             self.whiteLabelData = res;
+      
         if (self.whiteLabelData)
         var WL_ID = self.whiteLabelData.whiteLabelid;
         var Employee = function (employee) {
@@ -62,6 +64,9 @@ angular.module('sbAdminApp')
                 },
                 'reservationCanceled': function (reservation) {
                     $rootScope.$broadcast('update-reservations-list');
+                },
+                'whiteLabelDataUpdated': function (reservation) {
+                    $rootScope.$broadcast('update-whiteLabel-data');
                 }
             },
             methods: ['lock', 'unlock'],
@@ -77,6 +82,7 @@ angular.module('sbAdminApp')
         $timeout(function () {
             self.hub.connect();
         }, 1000);
+         });
     }
         $rootScope.$on('state-reloaded-after-refreshToken', function (event, args) {
             $timeout(function () {
@@ -109,6 +115,9 @@ angular.module('sbAdminApp')
                         },
                         'reservationCanceled': function (reservation) {
                             $rootScope.$broadcast('update-reservations-list');
+                        },
+                        'whiteLabelDataUpdated': function (reservation) {
+                            $rootScope.$broadcast('update-whiteLabel-data');
                         }
                     },
                     methods: ['lock', 'unlock'],

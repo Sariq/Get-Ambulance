@@ -38,6 +38,10 @@
       <link href="popUp/reservations-cmp/open-reservation.css" rel="stylesheet" />
       <link href="popUp/reservation-item/reservation-cancel-reason.css" rel="stylesheet" />
       <link href="components/services-settings/prices/weight/weight-cmp.css" rel="stylesheet" />
+      <link href="components/services-settings/prices/stairs-assistance/stairs-assistance-cmp.css" rel="stylesheet" />
+      <link href="views/ambulance/prices/ambulance-prices.css" rel="stylesheet" />
+      <link href="views/ambulance/supported-area/supported-area.css" rel="stylesheet" />
+      <link href="bower_components/angularjs-slider/dist/rzslider.min.css" rel="stylesheet" />
     <!-- endbuild -->
     
  
@@ -96,6 +100,7 @@
 <script src="bower_components/moment/min/moment.min.js"></script>
 <script src="bower_components/moment/min/locales.min.js"></script>
 <script src="bower_components/humanize-duration/humanize-duration.js"></script>
+<script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -139,15 +144,22 @@
 <script src="views/ambulance/reservation/list/ambulance-reservation-list.js"></script>
 <!--List-->
 <!--Reservation-->
+<!--supported-area-->
+<script src="views/ambulance/supported-area/supported-area.js"></script>
+<!--supported-area-->
 <script src="views/ambulance/routes.js"></script>
 <!--Ambulance-->
 <!--Prices-cmp-->
 <!--distance-cmp-->
-<script src="components/services-settings/prices/distance/distance-cmp..js"></script>
+<script src="components/services-settings/prices/distance/distance-cmp.js"></script>
 <!--distance-cmp-->
 <!--weight-cmp-->
-<script src="components/services-settings/prices/weight/weight-cmp..js"></script>
+<script src="components/services-settings/prices/weight/weight-cmp.js"></script>
 <!--weight-cmp-->
+<!--stairs-building-->
+<script src="components/services-settings/prices/stairs-building/stairs-building-cmp.js"></script>
+<!--stairs-building-->
+
 <script src="components/services-settings/prices/prices-service.js"></script>
 <!--Prices-cmp-->
 <!--supported-area-cmp-->
@@ -158,7 +170,9 @@
 <script src="views/services-settings/routes.js"></script>
 <script src="views/services-settings/services-settings-service.js"></script>
 <!--Services-Settings-->
-
+<!--Ambulance-prices-->
+<script src="views/ambulance/prices/ambulance-prices.js"></script>
+<!--Ambulance-prices-->
 <!--medical-therapist-->
 <script src="views/medical-therapist/reservation/list/medical-therapist-reservation-list.js"></script>
 <script src="views/medical-therapist/routes.js"></script>

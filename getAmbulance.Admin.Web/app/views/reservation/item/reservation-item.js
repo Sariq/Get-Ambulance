@@ -25,6 +25,8 @@ angular.module('sbAdminApp')
       $scope.$on('update-reservations-list', function (event, args) {
           $scope.getReservationById();
       });
+
+      
      
       $scope.updateReservationStatus = function (reservation, status, reason) {
           ReservationService.setSelectedReservationId(reservation._id);

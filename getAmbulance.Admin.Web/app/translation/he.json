@@ -151,8 +151,17 @@
   "Edit": "ערוך",
   "Price_Addition_Bigger": "תוספת מחיר מעל",
   "Additional_weight_price": "תוספת מחיר לנסיעה לפי משקל",
-  "Price_Drice_Addition": "תוספת למחיר הנסיעה"
-                
+  "Price_Drice_Addition": "תוספת למחיר הנסיעה",
+  "Additional_stair_assistance_price": "תוספת מחיר עזרה במדרגות",
+  "Private_Ambulance_Prices": "טבלת מחירים אמבולנס פרטי",
+  "ICU_Ambulance_Prices": "טבלת מחירים נסיעה אמבולנס פרטי",
+  "Update_Price": "עדכן מחיר",
+  "Update_Private_Ambulance_Prices": "עדכן מחיר נסיעות אמבולנס פרטי",
+  "Update_Private_Ambulance_Suppoted_Area": "עדכן אזור שירות אמבולנס פרטי",
+  "Update_Area": "עדכן אזור",
+  "Choose_Area_Name": "בחר אזור תמיכה",
+  "Area_City_Name": "עיר",  
+  "Choose_Area_Name":"בחר עיר"
 
 
 

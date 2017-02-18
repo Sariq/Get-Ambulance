@@ -28,6 +28,8 @@ namespace getAmbulance.WhiteLabel
             public JObject users { get; set; }
             public JObject prices { get; set; }
             public BsonArray supportedServices { get; set; }
+            public List<SupportedArea> supportedAreas { get; set; }
+
             public bool isOnline { get; set; }
             public string logo { get; set; }
         }

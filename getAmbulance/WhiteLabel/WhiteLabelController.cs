@@ -184,7 +184,7 @@ namespace getAmbulance.WhiteLabel
             whiteLabelResponse.isOnline = whiteLabel.isOnline;
             whiteLabelResponse.logo= whiteLabel.logo;
             whiteLabelResponse.supportedServices = whiteLabel.supportedServices;
-            
+            whiteLabelResponse.supportedAreas = whiteLabel.supportedAreas;
             //List<IdentityUserClaim> userData = temp_userData.Claims;
             //return userData;
             response = Request.CreateResponse(HttpStatusCode.OK, whiteLabelResponse);
@@ -208,7 +208,23 @@ namespace getAmbulance.WhiteLabel
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
+        // Post: /WhiteLabel/UpdateSupportedAreas
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage UpdateSupportedAreas(JObject jsonData)
+        {
+            HttpResponseMessage response;
 
+
+            dynamic jsonObj = jsonData;
+            List<SupportedArea> supportedAreaList = jsonObj.supportedAreaList.ToObject<List<SupportedArea>>();
+
+            _whiteLabelService.UpdateSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList);
+
+            response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
+        
 
 
     }
