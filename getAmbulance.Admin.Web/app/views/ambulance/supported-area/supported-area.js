@@ -14,7 +14,20 @@ angular.module('sbAdminApp').controller('SupportedAreaCtrl', function ($scope, S
     });
  
     $scope.edit = false;
-  
+    $scope.selectedArea = {radius: 5 };
+    $scope.slider = {
+        value: 5,
+        options: {
+            floor: 1,
+            onChange: function (id) {
+                $scope.valueChanged()
+            },
+            ceil: 10,
+            step: 1,
+            minLimit: 1,
+            maxLimit: 10
+        }
+    };
 })
 
 

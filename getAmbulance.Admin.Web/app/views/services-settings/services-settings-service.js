@@ -21,13 +21,23 @@ angular.module('sbAdminApp').factory('ServicesSettingsService', ['$http', 'ngAut
         }
         return $http.post(serviceBase + 'api/WhiteLabel/UpdateSupportedAreas', data);
     };
+    var _DeleteSupportedAreas = function (areaData) {
+        var supportedAreaList = [areaData];
+        var data = {
+            whiteLabelId: authService.authentication.WhiteLabelData.whiteLabelid,
+            supportedAreaList: supportedAreaList
+        }
+        return $http.post(serviceBase + 'api/WhiteLabel/DeleteSupportedAreas', data);
+    };
    
-
+    
 
     
  
     ServicesSettingsServiceFactory.AddSupportedAreas = _AddSupportedAreas;
     ServicesSettingsServiceFactory.UpdateSupportedAreas = _UpdateSupportedAreas;
+    ServicesSettingsServiceFactory.DeleteSupportedAreas = _DeleteSupportedAreas;
+    
  
     return ServicesSettingsServiceFactory;
 

@@ -1,48 +1,86 @@
 ﻿
-        <div id="map" data-tap-disabled="true"></div>      
+<div id="map" data-tap-disabled="true"></div>
 
 <!--<div class="row">
     <div class="col-md-12">-->
-        <!--<button ng-init="showAddBtn=true" ng-show="showAddBtn" ng-click="showAddBtn=!showAddBtn">{{'Add_Supported_Area' | translate}} </button>-->
-    <!--</div>
+<!--<button ng-init="showAddBtn=true" ng-show="showAddBtn" ng-click="showAddBtn=!showAddBtn">{{'Add_Supported_Area' | translate}} </button>-->
+<!--</div>
 
     <div class="col-md-12"  >
         {{'Address' | translate}} : <input ng-model="name" ng-blur="$ctrl.addNewArea(name,radius)"/><br />
         {{'Radius' | translate}} :  <input ng-model="radius"  /><br />
         <button ng-click="$ctrl.addSupportedAreas()">{{'Add_Supported_Area' | translate}} </button>
         <button ng-click="$ctrl.updateCircle($ctrl.whiteLabelData.supportedAreas[0])">{{'updateCircle' | translate}} </button>
-       
+
     </div>
-   
+
 </div>-->
 <br />
+
+
+
 <div class="row">
     <div class="col-lg-2">
-        <div class="form-group">
+        <button class="btn btn-success" ng-click="$ctrl.add=true;$ctrl.edit=false">{{'Add'|translate}}</button>
+    </div>
+    <div class="col-lg-2">
+        <button class="btn btn-success" ng-click="$ctrl.edit=true;$ctrl.add=false">{{'Edit'|translate}}</button>
+    </div>
+</div>
 
-            <select ng-change="$ctrl.areaChanged()" class="form-control" ng-model="$ctrl.selectedArea" ng-options="area.name for area in $ctrl.whiteLabelData.supportedAreas">
-                <option value="">{{'Choose_Area_Name' | translate}}</option>
-            </select>
+
+
+<div ng-show="$ctrl.add==true">
+
+    <div class="row">
+        <div class="col-lg-2">
+            <input type="text" ng-click="$ctrl.deleteTmpCircle()" force-selection="true" g-places-autocomplete ng-blur="$ctrl.addTmpc($ctrl.selectedArea)" ng-model="$ctrl.selectedArea.name">
+
+       
+                <!--<input type="text" force-selection="true" g-places-autocomplete ng-blur="$ctrl.addTmpc($ctrl.selectedArea)" ng-model="$ctrl.selectedArea.name">-->
+       
+        </div>
+        <div class="col-lg-6">
+            <rzslider rz-slider-model="$ctrl.slider.value"
+                      rz-slider-options="$ctrl.slider.options"></rzslider>
+
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-success" ng-click="$ctrl.addNewArea($ctrl.selectedArea.name,$ctrl.selectedArea.radius);$ctrl.add=false">{{"Save"|translate}}</button>
         </div>
     </div>
 </div>
-<div class="row" ng-show="$ctrl.selectedArea">
-    
-    <div class="col-lg-2">
-        <label>{{'Area_City_Name'|translate}}</label>
-        <div class="form-group">
-            <input  ng-model="$ctrl.selectedArea.name">
+<div ng-show="$ctrl.edit==true">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="form-group">
+
+                <select ng-change="$ctrl.areaChanged()" class="form-control" ng-model="$ctrl.selectedArea" ng-options="area.name for area in $ctrl.whiteLabelData.supportedAreas">
+                    <option value="">{{'Choose_Area_Name' | translate}}</option>
+                </select>
+            </div>
         </div>
     </div>
-    <div class="col-lg-6">
-        <rzslider rz-slider-model="$ctrl.slider.value"
-                  rz-slider-options="$ctrl.slider.options"></rzslider>
+    <div class="row" ng-show="$ctrl.selectedArea">
 
-       </div>
-    <div class="col-lg-2">
-       <button class="btn btn-success" ng-click="$ctrl.updateSupportedAreas()">{{"Save"|translate}}</button>
+        <div class="col-lg-2">
+            <label>{{'Area_City_Name'|translate}}</label>
+            <div class="form-group">
+                <input ng-model="$ctrl.selectedArea.name">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <rzslider rz-slider-model="$ctrl.slider.value"
+                      rz-slider-options="$ctrl.slider.options"></rzslider>
+
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-success" ng-click="$ctrl.updateSupportedAreas();$ctrl.edit=false">{{"Save"|translate}}</button>
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-danger" ng-click="$ctrl.deleteSupportedAreas($ctrl.selectedArea);$ctrl.edit=false">{{"Delete"|translate}}</button>
+        </div>
+
     </div>
-    </div> 
 
-
-   
+</div>

@@ -193,5 +193,19 @@ namespace getAmbulance.WhiteLabel
                 var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
             }
         }
+        public void DeleteSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList)
+        {
+            
+            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
+            foreach (var supportedArea in supportedAreaList)
+            {
+                var update = Builders<WhiteLabelEntity>.Update.PullFilter(p => p.supportedAreas,
+                                              f => f.name == supportedArea.name);
+                var result =  _ctx.WhiteLabels.FindOneAndUpdateAsync(filter, update);
+                //filter = filter & Builders<WhiteLabelEntity>.Filter.Where(x => x.supportedAreas.Any(i => i.name == supportedArea.name));
+                //var update = Builders<WhiteLabelEntity>.Update.Pull(x => x.supportedAreas, Builders<WhiteLabelEntity>.Filter.Where(q => q.name == supportedArea.name));
+                //var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
+            }
+        }
     }
 }

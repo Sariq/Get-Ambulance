@@ -4,8 +4,8 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
     var ctrl = this;
 
     ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
-   
-
+  
+ 
     ctrl.km = 1000;
     $scope.$on('whiteLabel-data-updated', function (event, args) {
         ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
@@ -36,9 +36,10 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
         });
     }
 
-    ctrl.addMarker=function(location) {
-        var marker = new google.maps.Marker({
-            position: location,
+    ctrl.addMarker = function (area) {
+        
+        area.marker = new google.maps.Marker({
+            position: { lat: area.lat, lng: area.lng },
             icon: {
                 url: "../img/blue-marker.png",
                 origin: new google.maps.Point(0, 0),
@@ -97,7 +98,7 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
                         draggable: true
                     });
                  //   for (var i = 0, feature; feature = markers[i]; i++) {
-                     ctrl.addMarker({ lat: area.lat, lng: area.lng });
+                    ctrl.addMarker(area);
                   //  }
                 //} else {
                 //    alert('Geocode was not successful for the following reason: ' + status);
@@ -122,9 +123,9 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
              lat: results[0].geometry.location.lat(),
              lng: results[0].geometry.location.lng()
          }
-    
+         ctrl.selectedArea = area;
          ctrl.addAddressCircle(area);
-         ctrl.updateSupportedAreas(area);
+         ctrl.addSupportedAreas(area);
           //}
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -133,8 +134,33 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
          });
 
     }
+
+    ctrl.addTmpc = function (area) {
+        var geocoder = new google.maps.Geocoder();
+        area.radius = ctrl.slider.value;
+        geocoder.geocode({ 'address': area.name }, function (results, status) {
+            if (status === 'OK') {
+                ctrl.map.setCenter(results[0].geometry.location);
+                // var latLng = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
+
+                ctrl.selectedArea = {
+                    name: area.name,
+                    radius: area.radius,
+                    lat: results[0].geometry.location.lat(),
+                    lng: results[0].geometry.location.lng()
+                }
+    
+                ctrl.addAddressCircle(ctrl.selectedArea);
+            }
+        })
+    }
     ctrl.addSupportedAreas = function (area) {
-        ServicesSettingsService.AddSupportedAreas(area);
+        var temp_area = {};
+        temp_area.name = area.name;
+        temp_area.lat = area.lat;
+        temp_area.lng = area.lng;
+        temp_area.radius = area.radius;
+        ServicesSettingsService.AddSupportedAreas(temp_area);
     }
     ctrl.updateSupportedAreas = function () {
 
@@ -146,6 +172,17 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
          ServicesSettingsService.UpdateSupportedAreas(temp_area);
     }
 
+    ctrl.deleteSupportedAreas = function (area) {
+        area.circle.setRadius(null);
+        area.marker.setMap(null);
+        var temp_area = {};
+        temp_area.name = area.name;
+        temp_area.lat = area.lat;
+        temp_area.lng = area.lng;
+        temp_area.radius = area.radius;
+        ServicesSettingsService.DeleteSupportedAreas(temp_area);
+    }
+
     ctrl.updateCircle = function (area) {
         area.circle.setRadius(null);
         area.circle.setRadius(area.radius * ctrl.km);
@@ -153,6 +190,13 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
     ctrl.valueChanged = function () {
         ctrl.selectedArea.radius =ctrl.slider.value;
         ctrl.updateCircle(ctrl.selectedArea);
+    }
+    ctrl.deleteTmpCircle = function () {
+        if (ctrl.selectedArea) {
+            ctrl.selectedArea.circle.setRadius(null);
+            ctrl.selectedArea.marker.setMap(null);
+        }
+ 
     }
     ctrl.slider = {
         value: 5,
@@ -171,10 +215,12 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
     ctrl.areaChanged = function () {
         ctrl.slider.value = ctrl.selectedArea.radius;
     }
+ 
 }]
 angular.module('sbAdminApp').component('supportedAreaCmp', {
     bindings: {
-        areaData:'='
+
+        
 
     },
     templateUrl: 'components/supported-area/views/supported-area.html',

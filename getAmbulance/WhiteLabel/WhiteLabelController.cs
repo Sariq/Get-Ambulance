@@ -224,8 +224,24 @@ namespace getAmbulance.WhiteLabel
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
-        
+        // Post: /WhiteLabel/DeleteSupportedAreas
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteSupportedAreas(JObject jsonData)
+        {
+            HttpResponseMessage response;
 
+
+            dynamic jsonObj = jsonData;
+            List<SupportedArea> supportedAreaList = jsonObj.supportedAreaList.ToObject<List<SupportedArea>>();
+
+            _whiteLabelService.DeleteSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList);
+
+            response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
+
+        
 
     }
 }
