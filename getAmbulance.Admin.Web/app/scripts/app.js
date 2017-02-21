@@ -180,11 +180,14 @@ angular
        templateUrl:'views/ui-elements/grid.html',
        url:'/grid'
    })
-  }]).run(['authService', '$state', 'WhiteLabelService', 'ReservationHub', function (authService, $state, WhiteLabelService, ReservationHub) {
+  }]).run(['authService', '$state', 'WhiteLabelService', 'ReservationHub', '$timeout', function (authService, $state, WhiteLabelService, ReservationHub, $timeout) {
 
     authService.fillAuthData();
     if (!authService.authentication.isAuth || !WhiteLabelService.getWhiteLabelDataLocal()) {
-        $state.go('login')
+        $timeout(function () {
+            $state.go('login')
+        });
+       
     }
     else {
         ReservationHub.connectReservationHub();
