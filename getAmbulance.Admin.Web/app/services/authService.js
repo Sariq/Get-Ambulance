@@ -41,45 +41,49 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-          
+
             var data = {
                 userName: loginData.userName
             }
-            var authorizationData={};
+            var authorizationData = {};
 
             if (_authentication.useRefreshTokens) {
-                authorizationData={ token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true };
-               
+                authorizationData = { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true };
+
             }
             else {
                 authorizationData = { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false };
 
-                
+
             }
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             //IF not Admin
             if (_authentication.userName != 'ambulance.admin@gmail.com') {
-       
+
                 $http.post(serviceBase + 'api/WhiteLabel/GetWhiteLabelData', data).success(function (res) {
                     WhiteLabelService.setWhiteLabelData(res);
                     _authentication.WhiteLabelData = (res);
                     console.log(_authentication.WhiteLabelData);
-                authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
-                localStorageService.set('authorizationData', authorizationData);
-                WhiteLabelService.updateSupportedServicesOnRoot();
-                ReservationHub.connectReservationHub();
-                deferred.resolve(response);
-            });
+                    authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
+                    localStorageService.set('authorizationData', authorizationData);
+                    WhiteLabelService.updateSupportedServicesOnRoot();
+                    ReservationHub.connectReservationHub();
+                    deferred.resolve(response);
+                });
             } else {
-                _authentication.WhiteLabelData = { "whiteLabelid": "0" };
+                var data = {"whiteLabelid": "0","supportedServices": ["1","2","3","4"]}
+                WhiteLabelService.setWhiteLabelData(data);
+                _authentication.WhiteLabelData = data;
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
                 localStorageService.set('authorizationData', authorizationData);
                 ReservationHub.connectReservationHub();
                 deferred.resolve(response);
+
+
             }
 
-            
+
 
         }).error(function (err, status) {
             _logOut();

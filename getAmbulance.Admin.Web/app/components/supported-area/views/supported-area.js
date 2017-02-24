@@ -212,7 +212,8 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
         }
     };
 
-    ctrl.areaChanged = function () {
+    ctrl.areaChanged = function (area) {
+        ctrl.selectedArea = area;
         ctrl.slider.value = ctrl.selectedArea.radius;
     }
  

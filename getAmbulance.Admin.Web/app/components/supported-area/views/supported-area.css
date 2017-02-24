@@ -4,5 +4,26 @@
  
 #map {
     width: 100%;
-    height: 500px;
+    height: 400px;
+}
+
+li.active {
+
+    background-color: #697284 !important;
+}
+
+li:hover{
+    cursor:pointer;
+  background-color:#ececec !important;
+}
+li:hover #first-div{
+   
+  background-color:#e35f6b!important;
+}
+li.active-background{
+  background-color:#ececec !important;
+}
+
+#first-div.active-background{
+      background-color:#e35f6b!important;
 }

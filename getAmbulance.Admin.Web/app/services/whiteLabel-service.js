@@ -44,10 +44,12 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
     };
     var _updateSupportedServicesOnRoot = function () {
         if (_getWhiteLabelDataLocal()){
-        var supportedServices = _getWhiteLabelDataLocal().supportedServices;
+            var supportedServices = _getWhiteLabelDataLocal().supportedServices;
+            if (supportedServices){
         $rootScope.isAmbulanceCatSup = supportedServices.indexOf("1") > -1;
         $rootScope.isMedicalTherapistCatSup = supportedServices.indexOf("2") > -1;
         $rootScope.isStairsAssistanceCatSup = supportedServices.indexOf("3") > -1;
+            }
         }
     };
 

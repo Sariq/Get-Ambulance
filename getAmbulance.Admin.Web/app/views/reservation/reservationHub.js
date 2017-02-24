@@ -4,8 +4,8 @@ angular.module('sbAdminApp')
     var Employees = this;
     var self = this;
     self.connectReservationHub = function () {
-         WhiteLabelService.getWhiteLabelData().then(function (res) {
-             self.whiteLabelData = res;
+
+            self.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
       
         if (self.whiteLabelData)
         var WL_ID = self.whiteLabelData.whiteLabelid;
@@ -82,7 +82,7 @@ angular.module('sbAdminApp')
         $timeout(function () {
             self.hub.connect();
         }, 1000);
-         });
+
     }
         $rootScope.$on('state-reloaded-after-refreshToken', function (event, args) {
             $timeout(function () {
