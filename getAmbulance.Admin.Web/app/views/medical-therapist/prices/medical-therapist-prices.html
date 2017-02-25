@@ -1,0 +1,45 @@
+﻿<div style="height: 100%;width: 100%;">
+
+
+    <div class="inner-wrapper row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="page-header">{{'MedicalTherapist_Prices' | translate}}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 price-cmp ">
+                    <div class="items">
+                        <div class="row  item-header min-height-40 items-align-center cursor-pointer">
+                            <div class="col-lg-10">
+                                <span>{{'MedicalTherapist_price_Per_Hour' | translate}}</span>
+                            </div>
+                            <div class="col-lg-1">
+                            </div>
+                            <div class="col-lg-1">
+
+                                <span class="btn btn-success save-edit-cancel" ng-show="edit==true" ng-click="save();edit=false">{{'Save' | translate}}</span>
+                                <span class="btn btn-warning save-edit-cancel" ng-show="edit!=true" ng-click="edit=true">{{'Edit' | translate}}</span>
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="btn btn-danger save-edit-cancel" ng-show="edit==true" ng-click="cancel();edit=false">{{'Cancel' | translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12 price-cmp ">
+                    <day-night-price-cmp day-night-actions="dayNightActions" price="price" edit="edit"></day-night-price-cmp>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

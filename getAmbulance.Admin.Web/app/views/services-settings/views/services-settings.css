@@ -3,9 +3,9 @@
 }
 
 .services-settings .cat-img{
-    width:80%;padding:10px;    height: 150px;
+    width:80%;padding:10px;    height: 120px;
 }
 .services-settings .panel{
-  
+  max-width: 290px;
 
 }

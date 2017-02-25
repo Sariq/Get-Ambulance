@@ -300,7 +300,18 @@ namespace getAmbulance.Reservation
         }
         public int getMedicalTherapistPriceByHour(BsonDocument prices, dynamic reservationData)
         {
-            return ((int)prices["medicaTherapist"]) * ((int)reservationData["Therapist_Stayig_Time"]);
+            DateTime Reservation_Date = DateTime.Parse(reservationData.Time.Value);
+            DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
+            DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
+
+            if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
+            {
+                return ((int)prices["medicalTherapist"]["night"]) * ((int)reservationData["Therapist_Stayig_Time"]);
+            }
+            else
+            {
+                return ((int)prices["medicalTherapist"]["day"]) * ((int)reservationData["Therapist_Stayig_Time"]);
+            }
         }
 
         public int getStairsAssistancePriceByHour(BsonDocument prices, dynamic reservationData)

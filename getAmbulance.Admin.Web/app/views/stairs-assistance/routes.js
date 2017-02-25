@@ -5,6 +5,10 @@ angular.module('sbAdminApp').config(function ($stateProvider, $urlRouterProvider
                url: '/stairs-assistance-reservation-list',
                templateUrl: 'views/stairs-assistance/reservation/list/stairs-assistance-reservation-list.html',
                controller: 'StairsAssistanceReservationListCtrl'
+           }).state('dashboard.stairs-assistance-prices', {
+               url: '/stairs-assistance-prices',
+               templateUrl: 'views/stairs-assistance/prices/stairs-assistance-prices.html',
+               controller: 'StairsAssistancePricesCtrl'
            });
 });
 

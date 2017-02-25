@@ -160,8 +160,19 @@
   "Update_Private_Ambulance_Suppoted_Area": "עדכן אזור שירות אמבולנס פרטי",
   "Update_Area": "עדכן אזור",
   "Choose_Area_Name": "בחר אזור תמיכה",
-  "Area_City_Name": "עיר",  
-  "Choose_Area_Name":"בחר עיר"
+  "Area_City_Name": "עיר",
+  "Choose_Area_Name": "בחר עיר",
+  "Update_Supported_Areas": "עדכן איזורי תמיכה",
+  "Update_ICU_Ambulance_Prices": "עדכן מחיר אמבולנס טיפול נמרץ",
+  "Update_MedicalTherapist_Prices": "עדכן מחיר מלווה",
+  "Update_StairsAssistance_Prices": "עדכן מחיר עזרה במדרגות",
+  "MedicalTherapist_price_Per_Hour": "עלות מלווה לשעה",
+  "MedicalTherapist_Prices": "טבלת מחירים מלווה",
+  "Cancel": "בטל",
+    "StairsAssistance_price_Per_Hour": "עלות עזרה במדרגות לשעה",
+  "StairsAssistance_Prices": "טבלת מחירים עזרה במדרגות"
+
+
 
 
 

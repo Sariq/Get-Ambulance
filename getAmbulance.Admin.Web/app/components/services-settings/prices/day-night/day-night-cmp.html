@@ -1,0 +1,49 @@
+﻿<div class="row pad-25">
+    <div class="col-lg-4 ">
+        </div>
+        <div class="col-lg-2 column value-box">
+            <span>{{'Day_Price' | translate}}</span>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" ng-show="$ctrl.edit==true" class="btn btn-default btn-number plus-min" ng-disabled="$ctrl.price.day==0" data-type="minus" ng-click="$ctrl.price.day=price.day-$ctrl.priceStep">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+
+                <div class="input-with-km">
+                    <input type="number" ng-disabled="$ctrl.edit!=true" name="quant[1]" class="value-input  input-number price" ng-model="$ctrl.price.day" min="1">
+                    <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input  price" value="&#8362;" min="1" max="10">
+
+                </div>
+                <span class="input-group-btn">
+                    <button type="button" ng-show="$ctrl.edit==true" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="$ctrl.price.day=$ctrl.price.day+$ctrl.priceStep">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-2 column value-box">
+            <span>{{'Night_Price' | translate}}</span>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" ng-show="$ctrl.edit==true" class="btn btn-default btn-number plus-min" ng-disabled="$ctrl.price.night==0" data-type="minus" ng-click="$ctrl.price.night=$ctrl.price.night-$ctrl.priceStep">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+
+                <div class="input-with-km">
+                    <input type="number" ng-disabled="$ctrl.edit!=true" name="quant[1]" class="value-input  input-number price" ng-model="$ctrl.price.night" min="1">
+                    <input ng-disabled="true" type="text" name="quant[1]" class="static-text-input  price" value="&#8362;" min="1" max="10">
+
+                </div>
+                <span class="input-group-btn">
+                    <button type="button" ng-show="$ctrl.edit==true" class="btn btn-default btn-number plus-min" data-type="plus" ng-click="$ctrl.price.night=$ctrl.price.night+$ctrl.priceStep">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    <div class="col-lg-4 ">
+    </div>
+    </div>
