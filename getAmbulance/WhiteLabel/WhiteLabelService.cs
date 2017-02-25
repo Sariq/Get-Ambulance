@@ -181,7 +181,8 @@ namespace getAmbulance.WhiteLabel
                 var update = Builders<WhiteLabelEntity>.Update
                    .Push(e => e.supportedAreas, supportedArea);
                 var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
-            } 
+            }
+            HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
         public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList)
         {
@@ -192,6 +193,7 @@ namespace getAmbulance.WhiteLabel
                 var update = Builders<WhiteLabelEntity>.Update.Set(x => x.supportedAreas[-1], supportedArea);
                 var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
             }
+            HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
         public void DeleteSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList)
         {
@@ -206,6 +208,7 @@ namespace getAmbulance.WhiteLabel
                 //var update = Builders<WhiteLabelEntity>.Update.Pull(x => x.supportedAreas, Builders<WhiteLabelEntity>.Filter.Where(q => q.name == supportedArea.name));
                 //var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
             }
+            HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
     }
 }
