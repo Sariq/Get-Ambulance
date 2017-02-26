@@ -3,14 +3,25 @@
 var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelService', 'ServicesSettingsService', function ($scope, $http, $state, $timeout, WhiteLabelService, ServicesSettingsService) {
     var ctrl = this;
 
-    ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
+    ctrl.whiteLabelData = angular.copy(WhiteLabelService.getWhiteLabelDataLocal());
   
  
     ctrl.km = 1000;
     $scope.$on('whiteLabel-data-updated', function (event, args) {
-        ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
+        ctrl.deleteMapCircles();
+        ctrl.whiteLabelData = angular.copy(WhiteLabelService.getWhiteLabelDataLocal());
+        angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
+            ctrl.addAddressCircle(value);
+        });
     });
 
+
+    ctrl.deleteMapCircles = function () {
+        angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
+            value.circle.setRadius(null);
+            value.marker.setMap(null);
+        });
+    }
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -109,7 +120,7 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
     }
 
     ctrl.addNewArea = function (address,radius) {
-
+        if (address){
         var geocoder = new google.maps.Geocoder();
 
           geocoder.geocode({ 'address': address }, function (results, status) {
@@ -126,13 +137,14 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
          ctrl.selectedArea = area;
          ctrl.addAddressCircle(area);
          ctrl.addSupportedAreas(area);
+         ctrl.map.setCenter(area.circle.getCenter())
           //}
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
 
          });
-
+        }
     }
 
     ctrl.addTmpc = function (area) {
@@ -215,6 +227,24 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
     ctrl.areaChanged = function (area) {
         ctrl.selectedArea = area;
         ctrl.slider.value = ctrl.selectedArea.radius;
+        ctrl.areaChangedCircleColor(area);
+    }
+
+    ctrl.areaChangedCircleColor = function (area) {
+        angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
+            value.circle.setOptions({
+                strokeColor: '#8299ae',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#91a0c3',
+            })
+        });
+        ctrl.selectedArea.circle.setOptions({
+            strokeColor: 'green',
+            fillColor: 'green'
+        })
+
+        ctrl.map.setCenter(area.circle.getCenter())
     }
  
 }]

@@ -27,3 +27,13 @@ li.active-background{
 #first-div.active-background{
       background-color:#e35f6b!important;
 }
+.rz-active{
+    border:0px!important;
+
+}
+
+.rz-pointer.rz-active:after{
+    border:none!important;
+    border-color:red!important;
+
+}

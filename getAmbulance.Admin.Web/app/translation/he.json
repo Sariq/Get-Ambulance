@@ -170,7 +170,11 @@
   "MedicalTherapist_Prices": "טבלת מחירים מלווה",
   "Cancel": "בטל",
     "StairsAssistance_price_Per_Hour": "עלות עזרה במדרגות לשעה",
-  "StairsAssistance_Prices": "טבלת מחירים עזרה במדרגות"
+  "StairsAssistance_Prices": "טבלת מחירים עזרה במדרגות",
+  "Add_City_To_Supported_Area": "הוסף עיר לאזור שרות",
+  "Selected_Citys": "ערים שנבחרו",
+  "Add_New_Area": "הוסף עיר",
+  "City_Name": "שם העיר"
 
 
 

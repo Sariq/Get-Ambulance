@@ -86,13 +86,13 @@
 
         </div>-->
 
-        <div class="row  inner-wrapper marg-btm-5">
+        <!--  <div class="row  inner-wrapper marg-btm-5">
             <div class="col-lg-12 text-center">
-                {{'Update_Private_Ambulance_Suppoted_Area' | translate}}
+                {{'Add_City_To_Supported_Area' | translate}}
             </div>
         </div>
 
-        <div class="row  inner-wrapper ">
+      <div class="row  inner-wrapper ">
             <div class="col-lg-12 text-center panel-body ">
                 <div class="input-group">
                     <div class="input-group-btn">
@@ -102,21 +102,21 @@
 
                 </div>
             </div>
-        </div>
-        <br />
+        </div>     <br />-->
+   
 
         <div class="row  inner-wrapper marg-btm-5">
-            <div class="col-lg-12 text-center ">
-                {{'Update_Private_Ambulance_Suppoted_Area' | translate}}
+            <div class="col-lg-12 text-center " style="padding: 5px;">
+                {{'Selected_Citys' | translate}}
             </div>
         </div>
 
-        <div class="row  inner-wrapper ">
+        <div class="row inner-wrapper" >
             <div class="col-lg-12  panel-body " style="padding-right: 0;padding-left:0;">
-                <ul style="list-style: none;padding: 0;">
+                <ul style="list-style: none;padding: 0;height: 271px;overflow: auto;" >
 
 
-                    <li class="" ng-click="$ctrl.areaChanged(area);$ctrl.edit=true;$ctrl.add==false" ng-repeat="area in $ctrl.whiteLabelData.supportedAreas" style="display:flex;" ng-class="{'active-background':area.name==$ctrl.selectedArea.name}">
+                    <li class="" ng-click="$ctrl.areaChanged(area);$ctrl.edit=true;$ctrl.add=false;" ng-repeat="area in $ctrl.whiteLabelData.supportedAreas" style="display:flex;" ng-class="{'active-background':area.name==$ctrl.selectedArea.name}">
                         <div id="first-div" class="" style="width:5px;" ng-class="{'active-background':area.name==$ctrl.selectedArea.name}">
 
                         </div>
@@ -131,9 +131,9 @@
             </div>
         </div>
         <br />
-        <div class="row  inner-wrapper ">
+        <div class="row  inner-wrapper " style="">
             <div class="col-lg-12  panel-body text-center" style="padding-right: 0;padding-left:0;">
-               <button ng-click="$ctrl.add=true;$ctrl.edit=false" class="btn green-btn" style="width:70%;margin: 0;">{{'Add_New_Area' | translate}}</button>
+               <button ng-click="$ctrl.add=true;$ctrl.edit=false;$ctrl.selectedArea=null;$ctrl.slider.value=5" class="btn green-btn" style="width:70%;margin: 0;"><span>+</span> {{'Add_New_Area' | translate}}</button>
             </div>
         </div>
 
@@ -162,18 +162,16 @@
 
     <div class="row marg-btm-5">
         <div class="col-lg-12" style="padding-right: 0;">
-            <div class="inner-wrapper">
+            <div class="inner-wrapper" style="padding: 5px;">
                 {{'Update_Private_Ambulance_Suppoted_Area' | translate}}
             </div>
-
         </div>
-
     </div>
     <div class="row ">
         <div class="col-lg-12" style="padding-right: 0;">
             <div class="inner-wrapper">
                 <div class="row ">
-                    <div class="col-lg-2 panel-body text-center">
+                    <div class="col-lg-2 panel-body tex">
                         <div style="padding:5px;">
                             <div style="font-size: x-large;">
                                 {{$ctrl.selectedArea.name}}
@@ -184,28 +182,24 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-8 panel-body">
-                        <rzslider rz-slider-model="$ctrl.slider.value"
+                    <div class="col-lg-6 panel-body" >
+                        <rzslider  rz-slider-model="$ctrl.slider.value"
                                   rz-slider-options="$ctrl.slider.options"></rzslider>
 
 
                     </div>
-
-                    <div class="col-lg-1 panel-body">
-                        <div style="padding:5px;">
-                            <div style="font-size: x-large;">
-                                <button ng-click="$ctrl.openConfirmReservationDialog(row)" class="btn blue-btn">{{'Edit'| translate}}</button>
-                            </div>
+                    <div class="col-lg-1"></div>
+                        <div class="col-lg-1 panel-body">
                             <div>
                                 <button ng-click="$ctrl.updateSupportedAreas();" class="btn green-btn">{{'Save'| translate}}</button>
                             </div>
+                        </div>
+                        <div class="col-lg-1 panel-body">
                             <div>
-                                <button class="btn btn-danger" ng-click="$ctrl.deleteSupportedAreas($ctrl.selectedArea);$ctrl.edit=false">{{"Delete"|translate}}</button>
+                                <button class="btn red-btn" ng-click="$ctrl.deleteSupportedAreas($ctrl.selectedArea);$ctrl.edit=false">{{"Delete"|translate}}</button>
                             </div>
                         </div>
                     </div>
-
-                  </div>
              
             </div>
         </div>
@@ -214,12 +208,19 @@
     <!--{{$ctrl.selectedArea}}-->
 </div>
 <div ng-show="$ctrl.add==true">
-
-    <div class="row">
-        <div class="col-lg-2">
-            <input type="text" ng-click="$ctrl.deleteTmpCircle()" force-selection="true" g-places-autocomplete ng-blur="$ctrl.addTmpc($ctrl.selectedArea)" ng-model="$ctrl.selectedArea.name">
-
-
+    <div class="row marg-btm-5">
+        <div class="col-lg-12" style="padding-right: 0;">
+            <div class="inner-wrapper" style="padding: 5px;">
+                {{'Update_Private_Ambulance_Suppoted_Area' | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="row inner-wrapper" style="height: 85px;display: flex;align-items: center;    margin-left: 0;">
+        <div class="col-lg-1">
+            {{'City_Name' | translate}} :
+        </div>
+        <div class="col-lg-3 " >
+            <input class="form-control" style="width: 63%;" type="text" ng-click="$ctrl.deleteTmpCircle()" force-selection="true" g-places-autocomplete ng-blur="$ctrl.addTmpc($ctrl.selectedArea)" ng-model="$ctrl.selectedArea.name">
 
         </div>
         <div class="col-lg-6">
@@ -227,8 +228,9 @@
                       rz-slider-options="$ctrl.slider.options"></rzslider>
 
         </div>
-        <div class="col-lg-2">
-            <button class="btn btn-success" ng-click="$ctrl.addNewArea($ctrl.selectedArea.name,$ctrl.selectedArea.radius);$ctrl.add=false">{{"Save"|translate}}</button>
+        <div class="col-lg-1">      </div>
+            <div class="col-lg-2">
+                <button class="btn btn-success" ng-click="$ctrl.addNewArea($ctrl.selectedArea.name,$ctrl.selectedArea.radius);$ctrl.add=false">{{"Save"|translate}}</button>
+            </div>
         </div>
-    </div>
 </div>
