@@ -4,6 +4,18 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+var apiService = '';
+switch (location.host) {
+    case 'localhost:57867':
+        apiService = 'http://localhost:54543/'
+        break;
+    case 'qaprovider.getambulance.com':
+        apiService = 'http://ec2-54-186-14-31.us-west-2.compute.amazonaws.com/'
+        break;
+    case 'provider.getambulance.com':
+        apiService = 'http://GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/'
+        break;
+}
 angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places'])
 
 .run(function($ionicPlatform) {
@@ -22,7 +34,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
   });
 }).constant('ngAuthSettings', {
  //  apiServiceBaseUri: 'http://localhost:54543/',
-    apiServiceBaseUri: 'http://ec2-52-40-160-101.us-west-2.compute.amazonaws.com/',
+    apiServiceBaseUri: apiService,
     //clientId: 'ngAuthApp'
  clientId: 'consoleApp',
  clientSecret: '123@abc'

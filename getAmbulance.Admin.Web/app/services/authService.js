@@ -101,6 +101,7 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
         _authentication.isAuth = false;
         _authentication.userName = "";
         _authentication.useRefreshTokens = _authentication.useRefreshTokens;
+        localStorageService.remove("WhiteLabelData");
         $location.path('/login');
 
 

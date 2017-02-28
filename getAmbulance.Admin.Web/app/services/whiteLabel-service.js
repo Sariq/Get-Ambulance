@@ -43,12 +43,25 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
         return localStorageService.get('WhiteLabelData');
     };
     var _updateSupportedServicesOnRoot = function () {
-        if (_getWhiteLabelDataLocal()){
+        if (_getWhiteLabelDataLocal()) {
             var supportedServices = _getWhiteLabelDataLocal().supportedServices;
-            if (supportedServices){
-        $rootScope.isAmbulanceCatSup = supportedServices.indexOf("1") > -1;
-        $rootScope.isMedicalTherapistCatSup = supportedServices.indexOf("2") > -1;
-        $rootScope.isStairsAssistanceCatSup = supportedServices.indexOf("3") > -1;
+            if (supportedServices) {
+                angular.forEach(supportedServices, function (value, key) {
+                    switch (value.Type) {
+                        case "1":
+                            $rootScope.isAmbulanceCatSup = true;
+                            break;
+                        case "2":
+                            $rootScope.isMedicalTherapistCatSup = true;
+                            break;
+                        case "3":
+                            $rootScope.isStairsAssistanceCatSup = true;
+                            break;
+                        case "4":
+                            $rootScope.isICUAmbulanceCatSup = true;
+                            break;
+                    }
+                })
             }
         }
     };

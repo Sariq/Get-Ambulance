@@ -16,10 +16,15 @@ namespace getAmbulance.WhiteLabel
             public BsonDocument users { get; set; }
             public BsonDocument prices { get; set; }
             public List<SupportedArea> supportedAreas { get; set; }
-            public BsonArray supportedServices { get; set; }
+            public List<SupportedService> supportedServices { get; set; }
             public bool isOnline { get; set; }
             public string logo { get; set; }
             public string phoneNumber { get; set; }
+        }
+        public class SupportedService
+        {
+            public string Type { get; set; }
+            public string Name { get; set; }
         }
         public class WhiteLabelResponseEntity : DatabaseObject
         {
@@ -27,7 +32,7 @@ namespace getAmbulance.WhiteLabel
             public string name { get; set; }
             public JObject users { get; set; }
             public JObject prices { get; set; }
-            public BsonArray supportedServices { get; set; }
+            public List<SupportedService> supportedServices { get; set; }
             public List<SupportedArea> supportedAreas { get; set; }
 
             public bool isOnline { get; set; }
@@ -47,9 +52,9 @@ namespace getAmbulance.WhiteLabel
             public string logo { get; set; }
             public string phoneNumber { get; set; }
 
-            
+
         }
-        public class WhiteLabelOfferEntity 
+        public class WhiteLabelOfferEntity
         {
             public WhiteLabelOfferEntity(string whiteLabelid, string name, string logo, int finalPrice)
             {
@@ -58,12 +63,12 @@ namespace getAmbulance.WhiteLabel
                 this.logo = logo;
                 this.price = finalPrice;
             }
-       
+
             public string whiteLabelid { get; set; }
             public string name { get; set; }
             public string logo { get; set; }
             public int price { get; set; }
         }
-        
+
     }
 }

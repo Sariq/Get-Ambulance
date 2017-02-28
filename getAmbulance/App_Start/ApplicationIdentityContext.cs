@@ -8,6 +8,7 @@
     using MongoDB.Driver;
     using static WhiteLabel.WhiteLabelModel;
     using static Bug_Report.BugReportModel;
+    using System.Web.Configuration;
     public class ApplicationIdentityContext : IDisposable
 	{
 		public static ApplicationIdentityContext Create()
@@ -15,8 +16,8 @@
             // todo add settings where appropriate to switch server & database in your own application
             //  var client = new MongoClient("mongodb://localhost:27017");
             // var database = client.GetDatabase("mydbtest");
-            var client = new MongoClient("mongodb://getAmbulance:London2018!@ds023105.mlab.com:23105/getambulance_general");
-            var database = client.GetDatabase("getambulance_general");
+            var client = new MongoClient(WebConfigurationManager.AppSettings["DBConnectionString"]);
+            var database = client.GetDatabase(WebConfigurationManager.AppSettings["DBName"]);
             var users = database.GetCollection<ApplicationUser>("users");
             var clientUsers = database.GetCollection<ApplicationClientUser>("clientUsers");
             var roles = database.GetCollection<IdentityRole>("roles");

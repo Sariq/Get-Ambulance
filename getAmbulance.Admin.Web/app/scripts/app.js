@@ -7,6 +7,18 @@
  *
  * Main module of the application.
  */
+var apiService = '';
+switch (location.host) {
+    case 'localhost:57867':
+        apiService = location.protocol+'//localhost:54543/'
+        break;
+    case 'qaprovider.getambulance.com':
+        apiService = location.protocol + '//ec2-54-186-14-31.us-west-2.compute.amazonaws.com/'
+        break;
+    case 'provider.getambulance.com':
+        apiService = location.protocol + '//GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/'
+        break;
+}
 angular
   .module('sbAdminApp', [
     'oc.lazyLoad',
@@ -27,7 +39,7 @@ angular
     
   ]).constant('ngAuthSettings', {
       // apiServiceBaseUri: 'http://localhost:54543/',
-     apiServiceBaseUri: 'http://ec2-52-40-160-101.us-west-2.compute.amazonaws.com/',
+      apiServiceBaseUri: apiService,
        clientId: 'ngAuthApp'
       // clientId: 'consoleApp',
      // clientSecret: '123@abc'
