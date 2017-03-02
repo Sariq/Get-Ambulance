@@ -3,25 +3,39 @@
 var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelService', 'ServicesSettingsService', function ($scope, $http, $state, $timeout, WhiteLabelService, ServicesSettingsService) {
     var ctrl = this;
 
-    ctrl.whiteLabelData = angular.copy(WhiteLabelService.getWhiteLabelDataLocal());
+   // ctrl.whiteLabelData = angular.copy(WhiteLabelService.getWhiteLabelDataLocal());
   
  
     ctrl.km = 1000;
-    $scope.$on('whiteLabel-data-updated', function (event, args) {
-        ctrl.deleteMapCircles();
-        ctrl.whiteLabelData = angular.copy(WhiteLabelService.getWhiteLabelDataLocal());
-        angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
-            ctrl.addAddressCircle(value);
-        });
+    $scope.$on('supported-areas-updated', function (event, args) {
+        $timeout(function () {
+            ctrl.deleteMapCircles();
+            ctrl.supportedAreas=args.supportedAreas;
+        ctrl.adressListToCircle();
+        }, 1);
     });
 
 
-    ctrl.deleteMapCircles = function () {
-        angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
-            value.circle.setRadius(null);
-            value.marker.setMap(null);
+
+    ctrl.adressListToCircle = function () {
+        angular.forEach(ctrl.supportedAreas, function (value, key) {
+            ctrl.addAddressCircle(value);
         });
     }
+
+    ctrl.deleteMapCircleByArea = function (area) {
+        area.circle.setRadius(null);
+        area.marker.setMap(null);
+    }
+    ctrl.deleteMapCircles = function () {
+        angular.forEach(ctrl.supportedAreas, function (value, key) {
+            ctrl.deleteMapCircleByArea(value);
+        });
+        ctrl.deleteMapCircleByArea(ctrl.selectedArea);
+    }
+
+
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -35,14 +49,10 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
 
             ctrl.map = new google.maps.Map(document.getElementById("map"), mapOptions);
  
-            angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
-                ctrl.addAddressCircle(value);
-            });
+            ctrl.adressListToCircle();
         }, function (error) {
 
-            angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
-                ctrl.addAddressCircle(value);
-            });
+            ctrl.adressListToCircle();
             console.log("Could not get location");
         });
     }
@@ -106,7 +116,7 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
                         map: ctrl.map,
                         center: { lat: area.lat, lng: area.lng },
                         radius: radius * ctrl.km,
-                        draggable: true
+                        draggable: false
                     });
                  //   for (var i = 0, feature; feature = markers[i]; i++) {
                     ctrl.addMarker(area);
@@ -119,32 +129,8 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
                      
     }
 
-    ctrl.addNewArea = function (address,radius) {
-        if (address){
-        var geocoder = new google.maps.Geocoder();
-
-          geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status === 'OK') {
-                ctrl.map.setCenter(results[0].geometry.location);
-        // var latLng = new google.maps.LatLng(results[0].geometry.location.lat, results[0].geometry.location.lng);
-
-         var area = {
-             name: address,
-             radius: radius,
-             lat: results[0].geometry.location.lat(),
-             lng: results[0].geometry.location.lng()
-         }
-         ctrl.selectedArea = area;
-         ctrl.addAddressCircle(area);
-         ctrl.addSupportedAreas(area);
-         ctrl.map.setCenter(area.circle.getCenter())
-          //}
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
-
-         });
-        }
+    ctrl.addNewArea = function () {
+        ctrl.addSupportedAreas(ctrl.selectedArea);
     }
 
     ctrl.addTmpc = function (area) {
@@ -172,16 +158,22 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
         temp_area.lat = area.lat;
         temp_area.lng = area.lng;
         temp_area.radius = area.radius;
-        ServicesSettingsService.AddSupportedAreas(temp_area);
+        ServicesSettingsService.AddSupportedAreas(temp_area, ctrl.serviceType);
     }
     ctrl.updateSupportedAreas = function () {
-
+        for (var i = 0; i < ctrl.supportedAreas.length; i++) {
+            if(ctrl.supportedAreas[i].name==ctrl.selectedArea.name)
+            {
+                var index = i;
+                break;
+            }
+        }
         var temp_area = {};
         temp_area.name = ctrl.selectedArea.name;
         temp_area.lat = ctrl.selectedArea.lat;
         temp_area.lng = ctrl.selectedArea.lng;
         temp_area.radius = ctrl.selectedArea.radius;
-         ServicesSettingsService.UpdateSupportedAreas(temp_area);
+        ServicesSettingsService.UpdateSupportedAreas(temp_area, ctrl.serviceType,index);
     }
 
     ctrl.deleteSupportedAreas = function (area) {
@@ -192,7 +184,7 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
         temp_area.lat = area.lat;
         temp_area.lng = area.lng;
         temp_area.radius = area.radius;
-        ServicesSettingsService.DeleteSupportedAreas(temp_area);
+        ServicesSettingsService.DeleteSupportedAreas(temp_area, ctrl.serviceType);
     }
 
     ctrl.updateCircle = function (area) {
@@ -224,14 +216,26 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
         }
     };
 
-    ctrl.areaChanged = function (area) {
+
+    ctrl.resetCirclesRadius = function (area, index) {
+        ctrl.deleteMapCircleByArea(area);
+    
+        var _SupportedAreas = WhiteLabelService.getSupportedAreasByServiceType(ctrl.serviceType);
+        ctrl.supportedAreas[index] = _SupportedAreas[index];
+        ctrl.addAddressCircle(ctrl.supportedAreas[index]);
+    }
+
+    ctrl.areaChanged = function (area, index) {
+       
         ctrl.selectedArea = area;
         ctrl.slider.value = ctrl.selectedArea.radius;
         ctrl.areaChangedCircleColor(area);
+       // ctrl.resetCirclesRadius(area, index);
+       
     }
 
     ctrl.areaChangedCircleColor = function (area) {
-        angular.forEach(ctrl.whiteLabelData.supportedAreas, function (value, key) {
+        angular.forEach(ctrl.supportedAreas, function (value, key) {
             value.circle.setOptions({
                 strokeColor: '#8299ae',
                 strokeOpacity: 0.8,
@@ -246,11 +250,12 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
 
         ctrl.map.setCenter(area.circle.getCenter())
     }
- 
+
 }]
 angular.module('sbAdminApp').component('supportedAreaCmp', {
     bindings: {
-
+        supportedAreas: '=',
+        serviceType:'='
         
 
     },

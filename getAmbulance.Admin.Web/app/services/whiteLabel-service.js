@@ -1,39 +1,40 @@
 ﻿/// <reference path="whiteLabel-service.js" />
 'use strict';
-angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSettings', 'localStorageService', '$rootScope', '$q', function ($http, ngAuthSettings, localStorageService, $rootScope, $q) {
+angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSettings', 'localStorageService', '$rootScope', '$q', '$filter', function ($http, ngAuthSettings, localStorageService, $rootScope, $q, $filter) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
     var WhiteLabelServiceFactory = {};
     var _getWhiteLabelData = function () {
-        if (_getWhiteLabelDataLocal()){
-        var deferred = $q.defer();
-        var data = {
-            whiteLabelId: _getWhiteLabelDataLocal().whiteLabelid
-        }
-        $http.post(serviceBase + 'api/WhiteLabel/GetWhiteLabelData', data).success(function (res) {
-            _setWhiteLabelData(res);
-            $rootScope.$broadcast('whiteLabel-data-updated');
-            deferred.resolve(res);
-        });
-        return deferred.promise;
+        if (_getWhiteLabelDataLocal()) {
+            var deferred = $q.defer();
+            var data = {
+                whiteLabelId: _getWhiteLabelDataLocal().whiteLabelid
+            }
+            $http.post(serviceBase + 'api/WhiteLabel/GetWhiteLabelData', data).success(function (res) {
+                _setWhiteLabelData(res);
+                $rootScope.$broadcast('whiteLabel-data-updated');
+                deferred.resolve(res);
+            });
+            return deferred.promise;
         }
     };
 
     $rootScope.$on('update-whiteLabel-data', function (event, args) {
         _getWhiteLabelData();
     });
-    
+
     var _updateWhiteLabelIsOnline = function (status) {
         var data = {
             isOnline: status,
             whiteLabelId: _getWhiteLabelDataLocal().whiteLabelid
-        } 
+        }
         return $http.post(serviceBase + 'api/WhiteLabel/UpdateWhiteLabelIsOnline', data);
     };
 
 
- 
+
+
 
     var _setWhiteLabelData = function (data) {
         localStorageService.set('WhiteLabelData', data);
@@ -66,12 +67,24 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
         }
     };
 
+    var _getSupportedServicesByType = function (type) {
+        var supportedServices = _getWhiteLabelDataLocal().supportedServices;
+        return $filter('filter')(supportedServices, { Type: type }, true)[0];
+    };
+
+    var _getSupportedAreasByServiceType = function (type) {
+        var supportedService = _getSupportedServicesByType(type);
+        return supportedService.supportedAreas;
+    };
+
     WhiteLabelServiceFactory.updateWhiteLabelIsOnline = _updateWhiteLabelIsOnline;
     WhiteLabelServiceFactory.setWhiteLabelData = _setWhiteLabelData;
     WhiteLabelServiceFactory.getWhiteLabelDataLocal = _getWhiteLabelDataLocal;
     WhiteLabelServiceFactory.getWhiteLabelData = _getWhiteLabelData;
-
     WhiteLabelServiceFactory.updateSupportedServicesOnRoot = _updateSupportedServicesOnRoot;
+    WhiteLabelServiceFactory.getSupportedServicesByType = _getSupportedServicesByType;
+    WhiteLabelServiceFactory.getSupportedAreasByServiceType = _getSupportedAreasByServiceType;
+
     return WhiteLabelServiceFactory;
 
 }]);

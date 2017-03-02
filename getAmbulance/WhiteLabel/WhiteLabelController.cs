@@ -203,7 +203,7 @@ namespace getAmbulance.WhiteLabel
             dynamic jsonObj = jsonData;
             List<SupportedArea> supportedAreaList = jsonObj.supportedAreaList.ToObject<List<SupportedArea>>();
 
-            _whiteLabelService.AddSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList);
+            _whiteLabelService.AddSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList, jsonObj.type.Value);
 
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
@@ -219,7 +219,7 @@ namespace getAmbulance.WhiteLabel
             dynamic jsonObj = jsonData;
             List<SupportedArea> supportedAreaList = jsonObj.supportedAreaList.ToObject<List<SupportedArea>>();
 
-            _whiteLabelService.UpdateSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList);
+            _whiteLabelService.UpdateSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList, jsonObj.type.Value, jsonObj.index.Value);
 
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
@@ -235,7 +235,7 @@ namespace getAmbulance.WhiteLabel
             dynamic jsonObj = jsonData;
             List<SupportedArea> supportedAreaList = jsonObj.supportedAreaList.ToObject<List<SupportedArea>>();
 
-            _whiteLabelService.DeleteSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList);
+            _whiteLabelService.DeleteSupportedAreas(jsonObj.whiteLabelId.Value, supportedAreaList, jsonObj.type.Value);
 
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;

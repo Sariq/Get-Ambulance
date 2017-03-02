@@ -170,43 +170,46 @@ namespace getAmbulance.WhiteLabel
         {
             Hub.Clients.Group(whiteLAbelId).whiteLabelDataUpdated();
         }
-        public void AddSupportedAreas(string whiteLabelId,List<SupportedArea> supportedAreaList)
+        public void AddSupportedAreas(string whiteLabelId,List<SupportedArea> supportedAreaList,string type)
         {
-                var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
-
-            //var update = Builders<WhiteLabelEntity>.Update
-            //    .Set("supportedAreas", supportedAreaList);
+            var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type));
             foreach (var supportedArea in supportedAreaList)
             {
                 var update = Builders<WhiteLabelEntity>.Update
-                   .Push(e => e.supportedAreas, supportedArea);
+                   .Push("supportedServices.$.supportedAreas", supportedArea);
                 var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
-        public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList)
+        public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList,string type,string index)
         {
-            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
             foreach (var supportedArea in supportedAreaList)
             {
-                filter = filter & Builders<WhiteLabelEntity>.Filter.Where(x => x.supportedAreas.Any(i => i.name == supportedArea.name));
-                var update = Builders<WhiteLabelEntity>.Update.Set(x => x.supportedAreas[-1], supportedArea);
+                var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type && s.supportedAreas.Any(a => a.name == supportedArea.name)));
+                var update = Builders<WhiteLabelEntity>.Update.Set("supportedServices.$.supportedAreas."+index, supportedArea);
                 var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
-        public void DeleteSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList)
+        public void DeleteSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList,string type)
         {
-            
-            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
+            var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type));
+
             foreach (var supportedArea in supportedAreaList)
             {
-                var update = Builders<WhiteLabelEntity>.Update.PullFilter(p => p.supportedAreas,
-                                              f => f.name == supportedArea.name);
-                var result =  _ctx.WhiteLabels.FindOneAndUpdateAsync(filter, update);
-                //filter = filter & Builders<WhiteLabelEntity>.Filter.Where(x => x.supportedAreas.Any(i => i.name == supportedArea.name));
-                //var update = Builders<WhiteLabelEntity>.Update.Pull(x => x.supportedAreas, Builders<WhiteLabelEntity>.Filter.Where(q => q.name == supportedArea.name));
-                //var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
+                var update = Builders<WhiteLabelEntity>.Update.PullFilter("supportedServices.$.supportedAreas",
+                    Builders<SupportedArea>.Filter.Where(f=>f.name==supportedArea.name));
+                try
+                {
+                    var result = _ctx.WhiteLabels.FindOneAndUpdateAsync(filter, update).Result;
+
+                }
+                catch (AggregateException e)
+                {
+                    Console.WriteLine(e);
+                }
+
+
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }

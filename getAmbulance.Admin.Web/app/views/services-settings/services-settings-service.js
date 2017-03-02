@@ -5,27 +5,31 @@ angular.module('sbAdminApp').factory('ServicesSettingsService', ['$http', 'ngAut
 
     var ServicesSettingsServiceFactory = {};
    
-    var _AddSupportedAreas = function (areaData ) {
+    var _AddSupportedAreas = function (areaData, type) {
         var supportedAreaList = [areaData];
         var data={ 
             whiteLabelId: authService.authentication.WhiteLabelData.whiteLabelid,
-            supportedAreaList: supportedAreaList
+            supportedAreaList: supportedAreaList,
+            type: type
         }
         return $http.post(serviceBase + 'api/WhiteLabel/AddSupportedAreas', data);
     };
-    var _UpdateSupportedAreas = function (areaData) {
+    var _UpdateSupportedAreas = function (areaData, type, index) {
         var supportedAreaList = [areaData];
         var data = {
             whiteLabelId: authService.authentication.WhiteLabelData.whiteLabelid,
-            supportedAreaList: supportedAreaList
+            supportedAreaList: supportedAreaList,
+            type: type,
+            index:index.toString()
         }
         return $http.post(serviceBase + 'api/WhiteLabel/UpdateSupportedAreas', data);
     };
-    var _DeleteSupportedAreas = function (areaData) {
+    var _DeleteSupportedAreas = function (areaData, type) {
         var supportedAreaList = [areaData];
         var data = {
             whiteLabelId: authService.authentication.WhiteLabelData.whiteLabelid,
-            supportedAreaList: supportedAreaList
+            supportedAreaList: supportedAreaList,
+            type:type
         }
         return $http.post(serviceBase + 'api/WhiteLabel/DeleteSupportedAreas', data);
     };

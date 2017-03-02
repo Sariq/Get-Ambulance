@@ -1,17 +1,19 @@
 ﻿
 
-angular.module('sbAdminApp').controller('SupportedAreaCtrl', function ($scope, ServicesSettingsService, WhiteLabelService) {
+angular.module('sbAdminApp').controller('SupportedAreaCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, $rootScope) {
     $scope.weightPActions = {};
-
-    $scope.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
+    $scope.serviceType = '1';
+    $scope.supportedAreas = WhiteLabelService.getSupportedAreasByServiceType($scope.serviceType);
     $scope.save = function () {
         $scope.weightPActions.saveItem();
         $scope.stairsBuildingPActions.saveItem();
     }
     
     $scope.$on('whiteLabel-data-updated', function (event, args) {
-        $scope.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
+        var supportedAreasArgs = WhiteLabelService.getSupportedAreasByServiceType($scope.serviceType);
+        $rootScope.$broadcast('supported-areas-updated', { supportedAreas: supportedAreasArgs });
     });
+ 
  
     $scope.edit = false;
     $scope.selectedArea = {radius: 5 };
