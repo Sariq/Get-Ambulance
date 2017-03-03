@@ -83,12 +83,17 @@ namespace getAmbulance.WhiteLabel
                 foreach (var address in addressList)
                 {
                     var filterdSupportedService = whiteLabel.supportedServices.First(fs => fs.Type == type);
+                    if(filterdSupportedService.supportedAreas!=null && filterdSupportedService.supportedAreas.Count > 0)
+                    {
+
+              
                     filterdList = filterdSupportedService.supportedAreas.Where(supportedArea =>
                     new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= (supportedArea.radius * 1000)
                     ).ToList();
                     if (filterdList != null && filterdList.Count() > 0)
                     {
                         count++;
+                    }
                     }
                 }
                 if (count == addressList.Count() && filterdList != null && filterdList.Count() > 0)

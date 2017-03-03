@@ -198,6 +198,10 @@ namespace getAmbulance.Reservation
                 int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices, jsonObj);
                 int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices, jsonObj.form);
                 int finalPrice = distancePrice + extraServicesPrice;
+                if (jsonObj.form["Direction_Type"] == "Two_Way")
+                {
+                    finalPrice = finalPrice * 2;
+                }
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
             return whiteLabelsOfferList;
@@ -278,14 +282,18 @@ namespace getAmbulance.Reservation
         public int getAmbulanceExtraServicesPrice(BsonDocument prices, dynamic reservationData)
         {
             var temp_prices = prices;
+            int price = 0;
             foreach (var weightPrice in (BsonDocument)prices["weight"])
             {
                 if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Name))
                 {
-                    return (int)weightPrice.Value;
+                    price=(int)weightPrice.Value;
+                    break;
                 }
             }
-            return 0;
+  
+            
+            return price;
         }
         public int getStairsAssistanceExtraServicesPrice(BsonDocument prices, dynamic reservationData)
         {
