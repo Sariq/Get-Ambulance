@@ -7,6 +7,9 @@ angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, Reservatio
         $scope.filterByType();
     });
 
+    $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
+    $scope.supportedServices = $scope.whiteLabel.supportedServices;
+
     $scope.filterByType = function () {
         $scope.reservationsListFilterd = ReservationService.groupByType(($scope.reservationsList));
         angular.forEach($scope.reservationsListFilterd,function(value,key){
@@ -21,7 +24,9 @@ angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, Reservatio
             if (!$scope.reservationsListFilterd['3']) {
                 $scope.reservationsListFilterd['3'] = [];
             }
-       
+            if (!$scope.reservationsListFilterd['4']) {
+                $scope.reservationsListFilterd['4'] = [];
+            }
    
       
 

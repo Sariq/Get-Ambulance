@@ -174,7 +174,13 @@
   "Add_City_To_Supported_Area": "הוסף עיר לאזור שרות",
   "Selected_Citys": "ערים שנבחרו",
   "Add_New_Area": "הוסף עיר",
-  "City_Name": "שם העיר"
+  "City_Name": "שם העיר",
+  "PrivateAmbulance": "אמבולנס פרטי",
+  "MedicalTherapist": "מלווה",
+  "StairsAssistance": "עזרה במדרגות",
+  "ICUAmbulance": "אמבולנס טיפול נמרץ",
+  "Reservations": "הזמנות"
+
 
 
 

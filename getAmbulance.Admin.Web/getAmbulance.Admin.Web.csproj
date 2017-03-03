@@ -723,6 +723,7 @@
     <Content Include="app\bower_components\signalr\jquery.signalR.js" />
     <Content Include="app\bower_components\signalr\jquery.signalR.min.js" />
     <Content Include="app\common\services\authInterceptorService.js" />
+    <Content Include="app\common\services\common-service.js" />
     <Content Include="app\components\reservation\header-cmp.css" />
     <Content Include="app\components\services-settings\prices\stairs-building\stairs-building-cmp.js" />
     <Content Include="app\components\services-settings\prices\stairs-building\stairs-building-cmp.css" />
@@ -854,6 +855,7 @@
     <Content Include="img\blue-marker.png" />
     <Content Include="img\doctor.svg" />
     <Content Include="img\general-logo.png" />
+    <Content Include="img\icu_ambulance.svg" />
     <Content Include="img\kahol-lavan-logo.png" />
     <Content Include="img\log-out.svg" />
     <Content Include="img\mada-logo.jpg" />

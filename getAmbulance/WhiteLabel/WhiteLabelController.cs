@@ -37,7 +37,7 @@ namespace getAmbulance.WhiteLabel
             try
             {
                 dynamic jsonObj = jsonData;
-                _whiteLabelService.UpdateWhiteLabelIsOnline(jsonObj.whiteLabelId.Value, jsonObj.isOnline.Value);
+                _whiteLabelService.UpdateWhiteLabelIsOnline(jsonObj.whiteLabelId.Value, jsonObj.isOnline.Value,jsonObj.type.Value);
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)

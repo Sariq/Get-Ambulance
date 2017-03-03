@@ -24,10 +24,11 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
         _getWhiteLabelData();
     });
 
-    var _updateWhiteLabelIsOnline = function (status) {
+    var _updateWhiteLabelIsOnline = function (type,status) {
         var data = {
             isOnline: status,
-            whiteLabelId: _getWhiteLabelDataLocal().whiteLabelid
+            whiteLabelId: _getWhiteLabelDataLocal().whiteLabelid,
+            type:type
         }
         return $http.post(serviceBase + 'api/WhiteLabel/UpdateWhiteLabelIsOnline', data);
     };

@@ -5,9 +5,10 @@ var headerCmp = ['authService','WhiteLabelService', function (authService, White
         authService.logOut();
     }
     ctrl.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
-    ctrl.isOnline = ctrl.whiteLabel.isOnline;
-    ctrl.updateWhiteLabelIsOnline = function (status) {
-        WhiteLabelService.updateWhiteLabelIsOnline(status).then(function (res) {
+    ctrl.supportedServices = ctrl.whiteLabel.supportedServices;
+
+    ctrl.updateWhiteLabelIsOnline = function (service) {
+        WhiteLabelService.updateWhiteLabelIsOnline(service.Type, service.isOnline).then(function (res) {
             console.log(res)
         });
     }

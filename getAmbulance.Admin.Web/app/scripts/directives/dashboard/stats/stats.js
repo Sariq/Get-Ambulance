@@ -20,9 +20,13 @@ angular.module('sbAdminApp')
         'colour': '@',
         'details':'@',
         'type':'@',
-        'goto': '@',
+  
         'img': '@',
-            'imgWidth':'@'
+        'imgWidth': '@',
+  		    'imgHeight':'@'
+  		}, controller: function ($scope, CommonService) {
+  		    $scope.goto= CommonService.getStateByServiceType($scope.type);
+
   		}
   		
   	}

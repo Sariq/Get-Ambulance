@@ -9,6 +9,9 @@ switch (location.host) {
     case 'localhost:57867':
         apiService = 'http://localhost:54543/'
         break;
+    case 'localhost:51904':
+        apiService = 'http://localhost:54543/'
+        break;
     case 'qaprovider.getambulance.com':
         apiService = 'http://ec2-54-186-14-31.us-west-2.compute.amazonaws.com/'
         break;

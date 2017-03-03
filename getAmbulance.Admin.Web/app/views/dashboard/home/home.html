@@ -1,10 +1,7 @@
 ﻿<div>
 
     <div class="row services-boxes">
-        <stats ng-show="isAmbulanceCatSup" number="{{reservationsListFilterd['1'].length}}" name="{{'Ambulance_Reservations' | translate}}" colour="primary" type="ambulance " img-width="40" img="ambulance" goto="dashboard.ambulance-reservation-list"></stats>
-        <stats ng-show="isMedicalTherapistCatSup" number="{{reservationsListFilterd['2'].length}}" name="{{'Medical_Therapist_Reservations' | translate}}" colour="green" type="user-md" img-width="28" img="doctor" goto="dashboard.medical-therapist-reservation-list">></stats>
-        <stats ng-show="isStairsAssistanceCatSup" number="{{reservationsListFilterd['3'].length}}" name="{{'Stairs_Assistance_Reservations' | translate}}" colour="red" img="stairs" img-width="28" type="wheelchair" goto="dashboard.stairs-assistance-reservation-list">></stats>
-        <!--<stats ng-show="isMedicalTherapistCatSup" number="{{reservationsListFilterd['2'].length}}" name="{{'Medical_Therapist_Reservations' | translate}}" colour="green" type="user-md" img-width="40" img="doctor" goto="dashboard.medical-therapist-reservation-list">></stats>-->
+        <stats ng-repeat="service in supportedServices"  number="{{reservationsListFilterd[service.Type].length}}" name="{{service.Name | translate}}" colour="primary" type="{{service.Type}} " img-width="200" img-height="115" img="{{service.logo}}"></stats>
     </div>
 
     <div style="">

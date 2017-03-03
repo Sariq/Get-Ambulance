@@ -15,29 +15,38 @@ angular.module('sbAdminApp')
           replace: true,
           scope: {
           },
-          controller: function ($scope, $rootScope) {
-              $scope.isAmbulanceCatSup = $rootScope.isAmbulanceCatSup;
-              $scope.isMedicalTherapistCatSup = $rootScope.isMedicalTherapistCatSup;
-              $scope.isStairsAssistanceCatSup = $rootScope.isStairsAssistanceCatSup;
-              $scope.selectedMenu = 'dashboard';
-              $scope.collapseVar = 0;
-              $scope.multiCollapseVar = 0;
+          controller: function ($scope, WhiteLabelService, CommonService) {
 
-              $scope.check = function (x) {
+              $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
+              $scope.supportedServices = $scope.whiteLabel.supportedServices;
+              angular.forEach($scope.supportedServices, function (value, key) {
+                  value.goto = CommonService.getStateByServiceType(value.Type);
+              })
 
-                  if (x == $scope.collapseVar)
-                      $scope.collapseVar = 0;
-                  else
-                      $scope.collapseVar = x;
-              };
 
-              $scope.multiCheck = function (y) {
 
-                  if (y == $scope.multiCollapseVar)
-                      $scope.multiCollapseVar = 0;
-                  else
-                      $scope.multiCollapseVar = y;
-              };
+              //$scope.isAmbulanceCatSup = $rootScope.isAmbulanceCatSup;
+              //$scope.isMedicalTherapistCatSup = $rootScope.isMedicalTherapistCatSup;
+              //$scope.isStairsAssistanceCatSup = $rootScope.isStairsAssistanceCatSup;
+              //$scope.selectedMenu = 'dashboard';
+              //$scope.collapseVar = 0;
+              //$scope.multiCollapseVar = 0;
+
+              //$scope.check = function (x) {
+
+              //    if (x == $scope.collapseVar)
+              //        $scope.collapseVar = 0;
+              //    else
+              //        $scope.collapseVar = x;
+              //};
+
+              //$scope.multiCheck = function (y) {
+
+              //    if (y == $scope.multiCollapseVar)
+              //        $scope.multiCollapseVar = 0;
+              //    else
+              //        $scope.multiCollapseVar = y;
+              //};
           }
       }
   }]).directive('setHeight', function ($window) {

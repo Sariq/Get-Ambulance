@@ -18,7 +18,7 @@ namespace getAmbulance.WhiteLabel
         public WhiteLabelService()
         {
             _ctx = ApplicationIdentityContext.Create();
-            
+
         }
         Lazy<IHubContext> hub = new Lazy<IHubContext>(
 () => GlobalHost.ConnectionManager.GetHubContext<ReservationHub>()
@@ -41,12 +41,12 @@ namespace getAmbulance.WhiteLabel
                 basicData.logo = whiteLabel.logo;
                 basicData.name = whiteLabel.name;
                 basicData.whiteLabel_Id = whiteLabel.whiteLabelid;
-                basicData.phoneNumber=whiteLabel.phoneNumber;
+                basicData.phoneNumber = whiteLabel.phoneNumber;
                 whiteLabelsBasicDataList.Add(basicData);
             }
             return whiteLabelsBasicDataList;
         }
-        
+
         public List<WhiteLabelEntity> GetWhiteLabelsListByStatus(bool status)
         {
             var builder = Builders<WhiteLabelEntity>.Filter;
@@ -58,14 +58,8 @@ namespace getAmbulance.WhiteLabel
         {
             try
             {
-                var builder = Builders<WhiteLabelEntity>.Filter;
-                var filter = builder.Eq("isOnline", status);
-                filter = filter & builder.Eq("supportedServices", serviceType);
+                var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.supportedServices.Any(s => s.Type == serviceType && s.isOnline == status));
                 var whiteLabelsList = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
-
-               
-
-              
                 return whiteLabelsList;
             }
             catch (Exception ex)
@@ -74,52 +68,57 @@ namespace getAmbulance.WhiteLabel
             }
 
         }
-        public List<WhiteLabelEntity> filterWhiteLabelListBySupportedArea(List<WhiteLabelEntity> whiteLabelsList, dynamic reservationData)
+        public List<WhiteLabelEntity> filterWhiteLabelListBySupportedArea(List<WhiteLabelEntity> whiteLabelsList, dynamic reservationData,string type)
         {
-           // double lat2 = 32.23823691911867, lng2 = 34.944726969285284, lat = 32.2394348, lng = 34.9503489;
+            // double lat2 = 32.23823691911867, lng2 = 34.944726969285284, lat = 32.2394348, lng = 34.9503489;
             List<AddressLatLng> addressList = reservationData.addressList.ToObject<List<AddressLatLng>>();
 
             List<WhiteLabelEntity> filterdWhiteLabelLiset = new List<WhiteLabelEntity>();
             List<SupportedArea> filterdList = new List<SupportedArea>();
+
             int count;
             foreach (var whiteLabel in whiteLabelsList)
-                {
+            {
                 count = 0;
                 foreach (var address in addressList)
                 {
-                    filterdList = whiteLabel.supportedAreas.Where(supportedArea =>
-                  new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= (supportedArea.radius *1000)
-                  ).ToList();
-                    if(filterdList!=null && filterdList.Count() > 0)
+                    var filterdSupportedService = whiteLabel.supportedServices.First(fs => fs.Type == type);
+                    filterdList = filterdSupportedService.supportedAreas.Where(supportedArea =>
+                    new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= (supportedArea.radius * 1000)
+                    ).ToList();
+                    if (filterdList != null && filterdList.Count() > 0)
                     {
                         count++;
                     }
                 }
-                if (count== addressList.Count() && filterdList != null && filterdList.Count() > 0)
+                if (count == addressList.Count() && filterdList != null && filterdList.Count() > 0)
                 {
                     filterdWhiteLabelLiset.Add(whiteLabel);
 
                 }
-               
-                }
+
+            }
             return filterdWhiteLabelLiset;
         }
-        public void UpdateWhiteLabelIsOnline(string whiteLabelId,bool status)
+        public void UpdateWhiteLabelIsOnline(string whiteLabelId, bool status,string type)
         {
-     
-            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", whiteLabelId);
-            var update = Builders<WhiteLabelEntity>.Update
-                .Set("isOnline",status);
-            var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
-        }
+            var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type));
+            var update = Builders<WhiteLabelEntity>.Update.Set("supportedServices.$.isOnline", status);
+            var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
 
+            HubUpdateWLDataUpdated(whiteLabelId);
+        }
+        public void HubUpdateWLDataUpdated(string whiteLAbelId)
+        {
+            Hub.Clients.Group(whiteLAbelId).whiteLabelDataUpdated();
+        }
         public WhiteLabelEntity GetWhiteLabelById(string whiteLabelId)
         {
             WhiteLabelEntity result = null;
             try
             {
                 var builder = Builders<WhiteLabelEntity>.Filter;
-               
+
                 var filter = builder.Eq("whiteLabelid", whiteLabelId);
                 var whiteLabel = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
                 if (whiteLabel != null && whiteLabel.Count > 0)
@@ -136,21 +135,21 @@ namespace getAmbulance.WhiteLabel
 
         }
 
-        
+
         public void UpdatePricesByCategory(BsonDocument jsonObj)
         {
 
             var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"]);
 
             var update = Builders<WhiteLabelEntity>.Update
-                .Set("prices."+jsonObj["category"].ToString(), jsonObj["updatedData"]);
+                .Set("prices." + jsonObj["category"].ToString(), jsonObj["updatedData"]);
             var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
             HubUpdateWLAndClientReservationStatus((string)jsonObj["whiteLabelId"]);
         }
         public void DeletePricesByCategory(BsonDocument jsonObj)
         {
             var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"]);
-            filter = filter & Builders<WhiteLabelEntity>.Filter.Eq("prices.Private_Ambulance.distance","2");
+            filter = filter & Builders<WhiteLabelEntity>.Filter.Eq("prices.Private_Ambulance.distance", "2");
 
             var update = Builders<WhiteLabelEntity>.Update
                 .Unset("prices." + jsonObj["category"].ToString());
@@ -163,14 +162,14 @@ namespace getAmbulance.WhiteLabel
             var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"]);
 
             var update = Builders<WhiteLabelEntity>.Update
-                .Set("prices.Private_Ambulance.distance."+ jsonObj["index"].ToString(), jsonObj["updatedData"]);
+                .Set("prices.Private_Ambulance.distance." + jsonObj["index"].ToString(), jsonObj["updatedData"]);
             var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
         }
         public void HubUpdateWLAndClientReservationStatus(string whiteLAbelId)
         {
             Hub.Clients.Group(whiteLAbelId).whiteLabelDataUpdated();
         }
-        public void AddSupportedAreas(string whiteLabelId,List<SupportedArea> supportedAreaList,string type)
+        public void AddSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList, string type)
         {
             var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type));
             foreach (var supportedArea in supportedAreaList)
@@ -181,24 +180,24 @@ namespace getAmbulance.WhiteLabel
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
-        public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList,string type,string index)
+        public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList, string type, string index)
         {
             foreach (var supportedArea in supportedAreaList)
             {
                 var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type && s.supportedAreas.Any(a => a.name == supportedArea.name)));
-                var update = Builders<WhiteLabelEntity>.Update.Set("supportedServices.$.supportedAreas."+index, supportedArea);
+                var update = Builders<WhiteLabelEntity>.Update.Set("supportedServices.$.supportedAreas." + index, supportedArea);
                 var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
-        public void DeleteSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList,string type)
+        public void DeleteSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList, string type)
         {
             var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type));
 
             foreach (var supportedArea in supportedAreaList)
             {
                 var update = Builders<WhiteLabelEntity>.Update.PullFilter("supportedServices.$.supportedAreas",
-                    Builders<SupportedArea>.Filter.Where(f=>f.name==supportedArea.name));
+                    Builders<SupportedArea>.Filter.Where(f => f.name == supportedArea.name));
                 try
                 {
                     var result = _ctx.WhiteLabels.FindOneAndUpdateAsync(filter, update).Result;

@@ -190,10 +190,11 @@ namespace getAmbulance.Reservation
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
             List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "1");
-            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj, "1");
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
+
                 int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices, jsonObj);
                 int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices, jsonObj.form);
                 int finalPrice = distancePrice + extraServicesPrice;
@@ -206,7 +207,7 @@ namespace getAmbulance.Reservation
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
             List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "2");
-            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj, "2");
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
@@ -221,7 +222,7 @@ namespace getAmbulance.Reservation
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
             List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "3");
-            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj);
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj, "3");
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {

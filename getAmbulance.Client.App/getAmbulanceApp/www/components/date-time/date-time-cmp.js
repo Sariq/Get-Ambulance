@@ -51,7 +51,7 @@ var dateTimeCmp = function ($scope, $filter) {
         ctrl.time = ctrl.form.Time;
         $scope.$apply();
     }
- //   ctrl.date = $filter('date')(new Date(), "dd/MM/y");
+    ctrl.form.Date = $filter('date')(new Date(), "dd/MM/y");
     function onDateSuccess(date) {
        
         if (ctrl.notFormatedDate) {
@@ -60,8 +60,8 @@ var dateTimeCmp = function ($scope, $filter) {
             ctrl.form.Date = $filter('date')(date, "dd/MM/y");  // for type="date" binding
 
         }
-        //ctrl.date = $filter('date')(date, "dd/MM/y");
-        ctrl.date = $filter('date')(new Date(), "dd/MM/y");
+        ctrl.date = $filter('date')(date, "dd/MM/y");
+       // ctrl.date = $filter('date')(new Date(), "dd/MM/y");
         $scope.$apply();
     }
 
