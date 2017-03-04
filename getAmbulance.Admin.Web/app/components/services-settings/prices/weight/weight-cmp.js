@@ -14,7 +14,7 @@ var weightPriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService', 
     ctrl.weightPActions.saveItem = function (index) {
         var category = "weight";
        
-        PricesService.updatePricesByCategory(category, ctrl.weightPrice)
+        PricesService.updatePricesByCategory(category, ctrl.weightPrice, ctrl.serviceType)
     }
 
   
@@ -23,7 +23,8 @@ angular.module('sbAdminApp').component('weightPriceCmp', {
     bindings: {
         edit: "=",
         weightPActions: "=",
-        weightPrice:"="
+        weightPrice: "=",
+      serviceType:"@"
 
     },
     templateUrl: 'components/services-settings/prices/weight/weight-cmp.html',

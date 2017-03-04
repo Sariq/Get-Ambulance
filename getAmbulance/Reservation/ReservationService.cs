@@ -194,9 +194,10 @@ namespace getAmbulance.Reservation
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-
-                int distancePrice = getWhiteLabelDistancePriceByKM((BsonDocument)whiteLabel.prices, jsonObj);
-                int extraServicesPrice = getAmbulanceExtraServicesPrice((BsonDocument)whiteLabel.prices, jsonObj.form);
+                string Ambulance_Type = (jsonObj.form.Ambulance_Type).Value;
+                string type = Ambulance_Type == "Private_Ambulance" ? "1" : "4";
+                int distancePrice = getWhiteLabelDistancePriceByKM(whiteLabel, jsonObj, type);
+                int extraServicesPrice = getAmbulanceExtraServicesPrice(whiteLabel, jsonObj.form, type);
                 int finalPrice = distancePrice + extraServicesPrice;
                 if (jsonObj.form["Direction_Type"] == "Two_Way")
                 {
@@ -215,7 +216,7 @@ namespace getAmbulance.Reservation
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                int extraServicesPrice = getMedicalTherapistPriceByHour((BsonDocument)whiteLabel.prices, jsonObj.form);
+                int extraServicesPrice = getMedicalTherapistPriceByHour(whiteLabel, jsonObj.form,"2");
                 int finalPrice = extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
@@ -230,7 +231,7 @@ namespace getAmbulance.Reservation
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                int extraServicesPrice = getStairsAssistancePriceByHour((BsonDocument)whiteLabel.prices, jsonObj.form);
+                int extraServicesPrice = getStairsAssistancePriceByHour(whiteLabel, jsonObj.form,"3");
                 int finalPrice = extraServicesPrice;
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
@@ -253,10 +254,11 @@ namespace getAmbulance.Reservation
                 return true;
             }
         }
-        public int getWhiteLabelDistancePriceByKM(dynamic distancePricesList, dynamic jsonObj)
+        public int getWhiteLabelDistancePriceByKM(WhiteLabelEntity whiteLabel, dynamic jsonObj,string type)
         {
-            string Ambulance_Type = (jsonObj.form.Ambulance_Type).Value;
-            dynamic temp_distancePricesList = distancePricesList[Ambulance_Type]["distance"];
+
+            SupportedService supportedService = whiteLabel.supportedServices.First(s => s.Type == type);
+            dynamic temp_distancePricesList = supportedService.prices["distance"];
             string DayOrNight = null;
             if (isDay(jsonObj.form.Time.Value))
             {
@@ -279,11 +281,11 @@ namespace getAmbulance.Reservation
 
             return ((temp_distancePricesList[temp_distancePricesList.Count - 1][DayOrNight].Value));
         }
-        public int getAmbulanceExtraServicesPrice(BsonDocument prices, dynamic reservationData)
+        public int getAmbulanceExtraServicesPrice(WhiteLabelEntity whiteLabel, dynamic reservationData,string type)
         {
-            var temp_prices = prices;
+            SupportedService supportedService = whiteLabel.supportedServices.First(s => s.Type == type);
             int price = 0;
-            foreach (var weightPrice in (BsonDocument)prices["weight"])
+            foreach (var weightPrice in supportedService.prices["weight"])
             {
                 if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Name))
                 {
@@ -295,10 +297,10 @@ namespace getAmbulance.Reservation
             
             return price;
         }
-        public int getStairsAssistanceExtraServicesPrice(BsonDocument prices, dynamic reservationData)
+        public int getStairsAssistanceExtraServicesPrice(WhiteLabelEntity whiteLabel, dynamic reservationData, string type)
         {
-            var temp_prices = prices;
-            foreach (var weightPrice in (BsonDocument)prices["weight"])
+            SupportedService supportedService = whiteLabel.supportedServices.First(s => s.Type == type);
+            foreach (var weightPrice in supportedService.prices["weight"])
             {
                 if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Name))
                 {
@@ -307,37 +309,38 @@ namespace getAmbulance.Reservation
             }
             return 0;
         }
-        public int getMedicalTherapistPriceByHour(BsonDocument prices, dynamic reservationData)
+        public int getMedicalTherapistPriceByHour(WhiteLabelEntity whiteLabel, dynamic reservationData, string type)
         {
+            SupportedService supportedService = whiteLabel.supportedServices.First(s => s.Type == type);
             DateTime Reservation_Date = DateTime.Parse(reservationData.Time.Value);
             DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
             DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
 
             if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
             {
-                return ((int)prices["medicalTherapist"]["night"]) * ((int)reservationData["Therapist_Stayig_Time"]);
+                return ((int)supportedService.prices.medicalTherapist.night) * ((int)reservationData["Therapist_Stayig_Time"]);
             }
             else
             {
-                return ((int)prices["medicalTherapist"]["day"]) * ((int)reservationData["Therapist_Stayig_Time"]);
+                return ((int)supportedService.prices.medicalTherapist.day) * ((int)reservationData["Therapist_Stayig_Time"]);
             }
         }
 
-        public int getStairsAssistancePriceByHour(BsonDocument prices, dynamic reservationData)
+        public int getStairsAssistancePriceByHour(WhiteLabelEntity whiteLabel, dynamic reservationData, string type)
         {
             //TODO:add check night or day
-
+            SupportedService supportedService = whiteLabel.supportedServices.First(s => s.Type == type);
             DateTime Reservation_Date = DateTime.Parse(reservationData.Time.Value);
             DateTime Day_End = DateTime.Parse("2012/12/12 18:00:00.000");
             DateTime Day_Start = DateTime.Parse("2012/12/12 06:00:00.000");
 
             if (Reservation_Date.TimeOfDay > Day_End.TimeOfDay || Reservation_Date.TimeOfDay < Day_Start.TimeOfDay)
             {
-                return (int)prices["stairsAssistance"]["night"];
+                return (int)supportedService.prices.stairsAssistance.night;
             }
             else
             {
-                return (int)prices["stairsAssistance"]["day"];
+                return (int)supportedService.prices.stairsAssistance.day;
             }
         }
 

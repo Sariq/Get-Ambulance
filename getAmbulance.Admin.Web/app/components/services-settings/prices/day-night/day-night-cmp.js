@@ -10,9 +10,9 @@ var dayNightPriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     ctrl.edit = false;
 
     ctrl.dayNightActions.saveItem = function (index) {
-        var category = "medicalTherapist"
+        var category = ctrl.cat;
 
-        PricesService.updatePricesByCategory(category, ctrl.price)
+        PricesService.updatePricesByCategory(category, ctrl.price, ctrl.serviceType)
     }
 
 
@@ -22,7 +22,9 @@ angular.module('sbAdminApp').component('dayNightPriceCmp', {
     bindings: {
         price: '=',
         edit: '=',
-        dayNightActions:'='
+        dayNightActions: '=',
+        serviceType: "@",
+        cat:"@"
 
 
     },

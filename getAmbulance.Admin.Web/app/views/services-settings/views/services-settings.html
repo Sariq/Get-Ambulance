@@ -37,7 +37,25 @@
                                 <img class="cat-img" src="../img/{{service.Name}}-prices.png" />
                             </div>
                             <div class="col-lg-12 center-text" style="text-align: center;">
-                                <a ui-sref="dashboard.ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                <span ng-switch="service.Type">
+                                    <span ng-switch-when="1">
+                                        <a ui-sref="dashboard.ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                    </span>
+                                    <span ng-switch-when="2">
+                                        <a ui-sref="dashboard.medical-therapist-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                    </span>
+                                    <span ng-switch-when="3">
+                                        <a ui-sref="dashboard.stairs-assistance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                    </span>
+                                    <span ng-switch-when="4">
+                                        <a ui-sref="dashboard.icu-ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                    </span>
+                                    <span ng-switch-when="5">
+                                        <a ui-sref="dashboard.ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                    </span>
+
+                                </span>
+                               
                             </div>
                         </div>
 

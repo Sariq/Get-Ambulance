@@ -28,6 +28,8 @@ namespace getAmbulance.WhiteLabel
             public List<SupportedArea> supportedAreas { get; set; }
             public bool isOnline { get; set; }
             public string logo { get; set; }
+            public dynamic prices { get; set; }
+
         }
         public class WhiteLabelResponseEntity : DatabaseObject
         {

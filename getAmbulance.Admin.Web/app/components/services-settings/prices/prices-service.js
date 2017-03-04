@@ -5,12 +5,13 @@ angular.module('sbAdminApp').factory('PricesService', ['$http', 'ngAuthSettings'
 
     var PricesServiceFactory = {};
     
-    var _updatePricesByCategory = function (category,updatedData) {
+    var _updatePricesByCategory = function (category, updatedData, type) {
 
         var data = {
             "whiteLabelId": authService.authentication.WhiteLabelData.whiteLabelid,
             "category": category,
-            "updatedData": updatedData
+            "updatedData": updatedData,
+            "type":type
 
         }
         return $http.post(serviceBase + 'api/WhiteLabel/UpdatePricesByCategory', data);

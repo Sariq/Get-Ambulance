@@ -144,10 +144,11 @@ namespace getAmbulance.WhiteLabel
         public void UpdatePricesByCategory(BsonDocument jsonObj)
         {
 
-            var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"]);
+           // var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"] && );
+            var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == jsonObj["whiteLabelId"] && x.supportedServices.Any(s => s.Type == jsonObj["type"]));
 
             var update = Builders<WhiteLabelEntity>.Update
-                .Set("prices." + jsonObj["category"].ToString(), jsonObj["updatedData"]);
+                .Set("supportedServices.$.prices." + jsonObj["category"].ToString(), jsonObj["updatedData"]);
             var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
             HubUpdateWLAndClientReservationStatus((string)jsonObj["whiteLabelId"]);
         }

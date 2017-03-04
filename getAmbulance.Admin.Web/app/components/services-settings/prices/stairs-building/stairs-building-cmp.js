@@ -14,7 +14,7 @@ var stairsBuildingPriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelSe
     ctrl.stairsBuildingPActions.saveItem = function (index) {
         var category = "stairsBuilding"
        
-        PricesService.updatePricesByCategory(category, ctrl.stairsBuildingPrice)
+        PricesService.updatePricesByCategory(category, ctrl.stairsBuildingPrice, ctrl.serviceType)
     }
 
 
@@ -23,7 +23,8 @@ angular.module('sbAdminApp').component('stairsBuildingPriceCmp', {
     bindings: {
         edit: "=",
         stairsBuildingPActions: "=",
-        stairsBuildingPrice: "="
+        stairsBuildingPrice: "=",
+       serviceType:"@"
 
 
     },

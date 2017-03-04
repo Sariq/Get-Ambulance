@@ -4,12 +4,17 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     var ctrl = this;
     //PricesService.updatePricesByCategory("stairsBuilding");
     ctrl.myValue = 1;
-    ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
-    switch ("Private_Ambulance") {
-        case "Private_Ambulance":
-            ctrl.rangePriceData = ctrl.whiteLabelData.prices.Private_Ambulance.distance;
-            break;
+    ctrl.initData = function () {
+        ctrl.supportedService = WhiteLabelService.getSupportedServicesByType(ctrl.serviceType);
+        ctrl.rangePriceData = ctrl.supportedService.prices.distance;
     }
+    ctrl.initData();
+    //ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
+    //switch ("Private_Ambulance") {
+    //    case "Private_Ambulance":
+    //        ctrl.rangePriceData = ctrl.whiteLabelData.prices.Private_Ambulance.distance;
+    //        break;
+    //}
 
     ctrl.addNumber = function (key, number) {
         return (parseInt(key) + number).toString();
@@ -32,6 +37,8 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
                    "night": 150
                })
         }
+  
+        ctrl.rangePriceData[ctrl.rangePriceData.length - 1].edit = true;
         ctrl.validateDistance(ctrl.rangePriceData.length - 1);
     }
 
@@ -39,16 +46,16 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     ctrl.deleteItem = function (index) {
         ctrl.rangePriceData.splice(index, 1);
         //PricesService.deletePricesByCategory(index);
-        var category = "Private_Ambulance.distance";
-        PricesService.updatePricesByCategory(category, ctrl.rangePriceData)
+        var category = "distance";
+        PricesService.updatePricesByCategory(category, ctrl.rangePriceData, ctrl.serviceType)
     }
     ctrl.saveItem = function (index) {
-        var category = "Private_Ambulance.distance." + index;
+        var category = "distance." + index;
         if (ctrl.rangePriceData[index].validations)
             delete ctrl.rangePriceData[index].validations;
         if (ctrl.rangePriceData[index].edit)
             delete ctrl.rangePriceData[index].edit;
-        PricesService.updatePricesByCategory(category,ctrl.rangePriceData[index])
+        PricesService.updatePricesByCategory(category, ctrl.rangePriceData[index], ctrl.serviceType)
     }
 
     ctrl.validateDistance = function (index) {
@@ -65,7 +72,7 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
 }]
 angular.module('sbAdminApp').component('distancePriceCmp', {
     bindings: {
-
+        serviceType:'@'
 
 
     },
