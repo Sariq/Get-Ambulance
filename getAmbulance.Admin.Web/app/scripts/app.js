@@ -12,7 +12,7 @@ switch (location.host) {
     case 'localhost:57867':
         apiService = location.protocol+'//localhost:54543/'
         break;
-    case 'qaprovider.getambulance.com':
+    case 'ec2-54-186-14-31.us-west-2.compute.amazonaws.com':
         apiService = location.protocol + '//ec2-54-186-14-31.us-west-2.compute.amazonaws.com/'
         break;
     case 'provider.getambulance.com':
