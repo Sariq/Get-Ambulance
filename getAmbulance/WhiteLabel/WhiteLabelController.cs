@@ -208,6 +208,20 @@ namespace getAmbulance.WhiteLabel
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
+
+        // Post: /WhiteLabel/AddSupportedServices
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage AddSupportedServices(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            dynamic jsonObj = jsonData;
+            List<SupportedService> supportedServiceList = jsonObj.supportedServiceList.ToObject<List<SupportedService>>();
+            _whiteLabelService.AddSupportedServices(jsonObj.whiteLabelId.Value, supportedServiceList, jsonObj.type.Value);
+            response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
+        
         // Post: /WhiteLabel/UpdateSupportedAreas
         [HttpPost]
         [AllowAnonymous]
@@ -241,7 +255,18 @@ namespace getAmbulance.WhiteLabel
             return response;
         }
 
-        
+        // Post: /WhiteLabel/DeleteSupportedServices
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteSupportedServices(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            dynamic jsonObj = jsonData;
+            List<SupportedService> supportedServiceList = jsonObj.supportedServiceList.ToObject<List<SupportedService>>();
+            _whiteLabelService.DeleteSupportedServices(jsonObj.whiteLabelId.Value, supportedServiceList, jsonObj.type.Value);
+            response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
 
     }
 }

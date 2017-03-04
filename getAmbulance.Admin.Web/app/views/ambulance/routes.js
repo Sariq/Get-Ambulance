@@ -9,8 +9,14 @@ angular.module('sbAdminApp').config(function ($stateProvider, $urlRouterProvider
                url: '/ambulance-prices',
                templateUrl: 'views/ambulance/prices/ambulance-prices.html',
                controller: 'AmbulancePricesCtrl'
-           }).state('dashboard.supported-area', {
-               url: '/supported-area',
+           })
+    //    .state('dashboard.supported-area', {
+           //    url: '/supported-area',
+           //    templateUrl: 'views/ambulance/supported-area/supported-area.html',
+           //    controller: 'SupportedAreaCtrl'
+           //})
+        .state('dashboard.supported-area', {
+               url: '/supported-area/:type',
                templateUrl: 'views/ambulance/supported-area/supported-area.html',
                controller: 'SupportedAreaCtrl'
            });

@@ -158,7 +158,7 @@
   "Update_Price": "עדכן מחיר",
   "Update_Private_Ambulance_Prices": "עדכן מחיר נסיעות אמבולנס פרטי",
   "Update_Private_Ambulance_Suppoted_Area": "עדכן אזור שירות אמבולנס פרטי",
-  "Update_Area": "עדכן אזור",
+  "Update_Area": "עדכן אזור תמיכה",
   "Choose_Area_Name": "בחר אזור תמיכה",
   "Area_City_Name": "עיר",
   "Choose_Area_Name": "בחר עיר",
@@ -179,8 +179,14 @@
   "MedicalTherapist": "מלווה",
   "StairsAssistance": "עזרה במדרגות",
   "ICUAmbulance": "אמבולנס טיפול נמרץ",
-  "Reservations": "הזמנות"
-
+  "Reservations": "הזמנות",
+  "Service_Settings": "הגדרות שירות",
+  "Set_Price": "הגדר מחיר",
+  "Set_Supported_Area": "הגדר אזור תמיכה",
+  "Service": "שירות",
+  "Additional_Services": "שירותים נוספים",
+  "Add_Service": "הוסף שירות"
+    
 
 
 

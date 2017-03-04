@@ -78,6 +78,60 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
         return supportedService.supportedAreas;
     };
 
+    var _initSupportedServiceByType = function (type) {
+        switch (type) {
+            case '1':
+                return {
+                    "Type": "1",
+                    "Name": "PrivateAmbulance",
+                    "supportedAreas": [],
+                    "isOnline": true,
+                    "logo": "ambulance.svg"
+                }
+                break
+            case '2':
+                return {
+                    "Type": "2",
+                    "Name": "MedicalTherapist",
+                    "supportedAreas": [],
+                    "isOnline": true,
+                    "logo": "doctor.svg"
+                }
+                break
+            case '3':
+                return {
+                    "Type": "3",
+                    "Name": "StairsAssistance",
+                    "supportedAreas": [],
+                    "isOnline": true,
+                    "logo": "stairs.svg"
+                }
+                break
+            case '4':
+                return {
+                    "Type": "4",
+                    "Name": "ICUAmbulance",
+                    "supportedAreas": [],
+                    "isOnline": true,
+                    "logo": "icu_ambulance.svg"
+                }
+                break
+            case '5':
+                return {
+                    "Type": "5",
+                    "Name": "StairsAssistance",
+                    "supportedAreas": [],
+                    "isOnline": true,
+                    "logo": "stairs.svg"
+                }
+                break
+        }
+
+        var supportedServices = _getWhiteLabelDataLocal().supportedServices;
+        return $filter('filter')(supportedServices, { Type: type }, true)[0];
+    };
+
+    WhiteLabelServiceFactory.initSupportedServiceByType = _initSupportedServiceByType;
     WhiteLabelServiceFactory.updateWhiteLabelIsOnline = _updateWhiteLabelIsOnline;
     WhiteLabelServiceFactory.setWhiteLabelData = _setWhiteLabelData;
     WhiteLabelServiceFactory.getWhiteLabelDataLocal = _getWhiteLabelDataLocal;

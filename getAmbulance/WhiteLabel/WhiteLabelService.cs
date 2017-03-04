@@ -185,6 +185,17 @@ namespace getAmbulance.WhiteLabel
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
+        public void AddSupportedServices(string whiteLabelId, List<SupportedService> supportedServiceList, string type)
+        {
+            var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId);
+            foreach (var supportedService in supportedServiceList)
+            {
+                var update = Builders<WhiteLabelEntity>.Update
+                   .Push("supportedServices", supportedService);
+                var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
+            }
+            HubUpdateWLAndClientReservationStatus(whiteLabelId);
+        }
         public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList, string type, string index)
         {
             foreach (var supportedArea in supportedAreaList)
@@ -212,10 +223,26 @@ namespace getAmbulance.WhiteLabel
                 {
                     Console.WriteLine(e);
                 }
-
-
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
+
+        public void DeleteSupportedServices(string whiteLabelId, List<SupportedService> supportedServiceList, string type)
+        {
+            var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId);
+                var update = Builders<WhiteLabelEntity>.Update.PullFilter("supportedServices",
+                    Builders<SupportedService>.Filter.Where(f => f.Type == type));
+                try
+                {
+                    var result = _ctx.WhiteLabels.FindOneAndUpdateAsync(filter, update).Result;
+
+                }
+                catch (AggregateException e)
+                {
+                    Console.WriteLine(e);
+                }
+            HubUpdateWLAndClientReservationStatus(whiteLabelId);
+        }
+        
     }
 }

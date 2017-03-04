@@ -1,8 +1,9 @@
 ﻿
 
-angular.module('sbAdminApp').controller('SupportedAreaCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, $rootScope) {
+angular.module('sbAdminApp').controller('SupportedAreaCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, $rootScope,$stateParams) {
     $scope.weightPActions = {};
-    $scope.serviceType = '1';
+    
+    $scope.serviceType = $stateParams.type;
     $scope.supportedAreas = WhiteLabelService.getSupportedAreasByServiceType($scope.serviceType);
     $scope.save = function () {
         $scope.weightPActions.saveItem();
