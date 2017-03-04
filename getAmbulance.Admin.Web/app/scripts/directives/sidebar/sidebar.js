@@ -16,14 +16,18 @@ angular.module('sbAdminApp')
           scope: {
           },
           controller: function ($scope, WhiteLabelService, CommonService) {
+              $scope.initData = function () {
+                  $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
+                  $scope.supportedServices = $scope.whiteLabel.supportedServices;
+                  angular.forEach($scope.supportedServices, function (value, key) {
+                      value.goto = CommonService.getStateByServiceType(value.Type);
+                  })
+              }
+              $scope.initData();
 
-              $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
-              $scope.supportedServices = $scope.whiteLabel.supportedServices;
-              angular.forEach($scope.supportedServices, function (value, key) {
-                  value.goto = CommonService.getStateByServiceType(value.Type);
-              })
-
-
+              $scope.$on('whiteLabel-data-updated', function (event, args) {
+                  $scope.initData();
+              });
 
               //$scope.isAmbulanceCatSup = $rootScope.isAmbulanceCatSup;
               //$scope.isMedicalTherapistCatSup = $rootScope.isMedicalTherapistCatSup;
