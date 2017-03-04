@@ -8,7 +8,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
     });
     $scope.dialogBodyText = 'Confirm_Reservation_Accept_Body_Text';
     ctrl.getReservations = function () {
-        ReservationService.getReservations(ctrl.reservationStatus, ctrl.reservationType).then(function (res) {
+        ReservationService.getReservations(ctrl.reservationStatus, ctrl.resType).then(function (res) {
 
             ctrl.reservationsList = res.data;
             ctrl.prepareTableCols();
@@ -98,9 +98,9 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 Timer: $filter('date')(Math.round((new Date() - new Date())), 'mm:ss'),
                 _id: value._id
             });
-            if (!ctrl.reservationType) {
+          //  if (ctrl.reservationType !=null && ctrl.reservationType.length > 0) {
                 ctrl.tableData[ctrl.tableData.length - 1].Type = value.Type;
-            }
+           // }
 
             ctrl.filter = {};
 
@@ -129,7 +129,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 
 
             ctrl.cols = [
-             { field: "Reservation_Number", title: $filter('translate')('Number'), show: true, filter: { Type: "text" } },
+             { field: "Reservation_Number", title: $filter('translate')('Number'), show: true, filter: { Reservation_Number: "text" } },
              {  field: "Status", title: $filter('translate')('Status'), show: true, filter: { Status: "select" }, filterData: ctrl.filter.Status }
             ];
      
@@ -181,8 +181,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 angular.module('sbAdminApp').component('reservationsCmp', {
     bindings: {
         reservationStatus: '=',
-        reservationType: '=',
-        tableName: '@'
+        resType: '='
 
     },
     templateUrl: 'components/reservation/reservations-cmp.html',
