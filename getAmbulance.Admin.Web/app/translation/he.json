@@ -185,8 +185,10 @@
   "Set_Supported_Area": "הגדר אזור תמיכה",
   "Service": "שירות",
   "Additional_Services": "שירותים נוספים",
-  "Add_Service": "הוסף שירות"
-    
+  "Add_Service": "הוסף שירות",
+  "Service_Status": "מצב שירות",
+  "OnLine": "זמין",
+  "Busy": "לא זמין"
 
 
 

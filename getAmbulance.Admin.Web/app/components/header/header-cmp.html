@@ -15,8 +15,6 @@
             <img class="img-container" style="" src="../img/{{$ctrl.whiteLabel.logo}}" />
         </div>
         <div class="toggle-div">
-
-            <toggle ng-repeat="service in $ctrl.supportedServices" on="{{'OnLine' | translate}}" off="{{'Busy' | translate}}" ng-model="service.isOnline" ng-change="$ctrl.updateWhiteLabelIsOnline(service)" onstyle="btn-success" offstyle="btn-danger"></toggle>
         </div>
 
 

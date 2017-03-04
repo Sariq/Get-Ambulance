@@ -181,7 +181,8 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 angular.module('sbAdminApp').component('reservationsCmp', {
     bindings: {
         reservationStatus: '=',
-        resType: '='
+        resType: '=',
+        tableName:'@'
 
     },
     templateUrl: 'components/reservation/reservations-cmp.html',

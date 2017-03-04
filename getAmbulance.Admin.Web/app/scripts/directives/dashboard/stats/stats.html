@@ -5,9 +5,13 @@
     
         <div class="inner-div service-title" >
             <h4>{{name}}</h4>
+          
         </div>
 
-        <div class="inner-div text-center" >
+        <div class="inner-div text-center" style="padding-top: 10px;">
+            <div>{{'Service_Status' | translate}} 
+            <toggle  on="{{'OnLine' | translate}}" off="{{'Busy' | translate}}" ng-model="supportedService.isOnline" ng-change="updateWhiteLabelIsOnline(supportedService)" onstyle="btn-success" offstyle="btn-danger"></toggle>
+</div>
             <img class="cat-img" style="width:{{imgWidth}}px;height:{{imgHeight}}px" src="../img/{{img}}" />
            <div>הזמנות</div>
             <div class="reservations-numer">{{number}}</div>

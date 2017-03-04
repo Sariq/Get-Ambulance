@@ -37,3 +37,15 @@
 .services-boxes{
     margin-bottom:2%;
 }
+.toggle.btn{
+    min-height:0px!important;
+    max-height:25px;
+     
+}
+
+.toggle.btn .btn{
+    padding: 2px 12px;
+}
+.toggle-off{
+    left:unset!important;
+}

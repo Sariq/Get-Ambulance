@@ -24,8 +24,18 @@ angular.module('sbAdminApp')
         'img': '@',
         'imgWidth': '@',
   		    'imgHeight':'@'
-  		}, controller: function ($scope, CommonService) {
-  		    $scope.goto= CommonService.getStateByServiceType($scope.type);
+  		}, controller: function ($scope, CommonService, WhiteLabelService) {
+  		    $scope.goto = CommonService.getStateByServiceType($scope.type);
+  		    $scope.supportedService = WhiteLabelService.getSupportedServicesByType($scope.type);
+  		    $scope.$on('whiteLabel-data-updated', function (event, args) {
+  		        $scope.supportedService = WhiteLabelService.getSupportedServicesByType($scope.type);
+
+  		    });
+  		    $scope.updateWhiteLabelIsOnline = function (service) {
+  		        WhiteLabelService.updateWhiteLabelIsOnline(service.Type, service.isOnline).then(function (res) {
+  		            console.log(res)
+  		        });
+  		    }
 
   		}
   		
