@@ -807,6 +807,11 @@
     <Content Include="app\views\medical-therapist\prices\medical-therapist-prices.css" />
     <Content Include="app\views\medical-therapist\prices\medical-therapist-prices.html" />
     <Content Include="app\views\medical-therapist\prices\medical-therapist-prices.js" />
+    <Content Include="app\views\register\routes.js" />
+    <Content Include="app\views\register\views\registration\wl-registration.css" />
+    <Content Include="app\views\register\views\registration\wl-registration.html" />
+    <Content Include="app\views\register\views\registration\wl-registration.js" />
+    <Content Include="app\views\register\register-service.js" />
     <Content Include="app\views\stairs-assistance\prices\stairs-assistance-prices.css" />
     <Content Include="app\views\stairs-assistance\prices\stairs-assistance-prices.html" />
     <Content Include="app\views\stairs-assistance\prices\stairs-assistance-prices.js" />

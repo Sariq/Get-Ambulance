@@ -18,6 +18,9 @@ switch (location.host) {
     case 'provider.getambulance.com':
         apiService = location.protocol + '//GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/'
         break;
+    case 'qaprovider.getambulance.com':
+        apiService = location.protocol + '//qaprovider.getambulance.com/'
+        break;
 }
 angular
   .module('sbAdminApp', [
@@ -192,14 +195,15 @@ angular
        templateUrl:'views/ui-elements/grid.html',
        url:'/grid'
    })
-  }]).run(['authService', '$state', 'WhiteLabelService', 'ReservationHub', '$timeout', function (authService, $state, WhiteLabelService, ReservationHub, $timeout) {
-
+  }]).run(['authService', '$state', 'WhiteLabelService', 'ReservationHub', '$timeout', '$location', function (authService, $state, WhiteLabelService, ReservationHub, $timeout, $location) {
+  
     authService.fillAuthData();
-    if (!authService.authentication.isAuth || !WhiteLabelService.getWhiteLabelDataLocal()) {
-        $timeout(function () {
-            $state.go('login')
-        });
-       
+    if ((!authService.authentication.isAuth || !WhiteLabelService.getWhiteLabelDataLocal())) {
+        if ($location.$$url != "/wl-registration") {
+            $timeout(function () {
+                $state.go('login')
+            });
+        }
     }
     else {
         ReservationHub.connectReservationHub();

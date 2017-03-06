@@ -2,6 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
+      <base href="/admin-web/app/" target="_blank">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -9,7 +10,12 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+            <!--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">-->
       <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+
+        <!--<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-material-design/dist/bootstrap-material-design.css">-->
+
 
     <!-- endbower -->
     <!-- endbuild -->
@@ -51,6 +57,7 @@
       <link href="views/ambulance/prices/ambulance-prices.css" rel="stylesheet" />
 
       <link href="views/icu-ambulance/prices/icu-ambulance-prices.css" rel="stylesheet" />
+      <link href="views/register/views/registration/wl-registration.css" rel="stylesheet" />
     <!-- endbuild -->
     
  
@@ -111,6 +118,9 @@
 <script src="bower_components/humanize-duration/humanize-duration.js"></script>
 <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
 <script src="bower_components/angular-google-places-autocomplete-master/src/autocomplete.js"></script>
+<!--<script src="bower_components/bootstrap-material-design/js/ripples.js"></script>-->
+<!--<script src="bower_components/bootstrap-material-design/dist/bootstrap-material-design.iife.js"></script>
+<script src="bower_components/bootstrap-material-design/dist/bootstrap-material-design.umd.js"></script>-->
 
 <!-- endbower -->
 <!-- endbuild -->
@@ -222,4 +232,10 @@
 <script src="views/dashboard/home/home.js"></script>
 
 <!--home-->
+
+<!--WL-Registration-->
+<script src="views/register/views/registration/wl-registration.js"></script>
+<script src="views/register/routes.js"></script>
+<script src="views/register/register-service.js"></script>
+<!--WL-Registration-->
 </html>

@@ -6,14 +6,14 @@
          
             <form role="form" >
                 <div class="form-content login-form">
-                    <div class=" inner-addon left-addon">
+                    <div class="form-group inner-addon left-addon">
                         <i class="glyphicon glyphicon-user"></i>
 
-                        <input type="text" ng-model="loginData.userName" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input type="text" ng-model="loginData.userName" class="form-control input-underline input-lg" id="" placeholder="{{'User_Name' | translate}}">
                     </div>
                     <div class="form-group inner-addon left-addon">
                         <i class="glyphicon glyphicon-lock"></i>
-                        <input type="password" class="form-control input-underline input-lg" ng-model="loginData.password" id="" placeholder="Password">
+                        <input type="password" class="form-control input-underline input-lg" ng-model="loginData.password" id="" placeholder="{{'Password' | translate}}">
                     </div>
                 </div>
 

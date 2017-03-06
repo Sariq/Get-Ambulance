@@ -13,8 +13,8 @@ namespace getAmbulance.WhiteLabel
         {
             public string whiteLabelid { get; set; }
             public string name { get; set; }
-            public BsonDocument users { get; set; }
-            public BsonDocument prices { get; set; }
+            public dynamic users { get; set; }
+            public dynamic prices { get; set; }
             public List<SupportedArea> supportedAreas { get; set; }
             public List<SupportedService> supportedServices { get; set; }
             public bool isOnline { get; set; }
@@ -35,8 +35,8 @@ namespace getAmbulance.WhiteLabel
         {
             public string whiteLabelid { get; set; }
             public string name { get; set; }
-            public JObject users { get; set; }
-            public JObject prices { get; set; }
+            public dynamic users { get; set; }
+            public dynamic prices { get; set; }
             public List<SupportedService> supportedServices { get; set; }
             public List<SupportedArea> supportedAreas { get; set; }
 

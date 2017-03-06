@@ -163,7 +163,7 @@ namespace getAmbulance.WhiteLabel
                 var builder = Builders<ApplicationUser>.Filter;
                 var filter = builder.Eq("UserName", (string)jsonObj.userName.Value);
                 var temp_userData = _ctx.Users.Find(filter).ToListAsync().Result[0];
-                 WhiteLabelId = _HelperService.GetValueByTypeFromClaims(temp_userData.Claims, "WhiteLabelId").Value;
+                WhiteLabelId = temp_userData.WhiteLabelId;// _HelperService.GetValueByTypeFromClaims(temp_userData.Claims, "WhiteLabelId").Value;
 
             }
             else
@@ -177,9 +177,9 @@ namespace getAmbulance.WhiteLabel
 
             WhiteLabelEntity whiteLabel = _whiteLabelService.GetWhiteLabelById(WhiteLabelId.ToString());
             WhiteLabelResponseEntity whiteLabelResponse = new WhiteLabelResponseEntity();
-            whiteLabelResponse.prices = JObject.Parse(whiteLabel.prices.ToJson<MongoDB.Bson.BsonDocument>());
+            whiteLabelResponse.prices = whiteLabel.prices;
             whiteLabelResponse.whiteLabelid = WhiteLabelId;
-            whiteLabelResponse.users = JObject.Parse(whiteLabel.users.ToJson<MongoDB.Bson.BsonDocument>());
+            whiteLabelResponse.users = whiteLabel.users;
             whiteLabelResponse._id = whiteLabel._id;
             whiteLabelResponse.isOnline = whiteLabel.isOnline;
             whiteLabelResponse.logo= whiteLabel.logo;
@@ -264,6 +264,20 @@ namespace getAmbulance.WhiteLabel
             dynamic jsonObj = jsonData;
             List<SupportedService> supportedServiceList = jsonObj.supportedServiceList.ToObject<List<SupportedService>>();
             _whiteLabelService.DeleteSupportedServices(jsonObj.whiteLabelId.Value, supportedServiceList, jsonObj.type.Value);
+            response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
+
+
+        // Post: /WhiteLabel/AddWhiteLabel
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage AddWhiteLabel(WhiteLabelEntity whiteLabel)
+        {
+            HttpResponseMessage response;
+
+            _whiteLabelService.AddWhiteLabel(whiteLabel);
+
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }

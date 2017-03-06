@@ -1,0 +1,76 @@
+﻿<div class="wl-registration">
+
+    <div class="row" style="padding-top: 6%;">
+        <div class="col-lg-4 col-lg-offset-4">
+            <!--<img src="../img/general-logo.png" width="60%" class="user-avatar" />-->
+
+
+        </div>
+    </div>
+</div>
+<div class="wl-registration">
+
+    <div class="inner-div" style="margin:0 10% 0 10%">
+        <div class="row  ">
+            <div class="col-lg-12">
+                <h4 class="ng-binding" style="padding:10px 0 10px 0">{{'Provider_Info' | translate}}</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="inner-div" style="margin:0 10% 0 10%">
+        <div class="row  ">
+            <div class="col-lg-12 items min-height-40 items-align-center cursor-pointer">
+                <div class="item-header width-100">
+                    <span>{{'' | translate}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="inner-div" style="margin:0 10% 0 10%">
+        <div class="row  ">
+            <div class="col-lg-6">
+                <div style="padding:10px">
+                    <h4 class="ng-binding color-blue" style="padding:10px 0 10px 0">{{'Provider_Info' | translate}}</h4>
+                    <div>
+                        <div class="row  ">
+                            <form role="form">
+                                <div class="col-lg-6">
+                                    <div class="inputs">
+                                        <div ng-repeat="input in companyInputsList1">
+                                            <div class="form-group label-floating">
+                                                <span for="i5" class="control-label">{{input.name | translate}}<span ng-show="input.isRequired" style="color:red">*</span></span>
+                                                <input type="text" class="form-control input-underline input-lg"
+                                                       name="{{input.name}}" ng-model="wlForm[input.name]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}">
+                                            </div>
+                                            <span id="{{input.name}}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="inputs">
+                                        <div ng-repeat="input in companyInputsList2">
+                                            <div class="form-group label-floating">
+                                                <span for="i5" class="control-label">{{input.name | translate}}<span ng-show="input.isRequired" style="color:red">*</span></span>
+                                                <input type="text" class="form-control input-underline input-lg"
+                                                       name="{{input.name}}" ng-model="wlForm[input.name]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}">
+                                            </div>
+                                            <span id="{{input.name}}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn green-btn" ng-click="addWL()">Add</button>
+

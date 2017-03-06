@@ -1,11 +1,11 @@
 ﻿<div>
 
     <div class="row services-boxes">
-        <stats ng-repeat="service in supportedServices"  number="{{reservationsListFilterd[service.Type].length}}" name="{{service.Name | translate}}" colour="primary" type="{{service.Type}} " img-width="200" img-height="115" img="{{service.logo}}"></stats>
+        <stats ng-repeat="service in supportedServices"  number="{{reservationsListFilterd[service.Type].length}}" name="{{service.Name | translate}}" colour="primary" type="{{service.Type}} " img-width="200" img-height="90" img="{{service.logo}}"></stats>
     </div>
 
     <div style="">
-        <reservations-cmp reservation-status="['1','2','4','5']" table-name="Active_Reservations"></reservations-cmp>
+        <reservations-cmp reservation-status="['1','2','4','5']" res-type="supportedServicesTypesArr" table-name="Active_Reservations"></reservations-cmp>
     </div>
 
 </div>

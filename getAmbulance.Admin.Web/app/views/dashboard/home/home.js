@@ -9,6 +9,10 @@ angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, Reservatio
 
     $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
     $scope.supportedServices = $scope.whiteLabel.supportedServices;
+    $scope.supportedServicesTypesArr = [];
+    angular.forEach($scope.supportedServices, function (value, key) {
+        $scope.supportedServicesTypesArr.push(value.Type);
+    });
 
     $scope.filterByType = function () {
         $scope.reservationsListFilterd = ReservationService.groupByType(($scope.reservationsList));

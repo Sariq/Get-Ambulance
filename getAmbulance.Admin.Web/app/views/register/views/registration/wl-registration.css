@@ -1,0 +1,73 @@
+  .wl-registration .col-lg-4 {
+        padding: 0;
+    }
+
+    .wl-registration .input-lg {
+        height: 46px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 0;
+    }
+
+    .wl-registration .input-underline {
+        padding-left: 50px;
+        background: 0 0;
+        border: none;
+        box-shadow: none;
+        border-bottom: 2px solid black;
+        color: black;
+        border-radius: 0;
+    }
+
+        .wl-registration .input-underline:focus {
+            border-bottom: 2px solid black;
+            box-shadow: none;
+        }
+
+    .wl-registration .rounded-btn {
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.8);
+        background: #263650;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        font-size: 18px;
+        line-height: 40px;
+        padding: 0 25px;
+        width: 50%;
+    }
+
+        .wl-registration .rounded-btn:hover, .wl-registration .rounded-btn:focus, .wl-registration .rounded-btn:active, .wl-registration .rounded-btn:visited {
+            color: white;
+            border: 2px solid white;
+            outline: none;
+        }
+
+    .wl-registration h1 {
+        font-weight: 300;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 36px;
+    }
+
+        .wl-registration h1 small {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+    .wl-registration .form-group {
+        padding: 8px 0;
+    }
+
+    .wl-registration .items .item-header {
+    background-color: #54a6de;
+    color: white;
+    min-height: 40px;
+}
+    .color-blue{
+        color: #57cbff;
+    }
+
+    .inputs input{
+
+    box-shadow: none!important;
+
+    }

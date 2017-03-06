@@ -188,7 +188,10 @@
   "Add_Service": "הוסף שירות",
   "Service_Status": "מצב שירות",
   "OnLine": "זמין",
-  "Busy": "לא זמין"
+  "Busy": "לא זמין",
+  "User_Name": "שם משתמש",
+  "Password": "סיסמא",
+  "Company_Name": "שם העסק"
 
 
 

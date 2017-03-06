@@ -33,5 +33,8 @@
     "metisMenu": "~1.1.3",
     "ng-dialog": "^0.6.6",
     "oclazyload": "~0.5.2"
+  },
+  "devDependencies": {
+    "bootstrap-material-design": "^4.0.2"
   }
 }

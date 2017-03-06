@@ -5,7 +5,7 @@
         <ul class="nav in" id="side-menu">
         
             <li ui-sref-active="active">
-                <a ui-sref="dashboard.home"><img class="cat-img" style="" src="../img/calendar.svg" /> <span class="li-text">{{'הזמנות' | translate}}</span></a>
+                <a ui-sref="dashboard.home"><img class="cat-img" style="" src="../img/all-reservation.svg" /> <span class="li-text">{{'הזמנות' | translate}}</span></a>
             </li>
             <li ui-sref-active="active" ng-repeat="service in supportedServices">
                 <a ui-sref="{{service.goto}}"><img class="cat-img" style="" src="../img/{{service.logo}}" /> <span class="li-text">{{'Reservations' | translate}} {{service.Name | translate}}</span></a>

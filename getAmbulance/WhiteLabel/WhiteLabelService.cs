@@ -1,4 +1,5 @@
-﻿using getAmbulance.Hubs;
+﻿using getAmbulance.DB;
+using getAmbulance.Hubs;
 using getAmbulance.Models;
 using Microsoft.AspNet.SignalR;
 using MongoDB.Bson;
@@ -15,10 +16,11 @@ namespace getAmbulance.WhiteLabel
     public class WhiteLabelService
     {
         private ApplicationIdentityContext _ctx;
+        private DBService _dbSerivce;
         public WhiteLabelService()
         {
             _ctx = ApplicationIdentityContext.Create();
-
+            _dbSerivce = new DBService();
         }
         Lazy<IHubContext> hub = new Lazy<IHubContext>(
 () => GlobalHost.ConnectionManager.GetHubContext<ReservationHub>()
@@ -197,6 +199,22 @@ namespace getAmbulance.WhiteLabel
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
+        public void AddWhiteLabel(WhiteLabelEntity whiteLabel)
+        {
+            try
+            {
+                string whiteLabelId = _dbSerivce.getNextSequence("WhiteLabel_Id").ToString();
+                whiteLabel.whiteLabelid = whiteLabelId;
+                _ctx.WhiteLabels.InsertOneAsync(whiteLabel);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        
+
         public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList, string type, string index)
         {
             foreach (var supportedArea in supportedAreaList)
