@@ -84,13 +84,12 @@ namespace getAmbulance.Controllers
 
                     if (result.Succeeded)
                     {
-
+                       
                         var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        //                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code = code });
-
-                        await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"http://localhost:57867/app/index.html#/confirm-email\">אשר חשבון</a>");
-                        // ViewBag.Link = callbackUrl;
+                        // var result2 =  UserManager.ConfirmEmailAsync(user.Id, code);
+                        var EncodeUserId = HttpUtility.UrlEncode(user.Id);
+                        var EncodeCode = HttpUtility.UrlEncode(code);
+                        await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"http://localhost:57867/app/index.html#/confirm-email?userId="+ EncodeUserId + "&code="+ EncodeCode + "\">אשר חשבון</a>");
                         response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
                         return response;
                     }
@@ -147,7 +146,30 @@ namespace getAmbulance.Controllers
             // If we got this far, something failed, redisplay form
             return (response);
         }
+        //
+        // Post: /Account/ConfirmEmail
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<HttpResponseMessage> ConfirmEmail(ConfirmEmailModel model)
+        {
+            HttpResponseMessage response;
 
+            if (model.userId == null || model.code == null)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, model);
+                return response;
+            }
+            var result = await UserManager.ConfirmEmailAsync(model.userId, model.code);
+            if (result.Succeeded)
+            {
+                response = Request.CreateResponse(HttpStatusCode.OK, model);
+                return response;
+            }
+            response = Request.CreateResponse(HttpStatusCode.BadRequest, model);
+            return response;
+
+
+        }
         //
         // GET: /Account/ConfirmEmail
         [HttpGet]

@@ -35,6 +35,8 @@ namespace getAmbulance
             }
         }
 
+
+
         public AuthRepository()
         {
             _ctx = ApplicationIdentityContext.Create();
@@ -83,7 +85,13 @@ namespace getAmbulance
                  return codeVerfied;
            
         }
+        public async Task<bool> IsEmailConfirmed(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            var IsEmailConfirmed = _userManager.IsEmailConfirmed(user.Id);
+            return IsEmailConfirmed;
 
+        }
         public BrowserClient FindClient(string clientId)
         {
 

@@ -201,7 +201,7 @@ namespace getAmbulance.WhiteLabel
                     var update = Builders<WhiteLabelEntity>.Update
                        .Push("supportedServices", supportedService);
                     var result =  _ctx.WhiteLabels.UpdateOne(filter, update);
-                    AddPricesByServiceType(supportedService, type);
+                   
                 }
                 HubUpdateWLAndClientReservationStatus(whiteLabelId);
             }
@@ -212,15 +212,6 @@ namespace getAmbulance.WhiteLabel
                 //var result = _ctx.WhiteLabels.UpdateOne(filter, update);
             }
             
-        }
-        public void AddPricesByServiceType(SupportedService supportedService, string type)
-        {
-            switch (type)
-            {
-                case "1":
-
-                    break;
-            }
         }
             
         public WhiteLabelEntity AddWhiteLabel(WhiteLabelEntity whiteLabel)

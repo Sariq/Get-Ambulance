@@ -4,7 +4,7 @@ angular.module('sbAdminApp').factory('RegisterService', ['$http', 'ngAuthSetting
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
     var RegisterServiceFactory = {};
-    var self=this;
+    var self = this;
 
     var _addWhiteLabel = function (wlForm) {
         var data = wlForm;
@@ -15,11 +15,22 @@ angular.module('sbAdminApp').factory('RegisterService', ['$http', 'ngAuthSetting
         var data = wlUserForm;
         return $http.post(serviceBase + 'api/Account/Register', data);
     };
-    
+    var _ConfirmEmail = function (userId, code) {
+        var data = {
+            userId: encodeURI(userId),
+            code: encodeURI(code)
+        };
+
+        return $http.post(serviceBase + 'api/Account/ConfirmEmail', data);
+    };
+
+
     RegisterServiceFactory.addWhiteLabel = _addWhiteLabel;
     RegisterServiceFactory.registerWhiteLabelUser = _registerWhiteLabelUser;
+    RegisterServiceFactory.ConfirmEmail = _ConfirmEmail;
 
-    
+
+
     return RegisterServiceFactory;
 
 }]);

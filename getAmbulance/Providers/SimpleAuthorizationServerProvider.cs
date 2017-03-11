@@ -35,7 +35,7 @@ namespace getAmbulance.Providers
 
             using (AuthRepository _repo = new AuthRepository())
             {
-                client=_repo.FindClient(context.ClientId);
+                client = _repo.FindClient(context.ClientId);
             }
 
             if (client == null)
@@ -83,18 +83,28 @@ namespace getAmbulance.Providers
 
             using (AuthRepository _repo = new AuthRepository())
             {
-                if(context.ClientId == "ngAuthApp") { 
-                IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
-           
-                if (user == null)
+                if (context.ClientId == "ngAuthApp")
                 {
-                    context.SetError("invalid_grant", "The user name or password is incorrect.");
-                    return;
-                }
+                    IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
+
+                    bool IsPhoneNumberConfirmed = await _repo.IsEmailConfirmed(context.UserName);
+
+                    if (user == null)
+                    {
+                        context.SetError("invalid_grant", "The user name or password is incorrect.");
+                        return;
+                    }
+
+                    if (!IsPhoneNumberConfirmed)
+                    {
+                        context.SetError("Email Confirmation", "The Email is not confirmed.");
+                        return;
+                    }
+
                 }
                 else
                 {
-                    if(context.ClientId == "consoleApp")
+                    if (context.ClientId == "consoleApp")
                     {
                         bool IsPhoneNumberConfirmed = await _repo.IsPhoneNumberConfirmed(context.UserName, context.Password);
 

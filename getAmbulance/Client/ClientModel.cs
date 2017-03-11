@@ -35,6 +35,16 @@ namespace getAmbulance.Client
             [Display(Name = "Phone_Number")]
             public string Phone_Number { get; set; }
         }
+        public class ConfirmEmailModel
+        {
+            [Required]
+            [Display(Name = "userId")]
+            public string userId { get; set; }
+            [Required]
+            [Display(Name = "userId")]
+            public string code { get; set; }
+        }
+
 
         public class UpdateUserProfileModel
         {
