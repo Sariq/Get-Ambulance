@@ -71,6 +71,12 @@ namespace getAmbulance.Models {
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name = "IsInvoiceByMail")]
+        public bool IsInvoiceByMail { get; set; }
+        [Required]
+        [Display(Name = "IsServicesOffer")]
+        public bool IsServicesOffer { get; set; }
     }
 
     public class ResetPasswordViewModel {

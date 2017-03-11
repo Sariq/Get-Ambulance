@@ -36,5 +36,8 @@
   },
   "devDependencies": {
     "bootstrap-material-design": "^4.0.2"
+  },
+  "resolutions": {
+    "bootstrap": ">=3.2.0"
   }
 }

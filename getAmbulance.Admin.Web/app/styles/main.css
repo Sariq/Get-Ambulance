@@ -221,3 +221,13 @@ body {
 .width-100{
     width:100%;
 }
+.color-blue2{
+    color:#347AB6!important;
+}
+.color-gray{
+        color:#848484!important;
+}
+
+.no-breakline{
+    white-space: nowrap;
+}

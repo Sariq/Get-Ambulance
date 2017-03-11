@@ -12,14 +12,11 @@ switch (location.host) {
     case 'localhost:57867':
         apiService = location.protocol+'//localhost:54543/'
         break;
-    case 'ec2-54-186-14-31.us-west-2.compute.amazonaws.com':
+    case 'qaprovider.getambulance.com':
         apiService = location.protocol + '//ec2-54-186-14-31.us-west-2.compute.amazonaws.com/'
         break;
     case 'provider.getambulance.com':
-        apiService = location.protocol + '//GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/'
-        break;
-    case 'qaprovider.getambulance.com':
-        apiService = location.protocol + '//qaprovider.getambulance.com/'
+        apiService = location.protocol + '//provider.getambulance.com/'
         break;
 }
 angular

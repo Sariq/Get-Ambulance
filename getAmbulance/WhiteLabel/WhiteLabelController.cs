@@ -276,9 +276,9 @@ namespace getAmbulance.WhiteLabel
         {
             HttpResponseMessage response;
 
-            _whiteLabelService.AddWhiteLabel(whiteLabel);
+            WhiteLabelEntity resWhiteLabel=_whiteLabelService.AddWhiteLabel(whiteLabel);
 
-            response = Request.CreateResponse(HttpStatusCode.OK);
+            response = Request.CreateResponse(HttpStatusCode.OK, resWhiteLabel);
             return response;
         }
 

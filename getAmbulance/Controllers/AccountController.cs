@@ -77,23 +77,30 @@ namespace getAmbulance.Controllers
            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
-                var result = await UserManager.CreateAsync(user, model.Password);
-            
-                if (result.Succeeded)
+                try
                 {
-                    await UserManager.AddClaimAsync(user.Id, new Claim("WhiteLabelId", model.WhiteLabelId));
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, WhiteLabelId = model.WhiteLabelId, IsInvoiceByMail = model.IsInvoiceByMail, IsServicesOffer = model.IsServicesOffer };
+                    var result = await UserManager.CreateAsync(user, model.Password);
 
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-//                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code = code });
+                    if (result.Succeeded)
+                    {
 
-                    await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"http://localhost:57867/app/index.html#/confirm-email\">אשר חשבון</a>");
-                    // ViewBag.Link = callbackUrl;
-                    response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
-                    return response;
-                }
+                        var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        //                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        var callbackUrl = Url.Link("DefaultApi", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code = code });
+
+                        await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"http://localhost:57867/app/index.html#/confirm-email\">אשר חשבון</a>");
+                        // ViewBag.Link = callbackUrl;
+                        response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
+                        return response;
+                    }
                     AddErrors(result);
+                }
+                 catch(Exception ex)
+                {
+
+                }
+
             }
             response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             // If we got this far, something failed, redisplay form

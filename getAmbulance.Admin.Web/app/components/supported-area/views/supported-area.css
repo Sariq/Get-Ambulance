@@ -32,6 +32,11 @@ li.active-background{
 
 }
 
+
+.pac-item{
+    text-align:right!important;
+}
+
 .rz-pointer.rz-active:after{
     border:none!important;
     border-color:red!important;

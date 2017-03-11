@@ -9,6 +9,8 @@ namespace getAmbulance.Models
     public class ApplicationUser : IdentityUser
     {
         public string WhiteLabelId { get; set; }
+        public bool IsInvoiceByMail { get; set; }
+        public bool IsServicesOffer { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
 

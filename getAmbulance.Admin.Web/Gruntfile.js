@@ -14,6 +14,7 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+  grunt.loadNpmTasks('grunt-cache-control');
 
   // Configurable paths for the application
   var appConfig = {
@@ -108,6 +109,19 @@ module.exports = function (grunt) {
           base: '<%= yeoman.dist %>'
         }
       }
+    },
+    cache_control: {
+        your_target: {
+            source: "D:/Get-Ambulance/getAmbulance.Admin.Web/app/index.html",
+            options: {
+                version: "1.0.0",
+                links: true,
+                scripts: true,
+                replace: true,
+                outputDest: "D:/Get-Ambulance/getAmbulance.Admin.Web/app/index.html"
+         
+            }
+        }
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes

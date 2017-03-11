@@ -4226,6 +4226,20 @@
     <Content Include="node_modules\buffers\index.js" />
     <Content Include="node_modules\buffers\test\buffers.js" />
     <Content Include="node_modules\bytes\index.js" />
+    <Content Include="node_modules\cache-control\Gruntfile.js" />
+    <Content Include="node_modules\cache-control\tasks\cache_control.js" />
+    <Content Include="node_modules\cache-control\test\cache_control_test.js" />
+    <Content Include="node_modules\cache-control\test\expected\default.html" />
+    <Content Include="node_modules\cache-control\test\expected\default2.html" />
+    <Content Include="node_modules\cache-control\test\expected\ignored.html" />
+    <Content Include="node_modules\cache-control\test\expected\v2.0.html" />
+    <Content Include="node_modules\cache-control\test\fixtures\default.html" />
+    <Content Include="node_modules\cache-control\test\fixtures\default2.html" />
+    <Content Include="node_modules\cache-control\test\fixtures\grunt-config\default.js" />
+    <Content Include="node_modules\cache-control\test\fixtures\grunt-config\file-is-updated-with-new-version.js" />
+    <Content Include="node_modules\cache-control\test\fixtures\grunt-config\files-matching-ignorePatterns-are-left-unprocessed.js" />
+    <Content Include="node_modules\cache-control\test\fixtures\grunt-config\ignored.js" />
+    <Content Include="node_modules\cache-control\test\fixtures\grunt-config\output_dest_set_replace_is_false_source_is_intact.js" />
     <Content Include="node_modules\camel-case\camel-case.js" />
     <Content Include="node_modules\camelcase\index.js" />
     <Content Include="node_modules\cardinal\bin\cdl.js" />
@@ -17169,6 +17183,11 @@
     <Content Include="app\bower_components\angular-google-places-autocomplete-master\package.json" />
     <Content Include="app\bower_components\angular-google-places-autocomplete-master\README.md" />
     <Content Include="app\bower_components\angular-google-places-autocomplete-master\spec\support\jasmine.json" />
+    <Content Include="node_modules\cache-control\.gitignore" />
+    <Content Include="node_modules\cache-control\.jshintrc" />
+    <Content Include="node_modules\cache-control\LICENSE-MIT" />
+    <Content Include="node_modules\cache-control\package.json" />
+    <Content Include="node_modules\cache-control\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

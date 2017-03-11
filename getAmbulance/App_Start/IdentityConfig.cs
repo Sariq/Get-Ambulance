@@ -146,7 +146,7 @@ namespace getAmbulance.Models
         {
             // Plug in your email service here to send an email.
             var mailMessage = new MailMessage
-          ("no-reply@getambulance.com", message.Destination, message.Subject, message.Body);
+          ("support@getambulance.com", message.Destination, message.Subject, message.Body);
 
             mailMessage.IsBodyHtml = true;
 

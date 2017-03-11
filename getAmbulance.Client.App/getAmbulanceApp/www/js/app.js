@@ -18,6 +18,10 @@ switch (location.host) {
     case 'provider.getambulance.com':
         apiService = 'http://GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/'
         break;
+    default:
+        apiService = 'http://qaprovider.getambulance.com/'
+        break;
+
 }
 angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places'])
 

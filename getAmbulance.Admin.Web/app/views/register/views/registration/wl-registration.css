@@ -2,26 +2,20 @@
         padding: 0;
     }
 
-    .wl-registration .input-lg {
-        height: 46px;
-        padding: 10px 16px;
-        font-size: 18px;
-        line-height: 1.3333333;
-        border-radius: 0;
-    }
+
 
     .wl-registration .input-underline {
         padding-left: 50px;
         background: 0 0;
         border: none;
         box-shadow: none;
-        border-bottom: 2px solid black;
-        color: black;
+        border-bottom: 2px solid #848484;
+        color: #848484;
         border-radius: 0;
     }
 
         .wl-registration .input-underline:focus {
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid #848484;
             box-shadow: none;
         }
 
@@ -71,3 +65,34 @@
     box-shadow: none!important;
 
     }
+
+    .wl-registration .form-group{
+        margin:0!important;
+    }
+
+.wl-registration .btn span.glyphicon {    			
+	opacity: 0;				
+}
+.btn.active span.glyphicon {				
+	opacity: 1;				
+}
+
+.wl-registration .terms .checkbox label{
+        padding: 0px 2px;
+}
+
+.wl-registration .terms .checkbox label input{
+        opacity:0!important;
+        display:none;
+}
+.wl-registration .input-lg{
+        padding: 10px 5px!important;
+}
+
+.wl-registration .blue-btn{
+        background-color: transparent!important;
+    border-color: #54a6de;
+    color: #54a6de;
+    border-radius: 40px;
+    font-size: x-large;
+}

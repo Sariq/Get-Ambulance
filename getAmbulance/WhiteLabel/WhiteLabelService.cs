@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Device.Location;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using static getAmbulance.WhiteLabel.WhiteLabelModel;
 
@@ -190,25 +191,52 @@ namespace getAmbulance.WhiteLabel
         }
         public void AddSupportedServices(string whiteLabelId, List<SupportedService> supportedServiceList, string type)
         {
+
             var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId);
-            foreach (var supportedService in supportedServiceList)
+            try
             {
-                var update = Builders<WhiteLabelEntity>.Update
-                   .Push("supportedServices", supportedService);
-                var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
+                foreach (var supportedService in supportedServiceList)
+                {
+
+                    var update = Builders<WhiteLabelEntity>.Update
+                       .Push("supportedServices", supportedService);
+                    var result =  _ctx.WhiteLabels.UpdateOne(filter, update);
+                    AddPricesByServiceType(supportedService, type);
+                }
+                HubUpdateWLAndClientReservationStatus(whiteLabelId);
             }
-            HubUpdateWLAndClientReservationStatus(whiteLabelId);
+            catch(Exception ex)
+            {
+                //var update = Builders<WhiteLabelEntity>.Update
+                //       .Push("supportedServices", new List<SupportedService>());
+                //var result = _ctx.WhiteLabels.UpdateOne(filter, update);
+            }
+            
         }
-        public void AddWhiteLabel(WhiteLabelEntity whiteLabel)
+        public void AddPricesByServiceType(SupportedService supportedService, string type)
+        {
+            switch (type)
+            {
+                case "1":
+
+                    break;
+            }
+        }
+            
+        public WhiteLabelEntity AddWhiteLabel(WhiteLabelEntity whiteLabel)
         {
             try
             {
                 string whiteLabelId = _dbSerivce.getNextSequence("WhiteLabel_Id").ToString();
                 whiteLabel.whiteLabelid = whiteLabelId;
+                // whiteLabel.supportedServices = new List<SupportedService>();
+                
                 _ctx.WhiteLabels.InsertOneAsync(whiteLabel);
+                return whiteLabel;
             }
             catch (Exception ex)
             {
+                return null;
 
             }
         }

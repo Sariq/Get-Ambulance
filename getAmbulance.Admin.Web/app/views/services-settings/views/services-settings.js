@@ -15,6 +15,8 @@ angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope
     $scope.initOfferServices = function () {
         $scope.offerServices = [];
         for (var i = 1; i < 5; i++) {
+            var res =null;
+            if ($scope.supportedServices)
             var res = $filter('filter')($scope.supportedServices, { Type: i.toString() }, true)[0];
             if (!res) {
                 var service = WhiteLabelService.initSupportedServiceByType(i.toString());

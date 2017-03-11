@@ -191,7 +191,28 @@
   "Busy": "לא זמין",
   "User_Name": "שם משתמש",
   "Password": "סיסמא",
-  "Company_Name": "שם העסק"
+  "Confirm_Password": "אימות סיסמא",
+  "Company_Name": "שם העסק",
+  "Wl_Name": "שם העסק",
+  "Wl_Description": "תיאור העסק",
+  "Wl_LegalNumber": "מספר עסק מורשה",
+  "Wl_Address": "כתובת",
+  "Wl_City": "ישוב",
+  "Wl_Postal_Code": "מיקוד",
+  "Wl_Phone1": "טלפון",
+  "Wl_Phone2": "טלפון 2",
+  "Wl_Phone3": "טלפון 3",
+  "Wl_Fax": "פקס",
+  "Wl_Email": "דוא\"ל",
+  "Wl_WebSite": "כתובת אתר אינטרנט",
+  "Provider_Info": "פרטי העסק",
+  "LogIn_User_Info": "פרטי כניסה למערכת",
+  "Read_The": "קראתי את",
+  "Terms_And_Conditions": "תנאי השימוש",
+  "WebsiteServices_And_Confirm": "באתר ובשירותיו ואני מסכים להם",
+  "Confirm_Mail_About_Services": "אשמח לקבל הצעות לשירותים, הטבות ומבצעים מגט אמבולנס",
+  "Confirm_Mail_About_Services": "אשמח לקבל הצעות לשירותים, הטבות ומבצעים מגט אמבולנס",
+  "Confirm_Mail_About_Invoice": "אשמח לקבל חשבונית במייל"
 
 
 
