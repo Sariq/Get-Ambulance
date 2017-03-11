@@ -231,3 +231,14 @@ body {
 .no-breakline{
     white-space: nowrap;
 }
+.cursor-pointer{
+    cursor:pointer;
+}
+.text-rtl{
+    direction:rtl;
+    text-align:right;
+}
+
+.white-color{
+    color:white;
+}

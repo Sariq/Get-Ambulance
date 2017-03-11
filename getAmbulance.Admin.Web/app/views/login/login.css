@@ -132,3 +132,7 @@ direction:ltr;
     .login-page .form-content {
         padding: 40px 0;
     }
+
+    .login-page .forgot-password a:hover{
+    color:white;
+    }

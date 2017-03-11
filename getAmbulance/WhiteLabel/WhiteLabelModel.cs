@@ -53,6 +53,7 @@ namespace getAmbulance.WhiteLabel
             {
                 this.supportedAreas = new List<SupportedArea>();
                 this.prices = new System.Dynamic.ExpandoObject();
+                this.isOnline = false;
             }
 
         }

@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', function ($scope, $location, authService, ngAuthSettings) {
+angular.module('sbAdminApp').controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', 'RegisterService', function ($scope, $location, authService, ngAuthSettings, RegisterService) {
    
     $scope.loginData = {
         userName: "",
@@ -31,6 +31,13 @@ angular.module('sbAdminApp').controller('loginController', ['$scope', '$location
 
         var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
     };
+    $scope.forgotPassowrd = function () {
+        
+        RegisterService.ForgotPassowrd($scope.loginData.userName).then(function (res) {
+            $scope.isForgotPassowrdSent = true;
+        });
+    }
+    
 
     $scope.authCompletedCB = function (fragment) {
 

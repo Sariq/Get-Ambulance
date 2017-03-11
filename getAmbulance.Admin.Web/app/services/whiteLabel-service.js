@@ -85,7 +85,7 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
                     "Type": "1",
                     "Name": "PrivateAmbulance",
                     "supportedAreas": [],
-                    "isOnline": true,
+                    "isOnline": false,
                     "logo": "ambulance.svg"
                 }
                 break
@@ -94,7 +94,7 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
                     "Type": "2",
                     "Name": "MedicalTherapist",
                     "supportedAreas": [],
-                    "isOnline": true,
+                    "isOnline": false,
                     "logo": "doctor.svg"
                 }
                 break
@@ -103,7 +103,7 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
                     "Type": "3",
                     "Name": "StairsAssistance",
                     "supportedAreas": [],
-                    "isOnline": true,
+                    "isOnline": false,
                     "logo": "stairs.svg"
                 }
                 break
@@ -112,7 +112,7 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
                     "Type": "4",
                     "Name": "ICUAmbulance",
                     "supportedAreas": [],
-                    "isOnline": true,
+                    "isOnline": false,
                     "logo": "icu_ambulance.svg"
                 }
                 break
@@ -121,7 +121,7 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
                     "Type": "5",
                     "Name": "StairsAssistance",
                     "supportedAreas": [],
-                    "isOnline": true,
+                    "isOnline": false,
                     "logo": "stairs.svg"
                 }
                 break

@@ -212,7 +212,13 @@
   "WebsiteServices_And_Confirm": "באתר ובשירותיו ואני מסכים להם",
   "Confirm_Mail_About_Services": "אשמח לקבל הצעות לשירותים, הטבות ומבצעים מגט אמבולנס",
   "Confirm_Mail_About_Services": "אשמח לקבל הצעות לשירותים, הטבות ומבצעים מגט אמבולנס",
-  "Confirm_Mail_About_Invoice": "אשמח לקבל חשבונית במייל"
+  "Confirm_Mail_About_Invoice": "אשמח לקבל חשבונית במייל",
+  "Forgot_Password": "שכחת את הסיסמא",
+  "Enter": "כניסה",
+  "Send": "שלח",
+  "Will_Send_You_Email_For_Reset_Password": "הקלד את כתובת הדוא\"ל שלך למטה ונשלח אליך דוא\"ל עם קישור לאיפוס סיסמתך",
+  "Reset": "אפס",
+  "Forgot_Password_Link_Sent": "הקישור נשלח לכתובת הדוא\"ל שהקלדת"
 
 
 

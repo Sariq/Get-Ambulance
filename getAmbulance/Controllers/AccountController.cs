@@ -190,6 +190,32 @@ namespace getAmbulance.Controllers
           //  AddErrors(result);
           //  return View();
         }
+        
+        [AllowAnonymous]
+        public async Task<HttpResponseMessage> ResetPassword(ResetPasswordModel model)
+        {
+            HttpResponseMessage response;
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.userId);
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    response = Request.CreateResponse(HttpStatusCode.OK);
+                    return response;
+                    //return View("ForgotPasswordConfirmation");
+                }
+                UserManager.RemovePassword(user.Id);
+                UserManager.AddPassword(user.Id, model.Password);
+                response = Request.CreateResponse(HttpStatusCode.OK, model);
+                return response;
+            }
+            response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+
+            // If we got this far, something failed, redisplay form
+            return response;
+        }
+
         [AllowAnonymous]
         public async Task<HttpResponseMessage> WhiteLabelForgotPassword(WhiteLabelForgotPasswordViewModel model)
         {
@@ -205,10 +231,12 @@ namespace getAmbulance.Controllers
                     //return View("ForgotPasswordConfirmation");
                 }
 
-                var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "EmailCode");
+              
+                var code = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "EmailCode");
                 // See IdentityConfig.cs to plug in Email/SMS services to actually send the code
-                var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "EmailCode", token);
-                await UserManager.NotifyTwoFactorTokenAsync(user.Id, "EmailCode", token);
+              //  var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "EmailCode", code);
+                //await UserManager.NotifyTwoFactorTokenAsync(user.Id, "EmailCode", code);
+                await UserManager.SendEmailAsync(user.Id, "איפוס סיסמא", "קישור לאיפוס סיסמא: <a href=\"http://localhost:57867/app/index.html#/reset-password?userId=" + model.Email + "&code=" + code + "\">אפס סיסמא</a>");
 
                 response = Request.CreateResponse(HttpStatusCode.OK, model);
                 return response;

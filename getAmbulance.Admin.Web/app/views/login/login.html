@@ -3,21 +3,46 @@
     <div class="row" style="padding-top: 6%;">
         <div class="col-lg-4 col-lg-offset-4">
             <img src="../img/general-logo.png" width="60%" class="user-avatar" />
-         
-            <form role="form" >
+     
+            <div ng-show="isForgotPassowrdSent" class="text-rtl">
+                <br /><br /><br /><br />
+
+                <span>
+                    {{'Forgot_Password_Link_Sent' | translate}}.
+                </span>
+            </div>
+
+            <form ng-show="!isForgotPassowrdSent" role="form" >
                 <div class="form-content login-form">
+                    <div ng-show="isForgotPassword"  class="text-rtl">
+                      <span >
+                          {{'Will_Send_You_Email_For_Reset_Password' | translate}}
+                      </span>
+                        <br /><br />
+                    </div>
                     <div class="form-group inner-addon left-addon">
                         <i class="glyphicon glyphicon-user"></i>
 
                         <input type="text" ng-model="loginData.userName" class="form-control input-underline input-lg" id="" placeholder="{{'User_Name' | translate}}">
                     </div>
-                    <div class="form-group inner-addon left-addon">
+                    <div ng-show="!isForgotPassword" class="form-group inner-addon left-addon">
                         <i class="glyphicon glyphicon-lock"></i>
                         <input type="password" class="form-control input-underline input-lg" ng-model="loginData.password" id="" placeholder="{{'Password' | translate}}">
                     </div>
                 </div>
 
-                <a class="btn rounded-btn" ng-click="login()"> {{ 'כניסה' | translate}} </a>
+                <a ng-show="!isForgotPassword" class="btn rounded-btn" ng-click="login()">
+                 <span >{{ 'Enter' | translate}}</span>
+
+                 </a>
+                <a ng-show="isForgotPassword" class="btn rounded-btn" ng-click="forgotPassowrd()">
+                    <span >{{ 'Send' | translate}}</span>
+
+                </a>
+                <div ng-show="!isForgotPassword" class="forgot-password">
+                    <br />
+                    <a class="cursor-pointer white-color" ng-click="isForgotPassword=!isForgotPassword">{{ 'Forgot_Password' | translate}}? </a>
+                </div>
                 <!--&nbsp;
                 <a type="submit" class="btn rounded-btn" href="#dashboard/home">Register</a>-->
             </form>

@@ -6,7 +6,8 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
     ctrl.myValue = 1;
     ctrl.initData = function () {
         ctrl.supportedService = WhiteLabelService.getSupportedServicesByType(ctrl.serviceType);
-        ctrl.rangePriceData = ctrl.supportedService.prices.distance;
+        ctrl.rangePriceData = ctrl.supportedService.prices.distance?ctrl.supportedService.prices.distance : [];
+     
     }
     ctrl.initData();
     //ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
