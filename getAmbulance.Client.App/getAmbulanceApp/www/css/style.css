@@ -286,3 +286,26 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .platform-ipad div.scroll{
     -webkit-transform: translate3d(0px, 30%, 0px) scale(1)!important;
 }
+
+.dir-rtl{
+    direction:rtl!important;
+}
+.dir-ltr{
+    direction:ltr!important;
+}
+.blue-color{
+    color: #57caff;
+}
+.pac-item{
+    text-align:right!important;
+}
+
+.col-15{
+        -webkit-box-flex: 0;
+    -webkit-flex: 0 0 15%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 15%;
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+    max-width: 15%;
+}

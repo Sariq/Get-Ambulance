@@ -121,7 +121,12 @@
   "No_Reservations_Found": "לא נמצאו הזמנות",
   "Number_between": "מספר בן",
   "Digits": "ספרות",
-  "Length_Error_Msg": "הערך לא תקין"          
+  "Length_Error_Msg": "הערך לא תקין",
+    "PrivateAmbulance": "אמבולנס פרטי",
+  "MedicalTherapist": "מלווה",
+  "StairsAssistance": "עזרה במדרגות",
+  "ICUAmbulance": "אמבולנס טיפול נמרץ",
+     
 
 
 
