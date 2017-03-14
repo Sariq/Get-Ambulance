@@ -51,12 +51,19 @@ var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService'
         PricesService.updatePricesByCategory(category, ctrl.rangePriceData, ctrl.serviceType)
     }
     ctrl.saveItem = function (index) {
-        var category = "distance." + index;
         if (ctrl.rangePriceData[index].validations)
             delete ctrl.rangePriceData[index].validations;
         if (ctrl.rangePriceData[index].edit)
             delete ctrl.rangePriceData[index].edit;
-        PricesService.updatePricesByCategory(category, ctrl.rangePriceData[index], ctrl.serviceType)
+
+        if (ctrl.rangePriceData.length == 1) {
+            var category = "distance";
+            var data = ctrl.rangePriceData;
+        } else {
+            var category = "distance." + index;
+            var data = ctrl.rangePriceData[index];
+        }
+        PricesService.updatePricesByCategory(category, data, ctrl.serviceType)
     }
 
     ctrl.validateDistance = function (index) {

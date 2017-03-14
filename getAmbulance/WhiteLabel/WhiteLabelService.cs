@@ -4,6 +4,7 @@ using getAmbulance.Models;
 using Microsoft.AspNet.SignalR;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
@@ -71,7 +72,7 @@ namespace getAmbulance.WhiteLabel
             }
 
         }
-        public List<WhiteLabelEntity> filterWhiteLabelListBySupportedArea(List<WhiteLabelEntity> whiteLabelsList, dynamic reservationData,string type)
+        public List<WhiteLabelEntity> filterWhiteLabelListBySupportedArea(List<WhiteLabelEntity> whiteLabelsList, dynamic reservationData, string type)
         {
             // double lat2 = 32.23823691911867, lng2 = 34.944726969285284, lat = 32.2394348, lng = 34.9503489;
             List<AddressLatLng> addressList = reservationData.addressList.ToObject<List<AddressLatLng>>();
@@ -86,17 +87,17 @@ namespace getAmbulance.WhiteLabel
                 foreach (var address in addressList)
                 {
                     var filterdSupportedService = whiteLabel.supportedServices.First(fs => fs.Type == type);
-                    if(filterdSupportedService.supportedAreas!=null && filterdSupportedService.supportedAreas.Count > 0)
+                    if (filterdSupportedService.supportedAreas != null && filterdSupportedService.supportedAreas.Count > 0)
                     {
 
-              
-                    filterdList = filterdSupportedService.supportedAreas.Where(supportedArea =>
-                    new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= (supportedArea.radius * 1000)
-                    ).ToList();
-                    if (filterdList != null && filterdList.Count() > 0)
-                    {
-                        count++;
-                    }
+
+                        filterdList = filterdSupportedService.supportedAreas.Where(supportedArea =>
+                        new GeoCoordinate(address.lat, address.lng).GetDistanceTo(new GeoCoordinate(supportedArea.lat, supportedArea.lng)) <= (supportedArea.radius * 1000)
+                        ).ToList();
+                        if (filterdList != null && filterdList.Count() > 0)
+                        {
+                            count++;
+                        }
                     }
                 }
                 if (count == addressList.Count() && filterdList != null && filterdList.Count() > 0)
@@ -108,13 +109,14 @@ namespace getAmbulance.WhiteLabel
             }
             return filterdWhiteLabelLiset;
         }
-        public void UpdateWhiteLabelIsOnline(string whiteLabelId, bool status,string type)
+        public void UpdateWhiteLabelIsOnline(string whiteLabelId, bool status, string type)
         {
             var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type));
-            var update = Builders<WhiteLabelEntity>.Update.Set("supportedServices.$.isOnline", status);
-            var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
 
-            HubUpdateWLDataUpdated(whiteLabelId);
+                    var update = Builders<WhiteLabelEntity>.Update.Set("supportedServices.$.isOnline", status);
+                    var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
+                    HubUpdateWLDataUpdated(whiteLabelId);
+
         }
         public void HubUpdateWLDataUpdated(string whiteLAbelId)
         {
@@ -147,7 +149,7 @@ namespace getAmbulance.WhiteLabel
         public void UpdatePricesByCategory(BsonDocument jsonObj)
         {
 
-           // var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"] && );
+            // var filter = Builders<WhiteLabelEntity>.Filter.Eq("whiteLabelid", jsonObj["whiteLabelId"] && );
             var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == jsonObj["whiteLabelId"] && x.supportedServices.Any(s => s.Type == jsonObj["type"]));
 
             var update = Builders<WhiteLabelEntity>.Update
@@ -200,20 +202,20 @@ namespace getAmbulance.WhiteLabel
 
                     var update = Builders<WhiteLabelEntity>.Update
                        .Push("supportedServices", supportedService);
-                    var result =  _ctx.WhiteLabels.UpdateOne(filter, update);
-                   
+                    var result = _ctx.WhiteLabels.UpdateOne(filter, update);
+
                 }
                 HubUpdateWLAndClientReservationStatus(whiteLabelId);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //var update = Builders<WhiteLabelEntity>.Update
                 //       .Push("supportedServices", new List<SupportedService>());
                 //var result = _ctx.WhiteLabels.UpdateOne(filter, update);
             }
-            
+
         }
-            
+
         public WhiteLabelEntity AddWhiteLabel(WhiteLabelEntity whiteLabel)
         {
             try
@@ -221,7 +223,7 @@ namespace getAmbulance.WhiteLabel
                 string whiteLabelId = _dbSerivce.getNextSequence("WhiteLabel_Id").ToString();
                 whiteLabel.whiteLabelid = whiteLabelId;
                 // whiteLabel.supportedServices = new List<SupportedService>();
-                
+
                 _ctx.WhiteLabels.InsertOneAsync(whiteLabel);
                 return whiteLabel;
             }
@@ -232,7 +234,7 @@ namespace getAmbulance.WhiteLabel
             }
         }
 
-        
+
 
         public void UpdateSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList, string type, string index)
         {
@@ -268,19 +270,19 @@ namespace getAmbulance.WhiteLabel
         public void DeleteSupportedServices(string whiteLabelId, List<SupportedService> supportedServiceList, string type)
         {
             var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId);
-                var update = Builders<WhiteLabelEntity>.Update.PullFilter("supportedServices",
-                    Builders<SupportedService>.Filter.Where(f => f.Type == type));
-                try
-                {
-                    var result = _ctx.WhiteLabels.FindOneAndUpdateAsync(filter, update).Result;
+            var update = Builders<WhiteLabelEntity>.Update.PullFilter("supportedServices",
+                Builders<SupportedService>.Filter.Where(f => f.Type == type));
+            try
+            {
+                var result = _ctx.WhiteLabels.FindOneAndUpdateAsync(filter, update).Result;
 
-                }
-                catch (AggregateException e)
-                {
-                    Console.WriteLine(e);
-                }
+            }
+            catch (AggregateException e)
+            {
+                Console.WriteLine(e);
+            }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
-        
+
     }
 }

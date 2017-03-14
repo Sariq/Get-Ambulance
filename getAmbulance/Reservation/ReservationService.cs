@@ -188,14 +188,15 @@ namespace getAmbulance.Reservation
         }
         public List<WhiteLabelOfferEntity> GetAmbulanceOffersList(dynamic jsonObj)
         {
+            string Ambulance_Type = (jsonObj.form.Ambulance_Type).Value;
+            string type = Ambulance_Type == "Private_Ambulance" ? "1" : "4";
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
-            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "1");
-            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj, "1");
+            List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, type);
+            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj, type);
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-                string Ambulance_Type = (jsonObj.form.Ambulance_Type).Value;
-                string type = Ambulance_Type == "Private_Ambulance" ? "1" : "4";
+               
                 int distancePrice = getWhiteLabelDistancePriceByKM(whiteLabel, jsonObj, type);
                 int extraServicesPrice = getAmbulanceExtraServicesPrice(whiteLabel, jsonObj.form, type);
                 int finalPrice = distancePrice + extraServicesPrice;

@@ -29,12 +29,24 @@ angular.module('sbAdminApp')
   		    $scope.supportedService = WhiteLabelService.getSupportedServicesByType($scope.type);
   		    $scope.$on('whiteLabel-data-updated', function (event, args) {
   		        $scope.supportedService = WhiteLabelService.getSupportedServicesByType($scope.type);
-
+  		        var flag = WhiteLabelService.isCanSetOnline($scope.supportedService);
+  		        if (!flag) {
+  		            $scope.supportedService.isOnline = false;
+  		        }
   		    });
   		    $scope.updateWhiteLabelIsOnline = function (service) {
-  		        WhiteLabelService.updateWhiteLabelIsOnline(service.Type, service.isOnline).then(function (res) {
-  		            console.log(res)
-  		        });
+  		        var flag = WhiteLabelService.isCanSetOnline($scope.supportedService);
+  		        if (flag) {
+  		            WhiteLabelService.updateWhiteLabelIsOnline(service.Type, service.isOnline).then(function (res) {
+  		                //if (!res.data) {
+  		                //    $scope.supportedService.isOnline = false;
+
+  		                //}
+  		            });
+  		        } else {
+  		            $scope.supportedService.isOnline = false;
+  		        }
+  		      
   		    }
 
   		}

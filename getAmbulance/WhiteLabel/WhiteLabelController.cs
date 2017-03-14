@@ -37,7 +37,7 @@ namespace getAmbulance.WhiteLabel
             try
             {
                 dynamic jsonObj = jsonData;
-                _whiteLabelService.UpdateWhiteLabelIsOnline(jsonObj.whiteLabelId.Value, jsonObj.isOnline.Value,jsonObj.type.Value);
+               _whiteLabelService.UpdateWhiteLabelIsOnline(jsonObj.whiteLabelId.Value, jsonObj.isOnline.Value,jsonObj.type.Value);
                 response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -177,6 +177,7 @@ namespace getAmbulance.WhiteLabel
 
             WhiteLabelEntity whiteLabel = _whiteLabelService.GetWhiteLabelById(WhiteLabelId.ToString());
             WhiteLabelResponseEntity whiteLabelResponse = new WhiteLabelResponseEntity();
+            whiteLabelResponse.name = whiteLabel.name;
             whiteLabelResponse.prices = whiteLabel.prices;
             whiteLabelResponse.whiteLabelid = WhiteLabelId;
             whiteLabelResponse.users = whiteLabel.users;
@@ -278,7 +279,7 @@ namespace getAmbulance.WhiteLabel
 
             WhiteLabelEntity resWhiteLabel=_whiteLabelService.AddWhiteLabel(whiteLabel);
 
-            response = Request.CreateResponse(HttpStatusCode.OK, resWhiteLabel);
+            response = Request.CreateResponse(HttpStatusCode.OK,resWhiteLabel);
             return response;
         }
 

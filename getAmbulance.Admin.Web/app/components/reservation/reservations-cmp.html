@@ -36,8 +36,8 @@
                                     {{row[col.field]}}
                                 </div>
                                 <div ng-switch-when="Timer" ng-if="$ctrl.reservationType==undefined" style="text-align:center;" class="inner-td">
-                                    <timer ng-show="!{{row['timerEnd']}}===true" countdown="row['endTime']" max-time-unit="'minute'" interval="1000" finish-callback="$ctrl.callbackTimer(row['Reservation_Number'])"><span ng-show="!row['timerEnd']===true">{{sseconds}} : {{mminutes}}</span> </timer>
-                                    <span ng-show="row['timerEnd']===true">{{'Ended' | translate}}</span>
+                                    <timer ng-show="!{{row['timerEnd']}}===true &&  row['Status']=='1'" countdown="row['endTime']" max-time-unit="'minute'" interval="1000" finish-callback="$ctrl.callbackTimer(row['Reservation_Number'])"><span ng-show="!row['timerEnd']===true">{{sseconds}} : {{mminutes}}</span> </timer>
+                                    <span ng-show="row['timerEnd']===true || row['Status']!='1'">{{'Ended' | translate}}</span>
                                 </div>
                                 <div ng-switch-when="Show_Reservation" ng-if="$ctrl.reservationType==undefined" style="text-align:center;" class="inner-td">
                                     <button ng-click="$ctrl.openConfirmReservationDialog(row)" class="btn show-reservation-btn">{{'Show'| translate}}</button>

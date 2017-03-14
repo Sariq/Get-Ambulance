@@ -131,6 +131,43 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
         return $filter('filter')(supportedServices, { Type: type }, true)[0];
     };
 
+    var _isCanSetOnline = function (supportedService) {
+        switch (supportedService.Type) {
+            case '1':
+                if (supportedService.prices.distance && supportedService.prices.distance.length > 0 && supportedService.prices.stairsBuilding && supportedService.prices.weight && supportedService.supportedAreas.length > 0) {
+                    return true;
+                }
+                return false;
+                break
+            case '2':
+                if (supportedService.prices.medicalTherapist && supportedService.supportedAreas.length > 0) {
+                    return true;
+                }
+                return false;
+                break
+            case '3':
+                if (supportedService.prices.stairsAssistance && supportedService.supportedAreas.length > 0) {
+                    return true;
+                }
+                return false;
+                break
+            case '4':
+                if (supportedService.prices.distance &&  supportedService.prices.distance.length > 0 && supportedService.supportedAreas.length > 0) {
+                    return true;
+                }
+                return false;
+                break
+            //case '5':
+            //    if (supportedService.prices.distance && supportedService.prices.stairsBuilding && supportedService.prices.weight) {
+            //        return true;
+            //    }
+            //    return false;
+                break
+        }
+    }
+    
+
+
     WhiteLabelServiceFactory.initSupportedServiceByType = _initSupportedServiceByType;
     WhiteLabelServiceFactory.updateWhiteLabelIsOnline = _updateWhiteLabelIsOnline;
     WhiteLabelServiceFactory.setWhiteLabelData = _setWhiteLabelData;
@@ -139,7 +176,9 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
     WhiteLabelServiceFactory.updateSupportedServicesOnRoot = _updateSupportedServicesOnRoot;
     WhiteLabelServiceFactory.getSupportedServicesByType = _getSupportedServicesByType;
     WhiteLabelServiceFactory.getSupportedAreasByServiceType = _getSupportedAreasByServiceType;
+    WhiteLabelServiceFactory.isCanSetOnline = _isCanSetOnline;
 
+    
     return WhiteLabelServiceFactory;
 
 }]);

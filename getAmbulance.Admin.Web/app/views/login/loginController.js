@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', 'RegisterService', function ($scope, $location, authService, ngAuthSettings, RegisterService) {
+angular.module('sbAdminApp').controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', 'RegisterService', '$state', 'WhiteLabelService', function ($scope, $location, authService, ngAuthSettings, RegisterService, $state, WhiteLabelService) {
    
     $scope.loginData = {
         userName: "",
@@ -11,8 +11,14 @@ angular.module('sbAdminApp').controller('loginController', ['$scope', '$location
     $scope.login = function () {
 
         authService.login($scope.loginData).then(function (response) {
-
-            $location.path('/orders');
+            $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
+            $scope.supportedServices = $scope.whiteLabel.supportedServices;
+            if ($scope.supportedServices && $scope.supportedServices.length > 0) {
+                $state.go('dashboard.home');
+            } else {
+                $state.go('dashboard.services-settings');
+            }
+           
 
         },
          function (err) {
