@@ -43,6 +43,10 @@
                     <br />
                     <a class="cursor-pointer white-color" ng-click="isForgotPassword=!isForgotPassword">{{ 'Forgot_Password' | translate}}? </a>
                 </div>
+                <div ng-show="!isForgotPassword" class="forgot-password">
+                    <br />
+                    <a class="cursor-pointer white-color" ui-sref="wl-registration">{{ 'Register' | translate}}</a>
+                </div>
                 <!--&nbsp;
                 <a type="submit" class="btn rounded-btn" href="#dashboard/home">Register</a>-->
             </form>
