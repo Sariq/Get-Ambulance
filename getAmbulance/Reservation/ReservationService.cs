@@ -7,12 +7,14 @@ using getAmbulance.WhiteLabel;
 using Microsoft.AspNet.SignalR;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Device.Location;
 using System.Linq;
 using System.Web;
 using static getAmbulance.WhiteLabel.WhiteLabelModel;
+
 
 
 namespace getAmbulance.Reservation
@@ -259,7 +261,7 @@ namespace getAmbulance.Reservation
         {
 
             SupportedService supportedService = whiteLabel.supportedServices.First(s => s.Type == type);
-            dynamic temp_distancePricesList = supportedService.prices["distance"];
+            dynamic temp_distancePricesList = supportedService.prices.distance;
             string DayOrNight = null;
             if (isDay(jsonObj.form.Time.Value))
             {
@@ -273,22 +275,28 @@ namespace getAmbulance.Reservation
            foreach (var distance in temp_distancePricesList)
             {
 
-                if ((int)jsonObj.form.distance.Value <= distance["distance"])
+                if ((int)jsonObj.form.distance.Value <= distance.distance)
                 {
                     return (int)distance[DayOrNight];
                 }
 
             }
+            var defaultDistance = temp_distancePricesList[temp_distancePricesList.Count - 1];
+            var nameOfProperty = DayOrNight;
+      
 
-            return ((temp_distancePricesList[temp_distancePricesList.Count - 1][DayOrNight].Value));
+ 
+            var value = ((IDictionary<string, object>)defaultDistance)[nameOfProperty];
+
+            return (int)value;
         }
         public int getAmbulanceExtraServicesPrice(WhiteLabelEntity whiteLabel, dynamic reservationData,string type)
         {
             SupportedService supportedService = whiteLabel.supportedServices.First(s => s.Type == type);
             int price = 0;
-            foreach (var weightPrice in supportedService.prices["weight"])
+            foreach (KeyValuePair<string, object> weightPrice in supportedService.prices.weight)
             {
-                if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Name))
+                if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Key))
                 {
                     price=(int)weightPrice.Value;
                     break;

@@ -89,7 +89,7 @@ namespace getAmbulance.Controllers
                         // var result2 =  UserManager.ConfirmEmailAsync(user.Id, code);
                         var EncodeUserId = HttpUtility.UrlEncode(user.Id);
                         var EncodeCode = HttpUtility.UrlEncode(code);
-                        await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"http://localhost:57867/app/index.html#/confirm-email?userId="+ EncodeUserId + "&code="+ EncodeCode + "\">אשר חשבון</a>");
+                        await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"https://qaprovider.getambulance.com/app/index.html#/confirm-email?userId=" + EncodeUserId + "&code="+ EncodeCode + "\">אשר חשבון</a>");
                         response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
                         return response;
                     }
