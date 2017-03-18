@@ -108,7 +108,7 @@ direction:ltr;
         }
 
     .login-page .form-group {
-        padding: 8px 0;
+        
     }
 
         .login-page .form-group input::-webkit-input-placeholder {
@@ -135,4 +135,8 @@ direction:ltr;
 
     .login-page .forgot-password a:hover{
     color:white;
+    }
+    .login-page .err-msg{
+        height:20px;
+        color:red;
     }

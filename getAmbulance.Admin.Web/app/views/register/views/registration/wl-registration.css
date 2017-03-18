@@ -49,6 +49,7 @@
 
     .wl-registration .form-group {
         padding: 8px 0;
+        padding-bottom:0px;
     }
 
     .wl-registration .items .item-header {
@@ -77,6 +78,10 @@
 	opacity: 1;				
 }
 
+.wl-registration .terms{
+    margin-top: 15px;
+}
+
 .wl-registration .terms .checkbox label{
         padding: 0px 2px;
 }
@@ -95,4 +100,20 @@
     color: #54a6de;
     border-radius: 40px;
     font-size: x-large;
+}
+.wl-registration .input-container{
+    height:80px!important;
+}
+
+.wl-registration .err-msg{
+    color:red;
+    white-space:nowrap!important;
+}
+.wl-registration .checkbox, .radio{
+    margin-bottom:0px;
+    margin-top:0px;
+}
+
+.wl-registration .checkbox-container{
+    height:40px
 }

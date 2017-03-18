@@ -35,7 +35,9 @@ angular
     'timer',
     'ngDialog',
     'rzModule',
-    'google.places'
+    'google.places',
+    'validation',
+    'validation.rule'
     
   ]).constant('ngAuthSettings', {
       // apiServiceBaseUri: 'http://localhost:54543/',
@@ -43,12 +45,57 @@ angular
        clientId: 'ngAuthApp'
       // clientId: 'consoleApp',
      // clientSecret: '123@abc'
-  }).config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$httpProvider','$translateProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpProvider, $translateProvider) {
+  }).config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$httpProvider', '$translateProvider', '$validationProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpProvider, $translateProvider, $validationProvider) {
       $httpProvider.interceptors.push('authInterceptorService');
       $translateProvider.preferredLanguage('he');
       $translateProvider.useStaticFilesLoader({
           prefix: 'translation/',
           suffix: '.json'
+      });
+      $validationProvider.showSuccessMessage = false;
+      $validationProvider
+        .setExpression({
+            nothing: function (value, scope, element, attrs, param) {
+                return true;
+            }
+
+        }).setDefaultMsg({
+            nothing: {
+                error: 'Need to be bigger',
+                success: 'Thanks!'
+            }
+        });
+      $validationProvider.setExpression({
+          checkpassword: function (value, scope, element, attrs, param) {
+              if (value != undefined && value != '') {
+                  var regExp = /^(?=.*[a-zA-Z])(?=.*\d)[^\W_]{6,15}$/;
+                  var res = regExp.test(value);
+                  console.log(res)
+                  return res;
+              } else { return true }
+
+          }
+      }).setDefaultMsg({
+          checkpassword: {
+
+          }
+      });
+      $validationProvider.setExpression({
+        checkConfirmPassword: function (value, scope, element, attrs, param) {
+            return value == scope.wlUserForm.Password;
+        }
+    }).setDefaultMsg({
+        checkConfirmPassword: {
+
+        }
+    });
+      angular.extend($validationProvider, {
+          validCallback: function (element) {
+              $(element).parents('.item-input').removeClass('has-error');
+          },
+          invalidCallback: function (element) {
+              $(element).parents('.item-input').addClass('has-error');
+          }
       });
     $ocLazyLoadProvider.config({
       debug:false,

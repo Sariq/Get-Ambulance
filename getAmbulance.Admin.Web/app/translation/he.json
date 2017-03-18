@@ -219,8 +219,15 @@
   "Will_Send_You_Email_For_Reset_Password": "הקלד את כתובת הדוא\"ל שלך למטה ונשלח אליך דוא\"ל עם קישור לאיפוס סיסמתך",
   "Reset": "אפס",
   "Forgot_Password_Link_Sent": "הקישור נשלח לכתובת הדוא\"ל שהקלדת",
-  "Register": "הרשמה"
-
+  "Register": "הרשמה",
+  "Not_Same_Password": "הסיסמא לא תואמת",
+  "Please_Confirm": "נא לאשר",
+  "Valid": "תקין",
+  "Password_Wrong_Format": "הסיסמא חייבת להכיל אותיות ומספרים באורך 6-15",
+  "UserName_Or_Password_Incorrect": "השם משתמש או הסיסמא לא נכונים",
+  "Loading": "טוען",
+  "User_Already_Taken": "השם משתמש כבר קיים",
+  "Provider_Register": "טופס הרשמת ספק"
 
 
 

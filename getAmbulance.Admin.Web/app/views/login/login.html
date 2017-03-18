@@ -29,19 +29,21 @@
                         <i class="glyphicon glyphicon-lock"></i>
                         <input type="password" class="form-control input-underline input-lg" ng-model="loginData.password" id="" placeholder="{{'Password' | translate}}">
                     </div>
+                    <div class="err-msg" ng-show="errMessage">{{'UserName_Or_Password_Incorrect'|translate}}</div>
                 </div>
-
+          
                 <a ng-show="!isForgotPassword" class="btn rounded-btn" ng-click="login()">
                  <span >{{ 'Enter' | translate}}</span>
 
                  </a>
+
                 <a ng-show="isForgotPassword" class="btn rounded-btn" ng-click="forgotPassowrd()">
                     <span >{{ 'Send' | translate}}</span>
 
                 </a>
                 <div ng-show="!isForgotPassword" class="forgot-password">
                     <br />
-                    <a class="cursor-pointer white-color" ng-click="isForgotPassword=!isForgotPassword">{{ 'Forgot_Password' | translate}}? </a>
+                    <a class="cursor-pointer white-color" ng-click="isForgotPassword=!isForgotPassword;errMessage=false">{{ 'Forgot_Password' | translate}}? </a>
                 </div>
                 <div ng-show="!isForgotPassword" class="forgot-password">
                     <br />

@@ -9,7 +9,7 @@ angular.module('sbAdminApp').controller('loginController', ['$scope', '$location
     $scope.message = "";
 
     $scope.login = function () {
-
+        $scope.errMessage = false;
         authService.login($scope.loginData).then(function (response) {
             $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
             $scope.supportedServices = $scope.whiteLabel.supportedServices;
@@ -22,7 +22,7 @@ angular.module('sbAdminApp').controller('loginController', ['$scope', '$location
 
         },
          function (err) {
-             $scope.message = err.error_description;
+             $scope.errMessage = true;
          });
     };
 
@@ -38,7 +38,7 @@ angular.module('sbAdminApp').controller('loginController', ['$scope', '$location
         var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
     };
     $scope.forgotPassowrd = function () {
-        
+        $scope.errMessage = false;
         RegisterService.ForgotPassowrd($scope.loginData.userName).then(function (res) {
             $scope.isForgotPassowrdSent = true;
         });
