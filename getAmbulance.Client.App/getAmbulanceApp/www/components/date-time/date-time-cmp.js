@@ -14,7 +14,7 @@ var dateTimeCmp = function ($scope, $filter) {
         titleText: 'בחר שעה'
     };
     if (!ctrl.dateTitleText) {
-        ctrl.dateTitleText='Choose_Title'
+        ctrl.dateTitleText = 'Choose_Title'
     }
 
 
@@ -28,7 +28,7 @@ var dateTimeCmp = function ($scope, $filter) {
     }
 
     if (!ctrl.maxDate) {
-        ctrl.maxDate =null;
+        ctrl.maxDate = null;
     } else {
         ctrl.maxDate = (new Date(JSON.parse(ctrl.maxDate))).getTime();
     }
@@ -40,20 +40,20 @@ var dateTimeCmp = function ($scope, $filter) {
         titleText: 'בחר תאריך',
         minDate: ctrl.minDate,
         maxDate: ctrl.maxDate,
-        allowOldDates:false
+        allowOldDates: false
     };
     ctrl.form = {};
 
-//    ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "HH:mm");
- //   ctrl.form.Time = ctrl.time;
+   // ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "HH:mm");
+   // ctrl.form.Time = ctrl.time;
     function onTimeSuccess(date) {
         ctrl.form.Time = $filter('date')(date, "HH:mm");  // for type="date" binding
         ctrl.time = ctrl.form.Time;
         $scope.$apply();
     }
- //   ctrl.form.Date = $filter('date')(new Date(), "dd/MM/y");
+    //   ctrl.date = $filter('date')(new Date(), "dd/MM/y");
     function onDateSuccess(date) {
-       
+
         if (ctrl.notFormatedDate) {
             ctrl.form.Date = date;  // for type="date" binding
         } else {
@@ -61,12 +61,12 @@ var dateTimeCmp = function ($scope, $filter) {
 
         }
         ctrl.date = $filter('date')(date, "dd/MM/y");
-       // ctrl.date = $filter('date')(new Date(), "dd/MM/y");
+        // ctrl.date = $filter('date')(new Date(), "dd/MM/y");
         $scope.$apply();
     }
 
     function onError(error) { // Android only
-      //  alert('Error: ' + error);
+        //  alert('Error: ' + error);
     }
     ctrl.openTimePicker = function () {
         datePicker.show(timeOptions, onTimeSuccess, onError);
@@ -74,7 +74,7 @@ var dateTimeCmp = function ($scope, $filter) {
     ctrl.openDatePicker = function () {
         datePicker.show(dateOptions, onDateSuccess, onError);
     }
-  
+
 }
 angular.module('starter.controllers').component('dateTimeCmp', {
     bindings: {
@@ -85,8 +85,9 @@ angular.module('starter.controllers').component('dateTimeCmp', {
         notFormatedDate: '@',
         dateTitleText: '@',
         minDate: '@',
-        maxDate:'@'
+        maxDate: '@'
     },
     templateUrl: 'components/date-time/date-time-cmp.html',
     controller: dateTimeCmp
 });
+

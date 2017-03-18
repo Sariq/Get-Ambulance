@@ -15,6 +15,12 @@ angular.module('starter.controllers').controller('AmbulanceStep2Ctrl', function 
         $state.go('app.ambulance-reservation-step3');
     }
 
+    var initMinMaxDate = function () {
+        $scope.minDate = new Date();
+        $scope.minDate.setYear($scope.minDate);
+    }
+    initMinMaxDate();
+
 })
 
 

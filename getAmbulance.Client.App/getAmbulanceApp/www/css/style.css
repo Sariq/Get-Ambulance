@@ -283,9 +283,9 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
     line-height:inherit!important;
 }
 
-.platform-ipad div.scroll{
+/*.platform-ipad div.scroll{
     -webkit-transform: translate3d(0px, 30%, 0px) scale(1)!important;
-}
+}*/
 
 .dir-rtl{
     direction:rtl!important;

@@ -13,9 +13,11 @@
 .terms-and-conditions .logo-img{
    width:80%;
    margin-top: 20%;
-   max-width:275px;
+   max-width:300px;
 }
-
+.platform-ipad{
+ margin-top: 10%!important;
+}
 .terms-and-conditions .container {
         margin-top: 20%;
 }
