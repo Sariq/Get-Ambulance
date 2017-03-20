@@ -1,13 +1,4 @@
-﻿<div class="wl-registration">
-
-    <div class="row" style="padding-top: 6%;">
-        <div class="col-lg-4 col-lg-offset-4">
-            <!--<img src="../img/general-logo.png" width="60%" class="user-avatar" />-->
-
-
-        </div>
-    </div>
-</div>
+﻿
 <div class="wl-registration">
 
     <div class="inner-div" style="margin:0 10% 0 10%">
@@ -22,7 +13,12 @@
         <div class="row  ">
             <div class="col-lg-12 items min-height-40 items-align-center ">
                 <div class="item-header width-100">
-                    <span style="color:red" ng-show="!isRegisterSuccess">*{{'User_Already_Taken' | translate}}</span>
+                    <div style="padding: 10px 10px 10px 0;color:red">
+                        <span  ng-show="!isRegisterSuccess">*{{'User_Already_Taken' | translate}}</span>
+                        <span  ng-show="!isWlRegisterSuccess">*{{wlRegisterErrMsg | translate}}</span>
+                    </div>
+
+
                 </div>
             </div>
         </div>

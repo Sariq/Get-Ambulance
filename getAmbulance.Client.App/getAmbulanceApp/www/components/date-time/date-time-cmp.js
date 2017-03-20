@@ -57,10 +57,10 @@ var dateTimeCmp = function ($scope, $filter) {
         if (ctrl.notFormatedDate) {
             ctrl.form.Date = date;  // for type="date" binding
         } else {
-            ctrl.form.Date = $filter('date')(date, "dd/MM/y");  // for type="date" binding
+            ctrl.form.Date = $filter('date')(date, "y/MM/dd");  // for type="date" binding
 
         }
-        ctrl.date = $filter('date')(date, "dd/MM/y");
+        ctrl.date = $filter('date')(date, "y/MM/dd");
         // ctrl.date = $filter('date')(new Date(), "dd/MM/y");
         $scope.$apply();
     }

@@ -276,10 +276,16 @@ namespace getAmbulance.WhiteLabel
         public HttpResponseMessage AddWhiteLabel(WhiteLabelEntity whiteLabel)
         {
             HttpResponseMessage response;
-
-            WhiteLabelEntity resWhiteLabel=_whiteLabelService.AddWhiteLabel(whiteLabel);
-
-            response = Request.CreateResponse(HttpStatusCode.OK,resWhiteLabel);
+            WhiteLabelEntity WLEntity =_whiteLabelService.FindWLByName(whiteLabel.name);
+            if (WLEntity != null)
+            {
+               response = Request.CreateResponse(HttpStatusCode.BadRequest, eWLError.WlAlreadyExist);
+            }else
+            {
+                WhiteLabelEntity resWhiteLabel = _whiteLabelService.AddWhiteLabel(whiteLabel);
+                response = Request.CreateResponse(HttpStatusCode.OK, resWhiteLabel);
+            }
+           
             return response;
         }
 

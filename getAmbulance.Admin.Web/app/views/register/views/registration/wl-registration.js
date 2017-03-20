@@ -144,11 +144,16 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
         //}
     ]
     $scope.isRegisterSuccess = true;
+    $scope.isWlRegisterSuccess = true;
     $scope.addWL = function () {
         $rootScope.isLoading = true;
         RegisterService.addWhiteLabel($scope.wlForm).then(function (res) {
             $scope.addWLUser(res.data.whiteLabelid);
         }, function (err) {
+            if (err.data == 0) {
+                $scope.isWlRegisterSuccess = false;
+                $scope.wlRegisterErrMsg = 'WL_Already_Exist';
+            }
             $rootScope.isLoading = false;
         });
     }

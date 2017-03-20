@@ -309,6 +309,7 @@
     <Compile Include="Reservation\ReservationController.cs" />
     <Compile Include="Reservation\ReservationService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WhiteLabel\eWhiteLabel.cs" />
     <Compile Include="WhiteLabel\WhiteLabelController.cs" />
     <Compile Include="WhiteLabel\WhiteLabelModel.cs" />
     <Compile Include="WhiteLabel\WhiteLabelService.cs" />

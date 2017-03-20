@@ -1,7 +1,9 @@
   .wl-registration .col-lg-4 {
         padding: 0;
     }
-
+  .wl-registration{
+      margin-top:20px;
+  }
 
 
     .wl-registration .input-underline {

@@ -227,7 +227,8 @@
   "UserName_Or_Password_Incorrect": "השם משתמש או הסיסמא לא נכונים",
   "Loading": "טוען",
   "User_Already_Taken": "השם משתמש כבר קיים",
-  "Provider_Register": "טופס הרשמת ספק"
+  "Provider_Register": "טופס הרשמת ספק",
+  "WL_Already_Exist": "קיים ספק עם שם זה במערכת"
 
 
 

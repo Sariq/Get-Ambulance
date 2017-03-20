@@ -283,6 +283,12 @@ namespace getAmbulance.WhiteLabel
             }
             HubUpdateWLAndClientReservationStatus(whiteLabelId);
         }
+        public WhiteLabelEntity FindWLByName(string WLName)
+        {
 
+            var filter = Builders<WhiteLabelEntity>.Filter.Eq("name", WLName);
+            var WlEntity = _ctx.WhiteLabels.Find(filter).ToListAsync().Result[0];
+            return WlEntity;
+        }
     }
 }
