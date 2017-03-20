@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 var dateTimeCmp = function ($scope, $filter) {
     var ctrl = this;
 
@@ -38,10 +38,17 @@ var dateTimeCmp = function ($scope, $filter) {
         mode: 'date',
         androidTheme: 2,
         titleText: 'בחר תאריך',
-        minDate: ctrl.minDate,
-        maxDate: ctrl.maxDate,
-        allowOldDates: false
+        allowOldDates: false,
+    locale:'he'
     };
+    if(ctrl.minDate){
+        dateOptions.minDate=ctrl.minDate;
+    };
+    if(ctrl.maxDate){
+        dateOptions.maxDate=ctrl.maxDate;
+    };
+    
+    
     ctrl.form = {};
 
    // ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "HH:mm");
@@ -57,10 +64,10 @@ var dateTimeCmp = function ($scope, $filter) {
         if (ctrl.notFormatedDate) {
             ctrl.form.Date = date;  // for type="date" binding
         } else {
-            ctrl.form.Date = $filter('date')(date, "dd/MM/y");  // for type="date" binding
+            ctrl.form.Date = $filter('date')(date, "y/MM/dd");  // for type="date" binding
 
         }
-        ctrl.date = $filter('date')(date, "dd/MM/y");
+        ctrl.date = $filter('date')(date, "y/MM/dd");
         // ctrl.date = $filter('date')(new Date(), "dd/MM/y");
         $scope.$apply();
     }
@@ -72,6 +79,9 @@ var dateTimeCmp = function ($scope, $filter) {
         datePicker.show(timeOptions, onTimeSuccess, onError);
     }
     ctrl.openDatePicker = function () {
+        if(ctrl.date){
+        dateOptions.date=ctrl.date;
+        }
         datePicker.show(dateOptions, onDateSuccess, onError);
     }
 
