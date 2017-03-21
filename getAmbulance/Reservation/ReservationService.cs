@@ -277,7 +277,8 @@ namespace getAmbulance.Reservation
 
                 if ((int)jsonObj.form.distance.Value <= distance.distance)
                 {
-                    return (int)distance[DayOrNight];
+                    return (int)((IDictionary<string, object>)distance)[DayOrNight];
+                   // return (int)distance[DayOrNight];
                 }
 
             }
