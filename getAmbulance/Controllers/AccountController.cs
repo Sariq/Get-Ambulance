@@ -16,6 +16,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Http;
 using static getAmbulance.Client.ClientModel;
 using static getAmbulance.WhiteLabel.WhiteLabelModel;
@@ -89,7 +90,7 @@ namespace getAmbulance.Controllers
                         // var result2 =  UserManager.ConfirmEmailAsync(user.Id, code);
                         var EncodeUserId = HttpUtility.UrlEncode(user.Id);
                         var EncodeCode = HttpUtility.UrlEncode(code);
-                        await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\"https://qaprovider.getambulance.com/app/index.html#/confirm-email?userId=" + EncodeUserId + "&code="+ EncodeCode + "\">אשר חשבון</a>");
+                        await UserManager.SendEmailAsync(user.Id, "אישור חשבון", "בבקשה תאשר את החשבון שלך באמצעות לחיצה על אשר חשבון: <a href=\""+WebConfigurationManager.AppSettings["EnvDomain"] +"app/index.html#/confirm-email?userId=" + EncodeUserId + "&code="+ EncodeCode + "\">אשר חשבון</a>");
                         response = Request.CreateResponse(HttpStatusCode.OK, ModelState);
                         return response;
                     }
