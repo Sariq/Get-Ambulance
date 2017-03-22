@@ -44,7 +44,6 @@ D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\System.Reflection.Metadata.d
 D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\vbc.exe
 D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\VBCSCompiler.exe
 D:\Get-Ambulance\getAmbulance.Client.App\bin\roslyn\VBCSCompiler.exe.config
-D:\Get-Ambulance\getAmbulance.Client.App\bin\getAmbulance.Client.App.dll.config
 D:\Get-Ambulance\getAmbulance.Client.App\bin\getAmbulance.Client.App.dll
 D:\Get-Ambulance\getAmbulance.Client.App\bin\getAmbulance.Client.App.pdb
 D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.AI.Agent.Intercept.dll
@@ -64,3 +63,4 @@ D:\Get-Ambulance\getAmbulance.Client.App\bin\Microsoft.CodeDom.Providers.DotNetC
 D:\Get-Ambulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.csprojResolveAssemblyReference.cache
 D:\Get-Ambulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.dll
 D:\Get-Ambulance\getAmbulance.Client.App\obj\Debug\getAmbulance.Client.App.pdb
+D:\Get-Ambulance\getAmbulance.Client.App\bin\getAmbulance.Client.App.dll.config

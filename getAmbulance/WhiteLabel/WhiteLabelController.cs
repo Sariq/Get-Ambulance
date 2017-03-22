@@ -178,14 +178,11 @@ namespace getAmbulance.WhiteLabel
             WhiteLabelEntity whiteLabel = _whiteLabelService.GetWhiteLabelById(WhiteLabelId.ToString());
             WhiteLabelResponseEntity whiteLabelResponse = new WhiteLabelResponseEntity();
             whiteLabelResponse.name = whiteLabel.name;
-            whiteLabelResponse.prices = whiteLabel.prices;
             whiteLabelResponse.whiteLabelid = WhiteLabelId;
             whiteLabelResponse.users = whiteLabel.users;
             whiteLabelResponse._id = whiteLabel._id;
-            whiteLabelResponse.isOnline = whiteLabel.isOnline;
             whiteLabelResponse.logo= whiteLabel.logo;
             whiteLabelResponse.supportedServices = whiteLabel.supportedServices;
-            whiteLabelResponse.supportedAreas = whiteLabel.supportedAreas;
             //List<IdentityUserClaim> userData = temp_userData.Claims;
             //return userData;
             response = Request.CreateResponse(HttpStatusCode.OK, whiteLabelResponse);

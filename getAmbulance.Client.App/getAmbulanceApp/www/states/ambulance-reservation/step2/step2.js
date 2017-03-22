@@ -17,7 +17,7 @@ angular.module('starter.controllers').controller('AmbulanceStep2Ctrl', function 
 
     var initMinMaxDate = function () {
         $scope.minDate = new Date();
-        $scope.minDate.setYear($scope.minDate);
+       // $scope.minDate.setYear($scope.minDate);
     }
     initMinMaxDate();
 

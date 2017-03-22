@@ -80,7 +80,7 @@ var dateTimeCmp = function ($scope, $filter) {
     }
     ctrl.openDatePicker = function () {
         if(ctrl.date){
-        dateOptions.date=ctrl.date;
+        dateOptions.date=new Date(ctrl.date);
         }
         datePicker.show(dateOptions, onDateSuccess, onError);
     }

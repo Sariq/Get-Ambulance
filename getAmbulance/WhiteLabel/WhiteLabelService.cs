@@ -62,7 +62,7 @@ namespace getAmbulance.WhiteLabel
         {
             try
             {
-                var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.supportedServices.Any(s => s.Type == serviceType && s.isOnline == status));
+                var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.supportedServices.Any(s => s.Type == serviceType && s.isOnline == status) && !x.isBlocked);
                 var whiteLabelsList = _ctx.WhiteLabels.Find(filter).ToListAsync().Result;
                 return whiteLabelsList;
             }

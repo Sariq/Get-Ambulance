@@ -14,16 +14,13 @@ namespace getAmbulance.WhiteLabel
             public string whiteLabelid { get; set; }
             public string name { get; set; }
             public dynamic users { get; set; }
-            public dynamic prices { get; set; }
-            public List<SupportedArea> supportedAreas { get; set; }
+            public bool isBlocked { get; set; }
             public List<SupportedService> supportedServices { get; set; }
-            public bool isOnline { get; set; }
             public string logo { get; set; }
             public string phoneNumber { get; set; }
             public string phoneNumber2 { get; set; }
             public string phoneNumber3 { get; set; }
             public string Description { get; set; }
-
             public string Fax { get; set; }
             public string Email { get; set; }
             public string WebSite { get; set; }
@@ -35,6 +32,7 @@ namespace getAmbulance.WhiteLabel
 
             public WhiteLabelEntity() {
                 this.supportedServices = new List<SupportedService>();
+                this.isBlocked = false;
             }
 
 
