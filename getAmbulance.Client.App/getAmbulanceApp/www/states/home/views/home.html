@@ -1,101 +1,106 @@
 ﻿<ion-view view-title="דף הבית" hide-back-button="true">
-    <ion-content class="home">
+    <ion-content class="home" >
+        <div style="position: fixed;background: white;z-index: 1000;">
+            <div class="row width-100">
+                <div class="col img-container">
+                    <div class="text-center">
+                        <img src="../www/img/general-logo.png" class="home-img" />
 
-        <div class="row width-100">
-            <div class="col img-container">
-                <div class="text-center">
-                    <img src="../www/img/general-logo.png" class="home-img" />
+                    </div>
+                </div>
+            </div>
 
+
+            <div class="row">
+                <div class="col text-center">
+
+                    <h3 style="color:#e74e4e;font-weight: bold;margin-top: 2%;    margin-bottom: 0;">{{ 'Home_Welcome_Text' | translate }}</h3>
+                </div>
+
+            </div>
+
+            <div class="row info " style="padding-right: 18px;padding-left: 18px;">
+
+                <div class="col-10">
+                    <img src="../www/img/info-green.svg" class="info-green-svg" style="width:108%;height: 100%;" />
+                </div>
+                <div class="col-70" style="padding: 7px;color:#2273aa;line-height: 1.1;">
+                    ניתן להזמין אמבולנס פרטי בזמן שתרצה ומלווה לכל מטרה שתרצה וגם להזמין עזרה בהעלאה והורדה במדרגות ולחצן מצוקה
+                </div>
+                <div class="col-10">
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col text-center">
+        <div style="margin-top: 190px;position: absolute;width: 100%;">
+            <section class="cat-list-container ">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="cat" ng-click="goToReservationForm(1)">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/newiconeambulance.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'PrivateAmbulance' | translate}} </div>
+                    </div>
+                    <div class="col-15">
+                    </div>
+                    <div class="cat" ng-click="goToReservationForm(2)">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/newinconmelavveh.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'MedicalTherapist' | translate}}</div>
+                    </div>
+                    <div class="col-10">
+                    </div>
+                </div>
 
-                <h3 style="color:#e74e4e;font-weight: bold;margin-top: 2%;    margin-bottom: 0;">{{ 'Home_Welcome_Text' | translate }}</h3>
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="cat ">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/newinconlahtzan.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'Emergency_Button' | translate}} </div>
+                    </div>
+                    <div class="col-15">
+                    </div>
+                    <div class="cat" ng-click="goToReservationForm(3)">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/newiconemadrigot.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'StairsAssistance' | translate}}</div>
+                    </div>
+                    <div class="col-10">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="cat">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/newicontrofot.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'Trofot' | translate}} </div>
+                    </div>
+                    <div class="col-15">
+                    </div>
+                    <div class="cat">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/newiconhaiot.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'AnimalMedic' | translate}}</div>
+                    </div>
+                    <div class="col-10">
+                    </div>
+                </div>
+            </section>
+            <div class="row">
+                <div class="col-100 copy-rights text-center">
+                    Patent Pending  &#169;  Get Ambulance 2016
+                </div>
             </div>
-
         </div>
-
-        <div class="row info " style="padding-right: 18px;padding-left: 18px;">
-
-            <div class="col-10">
-                <img src="../www/img/info-green.svg" class="info-green-svg" style="width:108%;height: 100%;" />
-            </div>
-            <div class="col-70" style="padding: 7px;color:#2273aa;line-height: 1.1;">
-                ניתן להזמין אמבולנס פרטי בזמן שתרצה ומלווה לכל מטרה שתרצה וגם להזמין עזרה בהעלאה והורדה במדרגות ולחצן מצוקה
-            </div>
-            <div class="col-10">
-            </div>
-        </div>
-        <section class="cat-list-container ">
-            <div class="row">
-                <div class="col-10">
-                </div>
-                <div class="cat" ng-click="goToReservationForm(1)">
-                    <div class="text-center">
-                        <img class="cat-img" style="" src="../www/img/newiconeambulance.svg" />
-                    </div>
-                    <div class="text-center blue-color txt">{{'PrivateAmbulance' | translate}} </div>
-                </div>
-                <div class="col-15">
-                </div>
-                <div class="cat" ng-click="goToReservationForm(2)">
-                    <div class="text-center">
-                        <img class="cat-img" style="" src="../www/img/newinconmelavveh.svg" />
-                    </div>
-                    <div class="text-center blue-color txt">{{'MedicalTherapist' | translate}}</div>
-                </div>
-                <div class="col-10">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-10">
-                </div>
-                <div class="cat " >
-                    <div class="text-center">
-                        <img class="cat-img" style="" src="../www/img/newinconlahtzan.svg" />
-                    </div>
-                    <div class="text-center blue-color txt">{{'Emergency_Button' | translate}} </div>
-                </div>
-                <div class="col-15">
-                </div>
-                <div class="cat" ng-click="goToReservationForm(3)">
-                    <div class="text-center">
-                        <img class="cat-img" style="" src="../www/img/newiconemadrigot.svg" />
-                    </div>
-                    <div class="text-center blue-color txt">{{'StairsAssistance' | translate}}</div>
-                </div>
-                <div class="col-10">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-10">
-                </div>
-                <div class="cat" >
-                    <div class="text-center">
-                        <img class="cat-img" style="" src="../www/img/newicontrofot.svg" />
-                    </div>
-                    <div class="text-center blue-color txt">{{'Emergency_Button' | translate}} </div>
-                </div>
-                <div class="col-15">
-                </div>
-                <div class="cat" >
-                    <div class="text-center">
-                        <img class="cat-img" style="" src="../www/img/newiconhaiot.svg" />
-                    </div>
-                    <div class="text-center blue-color txt">{{'StairsAssistance' | translate}}</div>
-                </div>
-                <div class="col-10">
-                </div>
-            </div>
-        </section>
-        <div class="row">
-            <div class="col-100 copy-rights text-center">
-                Patent Pending  &#169;  Get Ambulance 2016
-            </div>
-</div>
     </ion-content>
 </ion-view>
