@@ -238,7 +238,7 @@ namespace getAmbulance.Controllers
                 // See IdentityConfig.cs to plug in Email/SMS services to actually send the code
               //  var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "EmailCode", code);
                 //await UserManager.NotifyTwoFactorTokenAsync(user.Id, "EmailCode", code);
-                await UserManager.SendEmailAsync(user.Id, "איפוס סיסמא", "קישור לאיפוס סיסמא: <a href=\"http://localhost:57867/app/index.html#/reset-password?userId=" + model.Email + "&code=" + code + "\">אפס סיסמא</a>");
+                await UserManager.SendEmailAsync(user.Id, "איפוס סיסמא", "קישור לאיפוס סיסמא: <a href=\"" + WebConfigurationManager.AppSettings["EnvDomain"] + "app/index.html#/reset-password?userId=" + model.Email + "&code=" + code + "\">אפס סיסמא</a>");
 
                 response = Request.CreateResponse(HttpStatusCode.OK, model);
                 return response;

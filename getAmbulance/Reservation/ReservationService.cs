@@ -198,9 +198,12 @@ namespace getAmbulance.Reservation
 
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
-               
+                int extraServicesPrice = 0;
                 int distancePrice = getWhiteLabelDistancePriceByKM(whiteLabel, jsonObj, type);
-                int extraServicesPrice = getAmbulanceExtraServicesPrice(whiteLabel, jsonObj.form, type);
+                if (type != "4")
+                {
+                  extraServicesPrice = getAmbulanceExtraServicesPrice(whiteLabel, jsonObj.form, type);
+                }
                 int finalPrice = distancePrice + extraServicesPrice;
                 if (jsonObj.form["Direction_Type"] == "Two_Way")
                 {
@@ -235,7 +238,12 @@ namespace getAmbulance.Reservation
             foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
             {
                 int extraServicesPrice = getStairsAssistancePriceByHour(whiteLabel, jsonObj.form,"3");
+        
                 int finalPrice = extraServicesPrice;
+                if (jsonObj.form["Stairs_Assistance_Options"] == "Stairs_Both")
+                {
+                    finalPrice = finalPrice * 2;
+                }
                 whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
             }
             return whiteLabelsOfferList;
@@ -297,11 +305,15 @@ namespace getAmbulance.Reservation
             int price = 0;
             foreach (KeyValuePair<string, object> weightPrice in supportedService.prices.weight)
             {
-                if ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Key))
+                if ((int)reservationData["Weight"] > 90 && ((int)reservationData["Weight"] <= Int32.Parse(weightPrice.Key)+1))
                 {
                     price=(int)weightPrice.Value;
                     break;
                 }
+            }
+            if(reservationData["Need_Help_With_Stairs"]== "Yes")
+            {
+                price += supportedService.prices.stairsBuilding;
             }
   
             

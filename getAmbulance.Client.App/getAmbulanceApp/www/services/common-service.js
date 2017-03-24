@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('starter.controllers').factory('CommonService', ['$rootScope', '$q', 'ngAuthSettings', 'localStorageService', '$filter', '$ionicLoading', '$ionicPlatform', function ($rootScope, $q, ngAuthSettings, localStorageService, $filter, $ionicLoading, $ionicPlatform) {
+angular.module('starter.controllers').factory('CommonService', ['$rootScope', '$q', 'ngAuthSettings', 'localStorageService', '$filter', '$ionicLoading', '$ionicPlatform', '$timeout', function ($rootScope, $q, ngAuthSettings, localStorageService, $filter, $ionicLoading, $ionicPlatform, $timeout) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -12,7 +12,9 @@ angular.module('starter.controllers').factory('CommonService', ['$rootScope', '$
         });
     }
     var _hideLoader = function (WhiteLabelsList) {
-        $ionicLoading.hide();
+        $timeout(function () {
+            $ionicLoading.hide();
+        });
     }
 
 
