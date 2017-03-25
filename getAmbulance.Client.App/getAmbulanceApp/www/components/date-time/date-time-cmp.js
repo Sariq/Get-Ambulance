@@ -51,14 +51,21 @@ var dateTimeCmp = function ($scope, $filter) {
     
     ctrl.form = {};
 
-   // ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "HH:mm");
-   // ctrl.form.Time = ctrl.time;
+    if (window.isLocalHost) {
+         ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "HH:mm");
+         ctrl.form.Time = ctrl.time;
+}
+  
     function onTimeSuccess(date) {
         ctrl.form.Time = $filter('date')(date, "HH:mm");  // for type="date" binding
         ctrl.time = ctrl.form.Time;
         $scope.$apply();
     }
-    //   ctrl.date = $filter('date')(new Date(), "dd/MM/y");
+    if (window.isLocalHost) {
+        ctrl.date = $filter('date')(new Date(), "y/MM/dd");
+        ctrl.form.Date = ctrl.date;
+    }
+
     function onDateSuccess(date) {
 
         if (ctrl.notFormatedDate) {
@@ -68,7 +75,9 @@ var dateTimeCmp = function ($scope, $filter) {
 
         }
         ctrl.date = $filter('date')(date, "y/MM/dd");
-        // ctrl.date = $filter('date')(new Date(), "dd/MM/y");
+        if (window.isLocalHost) {
+            ctrl.date = $filter('date')(new Date(), "y/MM/dd");
+        }
         $scope.$apply();
     }
 

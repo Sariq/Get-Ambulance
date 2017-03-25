@@ -90,7 +90,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 
                 Reservation_Number: value.Reservation_Number,
                 Price: value.Price,
-                Date: ReservationService.getValueByKey(value.AdditionalProperties, "Date"),
+                Date: new Date(ReservationService.getValueByKey(value.AdditionalProperties, "Date")),
                 Time: ReservationService.getValueByKey(value.AdditionalProperties, "Time"),
                 startTime: 1451628000000,
                 endTime: Seconds_Between_Dates,

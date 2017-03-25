@@ -3,7 +3,7 @@
 
       <info-header-cmp info-text="headerInfoText"></info-header-cmp>
       <div class="list state-container">
-          <div ng-repeat="item in providerPriceOffersList" class="offers-list" ng-show="!isSelected" >
+          <div ng-repeat="item in providerPriceOffersList | orderBy : price : true" class="offers-list" ng-show="!isSelected" >
 
 
               <div class="item item-input panel item-floating-label offer-item" style="color:#298ea3;border-radius: 30px;padding: 0;" ng-click="setSelectedOffer(item);">

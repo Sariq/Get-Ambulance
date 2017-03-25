@@ -27,7 +27,7 @@
                                     </span>
                                 </div>
                                 <div ng-switch-when="Date" ng-if="$ctrl.reservationType==undefined" style="text-align:center;" class="inner-td">
-                                    {{row[col.field]}}
+                                    {{row[col.field] | date : "dd/MM/y" }}
                                 </div>
                                 <div ng-switch-when="Time" ng-if="$ctrl.reservationType==undefined" style="text-align:center;" class="inner-td">
                                     {{row[col.field]}}

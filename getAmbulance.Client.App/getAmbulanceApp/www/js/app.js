@@ -5,21 +5,24 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 var apiService = '';
+window.isLocalHost = false;
 switch (location.host) {
     case 'localhost:57867':
-        apiService = 'http://localhost:54543/'
+        apiService = 'http://localhost:54543/';
+        window.isLocalHost = true;
         break;
     case 'localhost:51904':
-        apiService = 'http://localhost:54543/'
+        apiService = 'http://localhost:54543/';
+        window.isLocalHost = true;
         break;
     case 'qaprovider.getambulance.com':
-        apiService = 'http://ec2-54-186-14-31.us-west-2.compute.amazonaws.com/'
+        apiService = 'http://ec2-54-186-14-31.us-west-2.compute.amazonaws.com/';
         break;
     case 'provider.getambulance.com':
-        apiService = 'http://GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/'
+        apiService = 'http://GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/';
         break;
     default:
-        apiService = 'http://qaprovider.getambulance.com/'
+        apiService = 'http://qaprovider.getambulance.com/';
         break;
 
 }

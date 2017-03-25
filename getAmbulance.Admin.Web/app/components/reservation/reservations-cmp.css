@@ -58,3 +58,14 @@ table.all-reservations td.text {
     /*background-color:#fd4a13;*/
     color:#fd4a13;
 }
+
+@media screen and (max-width: 800px) {
+   /*.reservations-cmp {
+       
+    }
+   .reservations-table-title .table{
+       position:absolute;
+           left: 0;
+    right: 0;
+   }*/
+}

@@ -26,6 +26,13 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
 
     };
 
+    var _isSupportUser = function (WLId) {
+        if (WLId == 0) {
+            return true;
+        }
+        return false;
+    }
+
     var _login = function (loginData) {
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
@@ -59,7 +66,7 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             //IF not Admin
-            if (_authentication.userName != 'ambulance.admin@gmail.com') {
+            if (_authentication.userName != 'support@getambulance.com') {
 
                 $http.post(serviceBase + 'api/WhiteLabel/GetWhiteLabelData', data).success(function (res) {
                     WhiteLabelService.setWhiteLabelData(res);
@@ -72,7 +79,33 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
                     deferred.resolve(response);
                 });
             } else {
-                var data = {"whiteLabelid": "0","supportedServices": ["1","2","3","4"]}
+                var data = {
+                    "whiteLabelid": "0",
+                    "supportedServices": [
+            {
+                "Type": "2",
+                "Name": "MedicalTherapist",
+                "logo": "doctor.svg"
+
+            },
+            {
+                "Type": "1",
+                "Name": "PrivateAmbulance",
+                "logo": "ambulance.svg"
+            },
+            {
+                "Type": "3",
+                "Name": "StairsAssistance",
+                "logo": "stairs.svg"
+
+            },
+            {
+                "Type": "4",
+                "Name": "ICUAmbulance",
+                "logo": "icu_ambulance.svg"
+            }
+                    ]
+                }
                 WhiteLabelService.setWhiteLabelData(data);
                 _authentication.WhiteLabelData = data;
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
@@ -207,6 +240,8 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
     authServiceFactory.obtainAccessToken = _obtainAccessToken;
     authServiceFactory.externalAuthData = _externalAuthData;
     authServiceFactory.registerExternal = _registerExternal;
+    authServiceFactory.isSupportUser = _isSupportUser;
+    
 
     return authServiceFactory;
 }]);

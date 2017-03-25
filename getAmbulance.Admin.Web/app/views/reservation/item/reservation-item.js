@@ -53,7 +53,7 @@ angular.module('sbAdminApp')
           switch ($scope.reservation.Type) {
               case '1':
                   $scope.itemForm = {
-                      Date: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Date'),
+                      Date: new Date(ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Date')),
                       Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Time'),
                       Ambulance_Type: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Ambulance_Type'),
                       From_Address: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'From_Address'),
@@ -67,7 +67,7 @@ angular.module('sbAdminApp')
                   break;
               case '2':
                   $scope.itemForm = {
-                      Date: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Date'),
+                      Date: new Date(ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Date')),
                       Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Time'),
                       Meeting_Address: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Meeting_Address'),
                       Current_Status: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Current_Status'),
@@ -80,7 +80,7 @@ angular.module('sbAdminApp')
                   break;
               case '3':
                   $scope.itemForm = {
-                      Date: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Date'),
+                      Date: new Date(ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Date')),
                       Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Time'),
                       Meeting_Address: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Meeting_Address'),
                       Stairs_Assistance_Options: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Stairs_Assistance_Options'),

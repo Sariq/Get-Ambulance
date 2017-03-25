@@ -200,6 +200,10 @@ namespace getAmbulance.Reservation
             {
                 int extraServicesPrice = 0;
                 int distancePrice = getWhiteLabelDistancePriceByKM(whiteLabel, jsonObj, type);
+                if (distancePrice < 0)
+                {
+                    continue;
+                }
                 if (type != "4")
                 {
                   extraServicesPrice = getAmbulanceExtraServicesPrice(whiteLabel, jsonObj.form, type);
@@ -290,14 +294,11 @@ namespace getAmbulance.Reservation
                 }
 
             }
-            var defaultDistance = temp_distancePricesList[temp_distancePricesList.Count - 1];
-            var nameOfProperty = DayOrNight;
-      
+            //var defaultDistance = temp_distancePricesList[temp_distancePricesList.Count - 1];
+            //var nameOfProperty = DayOrNight;
+            //var value = ((IDictionary<string, object>)defaultDistance)[nameOfProperty];
 
- 
-            var value = ((IDictionary<string, object>)defaultDistance)[nameOfProperty];
-
-            return (int)value;
+            return -1;
         }
         public int getAmbulanceExtraServicesPrice(WhiteLabelEntity whiteLabel, dynamic reservationData,string type)
         {

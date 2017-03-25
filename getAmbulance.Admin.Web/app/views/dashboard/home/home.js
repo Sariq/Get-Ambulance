@@ -1,13 +1,23 @@
 ﻿
 
-angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, ReservationService, $filter, WhiteLabelService) {
+
+angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, ReservationService, $filter, WhiteLabelService, authService) {
   
     $scope.$on('updated-reservations-list', function (event, args) {
         $scope.reservationsList = ReservationService.getReservationsListLocal();
         $scope.filterByType();
     });
 
+    
+
     $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
+    $scope.isSupportUser = authService.isSupportUser($scope.whiteLabel.whiteLabelid);
+    if (!$scope.isSupportUser) {
+        $scope.statusArray = ['1','2'];
+    } else {
+        $scope.statusArray = ['1', '3', '5'];
+    }
+
     $scope.supportedServices = $scope.whiteLabel.supportedServices;
     $scope.supportedServicesTypesArr = [];
     angular.forEach($scope.supportedServices, function (value, key) {
