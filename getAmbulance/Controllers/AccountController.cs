@@ -199,7 +199,7 @@ namespace getAmbulance.Controllers
             HttpResponseMessage response;
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.userId);
+                var user = await UserManager.FindByIdAsync(model.userId);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
@@ -236,9 +236,13 @@ namespace getAmbulance.Controllers
               
                 var code = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "EmailCode");
                 // See IdentityConfig.cs to plug in Email/SMS services to actually send the code
-              //  var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "EmailCode", code);
+                //  var token2 = await UserManager.VerifyTwoFactorTokenAsync(user.Id, "EmailCode", code);
                 //await UserManager.NotifyTwoFactorTokenAsync(user.Id, "EmailCode", code);
-                await UserManager.SendEmailAsync(user.Id, "איפוס סיסמא", "קישור לאיפוס סיסמא: <a href=\"" + WebConfigurationManager.AppSettings["EnvDomain"] + "app/index.html#/reset-password?userId=" + model.Email + "&code=" + code + "\">אפס סיסמא</a>");
+                var EncodeUserId = HttpUtility.UrlEncode(user.Id);
+                var EncodeCode = HttpUtility.UrlEncode(code);
+                //var EncodeEmail = HttpUtility.UrlEncode(model.Email);
+                
+               await UserManager.SendEmailAsync(EncodeUserId, "איפוס סיסמא", "קישור לאיפוס סיסמא: <a href=\"" + WebConfigurationManager.AppSettings["EnvDomain"] + "app/index.html#/reset-password?userId=" + EncodeUserId + "&code=" + EncodeCode + "\">אפס סיסמא</a>");
 
                 response = Request.CreateResponse(HttpStatusCode.OK, model);
                 return response;

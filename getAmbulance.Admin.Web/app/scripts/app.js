@@ -243,7 +243,7 @@ angular
   
     authService.fillAuthData();
     if ((!authService.authentication.isAuth || !WhiteLabelService.getWhiteLabelDataLocal())) {
-        if ($location.$$url != "/wl-registration" && $location.$$url != 'confirm-email' && $location.$$url != 'reset-password') {
+        if ($location.$$path != "/wl-registration" && $location.$$path != '/confirm-email' && $location.$$path != '/reset-password') {
             $timeout(function () {
                 $state.go('login')
             });
