@@ -10,6 +10,7 @@ angular.module('sbAdminApp')
   .controller('ReservationItemCtrl', function ($scope, ReservationService, ngDialog) {
 
       $scope.getReservationById = function () {
+          ReservationService.setSelectedReservation(undefined);
           $scope.selectedReservationId = ReservationService.getSelectedReservationId();
           ReservationService.getReservationById($scope.selectedReservationId).then(function (res) {
               $scope.reservation = res.data;
@@ -20,34 +21,8 @@ angular.module('sbAdminApp')
           })
 
       }
-      $scope.getReservationById();
+      $scope.selectedReservation = ReservationService.getSelectedReservation();
 
-      $scope.$on('update-reservations-list', function (event, args) {
-          $scope.getReservationById();
-      });
-
-      
-     
-      $scope.updateReservationStatus = function (reservation, status, reason) {
-          ReservationService.setSelectedReservationId(reservation._id);
-          ReservationService.updateReservationStatus(reservation, status, reason).then(function (res) {
-              console.log(res.data);
-          });
-      }
-      
-      $scope.openCancelReasonDialog = function (reservation, status) {
-          ngDialog.open({
-              template: 'popUp/reservation-item/reservation-cancel-reason.html',
-              className: 'ngdialog-theme-default',
-              scope: $scope,
-              preCloseCallback: function (value) {
-                  if (value && value != "$closeButton") {
-                      $scope.updateReservationStatus(reservation, status, $scope.reservation.reason);
-                  }
-
-              }
-          });
-      }
       $scope.initItemForm = function () {
 
           switch ($scope.reservation.Type) {
@@ -71,7 +46,7 @@ angular.module('sbAdminApp')
                       Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Time'),
                       Meeting_Address: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Meeting_Address'),
                       Current_Status: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Current_Status'),
-                  //    Accompaniment_Location: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Accompaniment_Location'),
+                      //    Accompaniment_Location: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Accompaniment_Location'),
                       Service_Options: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Service_Options'),
                       Therapist_Stayig_Time: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Therapist_Stayig_Time'),
                       Weight: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Weight'),
@@ -91,5 +66,90 @@ angular.module('sbAdminApp')
 
       }
 
+      if ($scope.selectedReservation) {
+          if ($scope.selectedReservation.Status != '1') {
+              $scope.getReservationById();
+          } else {
+              $scope.reservation = $scope.selectedReservation;
+              $scope.reservation.AdditionalProperties = {};
+              $scope.itemForm = {
+                  Date: $scope.reservation.Date,
+                  Time: $scope.reservation.Time
+              };
+        }
+      } else {
+          $scope.getReservationById();
+}
+
+
+     
+
+      $scope.$on('update-reservations-list', function (event, args) {
+          $scope.getReservationById();
+      });
+
+
+
+      $scope.updateReservationStatus = function (reservation, status, reason) {
+          ReservationService.setSelectedReservationId(reservation._id);
+          ReservationService.updateReservationStatus(reservation, status, reason).then(function (res) {
+              console.log(res.data);
+          });
+      }
+
+      $scope.openCancelReasonDialog = function (reservation, status) {
+          ngDialog.open({
+              template: 'popUp/reservation-item/reservation-cancel-reason.html',
+              className: 'ngdialog-theme-default',
+              scope: $scope,
+              preCloseCallback: function (value) {
+                  if (value && value != "$closeButton") {
+                      $scope.updateReservationStatus(reservation, status, $scope.reservation.reason);
+                  }
+
+              }
+          });
+      }
+
+
+      //$scope.openConfirmReservationDialog = function (reservation) {
+      //    ReservationService.openConfirmReservationDialog(reservation);
+      //};
+
+      $scope.dialogBodyText = 'Confirm_Reservation_Accept_Body_Text';
+
+      $scope.updateReservationStatus = function (reservation, status, reason) {
+          ReservationService.setSelectedReservationId(reservation._id);
+          ReservationService.updateReservationStatus(reservation, status, reason).then(function (res) {
+              switch (status) {
+                  case '3':
+                      break
+                  default:
+                      $scope.initItemForm();
+                      //  $state.go('dashboard.reservation-item');
+                      break
+              }
+          });
+      }
+      $scope.openConfirmReservationDialog = function (reservation) {
+          $scope.selectedReservation = reservation;
+          if ($scope.selectedReservation.Status == '1') {
+              ngDialog.open({
+                  template: 'popUp/reservations-cmp/open-reservation.html',
+                  className: 'ngdialog-theme-default',
+                  scope: $scope,
+                  preCloseCallback: function (value) {
+                      if (value && value != "$closeButton") {
+                          $scope.updateReservationStatus(reservation, value);
+                      }
+
+                  }
+              });
+          } else {
+              ReservationService.setSelectedReservationId(reservation._id);
+              ReservationService.goToByStatu($scope.selectedReservation.Status);
+          }
+
+      }
 
   });

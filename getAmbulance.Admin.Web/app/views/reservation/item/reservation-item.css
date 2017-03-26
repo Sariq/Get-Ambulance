@@ -45,3 +45,179 @@
             
 
     }
+
+@media screen and (max-width: 800px) {
+    
+    .col-60 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 60%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 60%;
+        -ms-flex: 0 0 60%;
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+
+        .col-90 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 90%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 90%;
+        -ms-flex: 0 0 90%;
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
+        .col-80 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 80%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 80%;
+        -ms-flex: 0 0 80%;
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+
+         .resrvation-item .pad-top{
+        padding-top: 5%;
+}
+ .reservation-item .reservation-status{
+     margin-top:10%;
+
+  
+    /*font-weight: bold;
+        font-size: large;*/
+ }
+
+.pending-color{
+    color:#efad4d;
+}
+ .ignored-color{
+    color:#e84e4e;
+}
+  .accepted-color{
+    color:#6ab66b;
+}
+
+ .reservation-status{
+         width: 95%;
+    margin: auto;
+
+    margin-top: 15%;
+    border-radius: 25px 25px 0 0;
+     background-color:#f7fbfc;
+ }
+
+ .reservation-status .cont{
+         padding: 1%;
+         width:100%;
+
+ }
+
+ .reservation-status .details-container{
+      padding-top: 2%;
+         width:85%;
+
+ }
+
+ .reservation-status .details-title{
+         /*text-decoration: underline;*/
+            font-weight: bold;
+        font-size: large;
+ }
+ .solid-border-bottom-30{
+     width:75%;
+     border-bottom:solid 1px;
+ }
+
+ .reservation-status .details-container .key{
+     color:#57cbff;
+ }
+
+
+  .reservation-status .details-container .row{
+    margin-bottom: 10px;
+
+ }
+  .reservation-status-btn{
+          border-radius: 0 0 25px 25px!important;
+    width: 95%!important;
+  }
+  .reservation-status .text-cont{
+    border-radius: 25px 25px 0 0;
+    padding: 10px;
+    color: white;
+  }
+
+  .reservation-item .status-icon{
+        width: 75%;
+margin-top: 5px;
+}
+  .button-full {
+    width: 70%!important;
+    margin: auto!important;
+    border-radius: 40px!important;
+    background-color: #56cbff!important;
+}
+  .button-full, .button-full > .button {
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-radius: 0;
+}
+  .reservation-status-btn {
+    border-radius: 0 0 25px 25px!important;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    width: 95%!important;
+}
+   .reservation-item .mobile .mobile-row {
+    padding:5px;
+    }
+
+    .mobile .button {
+    border-color: transparent;
+    background-color: #f8f8f8;
+    color: #444;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0 12px;
+    min-width: 52px;
+    min-height: 47px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 42px;
+    cursor: pointer;
+}
+    .right-half-btn{
+            display: block!important;
+    border: 0!important;
+    width: 48%!important;
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+    margin-left: 4%!important;
+    }
+    .left-half-btn {
+        display: block!important;
+        border: 0!important;
+        width: 48% !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        margin-right: 2px!important;
+    }
+    .ngdialog.ngdialog-theme-default .ngdialog-content{
+        width:95%!important;
+    }
+    .reservation-status .details-title{
+        font-size:medium!important;
+    }
+}

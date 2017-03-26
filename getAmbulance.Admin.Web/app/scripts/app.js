@@ -253,7 +253,14 @@ angular
         ReservationHub.connectReservationHub();
         WhiteLabelService.updateSupportedServicesOnRoot();
     }
-
+    //MobileService.isMobileByScreenWidth();
+    //MobileService.isTabletByScreenWidth();
+    //window.addEventListener("orientationchange", function () {
+    //    $timeout(function () {
+    //        MobileService.isMobileByScreenWidth();
+    //        MobileService.isTabletByScreenWidth();
+    //    }, 1000);
+    //});
 }]);
 
     

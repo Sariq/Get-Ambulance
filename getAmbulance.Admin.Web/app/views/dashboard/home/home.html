@@ -1,7 +1,7 @@
 ﻿<div>
   
     <div ng-if="!isSupportUser" class="row services-boxes">
-        <stats ng-repeat="service in supportedServices"  number="{{reservationsListFilterd[service.Type].length}}" name="{{service.Name | translate}}" colour="primary" type="{{service.Type}} " img-width="200" img-height="90" img="{{service.logo}}"></stats>
+        <stats  ng-repeat="service in supportedServices"  number="{{reservationsListFilterd[service.Type].length}}" name="{{service.Name | translate}}" colour="primary" type="{{service.Type}} " img-width="200" img-height="90" img="{{service.logo}}"></stats>
     </div>
 
     <div style="">

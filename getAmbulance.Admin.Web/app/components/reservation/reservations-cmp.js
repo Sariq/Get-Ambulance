@@ -1,4 +1,5 @@
-﻿'use strict';
+﻿/// <reference path="reservations-cmp.js" />
+'use strict';
 var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', '$timeout', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog, $timeout) {
     var ctrl = this;
     ctrl.noReservations = false;
@@ -26,6 +27,12 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
         });
     }
 
+
+    ctrl.openReservationData = function (reservation) {
+        ReservationService.setSelectedReservationId(reservation._id);
+        ReservationService.setSelectedReservation(reservation);
+        $state.go('dashboard.reservation-item');
+    }
 
     ctrl.updateReservationStatus = function (reservation, status) {
         ReservationService.setSelectedReservationId(reservation._id);
@@ -98,9 +105,9 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 Timer: $filter('date')(Math.round((new Date() - new Date())), 'mm:ss'),
                 _id: value._id
             });
-          //  if (ctrl.reservationType !=null && ctrl.reservationType.length > 0) {
-                ctrl.tableData[ctrl.tableData.length - 1].Type = value.Type;
-           // }
+            //  if (ctrl.reservationType !=null && ctrl.reservationType.length > 0) {
+            ctrl.tableData[ctrl.tableData.length - 1].Type = value.Type;
+            // }
 
             ctrl.filter = {};
 
@@ -130,11 +137,11 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 
             ctrl.cols = [
              { field: "Reservation_Number", title: $filter('translate')('Number'), show: true, filter: { Reservation_Number: "text" } },
-             {  field: "Status", title: $filter('translate')('Status'), show: true, filter: { Status: "select" }, filterData: ctrl.filter.Status }
+             { field: "Status", title: $filter('translate')('Status'), show: true, filter: { Status: "select" }, filterData: ctrl.filter.Status }
             ];
-     
-                ctrl.cols.push({ field: "Type", title: $filter('translate')('Type'), show: true, filter: { Type: "select" }, filterData: ctrl.filter.Type })
-       
+
+            ctrl.cols.push({ field: "Type", title: $filter('translate')('Type'), show: true, filter: { Type: "select" }, filterData: ctrl.filter.Type })
+
             ctrl.cols.push(
                          { field: "Date", title: $filter('translate')('Date'), show: true, filter: { Date: "text" } },
              { field: "Time", title: $filter('translate')('Time'), show: true, filter: { Time: "text" } },
@@ -182,7 +189,7 @@ angular.module('sbAdminApp').component('reservationsCmp', {
     bindings: {
         reservationStatus: '=',
         resType: '=',
-        tableName:'@'
+        tableName: '@'
 
     },
     templateUrl: 'components/reservation/reservations-cmp.html',

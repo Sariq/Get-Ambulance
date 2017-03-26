@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', '$rootScope', '$q', '$filter', function ($http, ngAuthSettings, WhiteLabelService, localStorageService, $rootScope, $q, $filter) {
+angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', '$rootScope', '$q', '$filter', '$state', 'ngDialog', function ($http, ngAuthSettings, WhiteLabelService, localStorageService, $rootScope, $q, $filter, $state, ngDialog) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -106,9 +106,9 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     }
     var _getValueByKey = function (dataObject, key) {
         var item = null;
-        item = $filter('filter')(dataObject, { _name: key }, true)[0];
-        if (item) {
-            item = item._value;
+        item = $filter('filter')(dataObject, { _name: key }, true);
+        if (item && item.length>0) {
+            item = item[0]._value;
         }
         return item;
     }
@@ -119,6 +119,21 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     var _filterByStatus = function (reservationsList,status) {
         return $filter('filterBy')(reservationsList, ["Status"], status );
     }
+
+
+    var _goToByStatus = function (status) {
+       
+            switch (status) {
+                case '3':
+                    break
+                default:
+                    $state.go('dashboard.reservation-item');
+                    break
+            }
+      
+    }
+
+
 
     ReservationServiceFactory.getReservations = _getReservations;
     ReservationServiceFactory.getReservationById = _getReservationById;
@@ -137,6 +152,10 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     ReservationServiceFactory.updateReservationStatus = _updateReservationStatus;
     ReservationServiceFactory.groupByType = _groupByType;
     ReservationServiceFactory.filterByStatus = _filterByStatus;
+    ReservationServiceFactory.goToByStatus = _goToByStatus;
+
+    
     return ReservationServiceFactory;
+
 
 }]);

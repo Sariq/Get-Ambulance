@@ -1,13 +1,12 @@
-﻿<div class="row ">
-    <div class="col-lg-12">
-        <div class="inner-div reservations-table-title">
-            {{$ctrl.reservationT}}
+﻿<div class=" ">
+    <div class="col-lg-12" style="padding: 0;">
+        <div class="inner-div reservations-table-title hidden-xs">
             <h4>{{$ctrl.tableName | translate}}</h4>
-            <hr style="margin:0;"/>
+            <hr style="margin:0;" />
             <div style="padding:0 15px 15px 15px;">
                 <table ng-table-dynamic="$ctrl.tableParams  with $ctrl.cols" class="table" show-filter="true">
                     <tr ng-repeat="row in $data " class="reservations-table-data">
-                        <td ng-repeat="col in $columns" style="padding:0;vertical-align: middle;width:12%"  ng-class="{'time-over-background':row['timerEnd']===true && row['Status']=='1'}">
+                        <td ng-repeat="col in $columns" style="padding:0;vertical-align: middle;width:12%" ng-class="{'time-over-background':row['timerEnd']===true && row['Status']=='1'}">
                             <div ng-switch="col.field">
                                 <div ng-switch-when="Reservation_Number" style="text-align:center;" class="inner-td">{{row[col.field]}}</div>
                                 <div ng-switch-when="Status" style="text-align:center;" class="inner-td" ng-class="{'pending-color':row['Status']=='1','accepted-color':row['Status']=='2','ignored-color':row['Status']=='3','done-color':row['Status']=='4'}">
@@ -45,29 +44,7 @@
                             </div>
                         </td>
 
-                        <!--<td style="text-align:center;width:12%" class="inner-td">{{row['Reservation_Number']}}</td>
-                <td style="text-align:center;width:12%" class="inner-td" ng-class="{'pending-color':row['Status']=='1','accepted-color':row['Status']=='2','ignored-color':row['Status']=='3','done-color':row['Status']=='4'}">
-                    <span ng-switch="row['Status']">
-                        <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
-                        <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
-                        <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
-                        <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
-                        <span ng-switch-when="5">{{'Reservation_Canceled' | translate}}</span>
-                    </span>
-                </td>
-                <td ng-if="$ctrl.reservationType==undefined" style="text-align:center;width:12%" class="inner-td">
-                    <span ng-switch="row['Type']">
-                        <span ng-switch-when="1">{{'Short_Ambulance_Reservation' | translate}}</span>
-                        <span ng-switch-when="2">{{'Short_Medical_Therapist_Reservation' | translate}}</span>
-                        <span ng-switch-when="3">{{'Short_Stairs_Assistance_Reservation' | translate}}</span>
-                    </span>
-                </td>
-                <td style="text-align:center;width:12%" class="inner-td">{{row['Date']}}</td>
-                <td style="text-align:center;width:12%" class="inner-td">{{row['Time']}}</td>
-                <td style="text-align:center;width:12%" class="inner-td">{{row['Price']}}</td>
-                <td style="text-align:center;width:10%" class="inner-td" ><timer ng-show="!row['timerEnd']===true" countdown="row['endTime']" max-time-unit="'minute'" interval="1000" finish-callback="$ctrl.callbackTimer(row['Reservation_Number'])"><span ng-show="!row['timerEnd']===true">{{sseconds}} : {{mminutes}}</span> </timer><span ng-show="row['timerEnd']===true">{{'Ended' | translate}}</span></td>
-                <td style="text-align:center;width:10%" class="inner-td"><button ng-click="$ctrl.openConfirmReservationDialog(row)" class="btn show-reservation-btn">{{'Show'| translate}}</button></td>-->
-                    </tr>
+                </tr>
                 </table>
             </div>
 
@@ -76,3 +53,74 @@
     </div>
 </div>
 
+<!--Mobile-->
+
+<div class="mobile hidden-lg hidden-md hidden-sm" style="padding-right: -15px;padding-left: -15px;">
+
+    <div class="mobile-row reservations-list">
+        <div class="list-container">
+            <div class="mobile-row list-row " ng-repeat="reservation in $ctrl.tableData | orderBy : _date : true" ng-click="$ctrl.openReservationData(reservation)" ng-class="{'percent-pending-background':reservation.Status=='1','percent-accepted-background':reservation.Status=='2'|| reservation.Status=='4','percent-ignored-background':reservation.Status=='3' || reservation.Status=='5'}">
+                <div class="col-20 col-container text-center" style="padding-right: 3%;">
+                    <span ng-switch="reservation.Status">
+                        <span ng-switch-when="1"><img src="/img/pending-icon.png" class="status-icon" /></span>
+                        <span ng-switch-when="2"><img src="/img/accepted-icon.png" class="status-icon" /></span>
+                        <span ng-switch-when="3"><img src="/img/ignored-icon.png" class="status-icon" /></span>
+                        <span ng-switch-when="4"><img src="/img/accepted-icon.png" class="status-icon" /></span>
+                        <span ng-switch-when="5"><img src="/img/ignored-icon.png" class="status-icon" /></span>
+                    </span>
+                </div>
+                <div class="col-45 col-container ">
+                    <div class="mobile-row ">
+                        <div class="col-100" style="text-align:center" ng-class="{'pending-color':reservation.Status=='1','accepted-color':reservation.Status=='2' || reservation.Status=='4','ignored-color':reservation.Status=='3' || reservation.Status=='5'}">
+                            <div>
+                                {{'The_Reservation' | translate}} <span ng-switch="reservation.Status">
+                                    <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
+                                    <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
+                                    <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                                    <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
+                                    <span ng-switch-when="5">{{'Reservation_Canceled' | translate}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-row  status-details" style="">
+
+                        <div class="col-50">
+                            
+                            <span class="inner" ng-switch="reservation.Type">
+
+                                <span ng-switch-when="1"><img style="width:59%;padding:3%" class="cat-img" src="/img/ambulance.svg" /></span>
+                                <span ng-switch-when="2"><img style="width:38%;padding:1%" class="cat-img" src="/img/doctor.svg" /></span>
+                                <span ng-switch-when="3"><img style="width:38%;padding:1%" class="cat-img" src="/img/stairs.svg" /></span>
+                                <span ng-switch-when="4"><img style="width:38%;padding:1%" class="cat-img" src="/img/icu_stairs.svg" /></span>
+
+                            </span>
+
+                        </div>
+                        <div class="col-50">
+                            
+                            {{'Timer' | translate}}<br />
+                            <span style="font-size: larger;" class="inner">
+                                <timer ng-show="!{{reservation['timerEnd']}}===true &&  reservation['Status']=='1'" countdown="reservation['endTime']" max-time-unit="'minute'" interval="1000" finish-callback="$ctrl.callbackTimer(reservation['Reservation_Number'])"><span ng-show="!reservation['timerEnd']===true">{{sseconds}} : {{mminutes}}</span> </timer>
+                                <span ng-show="reservation['timerEnd']===true || reservation['Status']!='1'">{{'Ended' | translate}}</span>
+                            </span>
+</div>
+                    </div>
+                </div>
+                <div class="col-30 text-center arrow">
+                    <span ng-switch="reservation.Status">
+                        <span ng-switch-when="1">{{'Show_Details' | translate}}</span>
+                        <span ng-switch-when="2">{{'Show_Details' | translate}}</span>
+                        <span ng-switch-when="3">{{'Show_Details' | translate}}</span>
+                        <span ng-switch-when="4">{{'Show_Details' | translate}}</span>
+                        <span ng-switch-when="5">">{{'Show_Details' | translate}}      </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Mobile-->

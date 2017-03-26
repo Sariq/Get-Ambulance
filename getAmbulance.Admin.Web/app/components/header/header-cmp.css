@@ -4,9 +4,9 @@
     cursor:pointer;
 }
 .nav-header{
-    display:flex;
-    width: 85%;
-    float: left;
+
+    display: flex;
+    margin-right: 250px;
 }
 .nav-header span{
     color:white;
@@ -21,4 +21,10 @@
 .nav-header .img-container{
        width: 50%;
     float: left;
+}
+@media screen and (max-width: 800px) {
+    .nav-header {
+         margin-right: 15px!important;
+    }
+  
 }

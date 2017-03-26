@@ -242,3 +242,8 @@ body {
 .white-color{
     color:white;
 }
+
+.done-color-background {
+    background-color: #54a6de!important;
+    color:white!important;
+}

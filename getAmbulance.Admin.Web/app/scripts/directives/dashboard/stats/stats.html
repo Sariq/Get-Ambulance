@@ -2,24 +2,45 @@
 
 
 
-    
-        <div class="inner-div service-title" >
+    <div class="hidden-xs">
+        <div class="inner-div service-title">
             <h4>{{name}}</h4>
-          
+
         </div>
 
         <div class="inner-div text-center" style="padding-top: 10px;">
-            <div>{{'Service_Status' | translate}} 
-            <toggle  on="{{'OnLine' | translate}}" off="{{'Busy' | translate}}" ng-model="supportedService.isOnline" ng-change="updateWhiteLabelIsOnline(supportedService)" onstyle="btn-success" offstyle="btn-danger"></toggle>
-</div>
+            <div>
+                {{'Service_Status' | translate}}
+                <toggle on="{{'OnLine' | translate}}" off="{{'Busy' | translate}}" ng-model="supportedService.isOnline" ng-change="updateWhiteLabelIsOnline(supportedService)" onstyle="btn-success" offstyle="btn-danger"></toggle>
+            </div>
             <img class="cat-img" style="width:{{imgWidth}}px;height:{{imgHeight}}px" src="../img/{{img}}" />
-           <div>הזמנות</div>
+            <div>הזמנות</div>
             <div class="reservations-numer">{{number}}</div>
             <div>
                 <a class="btn stat-btn" ui-sref="{{goto}}" style="">כניסה להזמנות</a>
             </div>
         </div>
+    </div>
 
+    <!--Mobile-->
+    <div class="hidden-lg hidden-md hidden-sm">
+
+
+        <div class="inner-div service-title row ">
+            <div class="col-xs-4" style="padding: 1%;">
+                <img class="cat-img" style="width:80px;height:39px" src="../img/{{img}}" />
+            </div>
+            <div class="col-xs-4" style="padding: 3%;">
+                <toggle on="{{'OnLine' | translate}}" off="{{'Busy' | translate}}" ng-model="supportedService.isOnline" ng-change="updateWhiteLabelIsOnline(supportedService)" onstyle="btn-success" offstyle="btn-danger"></toggle>
+            </div>
+            <div class="col-xs-4" style="padding: 1%;">
+                <div class="reservations-numer">{{number}}</div>
+            </div>
+        </div>
+    </div>
+
+   
+    <!--Mobile-->
 
 </div>
 
