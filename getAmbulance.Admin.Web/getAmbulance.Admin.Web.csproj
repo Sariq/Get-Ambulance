@@ -17191,6 +17191,7 @@
     <Content Include="node_modules\cache-control\LICENSE-MIT" />
     <Content Include="node_modules\cache-control\package.json" />
     <Content Include="node_modules\cache-control\README.md" />
+    <Content Include="app\docs\pdf\provider-terms-and-conditions.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

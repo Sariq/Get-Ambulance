@@ -117,6 +117,7 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
     $scope.userInputsList = [
         {
             name: "User_Name",
+            name2: "Wl_Email",
             model: "Email",
             validator: "required,email",
             validMethod: "blur",
@@ -174,6 +175,11 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
 
         }
     };
+
+    $scope.openTermsDialog = function () {
+      window.open("docs/pdf/provider-terms-and-conditions.pdf")
+    }
+    
 
 })
 var compareTo = function () {

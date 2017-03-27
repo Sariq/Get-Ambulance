@@ -87,7 +87,7 @@
                                         <div ng-repeat="input in userInputsList">
                                             <div class="input-container">
                                                 <div class="form-group label-floating">
-                                                    <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span ng-show="input.isRequired" style="color:red">*</span></span>
+                                                    <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span class="control-label color-blue2" ng-show="input.name2">({{input.name2 | translate}})</span><span ng-show="input.isRequired" style="color:red">*</span></span>
                                                     <input type="{{input.type}}" class="form-control input-underline input-lg"
                                                            name="{{input.name}}" ng-model="wlUserForm[input.model]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}" email-error-message="{{'Insert'|translate}} {{input.name |translate}} {{'Valid'|translate}}" checkpassword-error-message="{{'Password_Wrong_Format' | translate}}">
                                                 </div>
@@ -112,7 +112,7 @@
                                                     </label>
 
                                                 </div>
-                                                <span>{{'Read_The' | translate}} <a>{{'Terms_And_Conditions' | translate}}</a> {{'WebsiteServices_And_Confirm' | translate}}</span>
+                                                <span>{{'Read_The' | translate}} <a class="cursor-pointer" ng-click="openTermsDialog();">{{'Terms_And_Conditions' | translate}}</a> {{'WebsiteServices_And_Confirm' | translate}}</span>
                                                 <div style="margin-right: 23px;margin-top: -4px;" class="err-msg" id="Terms_And_Conditions"></div>
                                             </div>
 
