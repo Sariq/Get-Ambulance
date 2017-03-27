@@ -179,6 +179,9 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
     $scope.openTermsDialog = function () {
       window.open("docs/pdf/provider-terms-and-conditions.pdf")
     }
+    $scope.openClientTermsDialog = function () {
+        window.open("docs/pdf/client-terms-and-conditions.pdf")
+    }
     
 
 })
