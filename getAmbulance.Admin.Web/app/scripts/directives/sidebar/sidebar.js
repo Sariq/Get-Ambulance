@@ -15,7 +15,8 @@ angular.module('sbAdminApp')
           replace: true,
           scope: {
           },
-          controller: function ($scope, WhiteLabelService, CommonService) {
+          controller: function ($scope, WhiteLabelService, CommonService, UserManagerService) {
+              $scope.isSupportRole = UserManagerService.isSupportRole();
               $scope.initData = function () {
                   $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
                   $scope.supportedServices = $scope.whiteLabel.supportedServices;

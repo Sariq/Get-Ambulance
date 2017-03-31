@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-lg-1">
                        </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-1" ng-show="!isSupportRole">
                             <span ng-show="edit==true" ng-click="save();edit=false">{{'Save' | translate}}</span>
                             <span ng-show="edit!=true" ng-click="edit=true">{{'Edit' | translate}}</span>
                         </div>

@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'WhiteLabelService', 'ReservationHub', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, WhiteLabelService, ReservationHub) {
+angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', '$location', '$state', '$rootScope', 'WhiteLabelService', 'ReservationHub', 'UserManagerService', function ($http, $q, localStorageService, ngAuthSettings, $location, $state, $rootScope, WhiteLabelService, ReservationHub, UserManagerService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -67,7 +67,7 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
             _authentication.userName = loginData.userName;
             //IF not Admin
             if (_authentication.userName != 'support@getambulance.com') {
-
+                UserManagerService.setUserData(undefined);
                 $http.post(serviceBase + 'api/WhiteLabel/GetWhiteLabelData', data).success(function (res) {
                     WhiteLabelService.setWhiteLabelData(res);
                     _authentication.WhiteLabelData = (res);
@@ -79,6 +79,9 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
                     deferred.resolve(response);
                 });
             } else {
+                var userData={role:1};
+                UserManagerService.setUserData(userData);
+                
                 var data = {
                     "whiteLabelid": "0",
                     "supportedServices": [
@@ -111,7 +114,13 @@ angular.module('sbAdminApp').factory('authService', ['$http', '$q', 'localStorag
                 authorizationData.WhiteLabelData = _authentication.WhiteLabelData;
                 localStorageService.set('authorizationData', authorizationData);
                 ReservationHub.connectReservationHub();
-                deferred.resolve(response);
+
+                if (UserManagerService.isSupportRole()) {
+                    WhiteLabelService.getWhiteLabelsList().then(function (res) {
+                        deferred.resolve(response);
+                    })
+                }
+
 
 
             }

@@ -9,6 +9,8 @@
                         <td ng-repeat="col in $columns" style="padding:0;vertical-align: middle;width:12%" ng-class="{'time-over-background':row['timerEnd']===true && row['Status']=='1'}">
                             <div ng-switch="col.field">
                                 <div ng-switch-when="Reservation_Number" style="text-align:center;" class="inner-td">{{row[col.field]}}</div>
+                                <div ng-if="$ctrl.isSupportRole" ng-switch-when="WhiteLabel_Name" style="text-align:center;" class="inner-td">{{row[col.field]}}</div>
+                                
                                 <div ng-switch-when="Status" style="text-align:center;" class="inner-td" ng-class="{'pending-color':row['Status']=='1','accepted-color':row['Status']=='2','ignored-color':row['Status']=='3','done-color':row['Status']=='4'}">
                                     <span ng-switch="row[col.field]">
                                         <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>

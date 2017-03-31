@@ -1,0 +1,185 @@
+table.all-reservations th {
+    text-align: right;
+}
+
+table.all-reservations .showBtn {
+    text-align: center;
+}
+
+    table.all-reservations .showBtn .btn {
+        width: 70%;
+    }
+
+table.all-reservations td.text {
+    padding: 15px !important;
+}
+
+.reservations-table-title {
+    margin-bottom: 5px;
+    border-radius: 5px 5px 0 0px;
+    padding: 1%;
+}
+
+.show-reservation-btn {
+    background-color: #57c059!important;
+    color: white;
+    border-radius: 40px;
+    margin: 8px;
+    width: 100%;
+    color:white!important;
+}
+
+.reservations-table-data .inner-td {
+    vertical-align: middle;
+}
+
+.th-title {
+    color: #b1b3c5;
+    min-width: 20%;
+}
+
+.ng-table-pager {
+    display: inline-block;
+    width: 100%;
+}
+
+.ng-table-pagination {
+    float: left;
+}
+
+.No_Reservations_Found {
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    color: #515974;
+}
+
+.time-over-background {
+    /*background-color:#fd4a13;*/
+    color: #fd4a13;
+}
+
+@media screen and (max-width: 800px) {
+
+    .reservations-list .list-container {
+        margin-top: 5%;
+        color: azure;
+    }
+
+    .pending-background {
+        background-color: #efad4d;
+    }
+
+    .ignored-background {
+        background-color: #e84e4e;
+    }
+
+    .accepted-background {
+        background-color: #6ab66b;
+    }
+
+    .percent-pending-background {
+        background: -webkit-linear-gradient(right,#f7fbfc 69%, #efad4d 31%) !important;
+    }
+
+    .percent-ignored-background {
+        background: -webkit-linear-gradient(right,#f7fbfc 69%, #e84e4e 31%) !important;
+    }
+
+    .percent-accepted-background {
+        background: -webkit-linear-gradient(right,#f7fbfc 69%, #6ab66b 31%) !important;
+    }
+
+    .reservations-list .col-container {
+    }
+
+
+    .reservations-list .list-row {
+        margin-bottom: 15px !important;
+      
+        border-radius: 40px;
+        padding: 0;
+    }
+
+        .reservations-list .list-row .arrow {
+            margin: auto;
+            color: white;
+        }
+
+    .reservations-list .status-icon {
+        width: 75%;
+        margin-top: 5px;
+    }
+
+    .reservations-list .status-details {
+        font-size: smaller;
+        line-height: 1.1;
+        text-align: center;
+        color: #57caff;
+    }
+
+        .reservations-list .status-details .inner {
+            color: black;
+        }
+
+    .col-45 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 40%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 40%;
+        -ms-flex: 0 0 40%;
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+
+
+    .col-50 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 50%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 50%;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-20{
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 20%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 20%;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+    .col-30{
+         -webkit-box-flex: 0;
+    -webkit-flex: 0 0 30%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 30%;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
+    
+    }
+        .col-100{
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+   .mobile .mobile-row {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 2px;
+        
+    }
+    #page-wrapper{
+        padding:0!important;
+    }
+}

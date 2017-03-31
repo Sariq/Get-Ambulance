@@ -722,8 +722,12 @@
     <Content Include="app\bower_components\oclazyload\examples\simpleExample\js\testApp.js" />
     <Content Include="app\bower_components\signalr\jquery.signalR.js" />
     <Content Include="app\bower_components\signalr\jquery.signalR.min.js" />
+    <Content Include="app\common\constant.js" />
     <Content Include="app\common\services\authInterceptorService.js" />
     <Content Include="app\common\services\common-service.js" />
+    <Content Include="app\components\whitelabel-list\whitelabel-list-cmp.css" />
+    <Content Include="app\components\whitelabel-list\whitelabel-list-cmp.html" />
+    <Content Include="app\components\whitelabel-list\whitelabel-list-cmp.js" />
     <Content Include="app\components\reservation\header-cmp.css" />
     <Content Include="app\components\services-settings\prices\stairs-building\stairs-building-cmp.js" />
     <Content Include="app\components\services-settings\prices\stairs-building\stairs-building-cmp.css" />
@@ -782,6 +786,7 @@
     <Content Include="app\scripts\directives\timeline\timeline.js" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\ordersService.js" />
+    <Content Include="app\services\user-manager-service.js" />
     <Content Include="app\services\whiteLabel-service.js" />
     <Content Include="app\services\tokensManagerService.js" />
     <Content Include="app\styles\main.css" />
@@ -815,6 +820,14 @@
     <Content Include="app\views\register\views\registration\wl-registration.html" />
     <Content Include="app\views\register\views\registration\wl-registration.js" />
     <Content Include="app\views\register\register-service.js" />
+    <Content Include="app\views\whitelabel\routes.js" />
+    <Content Include="app\views\whitelabel\views\list\whitelabel-list.css" />
+    <Content Include="app\views\whitelabel\views\list\whitelabel-list.html" />
+    <Content Include="app\views\whitelabel\views\list\whitelabel-list.js" />
+    <Content Include="app\views\whitelabel\whitelabel-service.js" />
+    <Content Include="app\views\whitelabel\views\item\whitelabel-item.css" />
+    <Content Include="app\views\whitelabel\views\item\whitelabel-item.html" />
+    <Content Include="app\views\whitelabel\views\item\whitelabel-item.js" />
     <Content Include="app\views\stairs-assistance\prices\stairs-assistance-prices.css" />
     <Content Include="app\views\stairs-assistance\prices\stairs-assistance-prices.html" />
     <Content Include="app\views\stairs-assistance\prices\stairs-assistance-prices.js" />

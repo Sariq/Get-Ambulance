@@ -1,10 +1,11 @@
 ﻿
 'use strict';
-var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelService', 'ServicesSettingsService', function ($scope, $http, $state, $timeout, WhiteLabelService, ServicesSettingsService) {
+var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelService', 'ServicesSettingsService', 'UserManagerService', function ($scope, $http, $state, $timeout, WhiteLabelService, ServicesSettingsService, UserManagerService) {
     var ctrl = this;
 
    // ctrl.whiteLabelData = angular.copy(WhiteLabelService.getWhiteLabelDataLocal());
-  
+    ctrl.isSupportRole = UserManagerService.isSupportRole();
+
  
     ctrl.km = 1000;
     $scope.$on('supported-areas-updated', function (event, args) {

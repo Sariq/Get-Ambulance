@@ -1,0 +1,377 @@
+﻿<div class="resrvation-item inner-div ">
+    <div class="hidden-xs">
+
+        <div class="row ">
+            <div class="col-lg-12 ">
+                <div class="div-head-blue items-align-center pad-r-2 ">
+                    {{'Provider_Details' | translate}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+
+            <div class="pad-r-2 client-data">
+                <div class="col-lg-4 ">
+                    <div ng-repeat="info in companyInputsList1" class="row" ng-show="whiteLabel[info.model]">
+                        <div class="col-lg-6  col-md-6 ">
+                            {{info.name | translate}} :
+                        </div>
+                        <div class="col-lg-6  col-md-6 ">
+                            {{whiteLabel[info.model]}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 ">
+                    <div ng-repeat="info in companyInputsList2" class="row" ng-show="whiteLabel[info.model]">
+                        <div class="col-lg-6  col-md-6 ">
+                            {{info.name | translate}} :
+                        </div>
+                        <div class="col-lg-6  col-md-6 ">
+                            {{whiteLabel[info.model]}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="btn-container">
+                    <button ui-sref="dashboard.services-settings" class="btn green-btn">{{'Services_Info' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--Mobile-->
+<div class="mobile reservation-item hidden-lg hidden-md hidden-sm">
+    <div class="reservation-status">
+        <button ng-show="whiteLabel.Status=='3' || whiteLabel.Status=='5'" style="border-radius: 25px 25px 0 0!important;    width: 100%!important;" ng-click="chooseOtherProvider()" class="button button-full next-btn button-positive reservation-status-btn">{{'Choose_Another_Provider' | translate}}</button>
+
+        <div class="mobile-row ">
+            <div class="cont">
+                <div class="reservation-details">
+                    <div class="mobile-row ">
+                        <div class="col-50 details-title margin-auto">
+                            {{'Reservation_Details' | translate}}
+                            <div class="solid-border-bottom-30">
+                            </div>
+                        </div>
+                        <div class="col-50 details-title">
+                            <div class="mobile-row">
+                                <div class="col-20 col-container text-center" style="">
+                                    <span ng-switch="whiteLabel.Status">
+                                        <span ng-switch-when="1"><img src="/img/pending-icon.png" class="status-icon" /></span>
+                                        <span ng-switch-when="2"><img src="/img/accepted-icon.png" class="status-icon" /></span>
+                                        <span ng-switch-when="3"><img src="/img/ignored-icon.png" class="status-icon" /></span>
+                                        <span ng-switch-when="4"><img src="/img/accepted-icon.png" class="status-icon" /></span>
+                                        <span ng-switch-when="5"><img src="/img/ignored-icon.png" class="status-icon" /></span>
+                                    </span>
+                                </div>
+                                <div class="col-90 margin-auto" ng-class="{'pending-color':whiteLabel.Status=='1','accepted-color':whiteLabel.Status=='2','ignored-color':whiteLabel.Status=='3'}">
+                                    {{'The_Reservation' | translate}} <span ng-switch="whiteLabel.Status">
+                                        <span ng-switch-when="1">{{'Reservation_Pending' | translate}}</span>
+                                        <span ng-switch-when="2">{{'Reservation_Accepted' | translate}}</span>
+                                        <span ng-switch-when="3">{{'Reservation_Ignored' | translate}}</span>
+                                        <span ng-switch-when="4">{{'Reservation_Done' | translate}}</span>
+                                        <span ng-switch-when="5">{{'Reservation_Canceled' | translate}}</span>
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-container">
+
+                        <div ng-show="whiteLabel.Type" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Reservation_Type'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span ng-switch="whiteLabel.Type">
+                                    <span ng-switch-when="1">{{'Short_Ambulance_Reservation' | translate}}</span>
+                                    <span ng-switch-when="2">{{'Short_Medical_Therapist_Reservation' | translate}}</span>
+                                    <span ng-switch-when="3">{{'Short_Stairs_Assistance_Reservation' | translate}}</span>
+                                </span>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="whiteLabel.Reservation_Number" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Reservations_Num'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class=""> {{whiteLabel.Reservation_Number}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="whiteLabel.Price" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Price'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class="">  &#8362;{{whiteLabel.Price}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="itemForm.Date" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Date'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class=""> {{itemForm.Date | date : "dd/MM/y"}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Time" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Time'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class=""> {{itemForm.Time}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.From_Address" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'From_Address'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class=""> {{itemForm.From_Address}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.To_Address" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'To_Address'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class=""> {{itemForm.To_Address}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="itemForm.Ambulance_Type" class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Ambulance_Type'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class=""> {{itemForm.Ambulance_Type | translate }}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-switch="whiteLabel.Type">
+                            <div ng-switch-when="1">
+                                <div ng-show="itemForm.Direction_Type" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Drive_Direction_Type'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Direction_Type | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="itemForm.Need_Help_With_Stairs" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Need_Help_With_Stairs'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Need_Help_With_Stairs | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div ng-switch-when="2">
+
+                                <div ng-show="itemForm.Meeting_Address" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Meeting_Address'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-show="itemForm.Therapist_Stayig_Time" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Therapist_Stayig_Time'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Therapist_Stayig_Time | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="itemForm.Weight" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Weight'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Weight | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="itemForm.Current_Status" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Current_Status'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Current_Status | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="itemForm.Service_Options" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Service_Options'|translate}}</span>
+                                    </div>
+                                    <div class="col-80 value">
+                                        <div ng-repeat="serviceItem in itemForm.Service_Options" class="">- {{serviceItem._name| translate }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-switch-when="3">
+                                <div ng-show="itemForm.Meeting_Address" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Meeting_Address'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Meeting_Address | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="itemForm.Stairs_Assistance_Options" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Stairs_Assistance_Options'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Stairs_Assistance_Options | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-show="itemForm.Weight" class="mobile-row">
+                                    <div class="col-50 key">
+                                        <span class="">{{'Weight'|translate}}</span>
+                                    </div>
+                                    <div class="col-50 value">
+                                        <span class=""> {{itemForm.Weight | translate }}</span><div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div ng-show="whiteLabel.Full_Name" class="provider-details">
+                    <div class="mobile-row ">
+                        <div class="col-50 details-title margin-auto">
+                            {{'Client_Data' | translate}}
+                            <div class="solid-border-bottom-30">
+                            </div>
+                        </div>
+                        <div class="col-50 details-title">
+                            <div class="mobile-row">
+                                <div class="col-20 col-container text-center" style="">
+                                </div>
+                                <div class="col-80 margin-auto" ng-class="{'pending-color':selectedwhiteLabel.Status=='1','accepted-color':selectedwhiteLabel.Status=='2','ignored-color':selectedwhiteLabel.Status=='3'}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-container">
+                        <div class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Full_Name'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class=""> {{whiteLabel.Full_Name}}</span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Id_Number'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class="">
+                                    {{whiteLabel.Id_Number}}
+                                </span><div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Phone_Number'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class="">
+                                    {{whiteLabel.Phone_Number}}
+                                </span><div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mobile-row">
+                            <div class="col-50 key">
+                                <span class="">{{'Age'|translate}}</span>
+                            </div>
+                            <div class="col-50 value">
+                                <span class="">
+                                    {{whiteLabel.Age}}
+                                </span><div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div ng-show="itemForm.Cancel_Reason && itemForm.Cancel_Reason.length>0">
+                    <div class="mobile-row ">
+                        <div class="col-60 details-title">
+                            {{'Cancel_Reason' | translate}}
+                            <div class="solid-border-bottom-30">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-row ">
+                        <div class="col ">
+                            {{itemForm.Cancel_Reason}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div style="width: 95%;margin: auto;display:flex;" ng-show="whiteLabel.Status=='1'">
+        <button ng-click="openConfirmReservationDialog(reservation)" class="button  show-reservation-btn reservation-status-btn right-half-btn">
+            <span class="">{{'Open_Reservation' | translate}}</span>
+        </button>
+        <a ui-sref="dashboard.home" class="button  done-color-background  reservation-status-btn left-half-btn">
+            <span class="">{{'Back' | translate}}</span>
+        </a>
+    </div>
+    <div style="width:95%;margin: auto;display:flex;" ng-show="whiteLabel.Status!='1'">
+        <button ui-sref="dashboard.home" class="button  done-color-background  reservation-status-btn " style="width: 100%!important;">
+            <span class="">{{'Back' | translate}}</span>
+        </button>
+    </div>
+</div>
+<!--Mobile-->

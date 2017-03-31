@@ -1,7 +1,8 @@
 
 'use strict';
-var dayNightPriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService', function ($scope, PricesService, $state, WhiteLabelService) {
+var dayNightPriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService', 'UserManagerService', function ($scope, PricesService, $state, WhiteLabelService, UserManagerService) {
     var ctrl = this;
+    ctrl.isSupportRole = UserManagerService.isSupportRole();
 
     ctrl.whiteLabelData = WhiteLabelService.getWhiteLabelDataLocal();
 

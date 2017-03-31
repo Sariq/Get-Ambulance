@@ -1,8 +1,9 @@
 ﻿
 
-angular.module('sbAdminApp').controller('AmbulancePricesCtrl', function ($scope, ServicesSettingsService, WhiteLabelService) {
+angular.module('sbAdminApp').controller('AmbulancePricesCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, UserManagerService) {
     $scope.weightPActions = {};
     $scope.stairsBuildingPActions = {};
+    $scope.isSupportRole = UserManagerService.isSupportRole();
 
     
     $scope.initData = function () {

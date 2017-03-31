@@ -10,8 +10,11 @@
             <li ui-sref-active="active" ng-repeat="service in supportedServices">
                 <a ui-sref="{{service.goto}}"><img class="cat-img" style="" src="../img/{{service.logo}}" /> <span class="li-text">{{'Reservations' | translate}} {{service.Name | translate}}</span></a>
             </li>
-            <li ui-sref-active="active">
+            <li ng-if="!isSupportRole" ui-sref-active="active">
                 <a ui-sref="dashboard.services-settings"><img class="cat-img" style="" src="../img/settings.svg" /> <span class="li-text">{{'Services_Settings' | translate}}</span></a>
+            </li>
+            <li ng-if="isSupportRole" ui-sref-active="active">
+                <a ui-sref="dashboard.whitelabel-list"><img class="cat-img" style="" src="../img/all-reservation.svg" /> <span class="li-text">{{'Whitelabel_List' | translate}}</span></a>
             </li>
            
         </ul>

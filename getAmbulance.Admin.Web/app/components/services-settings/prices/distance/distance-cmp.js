@@ -1,7 +1,9 @@
 
 'use strict';
-var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService', function ($scope, PricesService, $state, WhiteLabelService) {
+var distancePriceCmp = ['$scope', 'PricesService', '$state', 'WhiteLabelService', 'UserManagerService', function ($scope, PricesService, $state, WhiteLabelService, UserManagerService) {
     var ctrl = this;
+    ctrl.isSupportRole = UserManagerService.isSupportRole();
+
     //PricesService.updatePricesByCategory("stairsBuilding");
     ctrl.myValue = 1;
     ctrl.initData = function () {

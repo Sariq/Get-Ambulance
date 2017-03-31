@@ -1,15 +1,36 @@
 ﻿
 
-angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, $filter) {
+angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, $filter, UserManagerService) {
     $scope.areaData = {};
-    $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
-    $scope.supportedServices = $scope.whiteLabel.supportedServices;
+    $scope.isSupportRole = UserManagerService.isSupportRole();
+    if (!$scope.isSupportRole) {
+        $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
+        $scope.supportedServices = $scope.whiteLabel.supportedServices;
+
+    } else {
+        $scope.selectedWhiteLabelId = WhiteLabelService.getSelectedWhiteLabelId();
+        WhiteLabelService.getWhiteLabelById($scope.selectedWhiteLabelId).then(function (res) {
+            $scope.whiteLabel = res;
+            $scope.supportedServices = $scope.whiteLabel.supportedServices;
+            WhiteLabelService.setSelctedWhiteLabelData(res);
+        })
+    }
 
 
     $scope.$on('whiteLabel-data-updated', function (event, args) {
-        $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
-        $scope.supportedServices = $scope.whiteLabel.supportedServices;
-        $scope.initOfferServices();
+        if (!$scope.isSupportRole) {
+            $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
+            $scope.supportedServices = $scope.whiteLabel.supportedServices;
+            $scope.initOfferServices();
+        } else {
+            $scope.selectedWhiteLabelId = WhiteLabelService.getSelectedWhiteLabelId();
+            WhiteLabelService.getWhiteLabelById($scope.selectedWhiteLabelId).then(function (res) {
+                $scope.whiteLabel = res;
+                $scope.supportedServices = $scope.whiteLabel.supportedServices;
+                $scope.initOfferServices();
+            })
+        }
+       
     });
 
     $scope.initOfferServices = function () {

@@ -17,14 +17,16 @@
                             </div>
                             <div class="col-lg-1">
                             </div>
-                            <div class="col-lg-1">
+                            <div ng-show="!isSupportRole">
+                                <div class="col-lg-1">
+                                    <span class="save-edit-cancel" ng-show="edit==true" ng-click="save();edit=false">{{'Save' | translate}}</span>
+                                    <span class="save-edit-cancel" ng-show="edit!=true" ng-click="edit=true">{{'Edit' | translate}}</span>
+                                </div>
+                                <div class="col-lg-1">
+                                    <span class="save-edit-cancel" ng-show="edit==true" ng-click="cancel();edit=false">{{'Cancel' | translate}}</span>
+                                </div>
+                            </div>
 
-                                <span class="btn btn-success save-edit-cancel" ng-show="edit==true" ng-click="save();edit=false">{{'Save' | translate}}</span>
-                                <span class="btn btn-warning save-edit-cancel" ng-show="edit!=true" ng-click="edit=true">{{'Edit' | translate}}</span>
-                            </div>
-                            <div class="col-lg-1">
-                                <span class="btn btn-danger save-edit-cancel" ng-show="edit==true" ng-click="cancel();edit=false">{{'Cancel' | translate}}</span>
-                            </div>
                         </div>
                     </div>
 

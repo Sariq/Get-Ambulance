@@ -22,7 +22,7 @@
             </div>
         </div>
         <br />
-        <div class="row  inner-wrapper " style="">
+        <div ng-show="!$ctrl.isSupportRole"  class="row  inner-wrapper " style="">
             <div class="col-lg-12  panel-body text-center" style="padding-right: 0;padding-left:0;">
                <button ng-click="$ctrl.add=true;$ctrl.edit=false;$ctrl.selectedArea=null;$ctrl.slider.value=5" class="btn green-btn" style="width:70%;margin: 0;"><span>+</span> {{'Add_New_Area' | translate}}</button>
             </div>
@@ -36,7 +36,7 @@
     </div>
 </div>
 <br />
-<div ng-show="$ctrl.edit==true">
+<div  ng-show="$ctrl.edit==true && !$ctrl.isSupportRole">
 
 
     <div class="row marg-btm-5">
@@ -73,7 +73,7 @@
                                 <button ng-click="$ctrl.updateSupportedAreas();" class="btn green-btn">{{'Save'| translate}}</button>
                             </div>
                         </div>
-                        <div class="col-lg-1 panel-body">
+                        <div  class="col-lg-1 panel-body">
                             <div>
                                 <button class="btn red-btn" ng-click="$ctrl.deleteSupportedAreas($ctrl.selectedArea);$ctrl.edit=false">{{"Delete"|translate}}</button>
                             </div>

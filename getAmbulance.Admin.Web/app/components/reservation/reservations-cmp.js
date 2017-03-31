@@ -1,9 +1,12 @@
 ﻿/// <reference path="reservations-cmp.js" />
 'use strict';
-var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', '$timeout', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog, $timeout) {
+var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', '$timeout', 'eUserRole', 'UserManagerService', 'WhiteLabelService', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog, $timeout, eUserRole, UserManagerService, WhiteLabelService) {
     var ctrl = this;
     ctrl.noReservations = false;
-
+    ctrl.userData = UserManagerService.getUserData();
+    ctrl.isSupportRole = UserManagerService.isSupportRole();
+    ctrl.whiteLabelsList = WhiteLabelService.getWhiteLabelsListLocal();
+    
     $scope.$on('update-reservations-list', function (event, args) {
         ctrl.getReservations();
     });
@@ -91,7 +94,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
 
             }
 
-            ctrl.tableData.push({
+            var reservationData = {
                 Client_ID: value.Client_ID,
                 Status: value.Status,
 
@@ -104,11 +107,19 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 timerEnd: timerEnd,
                 Timer: $filter('date')(Math.round((new Date() - new Date())), 'mm:ss'),
                 _id: value._id
-            });
+            };
+
+            if (ctrl.isSupportRole) {
+                var whiteLabel=$filter('filter')(ctrl.whiteLabelsList, { whiteLabel_Id: value.WhiteLabel_ID }, true)[0];
+                if (whiteLabel) {
+                    reservationData.WhiteLabel_Name = whiteLabel.name;
+                }
+            }
+            ctrl.tableData.push(reservationData);
             //  if (ctrl.reservationType !=null && ctrl.reservationType.length > 0) {
             ctrl.tableData[ctrl.tableData.length - 1].Type = value.Type;
             // }
-
+      
             ctrl.filter = {};
 
             var tempStatusFilterData = $filter('groupBy')(ctrl.reservationsList, "Status");
@@ -139,7 +150,9 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
              { field: "Reservation_Number", title: $filter('translate')('Number'), show: true, filter: { Reservation_Number: "text" } },
              { field: "Status", title: $filter('translate')('Status'), show: true, filter: { Status: "select" }, filterData: ctrl.filter.Status }
             ];
-
+            if (ctrl.isSupportRole) {
+                ctrl.cols.push({ field: "WhiteLabel_Name", title: $filter('translate')('WhiteLabel_Name'), show: true, filter: { WhiteLabel_Name: "text" } })
+            }
             ctrl.cols.push({ field: "Type", title: $filter('translate')('Type'), show: true, filter: { Type: "select" }, filterData: ctrl.filter.Type })
 
             ctrl.cols.push(

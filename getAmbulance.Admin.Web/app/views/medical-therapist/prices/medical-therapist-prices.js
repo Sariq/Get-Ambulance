@@ -1,8 +1,9 @@
 ﻿
 
-angular.module('sbAdminApp').controller('MedicalTherapistPricesCtrl', function ($scope, ServicesSettingsService, WhiteLabelService) {
+angular.module('sbAdminApp').controller('MedicalTherapistPricesCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, UserManagerService) {
     $scope.dayNightActions = {};
 
+    $scope.isSupportRole = UserManagerService.isSupportRole();
 
     $scope.initData = function () {
         $scope.supportedService = WhiteLabelService.getSupportedServicesByType("2");

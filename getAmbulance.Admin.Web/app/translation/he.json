@@ -231,8 +231,11 @@
   "WL_Already_Exist": "קיים ספק עם שם זה במערכת",
   "Show_Details": "הצג פרטים",
   "Of_The_Client": "של הלקוח",
-  "You_Can_Read": "באפשרותך לעיין ב"
-
+  "You_Can_Read": "באפשרותך לעיין ב",
+  "WhiteLabel_Name": "שם ספק",
+  "Whitelabel_List": "רשימת ספקים",
+  "Services_Info": "הצג שירותים",
+  "Supported_Area": "אזור תמיכה"
 
 
 

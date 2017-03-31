@@ -9,13 +9,17 @@
                 <div class="col-lg-10">
                     <span ng-show="$index==0">{{'Drive_Price_From_Km' | translate}} {{'The_First' | translate}}</span><span ng-show="$index!=0"> {{'Drive_Price_After_Km' | translate}}  {{$ctrl.whiteLabelData.prices.Private_Ambulance.distance[$index-1].distance}} {{'KM' | translate}}</span>
                 </div>
-                <div class="col-lg-1">
-                    <span ng-if="$last" ng-click="$ctrl.deleteItem($index)">{{'Delete' | translate}}</span>
+                <div ng-show="!$ctrl.isSupportRole">
+
+                    <div class="col-lg-1">
+                        <span ng-if="$last" ng-click="$ctrl.deleteItem($index)">{{'Delete' | translate}}</span>
+                    </div>
+                    <div class="col-lg-1">
+                        <span ng-show="distance.validations.isDistanceValid!=false && distance.edit==true" ng-click="$ctrl.saveItem($index)">{{'Save' | translate}}</span>
+                        <span ng-show="distance.edit!=true" ng-click="distance.edit=true">{{'Edit' | translate}}</span>
+                    </div>
                 </div>
-                <div class="col-lg-1">
-                    <span ng-show="distance.validations.isDistanceValid!=false && distance.edit==true" ng-click="$ctrl.saveItem($index)">{{'Save' | translate}}</span>
-                    <span ng-show="distance.edit!=true" ng-click="distance.edit=true">{{'Edit' | translate}}</span>
-                </div>
+
             </div>
             <div class="row row-eq-height inner ">
 
@@ -92,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div ng-show="!$ctrl.isSupportRole" class="row">
         <div class="col-lg-12 text-center">
             <div class="btn-container ">
                 <button class="btn green-btn add-drive-price" ng-click="$ctrl.addNewRangePrice();">{{'Add_Price' | translate}} <span>+</span></button>

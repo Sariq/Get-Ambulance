@@ -19,7 +19,7 @@
                     <div class="col-lg-10">
                         <span>{{'Service_Settings' | translate}} {{service.Name | translate}}</span>
                     </div>
-                    <div class="col-lg-1">
+                    <div ng-show="!isSupportRole" class="col-lg-1">
                         <span ng-click="deleteService(service)">{{'Delete' | translate}}</span>
                     </div>
                 </div>
@@ -28,7 +28,10 @@
                     <div class="col-lg-3 panel panel-default" style="margin-right:15px;">
                         <div class="row white-background panel-heading">
                             <div class="col-lg-12" style="padding: 0;text-align: center;">
-                                {{'Set_Price' | translate}} {{service.Name | translate}}
+                                <span ng-show="!isSupportRole">{{'Set_Price' | translate}}</span>
+                                <span ng-show="isSupportRole">{{'Price' | translate}}</span>
+
+                                {{service.Name | translate}}
                             </div>
                         </div>
 
@@ -39,19 +42,19 @@
                             <div class="col-lg-12 center-text" style="text-align: center;">
                                 <span ng-switch="service.Type">
                                     <span ng-switch-when="1">
-                                        <a ui-sref="dashboard.ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                        <a ui-sref="dashboard.ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn"><span ng-show="!isSupportRole">{{'Update_Price'| translate}}</span><span ng-show="isSupportRole">{{'Show'| translate}}</span></a>
                                     </span>
                                     <span ng-switch-when="2">
-                                        <a ui-sref="dashboard.medical-therapist-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                        <a ui-sref="dashboard.medical-therapist-prices" style="max-width:60%;" class="btn show-reservation-btn"><span ng-show="!isSupportRole">{{'Update_Price'| translate}}</span><span ng-show="isSupportRole">{{'Show'| translate}}</span></a>
                                     </span>
                                     <span ng-switch-when="3">
-                                        <a ui-sref="dashboard.stairs-assistance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                        <a ui-sref="dashboard.stairs-assistance-prices" style="max-width:60%;" class="btn show-reservation-btn"><span ng-show="!isSupportRole">{{'Update_Price'| translate}}</span><span ng-show="isSupportRole">{{'Show'| translate}}</span></a>
                                     </span>
                                     <span ng-switch-when="4">
-                                        <a ui-sref="dashboard.icu-ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                        <a ui-sref="dashboard.icu-ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn"><span ng-show="!isSupportRole">{{'Update_Price'| translate}}</span><span ng-show="isSupportRole">{{'Show'| translate}}</span></a>
                                     </span>
                                     <span ng-switch-when="5">
-                                        <a ui-sref="dashboard.ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Price'| translate}}</a>
+                                        <a ui-sref="dashboard.ambulance-prices" style="max-width:60%;" class="btn show-reservation-btn"><span ng-show="!isSupportRole">{{'Update_Price'| translate}}</span><span ng-show="isSupportRole">{{'Show'| translate}}</span></a>
                                     </span>
 
                                 </span>
@@ -64,7 +67,10 @@
                     <div class="col-lg-3 panel panel-default" style=" margin-right:15px;">
                         <div class="row white-background panel-heading">
                             <div class="col-lg-12" style="padding: 0;text-align: center;">
-                                {{'Set_Supported_Area' | translate}} {{service.Name | translate}}
+                                
+                                <span ng-show="!isSupportRole">{{'Update_Area'| translate}}</span>
+                                <span ng-show="isSupportRole">{{'Supported_Area' | translate}}</span>
+                                {{service.Name | translate}}
                             </div>
                         </div>
 
@@ -73,7 +79,11 @@
                                 <img class="cat-img" src="../img/{{service.Name}}-map.png" />
                             </div>
                             <div class="col-lg-12 center-text" style="text-align: center;">
-                                <a ui-sref="dashboard.supported-area({type:service.Type})" style="max-width:60%;" class="btn show-reservation-btn">{{'Update_Area'| translate}}</a>
+                                <a ui-sref="dashboard.supported-area({type:service.Type})" style="max-width:60%;" class="btn show-reservation-btn">
+                                
+                                    <span ng-show="!isSupportRole">{{'Update_Area'| translate}}</span><span ng-show="isSupportRole">{{'Show' | translate}}</span>
+
+                                </a>
                             </div>
                         </div>
 
@@ -83,7 +93,7 @@
 
         <br />
        
-        <div ng-show="offerServices.length>0">
+        <div ng-show="offerServices.length>0 && !isSupportRole">
 
             <div class="items">
                 <div class="row  item-header min-height-40 items-align-center cursor-pointer text-center">
@@ -96,7 +106,7 @@
 
 
 
-            <div class="row" style="margin-top:3px;">
+            <div ng-show="!isSupportRole"  class="row" style="margin-top:3px;">
                 <div ng-repeat="service in offerServices" class="col-lg-3 panel panel-default" style="margin-right: 15px;">
                     <div class="row white-background panel-heading">
                         <div class="col-lg-12" style="padding: 0;text-align: center;">

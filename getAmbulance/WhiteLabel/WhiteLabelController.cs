@@ -49,12 +49,14 @@ namespace getAmbulance.WhiteLabel
         }
         // Post: /WhiteLabel/GetWhiteLabelById
         [HttpPost]
-        public HttpResponseMessage GetWhiteLabelById(string whiteLabelId)
+        public HttpResponseMessage GetWhiteLabelById(JObject jsonData)
         {
             HttpResponseMessage response;
             try
             {
-                WhiteLabelEntity whiteLabel = _whiteLabelService.GetWhiteLabelById(whiteLabelId);
+                dynamic jsonObj = jsonData;
+
+                WhiteLabelEntity whiteLabel = _whiteLabelService.GetWhiteLabelById(jsonObj.whiteLabelId.Value);
 
                 response = Request.CreateResponse(HttpStatusCode.OK, whiteLabel);
             }
