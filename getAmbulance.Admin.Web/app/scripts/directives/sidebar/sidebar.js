@@ -30,28 +30,9 @@ angular.module('sbAdminApp')
                   $scope.initData();
               });
 
-              //$scope.isAmbulanceCatSup = $rootScope.isAmbulanceCatSup;
-              //$scope.isMedicalTherapistCatSup = $rootScope.isMedicalTherapistCatSup;
-              //$scope.isStairsAssistanceCatSup = $rootScope.isStairsAssistanceCatSup;
-              //$scope.selectedMenu = 'dashboard';
-              //$scope.collapseVar = 0;
-              //$scope.multiCollapseVar = 0;
-
-              //$scope.check = function (x) {
-
-              //    if (x == $scope.collapseVar)
-              //        $scope.collapseVar = 0;
-              //    else
-              //        $scope.collapseVar = x;
-              //};
-
-              //$scope.multiCheck = function (y) {
-
-              //    if (y == $scope.multiCollapseVar)
-              //        $scope.multiCollapseVar = 0;
-              //    else
-              //        $scope.multiCollapseVar = y;
-              //};
+              $scope.onChangeState = function () {
+                  WhiteLabelService.setSelctedWhiteLabelData(undefined);
+              }
           }
       }
   }]).directive('setHeight', function ($window) {

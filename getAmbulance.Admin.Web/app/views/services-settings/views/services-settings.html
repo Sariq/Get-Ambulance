@@ -65,9 +65,9 @@
                     </div>
 
                     <div class="col-lg-3 panel panel-default" style=" margin-right:15px;">
+
                         <div class="row white-background panel-heading">
                             <div class="col-lg-12" style="padding: 0;text-align: center;">
-                                
                                 <span ng-show="!isSupportRole">{{'Update_Area'| translate}}</span>
                                 <span ng-show="isSupportRole">{{'Supported_Area' | translate}}</span>
                                 {{service.Name | translate}}
@@ -80,14 +80,36 @@
                             </div>
                             <div class="col-lg-12 center-text" style="text-align: center;">
                                 <a ui-sref="dashboard.supported-area({type:service.Type})" style="max-width:60%;" class="btn show-reservation-btn">
-                                
                                     <span ng-show="!isSupportRole">{{'Update_Area'| translate}}</span><span ng-show="isSupportRole">{{'Show' | translate}}</span>
-
                                 </a>
                             </div>
                         </div>
 
                     </div>
+
+                    <div class="col-lg-3 panel panel-default" style="margin-right:15px;">
+
+                        <div class="row white-background panel-heading">
+                            <div class="col-lg-12" style="padding: 0;text-align: center;">
+                                <span>{{'Statistics' | translate}}</span>
+                                {{service.Name | translate}}
+                            </div>
+                        </div>
+
+                        <div class="row white-background panel-body">
+                            <div class="col-lg-12 text-center ">
+                                <img class="cat-img" src="../img/{{service.Name}}-map.png" />
+                            </div>
+                            <div class="col-lg-12 center-text" style="text-align: center;">
+                                <a ui-sref="dashboard.statistics({type:service.Type})" style="max-width:60%;" class="btn show-reservation-btn">
+                                    <span ng-show="!isSupportRole">{{'Update_Area'| translate}}</span><span ng-show="isSupportRole">{{'Show' | translate}}</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
             </div>
 

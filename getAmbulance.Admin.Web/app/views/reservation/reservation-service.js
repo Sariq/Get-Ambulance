@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', '$rootScope', '$q', '$filter', '$state', 'ngDialog', function ($http, ngAuthSettings, WhiteLabelService, localStorageService, $rootScope, $q, $filter, $state, ngDialog) {
+angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSettings', 'WhiteLabelService', 'localStorageService', '$rootScope', '$q', '$filter', '$state', 'ngDialog','UserManagerService', function ($http, ngAuthSettings, WhiteLabelService, localStorageService, $rootScope, $q, $filter, $state, ngDialog,UserManagerService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -9,8 +9,15 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
         var deferred = $q.defer();
         var data = {
             statusArray: statusArray,
-            whiteLabelId: WhiteLabelService.getWhiteLabelDataLocal().whiteLabelid,
+           
             typeArray: typeArray
+        }
+        var isSupportRole = UserManagerService.isSupportRole();
+
+        if (!isSupportRole || !WhiteLabelService.getSelctedWhiteLabelData()) {
+            data.whiteLabelId = WhiteLabelService.getWhiteLabelDataLocal().whiteLabelid;
+        } else {
+            data.whiteLabelId = WhiteLabelService.getSelctedWhiteLabelData().whiteLabelid;
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationsListByWhiteLabelIdByStatusByType', data).success(function (res) {
 
@@ -85,6 +92,9 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
                 break
             case '4':
                 return $filter('translate')('Reservation_Done');
+                break
+            case '5':
+                return $filter('translate')('Reservation_Canceled');
                 break
             
         }

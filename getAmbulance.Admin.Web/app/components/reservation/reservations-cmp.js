@@ -49,6 +49,16 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
             }
         });
     }
+    ctrl.goToReservationItem = function (reservation,status) {
+        ReservationService.setSelectedReservationId(reservation._id);
+        switch (status) {
+            case '3':
+                break
+            default:
+                $state.go('dashboard.reservation-item');
+                break
+        }
+    }
 
     ctrl.openConfirmReservationDialog = function (reservation) {
         $scope.selectedReservation = reservation;
@@ -65,10 +75,8 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 }
             });
         } else {
-            ctrl.updateReservationStatus(reservation, $scope.selectedReservation.Status);
-
+            ctrl.goToReservationItem($scope.selectedReservation,$scope.selectedReservation.Status);
         }
-
     }
 
     ctrl.prepareTableCols = function () {

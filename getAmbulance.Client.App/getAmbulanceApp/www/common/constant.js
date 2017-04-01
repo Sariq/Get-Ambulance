@@ -1,3 +1,3 @@
-﻿angular.module('starter.controllers').constant('eUserRole', {
-    Support: 1
+﻿angular.module('starter.controllers').constant('eReservationAdditionalProperties', {
+    PlaceTypeTest: 1
 });

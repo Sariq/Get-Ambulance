@@ -6,6 +6,7 @@
     "url": "https://github.com/start-angular/sb-admin-angular"
   },
   "dependencies": {
+    "angular-chart.js": "^1.1.1",
     "grunt-cache-control": "^0.2.5"
   },
   "devDependencies": {

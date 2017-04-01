@@ -42,12 +42,12 @@
   "Service_Options": "סוגי שירות",
   "Medical_Examination": "בדיקה",
   "Shower_Help": "מקלחת",
-    "Shower": "מקלחת",
+  "Shower": "מקלחת",
   "Stand_And_Move_Help": "עזרה בהרמה או העברה",
-    "Stand_And_Move": "עזרה בהרמה או העברה",
+  "Stand_And_Move": "עזרה בהרמה או העברה",
   "Supervision": "השגחה",
   "Shopping_Help": "קניות",
-   "Shopping": "קניות",
+  "Shopping": "קניות",
   "Stairs_Assistance_Options": "צורך העזרה במדרגות",
   "Stairs_Up": "העלאה",
   "Stairs_Down": "הורדה",
@@ -113,7 +113,7 @@
   "KG": "ק\"ג",
   "Ambulance_Price_Update": "טבלת מחירים אמבולנס",
   "Drive_Price_From_Km": "עלות נסיעה מהק\"מ",
-    "Drive_Price_After_Km": "עלות נסיעה ארוכה מ",
+  "Drive_Price_After_Km": "עלות נסיעה ארוכה מ",
   "KM": "ק\"מ",
   "Show": "הצג",
   "Timer": "זמן המתנה",
@@ -146,7 +146,7 @@
   "The_First": "הראשון",
   "Till": "עד",
   "Add_Price": "הוספת מחיר",
-  "Save" :"שמור",
+  "Save": "שמור",
   "Delete": "מחיקה",
   "Edit": "ערוך",
   "Price_Addition_Bigger": "תוספת מחיר מעל",
@@ -169,7 +169,7 @@
   "MedicalTherapist_price_Per_Hour": "עלות מלווה לשעה",
   "MedicalTherapist_Prices": "טבלת מחירים מלווה",
   "Cancel": "בטל",
-    "StairsAssistance_price_Per_Hour": "עלות עזרה במדרגות לשעה",
+  "StairsAssistance_price_Per_Hour": "עלות עזרה במדרגות לשעה",
   "StairsAssistance_Prices": "טבלת מחירים עזרה במדרגות",
   "Add_City_To_Supported_Area": "הוסף עיר לאזור שרות",
   "Selected_Citys": "ערים שנבחרו",
@@ -223,7 +223,7 @@
   "Not_Same_Password": "הסיסמא לא תואמת",
   "Please_Confirm": "נא לאשר",
   "Valid": "תקין",
-  "Password_Wrong_Format": "הסיסמא חייבת להכיל אותיות ומספרים באורך 6-15",
+  "Password_Wrong_Format": "הסיסמא חייבת להכיל אותיות ומספרים באורך 6:15",
   "UserName_Or_Password_Incorrect": "השם משתמש או הסיסמא לא נכונים",
   "Loading": "טוען",
   "User_Already_Taken": "השם משתמש כבר קיים",
@@ -235,7 +235,31 @@
   "WhiteLabel_Name": "שם ספק",
   "Whitelabel_List": "רשימת ספקים",
   "Services_Info": "הצג שירותים",
-  "Supported_Area": "אזור תמיכה"
+  "Supported_Area": "אזור תמיכה",
+  "Statistics": "סטטיסטיקה",
+  "Sunday ": "ראשון",
+  "Monday": "שני",
+  "Tuesday": "שלישי",
+  "Wednesday": "רביעי",
+  "Thursday": "חמישי",
+  "Friday": "שישי",
+  "Saturday": "שבת",
+  "January": "ינואר",
+  "February": "פברואר",
+  "March": "מרץ",
+  "April": "אפריל",
+  "May": "מאי",
+  "June": "יוני",
+  "July": "יולי",
+  "August": "אוגוסט",
+  "September": "ספטמבר",
+  "October": "אוקטובר",
+  "November": "נובמבר",
+  "December": "דצמבר",
+  "Per_Month": "לפי חודש",
+  "Reservations_Numner": "מספר הזמנות",
+  "Reservations_Status": "סטטוס הזמנות",
+  "Month_Bill": "חשבון לפי חודש"
 
 
 
@@ -243,11 +267,11 @@
 
 
 
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
 
 }
