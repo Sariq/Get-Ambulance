@@ -38,6 +38,7 @@ angular.module('sbAdminApp')
                       Need_Help_With_Stairs: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Need_Help_With_Stairs'),
                       distance: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'distance'),
                       Cancel_Reason: ReservationService.getValueByKey($scope.reservation.AdditionalProperties, 'Cancel_Reason')
+
                   }
                   break;
               case '2':

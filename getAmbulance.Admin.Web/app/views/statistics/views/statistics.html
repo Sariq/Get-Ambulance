@@ -8,8 +8,9 @@
             <div class="col-lg-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">{{'Reservations_Numner' | translate}} {{'Per_Month' | translate}}</div>
-                    <div class="panel-body">
-                        <canvas id="bar" chart-click="chartBarClick" class="chart chart-bar" chart-data="data" chart-labels="monthNames"></canvas>
+                    <div class="panel-body" style="min-height:270px;text-align:center">
+
+                        <canvas id="bar" chart-click="chartBarClick" class="chart chart-bar" chart-data="reservationCountChart.data" chart-labels="monthNames"></canvas>
                     </div>
                 </div>
             </div>
@@ -18,6 +19,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">{{'Reservations_Status' | translate}} {{'Per_Month' | translate}}</div>
                     <div class="panel-body">
+
                         <canvas id="doughnut" class="chart chart-doughnut" chart-data="statusChart.data" chart-labels="statusChart.labels" chart-colors="statusChart.colors" chart-series="statusChart.series"></canvas>
                     </div>
                 </div>

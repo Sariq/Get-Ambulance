@@ -28,11 +28,13 @@ namespace getAmbulance.WhiteLabel
             public string City { get; set; }
             public string Address { get; set; }
             public string LegalNumber { get; set; }
+            public DateTime? ActivateDate { get; set; }
 
 
             public WhiteLabelEntity() {
                 this.supportedServices = new List<SupportedService>();
                 this.isBlocked = false;
+                this.ActivateDate =null ;
             }
 
 
@@ -81,6 +83,7 @@ namespace getAmbulance.WhiteLabel
             public string name { get; set; }
             public string logo { get; set; }
             public string phoneNumber { get; set; }
+
 
 
         }

@@ -13,23 +13,22 @@ angular.module('sbAdminApp')
       $scope.initChart = function (chartObject) {
 
       }
-      $scope.convertMonthToNumber = function (chartObject) {
-          $scope.data = StatisticsService.convertMonthToNumber($scope.reservationsList,new Date().getYear());
-      }
-      $scope.convertDayToNumber = function (chartObject) {
-          $scope.data = StatisticsService.convertDayToNumber($scope.reservationsList);
-      }
+
       $scope.initReservationCountView = function () {
-          $scope.convertMonthToNumber();
+          $scope.reservationCountChart = {};
+          var data = StatisticsService.convertMonthToNumber($scope.reservationsList, new Date().getYear());
+          $scope.reservationCountChart.data = data;
+         // $scope.reservationCountChart.isZeroResults=StatisticsService.isZeroResults();
       }
       $scope.initReservationStatusView = function () {
-          $scope.statusChart = StatisticsService.groupByStatus($scope.reservationsList);
+          $scope.statusChart = StatisticsService.groupByStatus($scope.reservationsList, new Date().getYear());
           $scope.statusChart.colors = ['#fdb45c', '#46bfbd', '#f7464a', '#57c059', '#ff0000'];
           $scope.statusChart.series = $scope.statusChart.labels;
       }
       $scope.initReservationVBillView = function () {
-                $scope.billChart = {};
-                $scope.billChart.data = StatisticsService.getBillData($scope.reservationsList, new Date().getYear());
+          $scope.billChart = {};
+          var data = StatisticsService.getBillData($scope.reservationsList, new Date().getYear());
+          $scope.billChart.data = data;
       }
       $scope.initSupportView = function () {
           $scope.initReservationCountView();

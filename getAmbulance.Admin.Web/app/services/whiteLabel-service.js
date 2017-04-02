@@ -322,6 +322,21 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
        }
     ]
 
+    var _isActivated = function () {
+        var isSupportRole = UserManagerService.isSupportRole();
+        if (!isSupportRole) {
+            var whiteLabel = _getWhiteLabelDataLocal();
+        } else {
+            var whiteLabel = _getSelctedWhiteLabelData();
+        }
+        if (whiteLabel && whiteLabel.ActivateDate) {
+            return whiteLabel.ActivateDate;
+        }
+        return null;
+    }
+
+
+
     WhiteLabelServiceFactory.initSupportedServiceByType = _initSupportedServiceByType;
     WhiteLabelServiceFactory.updateWhiteLabelIsOnline = _updateWhiteLabelIsOnline;
     WhiteLabelServiceFactory.setWhiteLabelData = _setWhiteLabelData;
@@ -339,6 +354,9 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
     WhiteLabelServiceFactory.getWhiteLabelById = _getWhiteLabelById;
     WhiteLabelServiceFactory.setSelctedWhiteLabelData = _setSelctedWhiteLabelData;
     WhiteLabelServiceFactory.getSelctedWhiteLabelData = _getSelctedWhiteLabelData;
+    WhiteLabelServiceFactory.isActivated = _isActivated;
+
+    
 
     
 

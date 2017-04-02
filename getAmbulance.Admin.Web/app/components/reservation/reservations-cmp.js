@@ -6,7 +6,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
     ctrl.userData = UserManagerService.getUserData();
     ctrl.isSupportRole = UserManagerService.isSupportRole();
     ctrl.whiteLabelsList = WhiteLabelService.getWhiteLabelsListLocal();
-    
+
     $scope.$on('update-reservations-list', function (event, args) {
         ctrl.getReservations();
     });
@@ -49,7 +49,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
             }
         });
     }
-    ctrl.goToReservationItem = function (reservation,status) {
+    ctrl.goToReservationItem = function (reservation, status) {
         ReservationService.setSelectedReservationId(reservation._id);
         switch (status) {
             case '3':
@@ -61,8 +61,9 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
     }
 
     ctrl.openConfirmReservationDialog = function (reservation) {
+
         $scope.selectedReservation = reservation;
-        if ($scope.selectedReservation.Status == '1') {
+        if (!ctrl.isSupportRole && $scope.selectedReservation.Status == '1') {
             ngDialog.open({
                 template: 'popUp/reservations-cmp/open-reservation.html',
                 className: 'ngdialog-theme-default',
@@ -75,7 +76,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
                 }
             });
         } else {
-            ctrl.goToReservationItem($scope.selectedReservation,$scope.selectedReservation.Status);
+            ctrl.goToReservationItem($scope.selectedReservation, $scope.selectedReservation.Status);
         }
     }
 
@@ -118,16 +119,21 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
             };
 
             if (ctrl.isSupportRole) {
-                var whiteLabel=$filter('filter')(ctrl.whiteLabelsList, { whiteLabel_Id: value.WhiteLabel_ID }, true)[0];
+                var whiteLabel = $filter('filter')(ctrl.whiteLabelsList, { whiteLabel_Id: value.WhiteLabel_ID }, true)[0];
                 if (whiteLabel) {
                     reservationData.WhiteLabel_Name = whiteLabel.name;
                 }
+                if (reservationData.timerEnd) {
+                    ctrl.tableData.push(reservationData);
+                }
+            } else {
+                ctrl.tableData.push(reservationData);
             }
-            ctrl.tableData.push(reservationData);
+
             //  if (ctrl.reservationType !=null && ctrl.reservationType.length > 0) {
             ctrl.tableData[ctrl.tableData.length - 1].Type = value.Type;
             // }
-      
+
             ctrl.filter = {};
 
             var tempStatusFilterData = $filter('groupBy')(ctrl.reservationsList, "Status");
