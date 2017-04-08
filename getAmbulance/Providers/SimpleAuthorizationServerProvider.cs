@@ -87,7 +87,7 @@ namespace getAmbulance.Providers
                 {
                     IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
 
-                    bool IsPhoneNumberConfirmed = await _repo.IsEmailConfirmed(context.UserName);
+                    bool IsEmailConfirmed = await _repo.IsEmailConfirmed(context.UserName);
 
                     if (user == null)
                     {
@@ -95,9 +95,9 @@ namespace getAmbulance.Providers
                         return;
                     }
 
-                    if (!IsPhoneNumberConfirmed)
+                    if (!IsEmailConfirmed)
                     {
-                        context.SetError("Email Confirmation", "The Email is not confirmed.");
+                        context.SetError(((int)(eWLUser.EmailNotConfirmed)).ToString(), "The Email is not confirmed.");
                         return;
                     }
 

@@ -105,5 +105,9 @@ namespace getAmbulance.Models {
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
-    
+    public enum eWLUser
+    {
+        UserAlreadyExist = 0,
+        EmailNotConfirmed = 1
+    }
 }

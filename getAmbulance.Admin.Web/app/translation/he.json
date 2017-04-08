@@ -259,7 +259,10 @@
   "Per_Month": "לפי חודש",
   "Reservations_Numner": "מספר הזמנות",
   "Reservations_Status": "סטטוס הזמנות",
-  "Month_Bill": "חשבון לפי חודש"
+  "Month_Bill": "חשבון לפי חודש",
+  "Mail_Sent_To": "נשלח דוא\"ל ל",
+  "To_Confirm_Account": "עם לינק לאישור החשבון והתחברות למערכת",
+  "Login": "התחבר"
 
 
 

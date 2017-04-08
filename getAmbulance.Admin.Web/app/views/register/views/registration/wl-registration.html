@@ -14,8 +14,9 @@
             <div class="col-lg-12 items min-height-40 items-align-center ">
                 <div class="item-header width-100">
                     <div style="padding: 10px 10px 10px 0;color:red">
-                        <span  ng-show="!isRegisterSuccess">*{{'User_Already_Taken' | translate}}</span>
-                        <span  ng-show="!isWlRegisterSuccess">*{{wlRegisterErrMsg | translate}}</span>
+                        <span ng-show="!isRegisterSuccess">*{{'User_Already_Taken' | translate}}</span>
+                        <!--<span ng-show="!isWlUserRegisterSuccess">*{{wlUserRegisterErrMsg | translate}}</span>
+                        <span ng-show="!isWlRegisterSuccess">*{{wlRegisterErrMsg | translate}}</span>-->
                     </div>
 
 
@@ -23,142 +24,153 @@
             </div>
         </div>
     </div>
-
-
-    <form name="WLRegisterForm" role="form">
-        <div class="inner-div" style="margin:0 10% 0 10%">
-            <div class="row  ">
-                <div class="col-lg-6">
-                    <div style="padding:10px">
-                        <h4 class="ng-binding color-blue2" style="padding:10px 0 10px 0">{{'Provider_Info' | translate}}</h4>
-                        <div>
-                            <div class="row  ">
-                                <div class="col-lg-6">
-                                    <div class="inputs">
-                                        <div ng-repeat="input in companyInputsList1">
-                                            <div class="input-container">
-                                                <div class="form-group label-floating">
-                                                    <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span ng-show="input.isRequired" style="color:red">*</span></span>
-                                                    <input type="{{input.type}}" class="form-control input-underline input-lg"
-                                                           name="{{input.name}}" ng-model="wlForm[input.model]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}">
-                                                </div>
-                                                <span class="err-msg" id="{{input.name}}"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="inputs">
-                                        <div ng-repeat="input in companyInputsList2">
-                                            <div class="input-container">
-                                                <div class="form-group label-floating">
-                                                    <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span ng-show="input.isRequired" style="color:red">*</span></span>
-                                                    <input type="{{input.type}}" class="form-control input-underline input-lg"
-                                                           name="{{input.name}}" ng-model="wlForm[input.model]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}" email-error-message="{{'Insert'|translate}} {{input.name |translate}} {{'Valid'|translate}}">
-                                                </div>
-                                                <span class="err-msg" id="{{input.name}}"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
+    <div ng-show="isRegisterCompleted" class="inner-div" style="margin:0 10% 0 10%">
+        <div class="row">
+            <div class="col-lg-12" style="min-height:500px;min-height: 500px;display: table;height: 100%;width: 100%;">
+                <div style="display: table-cell;vertical-align: middle;text-align: center;" >{{'Mail_Sent_To' | translate}} <span>{{wlUserForm["Email"]}}</span> {{'To_Confirm_Account' | translate}}.
+                <br />
+                    <a ui-sref="login" style="font-weight: bold;">{{'Login' | translate}}</a>
                 </div>
-
-
-
-                <div class="col-lg-6">
-                    <div style="padding:10px">
-                        <div>
-                            <div class="row  ">
-
-                                <div class="col-lg-1">
-
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <h4 class="ng-binding color-blue2" style="padding:10px 0 10px 0">{{'LogIn_User_Info' | translate}}</h4>
-
-                                    <div class="inputs">
-                                        <div ng-repeat="input in userInputsList">
-                                            <div class="input-container">
-                                                <div class="form-group label-floating">
-                                                    <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span class="control-label color-blue2" ng-show="input.name2">({{input.name2 | translate}})</span><span ng-show="input.isRequired" style="color:red">*</span></span>
-                                                    <input type="{{input.type}}" class="form-control input-underline input-lg"
-                                                           name="{{input.name}}" ng-model="wlUserForm[input.model]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}" email-error-message="{{'Insert'|translate}} {{input.name |translate}} {{'Valid'|translate}}" checkpassword-error-message="{{'Password_Wrong_Format' | translate}}">
-                                                </div>
-                                                <span class="err-msg" id="{{input.name}}"></span>
-                                            </div>
-                                        </div>
-                                        <div class="input-container">
-                                            <div class="form-group label-floating">
-                                                <span for="i5" class="control-label color-blue2">{{'Confirm_Password' | translate}}<span ng-show="true" style="color:red">*</span></span>
-                                                <input type="password" class="form-control input-underline input-lg"
-                                                       name="Confirm_Password"  ng-model="wlUserForm['ConfirmPassword ']" message-id="Confirm_Password" valid-method="blur" validator="checkConfirmPassword,required" required-error-message="{{'Not_Same_Password'|translate}}" check-confirm-password-error-message="{{'Not_Same_Password'|translate}}" >
-                                            </div>
-
-                                            <span class="err-msg" id="Confirm_Password"></span>
-                                        </div>
-                                        <div class="terms">
-                                            <div class="no-breakline checkbox-container">
-                                                <div class="btn-group checkbox " data-toggle="buttons">
-                                                    <label class="btn btn-info" ng-click="TermsAndConditions=!TermsAndConditions">
-                                                        <input ng-model="TermsAndConditions" name="Terms_And_Conditions" message-id="Terms_And_Conditions" valid-method="watch" validator="required" required-error-message="{{'Please_Confirm'|translate}} {{'Terms_And_Conditions' | translate}}"  type="checkbox">
-                                                        <span class="glyphicon glyphicon-ok"></span>
-                                                    </label>
-
-                                                </div>
-                                                <span>{{'Read_The' | translate}} <a class="cursor-pointer" ng-click="openTermsDialog();">{{'Terms_And_Conditions' | translate}}</a> {{'WebsiteServices_And_Confirm' | translate}}</span>
-                                                <div style="margin-right: 23px;margin-top: -4px;" class="err-msg" id="Terms_And_Conditions"></div>
-                                            </div>
-
-                                            <div class="no-breakline checkbox-container">
-                                                <div class="btn-group checkbox " data-toggle="buttons">
-                                                    <label class="btn btn-info" ng-click="wlUserForm.IsServicesOffer=!wlUserForm.IsServicesOffer">
-                                                        <input ng-model="wlUserForm.IsServicesOffer" type="checkbox">
-                                                        <span class="glyphicon glyphicon-ok"></span>
-                                                    </label>
-                                                </div>
-                                                <span>{{'Confirm_Mail_About_Services' | translate}}</span>
-                                            </div>
-                                            <div class="no-breakline checkbox-container">
-                                                <div class="btn-group checkbox " data-toggle="buttons">
-                                                    <label class="btn btn-info" ng-click="wlUserForm.IsInvoiceByMail=!wlUserForm.IsInvoiceByMail">
-                                                        <input ng-model="wlUserForm.IsInvoiceByMail" type="checkbox">
-                                                        <span class="glyphicon glyphicon-ok"></span>
-                                                    </label>
-                                                </div>
-                                                <span>{{'Confirm_Mail_About_Invoice' | translate}}</span>
-                                            </div>
-
-                                            <div class="no-breakline checkbox-container">
-                                                <div class="btn-group checkbox " data-toggle="buttons">
-
-                                                </div>
-                                                * <span>{{'You_Can_Read' | translate}} <a class="cursor-pointer" ng-click="openClientTermsDialog();">{{'Terms_And_Conditions' | translate}}</a> {{'Of_The_Client' | translate}}</span>
-                                            </div>
-                                        </div>
-                                        <br />
-
-
-                                    </div>
-                                    <button ng-disabled="isLoading" class="btn blue-btn" validation-submit="WLRegisterForm" ng-click="addWL()">
-                                    <span ng-show="!isLoading">{{'Save' | translate}}</span>
-                                    <span ng-show="isLoading">{{'Loading' | translate}}...</span>
-                                    </button>
-                                </div>
-                       
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                
+              </div>
+          
         </div>
-    </form>
-</div>
+        </div>
+
+            <form ng-show="!isRegisterCompleted" name="WLRegisterForm" role="form">
+                <div class="inner-div" style="margin:0 10% 0 10%">
+                    <div class="row  ">
+                        <div class="col-lg-6">
+                            <div style="padding:10px">
+                                <h4 class="ng-binding color-blue2" style="padding:10px 0 10px 0">{{'Provider_Info' | translate}}</h4>
+                                <div>
+                                    <div class="row  ">
+                                        <div class="col-lg-6">
+                                            <div class="inputs">
+                                                <div ng-repeat="input in companyInputsList1">
+                                                    <div class="input-container">
+                                                        <div class="form-group label-floating">
+                                                            <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span ng-show="input.isRequired" style="color:red">*</span></span>
+                                                            <input type="{{input.type}}" class="form-control input-underline input-lg"
+                                                                   name="{{input.name}}" ng-model="wlForm[input.model]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}">
+                                                        </div>
+                                                        <span class="err-msg" id="{{input.name}}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="inputs">
+                                                <div ng-repeat="input in companyInputsList2">
+                                                    <div class="input-container">
+                                                        <div class="form-group label-floating">
+                                                            <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span ng-show="input.isRequired" style="color:red">*</span></span>
+                                                            <input type="{{input.type}}" class="form-control input-underline input-lg"
+                                                                   name="{{input.name}}" ng-model="wlForm[input.model]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}" email-error-message="{{'Insert'|translate}} {{input.name |translate}} {{'Valid'|translate}}">
+                                                        </div>
+                                                        <span class="err-msg" id="{{input.name}}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6">
+                            <div style="padding:10px">
+                                <div>
+                                    <div class="row  ">
+
+                                        <div class="col-lg-1">
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <h4 class="ng-binding color-blue2" style="padding:10px 0 10px 0">{{'LogIn_User_Info' | translate}}</h4>
+
+                                            <div class="inputs">
+                                                <div ng-repeat="input in userInputsList">
+                                                    <div class="input-container">
+                                                        <div class="form-group label-floating">
+                                                            <span for="i5" class="control-label color-blue2">{{input.name | translate}}<span class="control-label color-blue2" ng-show="input.name2">({{input.name2 | translate}})</span><span ng-show="input.isRequired" style="color:red">*</span></span>
+                                                            <input type="{{input.type}}" class="form-control input-underline input-lg"
+                                                                   name="{{input.name}}" ng-model="wlUserForm[input.model]" message-id="{{input.name}}" valid-method="{{input.validMethod}}" validator="{{input.validator}}" required-error-message="{{'Insert'|translate}} {{input.name |translate}}" email-error-message="{{'Insert'|translate}} {{input.name |translate}} {{'Valid'|translate}}" checkpassword-error-message="{{'Password_Wrong_Format' | translate}}">
+                                                        </div>
+                                                        <span class="err-msg" id="{{input.name}}"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="input-container">
+                                                    <div class="form-group label-floating">
+                                                        <span for="i5" class="control-label color-blue2">{{'Confirm_Password' | translate}}<span ng-show="true" style="color:red">*</span></span>
+                                                        <input type="password" class="form-control input-underline input-lg"
+                                                               name="Confirm_Password" ng-model="wlUserForm['ConfirmPassword ']" message-id="Confirm_Password" valid-method="blur" validator="checkConfirmPassword,required" required-error-message="{{'Not_Same_Password'|translate}}" check-confirm-password-error-message="{{'Not_Same_Password'|translate}}">
+                                                    </div>
+
+                                                    <span class="err-msg" id="Confirm_Password"></span>
+                                                </div>
+                                                <div class="terms">
+                                                    <div class="no-breakline checkbox-container">
+                                                        <div class="btn-group checkbox " data-toggle="buttons">
+                                                            <label class="btn btn-info" ng-click="TermsAndConditions=!TermsAndConditions">
+                                                                <input ng-model="TermsAndConditions" name="Terms_And_Conditions" message-id="Terms_And_Conditions" valid-method="watch" validator="required" required-error-message="{{'Please_Confirm'|translate}} {{'Terms_And_Conditions' | translate}}" type="checkbox">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                            </label>
+
+                                                        </div>
+                                                        <span>{{'Read_The' | translate}} <a class="cursor-pointer" ng-click="openTermsDialog();">{{'Terms_And_Conditions' | translate}}</a> {{'WebsiteServices_And_Confirm' | translate}}</span>
+                                                        <div style="margin-right: 23px;margin-top: -4px;" class="err-msg" id="Terms_And_Conditions"></div>
+                                                    </div>
+
+                                                    <div class="no-breakline checkbox-container">
+                                                        <div class="btn-group checkbox " data-toggle="buttons">
+                                                            <label class="btn btn-info" ng-click="wlUserForm.IsServicesOffer=!wlUserForm.IsServicesOffer">
+                                                                <input ng-model="wlUserForm.IsServicesOffer" type="checkbox">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                            </label>
+                                                        </div>
+                                                        <span>{{'Confirm_Mail_About_Services' | translate}}</span>
+                                                    </div>
+                                                    <div class="no-breakline checkbox-container">
+                                                        <div class="btn-group checkbox " data-toggle="buttons">
+                                                            <label class="btn btn-info" ng-click="wlUserForm.IsInvoiceByMail=!wlUserForm.IsInvoiceByMail">
+                                                                <input ng-model="wlUserForm.IsInvoiceByMail" type="checkbox">
+                                                                <span class="glyphicon glyphicon-ok"></span>
+                                                            </label>
+                                                        </div>
+                                                        <span>{{'Confirm_Mail_About_Invoice' | translate}}</span>
+                                                    </div>
+
+                                                    <div class="no-breakline checkbox-container">
+                                                        <div class="btn-group checkbox " data-toggle="buttons">
+
+                                                        </div>
+                                                        * <span>{{'You_Can_Read' | translate}} <a class="cursor-pointer" ng-click="openClientTermsDialog();">{{'Terms_And_Conditions' | translate}}</a> {{'Of_The_Client' | translate}}</span>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+
+                                            </div>
+                                            <button ng-disabled="isLoading" class="btn blue-btn" validation-submit="WLRegisterForm" ng-click="addWL()">
+                                                <span ng-show="!isLoading">{{'Save' | translate}}</span>
+                                                <span ng-show="isLoading">{{'Loading' | translate}}...</span>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
 
 
