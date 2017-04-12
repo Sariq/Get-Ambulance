@@ -222,13 +222,16 @@ namespace getAmbulance.Reservation
         {
             List<WhiteLabelOfferEntity> whiteLabelsOfferList = new List<WhiteLabelOfferEntity>();
             List<WhiteLabelEntity> whiteLabelsList = _whiteLabelService.GetWhiteLabelsListByStatusAndServiceSupport(true, "2");
-            List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj, "2");
-
-            foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
+            if (whiteLabelsList != null)
             {
-                int extraServicesPrice = getMedicalTherapistPriceByHour(whiteLabel, jsonObj.form,"2");
-                int finalPrice = extraServicesPrice;
-                whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
+                List<WhiteLabelEntity> filterdWhiteLabelLiset = _whiteLabelService.filterWhiteLabelListBySupportedArea(whiteLabelsList, jsonObj, "2");
+
+                foreach (WhiteLabelEntity whiteLabel in filterdWhiteLabelLiset)
+                {
+                    int extraServicesPrice = getMedicalTherapistPriceByHour(whiteLabel, jsonObj.form, "2");
+                    int finalPrice = extraServicesPrice;
+                    whiteLabelsOfferList.Add(new WhiteLabelOfferEntity(whiteLabel.whiteLabelid, whiteLabel.name, whiteLabel.logo, finalPrice));
+                }
             }
             return whiteLabelsOfferList;
         }

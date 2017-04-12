@@ -146,6 +146,7 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
     ]
     $scope.isRegisterSuccess = true;
     $scope.isWlRegisterSuccess = true;
+    $scope.isRegisterCompleted = false;
     $scope.addWL = function () {
         $rootScope.isLoading = true;
         RegisterService.addWhiteLabel($scope.wlForm).then(function (res) {
@@ -162,7 +163,9 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
         $scope.wlUserForm.whiteLabelid = whiteLabelid;
         RegisterService.registerWhiteLabelUser($scope.wlUserForm).then(function (res) {
             $scope.isRegisterSuccess = true;
+            $scope.isRegisterCompleted = true;
         }, function (err) {
+            $scope.isRegisterCompleted = false;
             $scope.isRegisterSuccess = false;
             $rootScope.isLoading = false;
         });
