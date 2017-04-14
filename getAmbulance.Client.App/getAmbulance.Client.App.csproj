@@ -275,6 +275,8 @@
     <Content Include="getAmbulanceApp\www\index.html" />
     <Content Include="getAmbulanceApp\www\js\app.js" />
     <Content Include="getAmbulanceApp\www\js\controllers.js" />
+    <Content Include="getAmbulanceApp\www\lib\bluebird.min.js" />
+    <Content Include="getAmbulanceApp\www\lib\ionic.cloud.min.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\css\ionic.css" />
     <Content Include="getAmbulanceApp\www\lib\ionic\css\ionic.min.css" />
     <Content Include="getAmbulanceApp\www\lib\ionic\fonts\ionicons.svg" />

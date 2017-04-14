@@ -49,6 +49,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
  clientId: 'consoleApp',
  clientSecret: '123@abc'
 }).config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $validationProvider, $httpProvider) {
+
+    //$ionicCloudProvider.init({
+    //    "core": {
+    //        "app_id": "e218cd1c"
+    //    }
+    //});
+
     $validationProvider.showSuccessMessage = false;
     $translateProvider.preferredLanguage('he');
     $httpProvider.interceptors.push('authInterceptorService');

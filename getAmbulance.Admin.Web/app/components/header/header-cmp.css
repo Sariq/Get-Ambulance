@@ -19,7 +19,7 @@
     margin:auto;
 }
 .nav-header .img-container{
-       width: 50%;
+       /*width: 50%;*/
     float: left;
 }
 @media screen and (max-width: 800px) {

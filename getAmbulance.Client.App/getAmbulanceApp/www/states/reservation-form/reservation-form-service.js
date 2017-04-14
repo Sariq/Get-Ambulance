@@ -126,17 +126,21 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation.Phone_Number =Reservation_Form.Phone_Number;
         reservation.Age = Reservation_Form.Age.toString();
         reservation.Id_Number = Reservation_Form.Id_Number.toString();
-        reservation._id = Reservation_Form._id;
+       // reservation._id = Reservation_Form._id;
         if (Reservation_Form.Reservation_Number) {
             reservation.Reservation_Number = Reservation_Form.Reservation_Number;
         }
         if (Reservation_Form._id) {
-            reservation.Reservation_Number = Reservation_Form._id;
+          //  reservation.Reservation_Number = Reservation_Form._id;
         }
         delete Reservation_Form.Full_Name;
         delete Reservation_Form.Phone_Number;
         delete Reservation_Form.Age;
         delete Reservation_Form.Id_Number;
+        delete Reservation_Form.Client_ID;
+        delete Reservation_Form.Reservation_Number;
+        delete Reservation_Form.Type;
+        delete Reservation_Form.AdditionalProperties;
         reservation.AdditionalProperties = [];
 
         angular.forEach(Reservation_Form, function (value, key) {
@@ -158,13 +162,24 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation.Phone_Number = Reservation_Form.Phone_Number;
         reservation.Age = Reservation_Form.Age;
         reservation.Id_Number = Reservation_Form.Id_Number.toString();
-        reservation.Reservation_Number = Reservation_Form.Reservation_Number;
+        reservation.Reservation_Number = null;
         reservation._id = Reservation_Form._id;
 
 
  
 
         angular.forEach(Reservation_Form.AdditionalProperties, function (value, key) {
+            if (value._value.constructor === Array) {
+                var tempObj = {};
+                angular.forEach(value._value, function (valueInner, keyInner) {
+                   // value._value[valueInner._name] = valueInner._value;
+                    tempObj[valueInner._name] =valueInner._value;
+                });
+                
+              //  value._value.splice(0, value._value.length);
+                value._value = tempObj;
+
+            }
             reservation[value._name] = value._value;
         })
         delete Reservation_Form.AdditionalProperties;

@@ -1064,9 +1064,9 @@
     <Content Include="app\views\ambulance\prices\ambulance-prices.css" />
     <Content Include="app\views\ambulance\prices\ambulance-prices.html" />
     <Content Include="app\views\ambulance\prices\ambulance-prices.js" />
-    <Content Include="app\views\ambulance\supported-area\supported-area.css" />
-    <Content Include="app\views\ambulance\supported-area\supported-area.html" />
-    <Content Include="app\views\ambulance\supported-area\supported-area.js" />
+    <Content Include="app\views\services-settings\views\supported-area\supported-area.css" />
+    <Content Include="app\views\services-settings\views\supported-area\supported-area.html" />
+    <Content Include="app\views\services-settings\views\supported-area\supported-area.js" />
     <Content Include="app\views\dashboard\home\home.js" />
     <Content Include="app\views\medical-therapist\prices\medical-therapist-prices.css" />
     <Content Include="app\views\medical-therapist\prices\medical-therapist-prices.html" />
