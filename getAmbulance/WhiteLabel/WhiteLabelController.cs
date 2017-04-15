@@ -304,7 +304,7 @@ namespace getAmbulance.WhiteLabel
                 foreach (string file in httpRequest.Files)
                 {
                     var postedFile = httpRequest.Files[file];
-                    string Parent = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/")).Parent.FullName;
+                    string Parent = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/")).FullName;
                     string wlId = httpRequest.Headers["WLId"];
                     _whiteLabelService.UploadWhiteLabelLogoName(wlId, Parent);
 
