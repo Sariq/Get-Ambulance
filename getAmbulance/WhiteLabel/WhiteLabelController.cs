@@ -6,10 +6,12 @@ using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Web;
 using System.Web.Http;
 using static getAmbulance.WhiteLabel.WhiteLabelModel;
 
@@ -288,6 +290,36 @@ namespace getAmbulance.WhiteLabel
             return response;
         }
 
+
+        // Post: /WhiteLabel/UploadWhiteLabelLogo
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage UploadWhiteLabelLogo()
+        {
+            HttpResponseMessage result = null;
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 0)
+            {
+                var docfiles = new List<string>();
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    string Parent = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/")).Parent.FullName;
+                    string wlId = httpRequest.Headers["WLId"];
+                    var filePath = Parent + "/img/"+ postedFile.FileName;
+                    postedFile.SaveAs(filePath);
+                    docfiles.Add(filePath);
+                    _whiteLabelService.UploadWhiteLabelLogoName(wlId, postedFile.FileName);
+                }
+                result = Request.CreateResponse(HttpStatusCode.Created, docfiles);
+            }
+            else
+            {
+                result = Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            return result;
+        }
+        
 
 
     }

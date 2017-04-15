@@ -1,10 +1,18 @@
 ﻿
 
-angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, RegisterService, $rootScope) {
+angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, RegisterService, $rootScope, FileUploader, CommonService) {
 
     $scope.wlForm = {};
     $scope.wlUserForm = { IsInvoiceByMail: false, IsServicesOffer: false };
+    $scope.uploderOptions = {};
+    $scope.uploderOptions.url = CommonService.getUploadLogoUrl();
 
+    $scope.uploader = new FileUploader();
+    $scope.removeLogoImg = function () {
+        if ($scope.uploader.queue[0]) {
+            $scope.uploader.queue.splice(0, 1);
+        }
+    }
 
     $scope.companyInputsList1 = [
         {
@@ -147,9 +155,18 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
     $scope.isRegisterSuccess = true;
     $scope.isWlRegisterSuccess = true;
     $scope.isRegisterCompleted = false;
+    $scope.isWlUserRegisterSuccess = true;
+
+    
     $scope.addWL = function () {
         $rootScope.isLoading = true;
         RegisterService.addWhiteLabel($scope.wlForm).then(function (res) {
+            $scope.isWlRegisterSuccess = true;
+            if ($scope.uploader.queue[0]) {
+                $scope.uploader.queue[0].headers.WLId = res.data.whiteLabelid;
+                $scope.uploader.queue[0].upload();
+}
+
             $scope.addWLUser(res.data.whiteLabelid);
         }, function (err) {
             if (err.data == 0) {
@@ -164,7 +181,11 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
         RegisterService.registerWhiteLabelUser($scope.wlUserForm).then(function (res) {
             $scope.isRegisterSuccess = true;
             $scope.isRegisterCompleted = true;
+            $scope.isWlUserRegisterSuccess = true;
+
         }, function (err) {
+            $scope.isWlUserRegisterSuccess = false;
+
             $scope.isRegisterCompleted = false;
             $scope.isRegisterSuccess = false;
             $rootScope.isLoading = false;
@@ -180,12 +201,12 @@ angular.module('sbAdminApp').controller('WLRegistrationCtrl', function ($scope, 
     };
 
     $scope.openTermsDialog = function () {
-      window.open("docs/pdf/provider-terms-and-conditions.pdf")
+        window.open("docs/pdf/provider-terms-and-conditions.pdf")
     }
     $scope.openClientTermsDialog = function () {
         window.open("docs/pdf/client-terms-and-conditions.pdf")
     }
-    
+
 
 })
 var compareTo = function () {

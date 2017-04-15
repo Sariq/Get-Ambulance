@@ -38,7 +38,8 @@ angular
     'google.places',
     'validation',
     'validation.rule',
-    'chart.js'
+    'chart.js',
+    'angularFileUpload'
 
   ]).constant('ngAuthSettings', {
       // apiServiceBaseUri: 'http://localhost:54543/',

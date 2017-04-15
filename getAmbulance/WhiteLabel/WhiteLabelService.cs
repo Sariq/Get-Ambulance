@@ -294,5 +294,13 @@ namespace getAmbulance.WhiteLabel
             }
             return result;
         }
+        public void UploadWhiteLabelLogoName(string whiteLabelId,string logoName)
+        {
+            var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId);
+            var update = Builders<WhiteLabelEntity>.Update.Set("logo", logoName);
+            var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update).Result;
+            HubUpdateWLDataUpdated(whiteLabelId);
+        }
+            
     }
 }

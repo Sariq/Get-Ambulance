@@ -26,7 +26,7 @@ switch (location.host) {
         break;
 
 }
-angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places'])
+angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places','angularFileUpload'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

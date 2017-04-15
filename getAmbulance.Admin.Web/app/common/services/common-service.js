@@ -23,9 +23,15 @@ angular.module('sbAdminApp').factory('CommonService', ['$q', 'ngAuthSettings', '
         }
       
     }
+    var _getUploadLogoUrl = function () {
+        return serviceBase + 'api/WhiteLabel/UploadWhiteLabelLogo';
+    }
 
+    
   
     commonServiceFactory.getStateByServiceType = _getStateByServiceType;
+    commonServiceFactory.getUploadLogoUrl = _getUploadLogoUrl;
+
 
     return commonServiceFactory;
 }]);
