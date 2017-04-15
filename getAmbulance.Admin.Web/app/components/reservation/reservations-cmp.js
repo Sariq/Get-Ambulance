@@ -6,9 +6,12 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
     ctrl.userData = UserManagerService.getUserData();
     ctrl.isSupportRole = UserManagerService.isSupportRole();
     ctrl.whiteLabelsList = WhiteLabelService.getWhiteLabelsListLocal();
-
+    var audio = new Audio('../../sounds/reservation-notification.mp3');
     $scope.$on('update-reservations-list', function (event, args) {
         ctrl.getReservations();
+    });
+    $scope.$on('new-reservation', function (event, args) {
+        audio.play();
     });
     $scope.dialogBodyText = 'Confirm_Reservation_Accept_Body_Text';
     ctrl.getReservations = function () {

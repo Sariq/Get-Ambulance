@@ -49,6 +49,7 @@ angular.module('sbAdminApp')
                 },
                 'addReservation': function (reservation) {
                     $rootScope.$broadcast('update-reservations-list');
+                    $rootScope.$broadcast('new-reservation');
                 },
                 'reservationAccepted': function (reservation) {
                     $rootScope.$broadcast('update-reservations-list');
