@@ -78,7 +78,25 @@ angular.module('sbAdminApp')
                 'WL_ID': WL_ID
             },
             token: self.getToken(),
-            autoConnect: false
+            autoConnect: false,
+            stateChanged: function (state) {
+                $timeout(function () {
+                switch (state.newState) {
+                    case $.signalR.connectionState.connecting:
+                        $rootScope.signalRHubState = "connecting";
+                        break;
+                    case $.signalR.connectionState.connected:
+                        $rootScope.signalRHubState = "connected";
+                        break;
+                    case $.signalR.connectionState.reconnecting:
+                        $rootScope.signalRHubState = "reconnecting";
+                        break;
+                    case $.signalR.connectionState.disconnected:
+                        $rootScope.signalRHubState = "disconnected";
+                        break;
+                }
+                });
+            }
         });
         $timeout(function () {
             self.hub.connect();
@@ -129,7 +147,25 @@ angular.module('sbAdminApp')
                         'WL_ID': WL_ID
                     },
                     token: self.getToken(),
-                    autoConnect: false
+                    autoConnect: false,
+                    stateChanged: function (state) {
+                        $timeout(function () {
+                        switch (state.newState) {
+                            case $.signalR.connectionState.connecting:
+                                $rootScope.signalRHubState = "connecting";
+                                break;
+                            case $.signalR.connectionState.connected:
+                                $rootScope.signalRHubState = "connected";
+                                break;
+                            case $.signalR.connectionState.reconnecting:
+                                $rootScope.signalRHubState = "reconnecting";
+                                break;
+                            case $.signalR.connectionState.disconnected:
+                                $rootScope.signalRHubState = "disconnected";
+                                break;
+                        }
+                        });
+                    }
                 });
                 self.hub.connect();
             }, 1000);

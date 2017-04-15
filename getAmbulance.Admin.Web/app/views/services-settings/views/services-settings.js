@@ -1,6 +1,6 @@
 ﻿
 
-angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, $filter, UserManagerService) {
+angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope, ServicesSettingsService, WhiteLabelService, $filter, UserManagerService, $timeout) {
     $scope.areaData = {};
     $scope.isSupportRole = UserManagerService.isSupportRole();
     if (!$scope.isSupportRole) {
@@ -16,8 +16,7 @@ angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope
         })
     }
 
-
-    $scope.$on('whiteLabel-data-updated', function (event, args) {
+    $scope.whiteLabelUpdated = function () {
         if (!$scope.isSupportRole) {
             $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
             $scope.supportedServices = $scope.whiteLabel.supportedServices;
@@ -30,7 +29,11 @@ angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope
                 $scope.initOfferServices();
             })
         }
-       
+    }
+    $scope.isWhiteLabelUpdated = false;
+    $scope.$on('whiteLabel-data-updated', function (event, args) {
+        $scope.isWhiteLabelUpdated=true;
+        $scope.whiteLabelUpdated();
     });
 
     $scope.initOfferServices = function () {
@@ -52,7 +55,13 @@ angular.module('sbAdminApp').controller('ServicesSettingsCtrl', function ($scope
     }
  
     $scope.AddSupportedServices = function (service) {
-        ServicesSettingsService.AddSupportedServices(service);
+        ServicesSettingsService.AddSupportedServices(service).then(function (res) {
+            $timeout(function () {
+            if (!$scope.isWhiteLabelUpdated) {
+                $scope.whiteLabelUpdated();
+            }
+            }, 3000);
+        });
     }
   
     $scope.deleteService = function (service) {

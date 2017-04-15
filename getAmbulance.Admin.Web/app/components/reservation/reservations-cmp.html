@@ -8,7 +8,7 @@
                   <span>{{'Show_Reservation_Only_TimeEnd' | translate}}</span>
               </div> 
            
-            <div ng-show="!$ctrl.finishedPrepareTableCols" style="text-align: center;margin-top: 60px;">
+            <div ng-show="!$ctrl.finishedPrepareTableCols && !$ctrl.noReservations" style="text-align: center;margin-top: 60px;">
                 <p class="saving">{{'Loading_Reservations' | translate}}<span>.</span><span>.</span><span>.</span></p>
             </div>  
        
