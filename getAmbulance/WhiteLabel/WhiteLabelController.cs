@@ -306,9 +306,10 @@ namespace getAmbulance.WhiteLabel
                     var postedFile = httpRequest.Files[file];
                     string Parent = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/")).FullName;
                     string wlId = httpRequest.Headers["WLId"];
-                    _whiteLabelService.UploadWhiteLabelLogoName(wlId, Parent);
 
                     var filePath = Parent + "/img/"+ postedFile.FileName;
+                    _whiteLabelService.UploadWhiteLabelLogoName(wlId, filePath);
+
                     postedFile.SaveAs(filePath);
                     docfiles.Add(filePath);
                     _whiteLabelService.UploadWhiteLabelLogoName(wlId, postedFile.FileName);
