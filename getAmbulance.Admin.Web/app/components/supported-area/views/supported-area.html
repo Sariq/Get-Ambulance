@@ -103,13 +103,13 @@
 
         </div>
         <div class="col-lg-6">
-            <rzslider rz-slider-model="$ctrl.slider.value"
+            <rzslider ng-disabled="$ctrl.disableAddTempBtn" rz-slider-model="$ctrl.slider.value"
                       rz-slider-options="$ctrl.slider.options"></rzslider>
 
         </div>
         <div class="col-lg-1">      </div>
             <div class="col-lg-2">
-                <button class="btn btn-success" ng-click="$ctrl.addNewArea();$ctrl.add=false">{{"Save"|translate}}</button>
+                <button ng-disabled="$ctrl.disableAddTempBtn" class="btn btn-success" ng-click="$ctrl.addNewArea();$ctrl.add=false">{{"Save"|translate}}</button>
             </div>
         </div>
 </div>

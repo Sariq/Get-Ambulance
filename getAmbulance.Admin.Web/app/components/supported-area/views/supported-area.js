@@ -133,7 +133,7 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
     ctrl.addNewArea = function () {
         ctrl.addSupportedAreas(ctrl.selectedArea);
     }
-
+    ctrl.disableAddTempBtn = true;
     ctrl.addTmpc = function (area) {
         var geocoder = new google.maps.Geocoder();
         area.radius = ctrl.slider.value;
@@ -150,6 +150,9 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
                 }
     
                 ctrl.addAddressCircle(ctrl.selectedArea);
+                $timeout(function () {
+                    ctrl.disableAddTempBtn = false;
+                });
             }
         })
     }
