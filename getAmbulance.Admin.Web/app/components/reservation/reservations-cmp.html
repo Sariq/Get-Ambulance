@@ -1,9 +1,18 @@
-﻿<div class=" ">
+﻿<div class=" " >
     <div class="col-lg-12" style="padding: 0;">
-        <div class="inner-div reservations-table-title hidden-xs">
+        <div class="inner-div reservations-table-title hidden-xs" style="min-height:400px;">
             <h4>{{$ctrl.tableName | translate}}</h4>
             <hr style="margin:0;" />
-            <div ng-show="!$ctrl.noReservations" style="padding:0 15px 15px 15px;">
+              <div ng-show="$ctrl.isSupportRole">
+                  <input ng-model="$ctrl.showOnTimerEnd" name="showOnTimerEnd" type="checkbox" ng-click="$ctrl.showOnTimerEndChecked()">
+                  <span>{{'Show_Reservation_Only_TimeEnd' | translate}}</span>
+              </div> 
+           
+            <div ng-show="!$ctrl.finishedPrepareTableCols" style="text-align: center;margin-top: 60px;">
+                <p class="saving">{{'Loading_Reservations' | translate}}<span>.</span><span>.</span><span>.</span></p>
+            </div>  
+       
+            <div ng-show="!$ctrl.noReservations && $ctrl.finishedPrepareTableCols" style="padding:0 15px 15px 15px;">
                 <table ng-table-dynamic="$ctrl.tableParams  with $ctrl.cols" class="table" show-filter="true">
                     <tr ng-repeat="row in $data " class="reservations-table-data">
                         <td ng-repeat="col in $columns" style="padding:0;vertical-align: middle;width:12%" ng-class="{'time-over-background':row['timerEnd']===true && row['Status']=='1'}">

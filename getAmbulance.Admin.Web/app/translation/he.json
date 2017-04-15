@@ -263,7 +263,9 @@
   "Mail_Sent_To": "נשלח דוא\"ל ל",
   "To_Confirm_Account": "עם לינק לאישור החשבון והתחברות למערכת",
   "Login": "התחבר",
-  "Add_Logo": "הוסף לוגו"
+  "Add_Logo": "הוסף לוגו",
+  "Show_Reservation_Only_TimeEnd": "הצג רק הזמנות שזמן ההמתנה שלהן הסתיים",
+  "Loading_Reservations": "טוען רשימת הזמנות"
 
 
 
