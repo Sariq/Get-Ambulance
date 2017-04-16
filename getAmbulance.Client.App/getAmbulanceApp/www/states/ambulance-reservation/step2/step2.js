@@ -20,6 +20,9 @@ angular.module('starter.controllers').controller('AmbulanceStep2Ctrl', function 
        // $scope.minDate.setYear($scope.minDate);
     }
     initMinMaxDate();
+    $scope.$on('g-places-autocomplete:select', function (event, args) {
+        $scope.$apply();
+    });
 
 })
 

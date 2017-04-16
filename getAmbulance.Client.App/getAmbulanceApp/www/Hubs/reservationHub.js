@@ -63,6 +63,9 @@
             },
             'reservationCanceled': function (reservation) {
                 $rootScope.$broadcast('update-reservations-list');
+            },
+            'whiteLabelDataUpdated': function (reservation) {
+                $rootScope.$broadcast('update-whiteLabel-data');
             }
             
         },
@@ -71,7 +74,7 @@
             console.error(error);
         },
         queryParams: {
-            'WL_ID': Client_ID
+            'Client_ID': Client_ID
         },
         token: self.getToken(),
         autoConnect: false
@@ -114,6 +117,9 @@
                     },
                     'reservationCanceled': function (reservation) {
                         $rootScope.$broadcast('update-reservations-list');
+                    },
+                    'whiteLabelDataUpdated': function (reservation) {
+                        $rootScope.$broadcast('update-whiteLabel-data');
                     }
                 },
                 methods: ['lock', 'unlock'],

@@ -120,7 +120,10 @@ namespace getAmbulance.WhiteLabel
         }
         public void HubUpdateWLDataUpdated(string whiteLAbelId)
         {
+            //Hub.Clients.All.whiteLabelDataUpdated();
+
             Hub.Clients.Group(whiteLAbelId).whiteLabelDataUpdated();
+            Hub.Clients.Group("Clients_Room").whiteLabelDataUpdated();
         }
         public WhiteLabelEntity GetWhiteLabelById(string whiteLabelId)
         {
@@ -165,6 +168,8 @@ namespace getAmbulance.WhiteLabel
             var update = Builders<WhiteLabelEntity>.Update
                 .Unset("prices." + jsonObj["category"].ToString());
             var result = _ctx.WhiteLabels.DeleteOneAsync(filter);
+            HubUpdateWLAndClientReservationStatus((string)jsonObj["whiteLabelId"]);
+
         }
 
         public void UpdateAmbulancePrices(BsonDocument jsonObj)
@@ -175,11 +180,17 @@ namespace getAmbulance.WhiteLabel
             var update = Builders<WhiteLabelEntity>.Update
                 .Set("prices.Private_Ambulance.distance." + jsonObj["index"].ToString(), jsonObj["updatedData"]);
             var result = _ctx.WhiteLabels.UpdateOneAsync(filter, update);
+            HubUpdateWLAndClientReservationStatus((string)jsonObj["whiteLabelId"]);
+
         }
         public void HubUpdateWLAndClientReservationStatus(string whiteLAbelId)
         {
             Hub.Clients.Group(whiteLAbelId).whiteLabelDataUpdated();
+            Hub.Clients.Group("Clients_Room").whiteLabelDataUpdated();
+           // Hub.Clients.All.whiteLabelDataUpdated();
+
         }
+
         public void AddSupportedAreas(string whiteLabelId, List<SupportedArea> supportedAreaList, string type)
         {
             var filter = Builders<WhiteLabelEntity>.Filter.Where(x => x.whiteLabelid == whiteLabelId && x.supportedServices.Any(s => s.Type == type));

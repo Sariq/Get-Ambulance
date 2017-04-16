@@ -18,12 +18,18 @@ namespace getAmbulance.Hubs
 
         public async override Task OnConnected()
         {
-            string WL_ID=Context.QueryString.Get("WL_ID");
-            _mapping.TryAdd(Context.ConnectionId, WL_ID);
-            var connectionId = _mapping.FirstOrDefault(x => x.Value == WL_ID).Key;
-            await AddToRoom(WL_ID);
-            Clients.Client(connectionId).newConnection(WL_ID);
-           // Clients.All.newConnection(Context.ConnectionId);
+            string WL_ID = Context.QueryString.Get("WL_ID");
+            string Client_ID = Context.QueryString.Get("Client_ID");
+            string ID = WL_ID != null ? WL_ID : Client_ID;
+            string RoomName = WL_ID != null ? "WLs_Room" : "Clients_Room";
+
+            _mapping.TryAdd(Context.ConnectionId, ID);
+            var connectionId = _mapping.FirstOrDefault(x => x.Value == ID).Key;
+            await AddToRoom(ID);
+            await AddToRoom(RoomName);
+
+            Clients.Client(connectionId).newConnection(ID);
+            //Clients.All.newConnection(Context.ConnectionId);
             await base.OnConnected();
         }
         public async Task AddToRoom(string roomName)
@@ -62,8 +68,11 @@ namespace getAmbulance.Hubs
             }
             var list = new List<int>();
                 //   _mapping.TryRemove(Context.ConnectionId, out list);
+                // string WL_ID = Context.QueryString.Get("WL_ID");
                 string WL_ID = Context.QueryString.Get("WL_ID");
-                await RemoveFromRoom(WL_ID);
+                string Client_ID = Context.QueryString.Get("Client_ID");
+                string ID = WL_ID != null ? WL_ID : Client_ID;
+                await RemoveFromRoom(ID);
                // Clients.All.removeConnection(Context.ConnectionId);
             }
             await base.OnDisconnected(true);

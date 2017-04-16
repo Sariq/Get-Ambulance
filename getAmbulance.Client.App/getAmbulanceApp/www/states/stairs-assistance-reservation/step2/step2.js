@@ -12,6 +12,10 @@ angular.module('starter.controllers').controller('StairsAssistanceStep2Ctrl', fu
         ReservationService.mergeToFormData($scope.form);
         $state.go('app.whitelabel-offers-list');
     }
+    $scope.$on('g-places-autocomplete:select', function (event, args) {
+        $scope.$apply();
+    });
+
 
 })
 

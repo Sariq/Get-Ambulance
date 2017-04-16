@@ -67,17 +67,20 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
         
     }
 
-    switch (localStorageService.get('reservationType')) {
-        case '1':
-            $scope.getAmbulanceOffersList();
-            break;
-        case '2':
-            $scope.getMedicalTherapistOffersList();
-            break;
-        case '3':
-            $scope.getStairsAssistanceOffersList();
-            break;
+    $scope.getOfferList = function () {
+        switch (localStorageService.get('reservationType')) {
+            case '1':
+                $scope.getAmbulanceOffersList();
+                break;
+            case '2':
+                $scope.getMedicalTherapistOffersList();
+                break;
+            case '3':
+                $scope.getStairsAssistanceOffersList();
+                break;
+        }
     }
+    $scope.getOfferList();
 
     $scope.showOnlySelectedOffer = function (whiteLabelOffer) {
         angular.forEach($scope.providerPriceOffersList, function (value, key) {
@@ -115,7 +118,11 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
         });
     }
     // An elaborate, custom popup
-   
+    $scope.$on('update-whiteLabel-data', function (event, args) {
+        $scope.getOfferList();
+    });
+
+    
   
 })
 

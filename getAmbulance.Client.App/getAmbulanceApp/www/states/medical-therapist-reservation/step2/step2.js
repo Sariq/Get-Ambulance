@@ -23,7 +23,10 @@ angular.module('starter.controllers').controller('MedicalTherapistStep2Ctrl', fu
     $scope.autocompleteOptions = {
         componentRestrictions: { country: 'il' }
     }
-
+    $scope.$on('g-places-autocomplete:select', function (event, args) {
+        $scope.$apply();
+    });
+    
     
 
 })
