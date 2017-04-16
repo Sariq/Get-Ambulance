@@ -74,6 +74,20 @@ namespace getAmbulance.Client
 
         }
 
-      
+        public ClientBasicInfo GetClientBasicInfoById(string UserId)
+        {
+            var id = new ObjectId(UserId);
+            var builder = Builders<ApplicationClientUser>.Filter;
+            var filter = builder.Eq("_id", id);
+            var user = _ctx.ClientUsers.Find(filter).FirstOrDefault();
+            ClientBasicInfo clientBasicInfo = new ClientBasicInfo();
+            clientBasicInfo.Full_Name = user.Full_Name;
+            clientBasicInfo.Id_Number = user.Id_Number;
+            clientBasicInfo.Phone_Number = user.UserName;
+            clientBasicInfo.DateOfBirth=user.Date_Of_Birth;
+            return clientBasicInfo;
+        }
+
+
     }
 }

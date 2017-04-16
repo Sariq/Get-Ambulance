@@ -29,8 +29,6 @@ namespace getAmbulance.Reservation
         {
             _ctx = ApplicationIdentityContext.Create();
             _reservationService = new ReservationService();
-           
-
         }
         Lazy<IHubContext> hub = new Lazy<IHubContext>(
       () => GlobalHost.ConnectionManager.GetHubContext<ReservationHub>()

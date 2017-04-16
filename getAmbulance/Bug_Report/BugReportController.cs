@@ -40,5 +40,23 @@ namespace getAmbulance.Bug_Report
             }
             return response;
         }
+        // Post: /BugReport/GetBugReportList
+        [HttpPost]
+        public HttpResponseMessage GetBugReportList()
+        {
+            HttpResponseMessage response;
+            try
+            {
+                List<BugReportEntity> BugReportList=_BugReportService.GetBugReportList();
+                response = Request.CreateResponse(HttpStatusCode.OK, BugReportList);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "AUpdateWhiteLabelIsOnline Error");
+            }
+            return response;
+        }
+
+        
     }
 }

@@ -336,7 +336,12 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
     }
 
 
-
+    var _GetClientBasicInfoById = function (UserId) {
+        var data = {
+            UserId: UserId,
+        }
+        return $http.post(serviceBase + 'api/Client/GetClientBasicInfoById', data);
+    };
     WhiteLabelServiceFactory.initSupportedServiceByType = _initSupportedServiceByType;
     WhiteLabelServiceFactory.updateWhiteLabelIsOnline = _updateWhiteLabelIsOnline;
     WhiteLabelServiceFactory.setWhiteLabelData = _setWhiteLabelData;
@@ -355,6 +360,8 @@ angular.module('sbAdminApp').factory('WhiteLabelService', ['$http', 'ngAuthSetti
     WhiteLabelServiceFactory.setSelctedWhiteLabelData = _setSelctedWhiteLabelData;
     WhiteLabelServiceFactory.getSelctedWhiteLabelData = _getSelctedWhiteLabelData;
     WhiteLabelServiceFactory.isActivated = _isActivated;
+    WhiteLabelServiceFactory.GetClientBasicInfoById = _GetClientBasicInfoById;
+
 
     
 

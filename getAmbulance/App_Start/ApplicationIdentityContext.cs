@@ -29,6 +29,8 @@
             var dbcounter = database.GetCollection<DBCounter>("counters");
             var bugReport = database.GetCollection<BugReportEntity>("BugReports");
 
+            
+
             return new ApplicationIdentityContext(users, clientUsers, roles, browserClients, refreshTokens, reservations, whiteLabels, whiteLabelUsers, dbcounter, bugReport);
 		}
         public ApplicationIdentityContext()

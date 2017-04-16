@@ -127,7 +127,9 @@
   "StairsAssistance": "עזרה במדרגות",
   "ICUAmbulance": "אמבולנס טיפול נמרץ",
   "AnimalMedic": "רפואת בעלי חיים",
-  "Check_Min_One": "חובה לבחור לפחות שירות אחד"
+  "Check_Min_One": "חובה לבחור לפחות שירות אחד",
+  "Send": "שלח",
+  "Report_Sent_Successfully": "הדיווח נשלח בהצלחה"
      
 
 

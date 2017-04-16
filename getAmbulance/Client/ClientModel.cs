@@ -27,7 +27,14 @@ namespace getAmbulance.Client
 
             // public string Email { get; set; }
         }
-
+        public class ClientBasicInfo : DatabaseObject
+        {
+            public string Full_Name { get; set; }
+            public string Phone_Number { get; set; }
+            public string Id_Number { get; set; }
+            public DateTime DateOfBirth { get; set; }
+        }
+        
 
         public class CodeToClientModel
         {

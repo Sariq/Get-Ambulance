@@ -3,26 +3,34 @@
 
        
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
-        <form class="reservation-form" name="BugReportForm" novalidate="" ng-submit="signIn(authorizationForm)">
+        <form ng-show="!isSendSuccess" class="reservation-form" name="BugReportForm" novalidate="" ng-submit="signIn(authorizationForm)">
 
             <div class="list">
 
 
-                <label class="item item-input panel item-floating-label">
+                <label class="item item-input panel item-floating-label" style="border-radius: 0!important;">
                     <span class="input-label"  ng-class="{'has-input': true}">{{'Bug_Report'|translate}} </span>
-                    <input  type="text" name="Bug_Report" ng-model="form.Bug_Report" message-id="Bug_Report" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Bug_Report'|translate}}">
+                    <textarea style="text-align: right!important;background-color: #f7fbfc;height: 200px!important;padding: 5px;"  type="text" name="Bug_Report" ng-model="form.Body" message-id="Bug_Report" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Bug_Report'|translate}}"></textarea>
                 </label>
                 <span id="Bug_Report"></span>
             </div>
 
 
 
-            <button validation-submit="BugReportForm" ng-click="SendBugReport()" class="button button-full next-btn button-positive">
+            <button ng-disabled="!form.Body" validation-submit="BugReportForm" ng-click="SendBugReport()" class="button button-full next-btn button-positive">
                 <span class="">{{'Send' | translate}}</span>
             </button>
 
         </form>
-            
+
+
+        <div class="row row-center center-v" ng-show="isSendSuccess">
+            <div class="col-100 col-center">
+                <h4>{{'Report_Sent_Successfully' | translate}}!</h4>
+            </div>
+        </div>
+
+
 
 </ion-content>
 </ion-view>

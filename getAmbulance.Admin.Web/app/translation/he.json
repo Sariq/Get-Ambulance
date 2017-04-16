@@ -265,8 +265,11 @@
   "Login": "התחבר",
   "Add_Logo": "הוסף לוגו",
   "Show_Reservation_Only_TimeEnd": "הצג רק הזמנות שזמן ההמתנה שלהן הסתיים",
-  "Loading_Reservations": "טוען רשימת הזמנות"
-
+  "Loading_Reservations": "טוען רשימת הזמנות",
+  "Bug_Report_List": "דיווחים מלקוחות",
+  "Body": "תוכן",
+  "Report_Number": "מס' דיווח",
+  "Report_Data": "פרטי דיווח"
 
 
 

@@ -36,6 +36,17 @@ namespace getAmbulance.Client
             response = Request.CreateResponse(HttpStatusCode.OK, clientUser);
             return response;
         }
+        // Post: /Account/GetClientBasicInfoById
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage GetClientBasicInfoById(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            dynamic jsonObj = jsonData;
+            var clientUser = _ClientService.GetClientBasicInfoById((string)jsonObj.UserId.Value);
+            response = Request.CreateResponse(HttpStatusCode.OK, clientUser);
+            return response;
+        }
         // Post: /Account/UpdateUserProfile
         [HttpPost]
         [AllowAnonymous]

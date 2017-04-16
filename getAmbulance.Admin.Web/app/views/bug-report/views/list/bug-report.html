@@ -1,0 +1,27 @@
+﻿<div class=" ">
+    <div class="col-lg-12" style="padding: 0;">
+        <div class="inner-div reservations-table-title hidden-xs" style="min-height:400px;">
+            <h4>{{$ctrl.tableName | translate}}</h4>
+            <hr style="margin:0;" />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{'Name' | translate}}</th>
+                        <th>{{'Date' | translate}}</th>
+                        <th>{{'Body' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="report in BugReportList">
+                        <th scope="row">{{$index+1}}</th>
+                        <td>{{report.From.Name}}</td>
+                        <td>{{report._date | date :"dd/MM/yy" }} {{report._date | date :"HH:mm" }}</td>
+                        <td>{{report.Body}}</td>
+                        <td><button ng-click="goToItem(report)" class="btn show-reservation-btn">{{'Show'| translate}}</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

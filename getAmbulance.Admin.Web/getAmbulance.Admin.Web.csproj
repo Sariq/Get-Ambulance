@@ -1051,6 +1051,14 @@
     <Content Include="app\styles\main.css" />
     <Content Include="app\styles\sb-admin-2.css" />
     <Content Include="app\styles\timeline.css" />
+    <Content Include="app\views\bug-report\bug-report-service.js" />
+    <Content Include="app\views\bug-report\routes.js" />
+    <Content Include="app\views\bug-report\views\item\bug-report.css" />
+    <Content Include="app\views\bug-report\views\item\bug-report.html" />
+    <Content Include="app\views\bug-report\views\item\bug-report.js" />
+    <Content Include="app\views\bug-report\views\list\bug-report.css" />
+    <Content Include="app\views\bug-report\views\list\bug-report.html" />
+    <Content Include="app\views\bug-report\views\list\bug-report.js" />
     <Content Include="app\views\icu-ambulance\prices\icu-ambulance-prices.css" />
     <Content Include="app\views\icu-ambulance\prices\icu-ambulance-prices.html" />
     <Content Include="app\views\icu-ambulance\prices\icu-ambulance-prices.js" />
