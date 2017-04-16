@@ -84,3 +84,9 @@ ion-side-menu {
 .copy-rights{
     color:#9b9c9d;
 }
+.home .soon-img{
+    margin-top: -65%;
+    display: block;
+    margin-bottom: 12%;
+    padding: 4%;
+}

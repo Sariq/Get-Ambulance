@@ -61,8 +61,20 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
     $scope.backToReservationsList = function () {
         $state.go('app.reservation-list');
     }
+
+
+    $scope.getReservationById = function () {
+        var selectedReservation = ReservationService.getSelectedReservation();
+
+        ReservationService.getReservationById($scope.selectedReservation._id).then(function (res) {
+            $scope.selectedReservation = res.data;
+            $scope.selectedReservation.whiteLabelData = WhiteLabelService.convertWLIdToFullWLData($scope.selectedReservation.WhiteLabel_ID)
+            $scope.initItemForm();
+        });
+    }
     $scope.$on('$ionicView.beforeEnter', function (e) {
 
+        $scope.getReservation = function () {
         if ($stateParams.reservationId) {
             ReservationService.getReservationById($stateParams.reservationId).then(function (res) {
    
@@ -74,8 +86,8 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
             $scope.selectedReservation = ReservationService.getSelectedReservation();
             $scope.initItemForm();
         }
-       
-      
+        }
+        $scope.getReservation();
     });
 
     $scope.chooseOtherProvider = function () {
@@ -84,6 +96,9 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
         ReservationService.convertFormToOfferRequest()
         $state.go('app.whitelabel-offers-list');
     }
+    $scope.$on('update-reservations-list', function (event, args) {
+        $scope.getReservationById();
+    });
 })
 
 
