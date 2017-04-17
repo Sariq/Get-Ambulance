@@ -34,6 +34,7 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
 
         },
          function (err) {
+             CommonService.hideLoader();
              $scope.message = err.error_description;
              $scope.error.showMessage = true;
              $scope.errorMessage = 'Invalid_Code';

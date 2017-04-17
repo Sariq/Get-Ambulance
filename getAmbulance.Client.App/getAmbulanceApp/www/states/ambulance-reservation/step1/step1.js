@@ -25,7 +25,7 @@ angular.module('starter.controllers').controller('Step1Ctrl', function (UserProf
 
     $scope.userProfile = UserProfileService.getUserProfileLocal();
     $scope.form.Full_Name=$scope.userProfile.Full_Name;
-    $scope.form.Id_Number = parseInt($scope.userProfile.Id_Number, 10);
+    $scope.form.Id_Number = $scope.userProfile.Id_Number;
     $scope.form.Phone_Number = $scope.userProfile.User_Name;
     $scope.form.Age =   $filter('ageFilter')($scope.userProfile.Date_Of_Birth);
     $scope.continueToStep2 = function () {
