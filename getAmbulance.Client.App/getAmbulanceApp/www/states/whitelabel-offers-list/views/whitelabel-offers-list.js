@@ -68,7 +68,9 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
     }
 
     $scope.getOfferList = function () {
-        switch (localStorageService.get('reservationType')) {
+        $scope.reservationType=localStorageService.get('reservationType');
+
+        switch ($scope.reservationType) {
             case '1':
                 $scope.getAmbulanceOffersList();
                 break;
@@ -79,6 +81,7 @@ angular.module('starter.controllers').controller('WhiteLabelOffersListCtrl', fun
                 $scope.getStairsAssistanceOffersList();
                 break;
         }
+
     }
     $scope.getOfferList();
 

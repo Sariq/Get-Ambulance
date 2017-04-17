@@ -10,7 +10,12 @@
                   <span class="input-label has-input">{{item.name|translate}}</span>
                   <div class="row" style="min-height: 45px;max-height: 45px;">
                       <div class="col-33 " style="width:55%;vertical-align: middle;  margin: auto;   ">
-                          <img style="width: 100%;height: 100%;max-height: 35px;" ng-src="img/{{item.logo}}">
+                          <img ng-show="item.logo" style="width: 100%;height: 100%;max-height: 35px;" ng-src="img/{{item.logo}}">
+                          <span ng-show="!item.logo" class="inner" ng-switch="reservationType">
+                              <span ng-switch-when="1"><img style="width: 100%;height: 100%;max-height: 35px;" src="../www/img/ambulance.svg" /></span>
+                              <span ng-switch-when="2"><img style="width: 100%;height: 100%;max-height: 35px;" src="../www/img/doctor.svg" /></span>
+                              <span ng-switch-when="3"><img style="width: 100%;height: 100%;max-height: 35px;" src="../www/img/stairs.svg" /></span>
+                          </span>
                       </div>
                       <div class="col-33 text-center" style="vertical-align: middle;text-align:center;    margin: auto;    color: #263650;">
                           &#8362;{{item.price}}

@@ -49,13 +49,19 @@
                     </ion-item>
                     <ion-item menu-toggle="right" ui-sref-active="active" ui-sref="app.bug-report">
                         <div class="div-flex">
-                            <div><img src="../www/img/reservations.svg" style="width: 22px;margin-left: 10px;" /></div>
+                            <div><img src="../www/img/support.svg" style="width: 22px;margin-left: 10px;" /></div>
                             <div>{{'Bug_Report' | translate}}</div>
                         </div>
                     </ion-item>
+                    <ion-item  ng-click="logOut()">
+                        <div class="div-flex">
+                            <div><img src="../www/img/logoff.svg" style="width: 22px;margin-left: 10px;" /></div>
+                            <div>{{'LogOut' | translate}}</div>
+                        </div>
+                    </ion-item>
                  
-                    <ion-item menu-toggle="right" ng-click="logOut()">
-                        {{'LogOut' | translate}}
+                    <ion-item menu-toggle="right" >
+                        
                     </ion-item>
                 </aside>
                 <!--<ion-item menu-toggle="right" href="#/app/map">
