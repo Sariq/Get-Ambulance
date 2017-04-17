@@ -313,6 +313,7 @@
     <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.css" />
     <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.html" />
     <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.js" />
+    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.css" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\routes.js" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.css" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.html" />
@@ -354,7 +355,6 @@
     <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step2\step2.css" />
     <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step2\step2.html" />
     <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step2\step2.js" />
-    <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.css" />
     <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.html" />
     <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.js" />
     <Content Include="getAmbulanceApp\www\states\home\views\home.css" />
