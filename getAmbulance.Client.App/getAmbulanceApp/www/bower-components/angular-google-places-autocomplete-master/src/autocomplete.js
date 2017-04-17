@@ -174,7 +174,9 @@ angular.module('google.places', [])
                                         if ($scope.options.isPlace) {
                                             $scope.model = place;
                                         } else {
-                                            $scope.model = place.formatted_address.replace(', ישראל', "");
+                                            $timeout(function () {
+                                                $scope.model = place.formatted_address.replace(', ישראל', "");
+                                            });
                                         }
                                         
                                         $scope.$emit('g-places-autocomplete:select', place);
