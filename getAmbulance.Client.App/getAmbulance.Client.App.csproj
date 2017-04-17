@@ -100,6 +100,8 @@
     </Content>
     <Content Include="getAmbulanceApp\gulpfile.js" />
     <Content Include="getAmbulanceApp\hooks\after_prepare\010_add_platform_class.js" />
+    <Content Include="getAmbulanceApp\node_modules\%40ionic\cloud\dist\bundle\ionic.cloud.js" />
+    <Content Include="getAmbulanceApp\node_modules\%40ionic\cloud\dist\esm\deploy\deploy.js" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\dist\ionic-datepicker.js" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\dist\ionic-datepicker.min.js" />
     <Content Include="getAmbulanceApp\node_modules\datepicker-for-ionic\dist\style.css" />
@@ -276,6 +278,7 @@
     <Content Include="getAmbulanceApp\www\js\app.js" />
     <Content Include="getAmbulanceApp\www\js\controllers.js" />
     <Content Include="getAmbulanceApp\www\lib\bluebird.min.js" />
+    <Content Include="getAmbulanceApp\www\lib\ionic.cloud.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic.cloud.min.js" />
     <Content Include="getAmbulanceApp\www\lib\ionic\css\ionic.css" />
     <Content Include="getAmbulanceApp\www\lib\ionic\css\ionic.min.css" />

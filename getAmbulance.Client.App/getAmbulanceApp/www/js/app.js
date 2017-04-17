@@ -26,10 +26,13 @@ switch (location.host) {
         break;
 
 }
-angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places','angularFileUpload'])
+angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places', 'angularFileUpload', 'ionic.cloud'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform, $ionicDeploy, $rootScope) {
+    $ionicPlatform.ready(function () {
+        
+        $rootScope.$broadcast('device:ready');
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -48,13 +51,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     //clientId: 'ngAuthApp'
  clientId: 'consoleApp',
  clientSecret: '123@abc'
-}).config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $validationProvider, $httpProvider) {
+}).config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $translateProvider, $validationProvider, $httpProvider, $ionicCloudProvider) {
 
-    //$ionicCloudProvider.init({
-    //    "core": {
-    //        "app_id": "e218cd1c"
-    //    }
-    //});
+    $ionicCloudProvider.init({
+        "core": {
+            "app_id": "bba3259e"
+        }
+    });
 
     $validationProvider.showSuccessMessage = false;
     $translateProvider.preferredLanguage('he');
@@ -121,7 +124,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
   
   // if none of the above states are matched, use this as the fallback
   //$urlRouterProvider.otherwise('/app/home');
-}).run(function (authService, $state, $timeout, WhiteLabelService, ReservationHub) {
+}).run(function (authService, $state, $timeout, WhiteLabelService, ReservationHub, $ionicDeploy, $interval) {
+    $ionicDeploy.channel = 'production';
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {
         $timeout(function () {
@@ -132,5 +136,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
        WhiteLabelService.getWhiteLabelsList();
        $state.go('app.home');
     }
-    console.log(authService)
+    var ionicDeployCheck = function () {
+        $ionicDeploy.check().then(function (snapshotAvailable) {
+            if (snapshotAvailable) {
+                return $ionicDeploy.extract();
+
+            }
+        }, function (err) {
+            console.log(err);
+        });
+    }
+
+
+    $interval(function () { ionicDeployCheck(); }, 60000, false);
+
+
+
 });
