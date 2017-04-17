@@ -110,15 +110,16 @@ module.exports = function (grunt) {
         }
       }
     },
+      //D:/Get-Ambulance/getAmbulance.Client.App/getAmbulanceApp/www
     cache_control: {
         your_target: {
-            source: "D:/Get-Ambulance/getAmbulance.Admin.Web/app/index.html",
+            source: "D:/Get-Ambulance/getAmbulance.Client.App/getAmbulanceApp/www/index.html",
             options: {
-                version: "1.0.0",
+                version: "1.0.1",
                 links: true,
                 scripts: true,
                 replace: true,
-                outputDest: "D:/Get-Ambulance/getAmbulance.Admin.Web/app/index.html"
+                outputDest: "D:/Get-Ambulance/getAmbulance.Client.App/getAmbulanceApp/www/index.html"
          
             }
         }
