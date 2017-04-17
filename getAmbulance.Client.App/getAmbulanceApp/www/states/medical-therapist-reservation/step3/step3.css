@@ -1,3 +1,7 @@
-.step2{
+.medical-service-name{
+    padding-right: 18%;
+}
 
+.platform-ios .medical-service-name{
+    padding-right: 25%!important;
 }
