@@ -93,7 +93,9 @@ angular.module('starter.controllers').controller('ReservationItemCtrl', function
     $scope.chooseOtherProvider = function () {
         ReservationService.setReservationFormData($scope.selectedReservation);
         ReservationService.setReservationType($scope.selectedReservation.Type);
-        ReservationService.convertFormToOfferRequest()
+        ReservationService.convertFormToOfferRequest();
+        ReservationService.UpdateReservationIsHide($scope.selectedReservation)
+
         $state.go('app.whitelabel-offers-list');
     }
     $scope.$on('update-reservations-list', function (event, args) {

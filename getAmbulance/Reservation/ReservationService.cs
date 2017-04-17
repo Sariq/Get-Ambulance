@@ -392,6 +392,14 @@ namespace getAmbulance.Reservation
                 .Set("Status", status);
             var result = _ctx.Reservations.UpdateOneAsync(filter, update);
         }
+        public void UpdateReservationIsHide(string reservationId, string isHideType,bool status)
+        {
+            var id = new ObjectId(reservationId);
+            var filter = Builders<ReservationEntity>.Filter.Eq("_id", id);
+            var update = Builders<ReservationEntity>.Update
+                .Set(isHideType, status);
+            var result = _ctx.Reservations.UpdateOneAsync(filter, update);
+        }
         public void UpdateReservationReason(string reservationId, string status, string reason)
         {
             var id = new ObjectId(reservationId);
@@ -477,6 +485,13 @@ namespace getAmbulance.Reservation
                     break;
             }
         }
+        public void HubUpdateWLAndClientReservation(string clientId, string whiteLAbelId, string reservationId)
+        {
+            Hub.Clients.Group(clientId).reservationUpdated(reservationId);
+            Hub.Clients.Group(whiteLAbelId).reservationUpdated(reservationId);
+        }
+
+
 
         public ReservationEntity GetReservationById(string reservationId)
         {

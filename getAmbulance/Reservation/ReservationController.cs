@@ -74,7 +74,17 @@ namespace getAmbulance.Reservation
                     reservation.Age = jsonObj.Age.Value;
                     reservation.Id_Number = jsonObj.Id_Number.Value;
                     reservation.AdditionalProperties = _reservationService.ConvertJsonAdditionalProperties(jsonObj);
+                    if (jsonObj.IsFree != null)
+                    {
+                        reservation.IsFree = jsonObj.IsFree.Value;
+                    }
+                    else
+                    {
+                        reservation.IsFree = false;
+                    }
 
+                    reservation.IsHideClient = jsonObj.IsHideClient!=null ? jsonObj.IsHideClient.Value : false;
+                    reservation.IsHideProvider = jsonObj.IsHideProvider != null ? jsonObj.IsHideProvider.Value : false;
                     completedReservation = _reservationService.AddReservation(reservation);
                     Hub.Clients.Group(reservation.WhiteLabel_ID.ToString()).addReservation(reservation);
                     Hub.Clients.Group("0").addReservation(reservation);
@@ -331,6 +341,26 @@ namespace getAmbulance.Reservation
             }
             return response;
         }
+        // Post: /Reservation/UpdateReservationIsHide
+        [HttpPost]
+        public HttpResponseMessage UpdateReservationIsHide(JObject jsonData)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                dynamic jsonObj = jsonData;
+                _reservationService.UpdateReservationIsHide(jsonObj.reservationId.Value, jsonObj.isHideType.Value, jsonObj.status.Value);
+                _reservationService.HubUpdateWLAndClientReservation(jsonObj.Client_Id.Value, jsonObj.whiteLabelId.Value, jsonObj.reservationId.Value);
+                response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "AcceptReservation Add Error");
+            }
+            return response;
+        }
+        
         // Post: /Reservation/UpdateReservationStatusWLId
         [HttpPost]
         public HttpResponseMessage UpdateReservationStatusWLId(JObject jsonData)

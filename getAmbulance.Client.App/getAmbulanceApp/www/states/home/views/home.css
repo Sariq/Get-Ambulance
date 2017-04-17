@@ -89,4 +89,10 @@ ion-side-menu {
     display: block;
     margin-bottom: 12%;
     padding: 4%;
+  
+}
+
+.platform-ios .home .soon-img{
+
+    width:100%
 }

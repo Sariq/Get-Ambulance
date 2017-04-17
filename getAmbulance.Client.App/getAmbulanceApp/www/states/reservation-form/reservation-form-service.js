@@ -126,6 +126,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation.Phone_Number =Reservation_Form.Phone_Number;
         reservation.Age = Reservation_Form.Age.toString();
         reservation.Id_Number = Reservation_Form.Id_Number.toString();
+        reservation.IsHideClient = Reservation_Form.IsHideClient ? Reservation_Form.IsHideClient : false;
        // reservation._id = Reservation_Form._id;
         if (Reservation_Form.Reservation_Number) {
             reservation.Reservation_Number = Reservation_Form.Reservation_Number;
@@ -166,6 +167,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation._id = Reservation_Form._id;
 
 
+
  
 
         angular.forEach(Reservation_Form.AdditionalProperties, function (value, key) {
@@ -185,10 +187,18 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         delete Reservation_Form.AdditionalProperties;
         console.log(reservation)
         self.setReservationFormData(reservation);
+        
 
     }
 
-
+    self.UpdateReservationIsHide = function (reservation) {
+        var data = {
+            reservationId: reservation._id,
+            isHideType: "IsHideClient",
+            status:true
+        }
+        return $http.post(serviceBase + 'api/Reservation/UpdateReservationIsHide', data);
+    }
     self.setSelectedReservation = function (reservationData) {
         localStorageService.set('selectedReservation', reservationData);
     }

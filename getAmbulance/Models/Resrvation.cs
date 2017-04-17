@@ -27,6 +27,9 @@ namespace getAmbulance.Models
         public string Phone_Number { get; set; }
         public string Id_Number { get; set; }
         public string Age { get; set; }
+        public bool IsFree { get; set; }
+        public bool IsHideClient { get; set; }
+        public bool IsHideProvider { get; set; }
         public BsonDocument AdditionalProperties { get; set; }
     }
     public class ReservationFormEntity

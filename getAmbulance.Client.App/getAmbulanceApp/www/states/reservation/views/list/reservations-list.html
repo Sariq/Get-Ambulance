@@ -2,7 +2,7 @@
     <ion-content class="reservations-list">
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
         <div class="list-container">
-            <div class="row list-row " ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-click="openReservationData(reservation)" style="color:red" ng-class="{'percent-pending-background':reservation.Status=='1','percent-accepted-background':reservation.Status=='2'|| reservation.Status=='4','percent-ignored-background':reservation.Status=='3' || reservation.Status=='5'}">
+            <div class="row list-row " ng-repeat="reservation in reservationsList | orderBy : _date : true" ng-show="!reservation.IsHideClient" ng-click="openReservationData(reservation)" style="color:red" ng-class="{'percent-pending-background':reservation.Status=='1','percent-accepted-background':reservation.Status=='2'|| reservation.Status=='4','percent-ignored-background':reservation.Status=='3' || reservation.Status=='5'}">
                 <div class="col-20 col-container text-center" style="padding-right: 3%;">
                     <span ng-switch="reservation.Status">
                         <span ng-switch-when="1"><img src="../www/img/pending-icon.png" class="status-icon" /></span>
