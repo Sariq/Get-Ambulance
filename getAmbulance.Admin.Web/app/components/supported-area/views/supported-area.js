@@ -213,10 +213,10 @@ var supportedAreaCmp = ['$scope', '$http', '$state', '$timeout', 'WhiteLabelServ
             onChange: function (id) {
                 ctrl.valueChanged()
             },
-            ceil: 10,
+            ceil: 80,
             step: 1,
             minLimit: 1,
-            maxLimit: 10
+            maxLimit: 80
         }
     };
 

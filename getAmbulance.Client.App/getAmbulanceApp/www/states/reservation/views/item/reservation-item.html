@@ -3,7 +3,6 @@
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
 
         <div class="reservation-status">
-            <button ng-show="selectedReservation.Status=='3' || selectedReservation.Status=='5'" style="border-radius: 25px 25px 0 0!important;    width: 100%!important;" ng-click="chooseOtherProvider()" class="button button-full next-btn button-positive reservation-status-btn">{{'Choose_Another_Provider' | translate}}</button>
 
             <div class="row ">
                 <div class="cont">
@@ -247,6 +246,8 @@
 
 
         </div>
+        <button ng-show="selectedReservation.Status=='3' || selectedReservation.Status=='5'" style="border-radius: 0 0 0 0!important;margin-bottom: 2px!important;background-color: #57c059!important;" ng-click="chooseOtherProvider()" class="button button-full next-btn button-positive reservation-status-btn">{{'Choose_Another_Provider' | translate}}</button>
+
         <button ng-click="backToReservationsList()" class="button button-full next-btn button-positive reservation-status-btn">
             <span class="">{{'Back' | translate}}</span>
         </button>

@@ -185,6 +185,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
             reservation[value._name] = value._value;
         })
         delete Reservation_Form.AdditionalProperties;
+        delete reservation.Cancel_Reason;
         console.log(reservation)
         self.setReservationFormData(reservation);
         
