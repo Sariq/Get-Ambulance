@@ -80,7 +80,7 @@ namespace getAmbulance.Controllers
             {
                 try
                 {
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, WhiteLabelId = model.WhiteLabelId, IsInvoiceByMail = model.IsInvoiceByMail, IsServicesOffer = model.IsServicesOffer };
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, WhiteLabelId = model.WhiteLabelId, IsInvoiceByMail = model.IsInvoiceByMail, IsServicesOffer = model.IsServicesOffer, CreatedDate = DateTime.Now };
                     var result = await UserManager.CreateAsync(user, model.Password);
 
                     if (result.Succeeded)

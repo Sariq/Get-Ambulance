@@ -1,5 +1,6 @@
 ﻿using AspNet.Identity.MongoDB;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace getAmbulance.Models
         public string WhiteLabelId { get; set; }
         public bool IsInvoiceByMail { get; set; }
         public bool IsServicesOffer { get; set; }
+        public DateTime CreatedDate { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
 

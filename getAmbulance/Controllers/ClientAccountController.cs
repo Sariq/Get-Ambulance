@@ -100,7 +100,7 @@ namespace getAmbulance.Controllers
             {
                 var clientUser = _ClientService.GetClientByUserName(model.Phone_Number);
                 if (clientUser == null) {
-                    var user = new ApplicationClientUser { UserName = model.Phone_Number, PhoneNumber = "+972" + model.Phone_Number, Email = "null@null.com" };
+                    var user = new ApplicationClientUser { UserName = model.Phone_Number, PhoneNumber = "+972" + model.Phone_Number, Email = "null@null.com",CreatedDate= DateTime.Now };
                     var result = await UserManager.CreateAsync(user);
 
                     if (result.Succeeded)

@@ -41,12 +41,21 @@ namespace getAmbulance.Client
 
         public ApplicationClientUser GetClientByUserName(string userName)
         {
-
-            var builder = Builders<ApplicationClientUser>.Filter;
-            var filter = builder.Eq("UserName", userName);
-            var user = _ctx.ClientUsers.Find(filter).FirstOrDefault();
-
+            ApplicationClientUser user = null;
+            try
+            {
+                var builder = Builders<ApplicationClientUser>.Filter;
+                var filter = builder.Eq("UserName", userName);
+                 user = _ctx.ClientUsers.Find(filter).FirstOrDefault();
+                return user;
+            }
+            catch(Exception ex)
+            {
+                var exx = ex;
+            }
             return user;
+
+
         }
 
         public void UpdateUserProfile(UpdateUserProfileModel userProfileData)
