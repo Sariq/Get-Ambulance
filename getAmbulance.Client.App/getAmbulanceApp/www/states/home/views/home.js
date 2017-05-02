@@ -41,3 +41,21 @@ angular.module('starter.controllers').controller('HomeCtrl', function ($scope, $
 })
 
 
+angular.module('starter.controllers').directive('heightWatcher',  function () {
+    return {
+
+        link: function (scope, elem, attrs) {
+            scope.$watch(function () {
+                return elem[0].clientHeight;
+            },
+            function (newValue, oldValue) {
+ 
+                angular.element(document.querySelector('#main-container')).attr('style', 'margin-top: ' + (5 + newValue) + 'px');
+  
+               
+
+                //}
+            });
+        }
+    }
+});

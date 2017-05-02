@@ -18,6 +18,7 @@
                 <div class="row item-header min-height-40 items-align-center cursor-pointer text-center">
                     <div class="col-lg-10">
                         <span>{{'Service_Settings' | translate}} {{service.Name | translate}}</span>
+                        <toggle ng-show="isSupportRole" on="{{'OnLine' | translate}}" off="{{'Busy' | translate}}" ng-model="service.isOnline"  onstyle="btn-success" offstyle="btn-danger"></toggle>
                     </div>
                     <div ng-show="!isSupportRole" class="col-lg-1">
                         <span ng-click="deleteService(service)">{{'Delete' | translate}}</span>
