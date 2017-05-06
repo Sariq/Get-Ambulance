@@ -13,7 +13,7 @@ angular.module('sbAdminApp').controller('HomeCtrl', function ($scope, Reservatio
     $scope.whiteLabel = WhiteLabelService.getWhiteLabelDataLocal();
     $scope.isSupportUser = authService.isSupportUser($scope.whiteLabel.whiteLabelid);
     if (!$scope.isSupportUser) {
-        $scope.statusArray = ['1','2'];
+        $scope.statusArray = ['1'];
     } else {
         $scope.statusArray = ['1', '3', '5'];
     }

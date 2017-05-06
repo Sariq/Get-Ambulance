@@ -143,6 +143,26 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
       
     }
 
+    var _getStatusColor = function (status) {
+        switch (status) {
+            case '1':
+                return '#efad4d';
+                break
+            case '2':
+                return '#6ab66b';
+                break
+            case '3':
+                return '#e84e4e';
+                break
+            case '4':
+                return '#54a6de';
+                break
+            case '5':
+                return '#54a6de';
+                break
+
+        }
+    }
 
 
     ReservationServiceFactory.getReservations = _getReservations;
@@ -163,7 +183,7 @@ angular.module('sbAdminApp').factory('ReservationService', ['$http', 'ngAuthSett
     ReservationServiceFactory.groupByType = _groupByType;
     ReservationServiceFactory.filterByStatus = _filterByStatus;
     ReservationServiceFactory.goToByStatus = _goToByStatus;
-
+    ReservationServiceFactory.getStatusColor = _getStatusColor;
     
     return ReservationServiceFactory;
 

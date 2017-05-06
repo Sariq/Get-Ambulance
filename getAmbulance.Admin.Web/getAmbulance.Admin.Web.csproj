@@ -1087,6 +1087,11 @@
     <Content Include="app\views\register\views\registration\wl-registration.html" />
     <Content Include="app\views\register\views\registration\wl-registration.js" />
     <Content Include="app\views\register\register-service.js" />
+    <Content Include="app\views\reservation-calendar\routes.js" />
+    <Content Include="app\views\reservation-calendar\reservation-calendar-service.js" />
+    <Content Include="app\views\reservation-calendar\views\reservation-calendar.css" />
+    <Content Include="app\views\reservation-calendar\views\reservation-calendar.html" />
+    <Content Include="app\views\reservation-calendar\views\reservation-calendar.js" />
     <Content Include="app\views\statistics\routes.js" />
     <Content Include="app\views\statistics\views\statistics.css" />
     <Content Include="app\views\statistics\views\statistics.html" />

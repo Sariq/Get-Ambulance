@@ -39,7 +39,8 @@ angular
     'validation',
     'validation.rule',
     'chart.js',
-    'angularFileUpload'
+    'angularFileUpload',
+    'mwl.calendar'
 
   ]).constant('ngAuthSettings', {
       // apiServiceBaseUri: 'http://localhost:54543/',

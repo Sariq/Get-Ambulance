@@ -91,12 +91,12 @@ angular.module('sbAdminApp')
 
 
 
-      $scope.updateReservationStatus = function (reservation, status, reason) {
-          ReservationService.setSelectedReservationId(reservation._id);
-          ReservationService.updateReservationStatus(reservation, status, reason).then(function (res) {
-              console.log(res.data);
-          });
-      }
+      //$scope.updateReservationStatus = function (reservation, status, reason) {
+      //    ReservationService.setSelectedReservationId(reservation._id);
+      //    ReservationService.updateReservationStatus(reservation, status, reason).then(function (res) {
+      //        console.log(res.data);
+      //    });
+      //}
 
       $scope.openCancelReasonDialog = function (reservation, status) {
           ngDialog.open({
@@ -127,6 +127,7 @@ angular.module('sbAdminApp')
                       break
                   default:
                       $scope.initItemForm();
+                      $rootScope.$broadcast('updated-reservations-list');
                       //  $state.go('dashboard.reservation-item');
                       break
               }
