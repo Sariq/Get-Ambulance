@@ -57,5 +57,23 @@ namespace getAmbulance.Client
             response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
+        // Post: /Account/GetClientsList
+        [HttpPost]
+        public HttpResponseMessage GetClientsList()
+        {
+            HttpResponseMessage response;
+            try
+            {
+                List<ApplicationClientUser> clientsList = _ClientService.GetClientsList();
+                response = Request.CreateResponse(HttpStatusCode.OK, clientsList);
+            }
+            catch (Exception ex)
+            {
+
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, "GetWhiteLabelById  Error");
+            }
+            return response;
+        }
+
     }
 }

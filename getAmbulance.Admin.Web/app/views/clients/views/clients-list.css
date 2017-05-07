@@ -1,0 +1,24 @@
+.ngdialog-reservation-calendar{
+        padding-top: 210px!important;
+}
+
+.ngdialog.ngdialog-reservation-calendar .ngdialog-content{
+    width:85%!important;
+   top: 10%!important;
+}
+.day-highlight {
+   
+    text-align:center;
+}
+.day-highlight a{
+    color:white!important;
+    font-weight:bold;
+}
+
+mwl-calendar .badge-important{
+    background-color: #263650!important;
+}
+.cal-day-box .day-highlight{
+        border-radius: 15px!important;
+
+}

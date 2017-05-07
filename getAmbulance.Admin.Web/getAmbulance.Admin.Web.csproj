@@ -1072,6 +1072,11 @@
     <Content Include="app\views\ambulance\prices\ambulance-prices.css" />
     <Content Include="app\views\ambulance\prices\ambulance-prices.html" />
     <Content Include="app\views\ambulance\prices\ambulance-prices.js" />
+    <Content Include="app\views\clients\clients-service.js" />
+    <Content Include="app\views\clients\routes.js" />
+    <Content Include="app\views\clients\views\clients-list.css" />
+    <Content Include="app\views\clients\views\clients-list.html" />
+    <Content Include="app\views\clients\views\clients-list.js" />
     <Content Include="app\views\services-settings\views\supported-area\supported-area.css" />
     <Content Include="app\views\services-settings\views\supported-area\supported-area.html" />
     <Content Include="app\views\services-settings\views\supported-area\supported-area.js" />

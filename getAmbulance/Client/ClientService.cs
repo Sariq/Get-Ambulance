@@ -96,7 +96,11 @@ namespace getAmbulance.Client
             clientBasicInfo.DateOfBirth=user.Date_Of_Birth;
             return clientBasicInfo;
         }
-
+        public List<ApplicationClientUser> GetClientsList()
+        {
+            var clientsList = _ctx.ClientUsers.Aggregate().ToListAsync().Result;
+            return clientsList;
+        }
 
     }
 }
