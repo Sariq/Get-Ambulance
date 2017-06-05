@@ -50,7 +50,7 @@ var dateTimeCmp = function ($scope, $filter) {
     
     
     ctrl.form = {};
-
+      ctrl.form.Date = ctrl.date;
     if (window.isLocalHost) {
          ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "HH:mm");
          ctrl.form.Time = ctrl.time;
@@ -98,7 +98,7 @@ var dateTimeCmp = function ($scope, $filter) {
 angular.module('starter.controllers').component('dateTimeCmp', {
     bindings: {
         date: '=',
-        time: '=',
+       time:'=',
         dateOnly: '@',
         timeOnly: '@',
         notFormatedDate: '@',

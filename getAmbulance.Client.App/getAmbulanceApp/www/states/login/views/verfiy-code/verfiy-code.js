@@ -10,9 +10,20 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
     $scope.error = {};
     $scope.error.showMessage = false;
     $scope.logInData = LogInService.getLogInData();
-    if ($scope.logInData.Client_Status == '1') {
-        $scope.showUserInfoInputs = true;
-    }
+    $scope.isUpdateUserProfile = false;
+    //if ($scope.logInData.Client_Data.User_Reg_Status == '1') {
+    //    $scope.showUserInfoInputs = true;
+    //} else {
+
+        $scope.loginForm.Full_Name = $scope.logInData.Client_Data.Full_Name;
+        $scope.loginForm.Id_Number = $scope.logInData.Client_Data.Id_Number;
+        $scope.loginForm.Date_Of_Birth = $scope.logInData.Client_Data.Date_Of_Birth;
+        if (!$scope.loginForm.Full_Name || !$scope.loginForm.Id_Number || !$scope.loginForm.Date_Of_Birth) {
+            $scope.isUpdateUserProfile = true;
+        }
+
+       
+   // }
 
     $scope.login = function () {
         $scope.error.showMessage = false;
@@ -21,7 +32,7 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
         authService.login($scope.loginForm).then(function (response) {
             CommonService.hideLoader();
             $scope.userProfile = UserProfileService.getUserProfileLocal();
-            if ($scope.logInData.Client_Status == '1') {
+            if ($scope.isUpdateUserProfile) {
                 var data = { "User_Id": $scope.userProfile._id, "Full_Name": $scope.loginForm.Full_Name, "Id_Number": $scope.loginForm.Id_Number, "Date_Of_Birth": $scope.loginForm.Date_Of_Birth }
                 UserProfileService.updateUserProfile(data).then(function (res) {
                     UserProfileService.RefreshUserProfile();

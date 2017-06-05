@@ -34,7 +34,10 @@ namespace getAmbulance.Client
             public string Id_Number { get; set; }
             public DateTime DateOfBirth { get; set; }
         }
-        
+        public class ClientRegResponse : ClientUserProfileEntity
+        {
+            public string User_Reg_Status { get; set; }
+        }
 
         public class CodeToClientModel
         {

@@ -1,27 +1,24 @@
 
 
-angular.module('starter.controllers').controller('UserProfileCtrl', function ($scope, authService, ngAuthSettings, $state, LogInService) {
-
-    $scope.loginForm = {
-        userName: "",
-        password: ""
-    };
-
-    $scope.message = "";
-
-
-    $scope.sendCodeToClientByPhone = function () {
-        var logInData = { "Phone_Number": $scope.loginForm.Phone_Number };
-        LogInService.setLogInData(logInData);
-        authService.sendCodeToClientByPhone($scope.loginForm.Phone_Number).then(function (response) {
-            $state.go('verify-code');
-        },
-       function (err) {
-           $scope.message = err.error_description;
-       });
-
+angular.module('starter.controllers').controller('UserProfileCtrl', function ($scope, authService, ngAuthSettings, $state, UserProfileService, $filter) {
+    $scope.userProfile = UserProfileService.getUserProfileLocal();
+    $scope.userProfile.Date_Of_Birth = new Date($scope.userProfile.Date_Of_Birth);
+    $scope.updateUserProfile = function () {
+       
+        var data = { "User_Id": $scope.userProfile._id, "Full_Name": $scope.userProfile.Full_Name, "Id_Number": $scope.userProfile.Id_Number, "Date_Of_Birth": $scope.userProfile.Date_Of_Birth }
+            UserProfileService.updateUserProfile(data).then(function (res) {
+                UserProfileService.RefreshUserProfile();
+            });
+     
     }
 
-})
+    var initMinMaxDate = function () {
+        $scope.minDate = new Date();
+        $scope.minDate.setYear($scope.minDate.getFullYear() - 120);
+        $scope.maxDate = new Date();
+        $scope.maxDate.setYear($scope.maxDate.getFullYear() - 18);
+    }
+    initMinMaxDate();
+});
 
 

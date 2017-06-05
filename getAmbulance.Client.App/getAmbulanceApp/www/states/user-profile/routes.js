@@ -4,7 +4,7 @@ angular.module('starter.controllers').config(function ($stateProvider, $urlRoute
                  url: '/user-profile',
                  views: {
                      'menuContent': {
-                         templateUrl: 'states/user-profile/views/user-profile/user-profile.html',
+                         templateUrl: 'states/user-profile/views/user-profile.html',
                          controller: 'UserProfileCtrl'
                      }
                  },

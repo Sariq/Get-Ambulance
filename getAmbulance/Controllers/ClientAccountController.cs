@@ -106,8 +106,12 @@ namespace getAmbulance.Controllers
                     if (result.Succeeded)
                     {
                         var token = await UserManager.GenerateTwoFactorTokenAsync(user.Id, "PhoneCode");
+                        if (user.UserName != "0542454362") { 
                         await UserManager.NotifyTwoFactorTokenAsync(user.Id, "PhoneCode", token);
-                        response = Request.CreateResponse(HttpStatusCode.OK,"1");
+                        }
+                        ClientRegResponse clientRes = new ClientRegResponse();
+                        clientRes.User_Reg_Status = "1";
+                        response = Request.CreateResponse(HttpStatusCode.OK, clientRes);
                         return response;
                     }
                     AddErrors(result);
@@ -115,8 +119,17 @@ namespace getAmbulance.Controllers
                 else
                 {
                     var token = await UserManager.GenerateTwoFactorTokenAsync(clientUser.Id, "PhoneCode");
-                    await UserManager.NotifyTwoFactorTokenAsync(clientUser.Id, "PhoneCode", token);
-                    response = Request.CreateResponse(HttpStatusCode.OK,"2");
+                    if (clientUser.UserName != "0542454362")
+                    {
+                        await UserManager.NotifyTwoFactorTokenAsync(clientUser.Id, "PhoneCode", token);
+                    }
+                    ClientRegResponse clientRes = new ClientRegResponse();
+                    clientRes.User_Name = clientUser.UserName;
+                    clientRes.Full_Name = clientUser.Full_Name;
+                    clientRes.Id_Number = clientUser.Id_Number;
+                    clientRes.Date_Of_Birth = clientUser.Date_Of_Birth;
+                    clientRes.User_Reg_Status = "2";
+                    response = Request.CreateResponse(HttpStatusCode.OK, clientRes);
                     return response;
                 }
 

@@ -23,7 +23,7 @@ angular.module('starter.controllers').controller('LogInCtrl', function ($ionicPo
         CommonService.showLoader();
         authService.sendCodeToClientByPhone($scope.loginForm.Phone_Number).then(function (response) {
             CommonService.hideLoader();
-             var logInData = { "Phone_Number": $scope.loginForm.Phone_Number, "Client_Status": response.data };
+             var logInData = { "Phone_Number": $scope.loginForm.Phone_Number, "Client_Data": response.data };
              LogInService.setLogInData(logInData);
              $state.go('verify-code');
          },
