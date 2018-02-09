@@ -1,6 +1,6 @@
 ﻿/// <reference path="reservations-cmp.js" />
 'use strict';
-var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', '$timeout', 'eUserRole', 'UserManagerService', 'WhiteLabelService', 'ngTableEventsChannel', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog, $timeout, eUserRole, UserManagerService, WhiteLabelService, ngTableEventsChannel) {
+var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams', '$filter', '$sce', 'ngDialog', '$timeout', 'eUserRole', 'UserManagerService', 'WhiteLabelService', 'ngTableEventsChannel', '$rootScope', function ($scope, ReservationService, $state, NgTableParams, $filter, $sce, ngDialog, $timeout, eUserRole, UserManagerService, WhiteLabelService, ngTableEventsChannel, $rootScope) {
     var ctrl = this;
     ctrl.noReservations = false;
     ctrl.showOnTimerEnd = true;
@@ -11,6 +11,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
     $scope.$on('update-reservations-list', function (event, args) {
         ctrl.getReservations();
     });
+    
     $scope.$on('new-reservation', function (event, args) {
         audio.play();
     });
@@ -52,6 +53,7 @@ var reservationsCmp = ['$scope', 'ReservationService', '$state', 'NgTableParams'
         ReservationService.updateReservationStatus(reservation, status).then(function (res) {
             switch (status) {
                 case '3':
+                    $rootScope.$broadcast('updated-reservations-list');
                     break
                 default:
                     $state.go('dashboard.reservation-item');

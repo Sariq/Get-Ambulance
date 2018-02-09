@@ -17,10 +17,17 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "cordova-plugin-datepicker"
+    "cordova-plugin-datepicker",
+    {
+      "variables": {
+        "APP_ID": "582199991972053",
+        "APP_NAME": "GetAmbulance"
+      },
+      "locator": "cordova-plugin-facebook4",
+      "id": "cordova-plugin-facebook4"
+    }
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "ios"
   ]
 }

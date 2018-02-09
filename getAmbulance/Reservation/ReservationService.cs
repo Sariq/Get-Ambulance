@@ -4,6 +4,7 @@ using getAmbulance.Hubs;
 using getAmbulance.Interfaces;
 using getAmbulance.Models;
 using getAmbulance.WhiteLabel;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -46,6 +47,15 @@ namespace getAmbulance.Reservation
                 int reservationNumber = _dbSerivce.getNextSequence("Reservation_Number");
                 reservation.Reservation_Number = reservationNumber;
                 _ctx.Reservations.InsertOneAsync(reservation);
+                SmsService smsService = new SmsService();
+                IdentityMessage identityMessage = new IdentityMessage();
+                identityMessage.Body = ("התקבלה הזמנה חדשה : " + "מס'"+reservation.Reservation_Number+" - ספק"+ reservation.WhiteLabel_ID);
+                identityMessage.Destination = "+9720542454362";
+                identityMessage.Subject = "הזמנה חדשה";
+                smsService.SendAsync(identityMessage);
+                identityMessage.Destination = "+9720544655610";
+                identityMessage.Subject = "הזמנה חדשה";
+                smsService.SendAsync(identityMessage);
 
             }
             catch (Exception ex)

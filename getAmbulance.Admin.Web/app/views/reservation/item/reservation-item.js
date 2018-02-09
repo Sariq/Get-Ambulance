@@ -127,7 +127,7 @@ angular.module('sbAdminApp')
                       break
                   default:
                       $scope.initItemForm();
-                      $rootScope.$broadcast('updated-reservations-list');
+                      //$rootScope.$broadcast('updated-reservations-list');
                       //  $state.go('dashboard.reservation-item');
                       break
               }

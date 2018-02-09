@@ -16,9 +16,10 @@ angular.module('starter.controllers').controller('VerfiyCodeCtrl', function ($sc
     //} else {
 
         $scope.loginForm.Full_Name = $scope.logInData.Client_Data.Full_Name;
-        $scope.loginForm.Id_Number = $scope.logInData.Client_Data.Id_Number;
-        $scope.loginForm.Date_Of_Birth = $scope.logInData.Client_Data.Date_Of_Birth;
-        if (!$scope.loginForm.Full_Name || !$scope.loginForm.Id_Number || !$scope.loginForm.Date_Of_Birth) {
+        $scope.loginForm.Id_Number =null// $scope.logInData.Client_Data.Id_Number;
+        $scope.loginForm.Date_Of_Birth =$scope.loginForm.Full_Name? $scope.logInData.Client_Data.Date_Of_Birth:null;
+    //if (!$scope.loginForm.Full_Name || !$scope.loginForm.Id_Number || !$scope.loginForm.Date_Of_Birth) {
+        if (!$scope.loginForm.Full_Name  || !$scope.loginForm.Date_Of_Birth) {
             $scope.isUpdateUserProfile = true;
         }
 

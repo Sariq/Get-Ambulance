@@ -125,7 +125,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation.Full_Name =Reservation_Form.Full_Name;
         reservation.Phone_Number =Reservation_Form.Phone_Number;
         reservation.Age = Reservation_Form.Age.toString();
-        reservation.Id_Number = Reservation_Form.Id_Number.toString();
+        reservation.Id_Number = Reservation_Form.Id_Number?Reservation_Form.Id_Number.toString():null;
         reservation.IsHideClient = Reservation_Form.IsHideClient ? Reservation_Form.IsHideClient : false;
        // reservation._id = Reservation_Form._id;
         if (Reservation_Form.Reservation_Number) {
@@ -162,7 +162,7 @@ angular.module('starter.controllers').service('ReservationService', function ($f
         reservation.Full_Name = Reservation_Form.Full_Name;
         reservation.Phone_Number = Reservation_Form.Phone_Number;
         reservation.Age = Reservation_Form.Age;
-        reservation.Id_Number = Reservation_Form.Id_Number.toString();
+        reservation.Id_Number = Reservation_Form.Id_Number ? Reservation_Form.Id_Number.toString() : null;
         reservation.Reservation_Number = null;
         reservation._id = Reservation_Form._id;
 

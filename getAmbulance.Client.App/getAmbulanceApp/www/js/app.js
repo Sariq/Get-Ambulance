@@ -22,7 +22,7 @@ switch (location.host) {
         apiService = 'http://GetAmbulance-LoadBalancer-1286247522.us-west-2.elb.amazonaws.com/';
         break;
     default:
-        apiService = 'https://qaprovider.getambulance.com/';
+        apiService = 'http://ec2-18-216-220-155.us-east-2.compute.amazonaws.com/'
         break;
 
 }
