@@ -242,7 +242,7 @@ namespace getAmbulance.Controllers
                 var EncodeCode = HttpUtility.UrlEncode(code);
                 //var EncodeEmail = HttpUtility.UrlEncode(model.Email);
                 
-               await UserManager.SendEmailAsync(EncodeUserId, "איפוס סיסמא", "קישור לאיפוס סיסמא: <a href=\"" + WebConfigurationManager.AppSettings["EnvDomain"] + "app/index.html#/reset-password?userId=" + EncodeUserId + "&code=" + EncodeCode + "\">אפס סיסמא</a>");
+               await UserManager.SendEmailAsync(EncodeUserId, "איפוס סיסמא", "קישור לאיפוס סיסמא: <a href=\"" + WebConfigurationManager.AppSettings["EnvDomain"] + "adminweb/app/index.html#/reset-password?userId=" + EncodeUserId + "&code=" + EncodeCode + "\">אפס סיסמא</a>");
 
                 response = Request.CreateResponse(HttpStatusCode.OK, model);
                 return response;

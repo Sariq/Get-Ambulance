@@ -152,6 +152,12 @@ namespace getAmbulance.Models
 
             using (var client = new SmtpClient())
             {
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("support@getambulance.com", "1q2w3e");
+                client.Port = 587; // You can use Port 25 if 587 is blocked (mine is!)
+                client.Host = "smtp.office365.com";
+                
+
                 await client.SendMailAsync(mailMessage);
             }
             //return Task.FromResult(0);
