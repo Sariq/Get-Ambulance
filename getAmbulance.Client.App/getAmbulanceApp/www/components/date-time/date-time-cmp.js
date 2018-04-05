@@ -1,7 +1,7 @@
 'use strict';
-var dateTimeCmp = function ($scope, $filter) {
+var dateTimeCmp = function ($scope, $filter, CommonService) {
     var ctrl = this;
-
+    ctrl.isMobileBrowser = CommonService.getIsMobileBrowser();
     if (!ctrl.dateTitleText) {
         ctrl.dateTitleText = 'Date';
     }
@@ -53,7 +53,7 @@ var dateTimeCmp = function ($scope, $filter) {
       ctrl.form.Date = ctrl.date;
     if (window.location.host.indexOf("localhost") !== -1) {
          ctrl.time = $filter('date')(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), "HH:mm");
-         ctrl.form.Time = ctrl.time;
+         //ctrl.form.Time = ctrl.time;
 }
   
     function onTimeSuccess(date) {
@@ -63,11 +63,13 @@ var dateTimeCmp = function ($scope, $filter) {
     }
     if (window.location.host.indexOf("localhost") !== -1) {
         ctrl.date = $filter('date')(new Date(), "y/MM/dd");
-        ctrl.form.Date = ctrl.date;
+        //ctrl.form.Date = ctrl.date;
     }
     
     function onDateSuccess(date) {
-
+        if (date == undefined && ctrl.form.Date != null) {
+            date = ctrl.form.Date;
+        }
         if (ctrl.notFormatedDate) {
             ctrl.form.Date = date;  // for type="date" binding
         } else {
@@ -78,7 +80,10 @@ var dateTimeCmp = function ($scope, $filter) {
         if (window.location.host.indexOf("localhost") !== -1) {
             ctrl.date = $filter('date')(new Date(), "y/MM/dd");
         }
-        $scope.$apply();
+        if (!ctrl.isMobileBrowserMode) {
+            $scope.$apply();
+        }
+        
     }
 
     function onError(error) { // Android only
@@ -92,6 +97,15 @@ var dateTimeCmp = function ($scope, $filter) {
         dateOptions.date=new Date(ctrl.date);
         }
         datePicker.show(dateOptions, onDateSuccess, onError);
+    }
+
+    ctrl.onDateSuccess = function () {
+        ctrl.isMobileBrowserMode = false;
+        if (ctrl.form.Date != null && ctrl.form.Date != "") {
+            ctrl.isMobileBrowserMode = true;
+            onDateSuccess();
+        }
+        
     }
 
 }

@@ -103,6 +103,8 @@ label  select{
 .reservation-form .date-time input{
         padding-right: 0px!important;
     line-height: 100%!important;
+               background-color: inherit!important;
+    border: 0!important;
 }
 
 .reservation-form .item-input.date-time{

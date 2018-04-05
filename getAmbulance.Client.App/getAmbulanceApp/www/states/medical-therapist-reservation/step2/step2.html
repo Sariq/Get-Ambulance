@@ -22,7 +22,7 @@
                 
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label"  ng-class="{'has-input': Step2Form.Weight.$dirty}">{{'Weight'|translate}} ({{'KG' | translate}})</span>
-                    <select class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Weight'|translate}}">
+                    <select data-tap-disabled="{{isMobileBrowser}}" class="" name="Weight" ng-model="form.Weight" message-id="Weight" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Weight'|translate}}">
                         <option value="" hidden selected>{{'Weight'|translate}} ({{'KG' | translate}})</option>
                         <option value="90">{{'till'|translate}} 90</option>
                         <option value="121">91-121</option>

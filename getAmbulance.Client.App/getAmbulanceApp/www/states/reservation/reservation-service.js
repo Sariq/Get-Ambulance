@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('starter.controllers').factory('ReservationService', ['$http', 'ngAuthSettings', 'authService', 'localStorageService', function ($http, ngAuthSettings, authService, localStorageService) {
+angular.module('starter.controllers').factory('ReservationService', ['$http', 'ngAuthSettings', 'localStorageService', 'UserProfileService', function ($http, ngAuthSettings, localStorageService, UserProfileService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -7,7 +7,7 @@ angular.module('starter.controllers').factory('ReservationService', ['$http', 'n
     
     var _getReservations = function (status,type) {
         var data={ status : status,
-            ClientId: authService.getUserProfile()._id,
+            ClientId: UserProfileService.getUserProfile()._id,
             type: type
         }
         return $http.post(serviceBase + 'api/Reservation/GetReservationsListByClientId', data);

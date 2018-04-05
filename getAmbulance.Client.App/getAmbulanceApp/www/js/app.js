@@ -124,7 +124,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
   
   // if none of the above states are matched, use this as the fallback
   //$urlRouterProvider.otherwise('/app/home');
-}).run(function (authService, $state, $timeout, WhiteLabelService, ReservationHub, $ionicDeploy, $interval) {
+}).run(function (authService, $state, $timeout, WhiteLabelService, ReservationHub, $ionicDeploy, $interval, CommonService) {
+    CommonService.mobilebrowsercheck();
     $ionicDeploy.channel = 'production';
     authService.fillAuthData();
     if (!authService.authentication.isAuth) {

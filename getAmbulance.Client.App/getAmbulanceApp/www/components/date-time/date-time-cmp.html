@@ -1,26 +1,63 @@
-﻿<div ng-if="!$ctrl.dateOnly && !$ctrl.timeOnly " class="row" style="padding:0;margin: auto;width: 89%;">
-    <div class="col-45 width-100" style="margin: auto;min-width: 50%;">
-        <label class="item item-input panel item-floating-label  date-time">
-            <span class="input-label">{{ $ctrl.dateTitleText |translate}} </span>
-            <input ng-readonly="true" style="text-align:center" placeholder="{{$ctrl.dateTitleText|translate}}" type="text" ng-click="$ctrl.openDatePicker();" name="Date" ng-model="$ctrl.form.Date" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required"  required-error-message="{{'Insert'|translate}} {{$ctrl.dateTitleText|translate}}">
+﻿
+<div ng-if="!$ctrl.isMobileBrowser">
 
+
+    <div ng-if="!$ctrl.dateOnly && !$ctrl.timeOnly " class="row" style="padding:0;margin: auto;width: 89%;">
+        <div class="col-45 width-100" style="margin: auto;min-width: 50%;">
+            <label class="item item-input panel item-floating-label  date-time">
+                <span class="input-label">{{ $ctrl.dateTitleText |translate}} </span>
+                <input ng-readonly="true" style="text-align:center" placeholder="{{$ctrl.dateTitleText|translate}}" type="text" ng-click="$ctrl.openDatePicker();" name="Date" ng-model="$ctrl.form.Date" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{$ctrl.dateTitleText|translate}}">
+
+            </label>
+            <span id="Date"></span>
+        </div>
+        <div class="col-45 width-100" style="margin: auto;min-width: 50%;">
+            <label class="item item-input panel item-floating-label  date-time">
+                <span class="input-label">{{'Time'|translate}} </span>
+                <input ng-readonly="true" style="text-align:center" placeholder="{{'Time'|translate}}" type="text" ng-click="$ctrl.openTimePicker();" name="Time" ng-model="$ctrl.form.Time" min="{{'' | currenttime}}" message-id="Time" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Time'|translate}}">
+
+            </label>
+            <span id="Time"></span>
+        </div>
+
+    </div>
+    <div ng-if="$ctrl.dateOnly">
+        <label class="item item-input panel item-floating-label  ">
+            <span class="input-label">{{ $ctrl.dateTitleText | translate}} </span>
+            <input ng-readonly="true" style="text-align:center" placeholder="{{$ctrl.dateTitleText | translate}}" type="text" ng-click="$ctrl.openDatePicker();" name="Date" ng-model="$ctrl.form.Date | date : 'dd/MM/yy'" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{$ctrl.dateTitleText|translate}}">
         </label>
         <span id="Date"></span>
     </div>
-    <div class="col-45 width-100" style="margin: auto;min-width: 50%;">
-        <label class="item item-input panel item-floating-label  date-time">
-            <span class="input-label">{{'Time'|translate}} </span>
-             <input  ng-readonly="true" style="text-align:center" placeholder="{{'Time'|translate}}" type="text" ng-click="$ctrl.openTimePicker();" name="Time" ng-model="$ctrl.form.Time" min="{{'' | currenttime}}" message-id="Time" valid-method="blur" validator="required"  required-error-message="{{'Insert'|translate}} {{'Time'|translate}}">
 
-        </label>
-        <span id="Time"></span>
+</div>
+
+
+<!--mobile browser-->
+<div ng-if="$ctrl.isMobileBrowser">
+    <div ng-if="!$ctrl.dateOnly && !$ctrl.timeOnly " class="row" style="padding:0;margin: auto;width: 89%;">
+        <div class="col-45 width-100" style="margin: auto;min-width: 50%;">
+            <label class="item item-input panel item-floating-label  date-time">
+                <span class="input-label">{{ $ctrl.dateTitleText |translate}} </span>
+                <input style="text-align:center" placeholder="{{$ctrl.dateTitleText|translate}}" onfocus="(this.type='date')" type="text"  name="Date" ng-model="$ctrl.date" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{$ctrl.dateTitleText|translate}}">
+
+            </label>
+            <span id="Date"></span>
+        </div>
+        <div class="col-45 width-100" style="margin: auto;min-width: 50%;">
+            <label class="item item-input panel item-floating-label  date-time">
+                <span class="input-label">{{'Time'|translate}} </span>
+                <input  style="text-align:center" placeholder="{{'Time'|translate}}" type="text" onfocus="(this.type='time')"   name="text" ng-model="$ctrl.time" min="{{'' | currenttime}}" message-id="Time" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Time'|translate}}">
+
+            </label>
+            <span id="Time"></span>
+        </div>
+
     </div>
-
-</div>
-<div ng-if="$ctrl.dateOnly">
-    <label class="item item-input panel item-floating-label  ">
-        <span class="input-label">{{ $ctrl.dateTitleText | translate}} </span>
-        <input  ng-readonly="true" style="text-align:center" placeholder="{{$ctrl.dateTitleText | translate}}" type="text" ng-click="$ctrl.openDatePicker();" name="Date" ng-model="$ctrl.form.Date | date : 'dd/MM/yy'" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{$ctrl.dateTitleText|translate}}">
-    </label>
-    <span id="Date"></span>
-</div>
+    <div ng-if="$ctrl.dateOnly">
+        <label class="item item-input panel item-floating-label  ">
+            <span class="input-label">{{ $ctrl.dateTitleText | translate}} </span>
+            <input style="text-align:center" placeholder="{{$ctrl.dateTitleText | translate}}" type="text" onfocus="(this.type='date')"  name="text" ng-model="$ctrl.form.Date | date : 'dd/MM/yy'" min="{{'' | currentdate}}" message-id="Date" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{$ctrl.dateTitleText|translate}}">
+        </label>
+        <span id="Date"></span>
+    </div>
+    </div>

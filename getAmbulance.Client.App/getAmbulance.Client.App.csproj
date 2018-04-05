@@ -314,6 +314,11 @@
     <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.html" />
     <Content Include="getAmbulanceApp\www\states\bug-report\views\bug-report.js" />
     <Content Include="getAmbulanceApp\www\states\medical-therapist-reservation\step3\step3.css" />
+    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form-service.js" />
+    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.css" />
+    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.html" />
+    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.js" />
+    <Content Include="getAmbulanceApp\www\states\reservation-form\routes.js" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\routes.js" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.css" />
     <Content Include="getAmbulanceApp\www\states\terms-and-conditions\views\terms-and-conditions.html" />
@@ -371,11 +376,6 @@
     <Content Include="getAmbulanceApp\www\states\home\routes.js" />
     <Content Include="getAmbulanceApp\www\states\home\views\home.html" />
     <Content Include="getAmbulanceApp\www\states\home\views\home.js" />
-    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form-service.js" />
-    <Content Include="getAmbulanceApp\www\states\reservation-form\routes.js" />
-    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.js" />
-    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.html" />
-    <Content Include="getAmbulanceApp\www\states\reservation-form\reservation-form.css" />
     <Content Include="getAmbulanceApp\www\states\user-profile\user-profile-service.js" />
     <Content Include="getAmbulanceApp\www\states\user-profile\routes.js" />
     <Content Include="getAmbulanceApp\www\states\user-profile\views\user-profile.css" />

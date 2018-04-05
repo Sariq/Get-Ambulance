@@ -4,13 +4,14 @@
     <ion-content>
 
         <info-header-cmp info-text="headerInfoText"></info-header-cmp>
+        
         <form class="reservation-form" name="Step2Form" novalidate="" ng-submit="signIn(authorizationForm)">
 
             <div class="list">
 
                 <label class="item item-input panel item-floating-label select-style">
                     <span class="input-label" ng-class="{'has-input': Step2Form.Ambulance_Type.$dirty}">{{'Ambulance_Type'|translate}} </span>
-                    <select class="" name="Ambulance_Type" ng-model="form.Ambulance_Type" message-id="Ambulance_Type" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Ambulance_Type'|translate}}">
+                    <select data-tap-disabled="{{isMobileBrowser}}"   class="" name="Ambulance_Type" ng-model="form.Ambulance_Type" message-id="Ambulance_Type" valid-method="blur" validator="required" required-error-message="{{'Insert'|translate}} {{'Ambulance_Type'|translate}}">
                         <option value="" hidden selected>{{'Ambulance_Type'|translate}}</option>
                         <option value="Private_Ambulance">{{'Private_Ambulance'|translate}}</option>
                         <option value="ICU_Ambulance">{{'ICU_Ambulance'|translate}}</option>
