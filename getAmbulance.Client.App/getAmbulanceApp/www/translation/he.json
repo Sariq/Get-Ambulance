@@ -82,7 +82,7 @@
   "Provider_Details": "פרטי ספק",
   "tel": "טל",
   "name": "שם",
-  "Home_Welcome_Text": "ברוכים הבאים לגט אמבולנס",
+  "Home_Welcome_Text": "ברוכים הבאים אל GET AMBULANCE",
   "Drive_Direction_Type": "כיוון נסיעה",
   "WhiteLabels_List": "רשימת ספקים",
   "The_Reservation": "ההזמנה",
@@ -131,7 +131,13 @@
   "Send": "שלח",
   "Report_Sent_Successfully": "הדיווח נשלח בהצלחה",
   "LogOut": "התנתק",
-  "Profile": "פרופיל"
+  "Profile": "פרופיל",
+  "Press_on_confirm": " הקש/י על מאשר/ת",
+  "to_confirm": "כדי לקבל את",
+  "terms_and_conditions": "תנאי השימוש",
+  "for_get_ambulance": "של GET Ambulance",
+  "welcome_get_ambulance" : "ברוכים הבאים אל GET AMBULANCE",
+  "insert_tel_num_to_recive_code": "הקש מספר טלפון על מנת לקבל הודעה עם קוד אימות לטלפון שלך"
      
 
 

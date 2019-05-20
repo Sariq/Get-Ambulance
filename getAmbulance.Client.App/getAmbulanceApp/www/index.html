@@ -1,11 +1,12 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
       <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://maps.googleapis.com/ https://maps.gstatic.com/ https://mts0.googleapis.com/ 'unsafe-inline' 'unsafe-eval'">
-
+         
     <title></title>
         <link href="css/ionic.css?v=1.0.5" rel="stylesheet">
     <!--<link href="//code.ionicframework.com/nightly/css/ionic.css?v=1.0.5" rel="stylesheet">-->
@@ -114,6 +115,7 @@
       <script src="states/map/map-service.js?v=1.0.5"></script>
       <!--Map-->
       <!--side-menu-->
+      <link href="states/side-menu/side-menu.css?v=1.0.5" rel="stylesheet">
       <script src="states/side-menu/routes.js?v=1.0.5"></script>
       <script src="states/side-menu/side-menu.js?v=1.0.5"></script>
       <script src="states/side-menu/facebook/routes.js?v=1.0.5"></script>
@@ -196,9 +198,9 @@
       <!--bug-report-->
   </head>
 
-  <body ng-app="starter">
+  <body ng-app="starter"  ng-class="{ 'ltr' : isLTR }">
 
-<ion-nav-view animation="slide-right-left"> </ion-nav-view>
+<ion-nav-view animation="slide-right-left" > </ion-nav-view>
  
   </body>
 </html>

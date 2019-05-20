@@ -28,9 +28,11 @@ switch (location.host) {
 }
 angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.translate', 'LocalStorageModule', 'ngCordova', 'validation', 'validation.rule', 'SignalR', 'angular.filter', 'google.places', 'angularFileUpload', 'ionic.cloud'])
 
-.run(function ($ionicPlatform, $ionicDeploy, $rootScope) {
+.run(function ($ionicPlatform, $ionicDeploy, $rootScope, $translate) {
     $ionicPlatform.ready(function () {
-        
+        $rootScope.isLTR = $translate.use().search(/en/) > -1 ? true : false;
+        $rootScope.isCustomEn = $translate.use().search(/en/) > -1 ? true : false;
+        $rootScope.selectedCurrencey = $rootScope.isCustomEn ? "&#x24" :"&#8362" ;
         $rootScope.$broadcast('device:ready');
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -60,7 +62,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
     });
 
     $validationProvider.showSuccessMessage = false;
-    $translateProvider.preferredLanguage('he');
+    if(navigator.language){
+        if((navigator.language).search(/he/) > -1){
+            $translateProvider.preferredLanguage('he');
+        }else{
+            $translateProvider.preferredLanguage('en');
+        }
+    }else{
+        if(navigator.userLanguage){
+            if((navigator.userLanguage).search(/he/) > -1){
+                $translateProvider.preferredLanguage('he');
+            }else{
+                $translateProvider.preferredLanguage('en');
+            }
+        }
+    }
+    
     $httpProvider.interceptors.push('authInterceptorService');
     $translateProvider.useStaticFilesLoader({
         prefix: 'translation/',

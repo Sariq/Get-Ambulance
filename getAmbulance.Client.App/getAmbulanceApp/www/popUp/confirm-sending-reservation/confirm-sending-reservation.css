@@ -7,3 +7,10 @@
         padding-bottom: 15px;
             color: #57caff;
 }
+
+.ltr .confirm-sending-reservation .price{
+    direction: rtl;
+}
+.ltr .confirm-sending-reservation .buttons-container{
+    direction: rtl;
+}

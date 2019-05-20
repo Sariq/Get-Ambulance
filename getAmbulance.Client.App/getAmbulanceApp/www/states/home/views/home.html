@@ -1,6 +1,6 @@
-﻿<ion-view view-title="דף הבית" hide-back-button="true">
+﻿<ion-view view-title="{{'Home_Page' | translate}}" hide-back-button="true">
     <ion-content class="home" >
-        <div height-watcher style="position: fixed;background: white;z-index: 1000;top: 48px;">
+        <div height-watcher style="position: fixed;background: white;z-index: 1000;top: 48px;width: 100%;">
             <div class="row width-100">
                 <div class="col img-container">
                     <div class="text-center">
@@ -18,8 +18,8 @@
                 </div>
 
             </div>
-
-            <div class="row info " style="padding-right: 18px;padding-left: 18px;">
+            
+            <div  ng-hide="isCustomEn" class="row info " style="padding-right: 18px;padding-left: 18px;">
 
                 <div class="col-10">
                     <img src="../www/img/info-green.svg" class="info-green-svg" style="width:108%;height: 100%;" />
@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" ng-if="!isCustomEn">
                     <div class="col-10">
                     </div>
                     <div class="cat ">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" ng-if="!isCustomEn">
                     <div class="col-10">
                     </div>
                     <div class="cat">
@@ -104,7 +104,7 @@
                 </div>
             </section>
             <div class="row">
-                <div class="col-100 copy-rights text-center">
+                <div class="col-100 copy-rights text-center patent-row">
                     Patent Pending  &#169;  Get Ambulance 2016
                 </div>
             </div>

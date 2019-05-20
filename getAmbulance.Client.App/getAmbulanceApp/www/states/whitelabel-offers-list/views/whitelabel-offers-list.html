@@ -18,7 +18,7 @@
                           </span>
                       </div>
                       <div class="col-33 text-center" style="vertical-align: middle;text-align:center;    margin: auto;    color: #263650;">
-                          &#8362;{{item.price}}
+                        <span ng-bind-html="selectedCurrencey"></span>{{item.price}}
                       </div>
                       <div class="col-30 text-center"   style="margin: auto;color:white;">
                           {{'Reserve' | translate }}
@@ -41,7 +41,7 @@
                                      {{whiteLabelOffer.name}}
                                   </div>
                                   <div class="col-33 text-center" ng-click="setSelectedOffer(item);" style="margin: auto;padding-right:11%">
-                                      &#8362;{{whiteLabelOffer.price}}
+                                    <span ng-bind-html="selectedCurrencey"></span>{{whiteLabelOffer.price}}
                                   </div>
                               </div>
                           </div>
@@ -54,16 +54,16 @@
                           <div style="margin-top: 10px;">
                               <span style="color:white"> {{'Reservation_Completed' | translate }}</span>
                               <br />
-                              <h3 style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
+                              <h3 ng-if="!isCustomEn" style="color:white;margin-top:0"> {{'Wish_You_Success' | translate }}</h3>
                           </div>
                      
-                          <div style="text-align:right;margin-bottom: 15px;">
+                          <div class="reservation-number-container">
                               <span>{{'Reservation_Number' | translate }}</span>
                               <br />
                               <span style="font-weight: bold;color: #56cbff!important;font-size: 150%;">{{Reservation.Reservation_Number}}</span>
                           </div>
 
-                          <div style="text-align:right;margin-bottom: 5px;">
+                          <div class="provider-answer">
                               <span>{{'Waiting_for_Provider_Answer' | translate }}</span>
                           </div>
                           <div class="middle-btn">

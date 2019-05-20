@@ -1,0 +1,13 @@
+{
+  "name": "getAmbulanceApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "pro_id": "bba3259e",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

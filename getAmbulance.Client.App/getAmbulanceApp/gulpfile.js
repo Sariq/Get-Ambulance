@@ -1,11 +1,11 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var bower = require('bower');
+//var bower = require('bower');
 var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var sh = require('shelljs');
+//var sass = require('gulp-sass');
+//var minifyCss = require('gulp-minify-css');
+//var rename = require('gulp-rename');
+//var sh = require('shelljs');
 
 //var paths = {
 //  sass: ['./scss/**/*.scss']
@@ -51,6 +51,11 @@ var sh = require('shelljs');
 //});
 
 var minify = require('gulp-minify');
+var usemin = require('gulp-usemin');
+var uglify = require('gulp-uglify');
+var htmlmin = require('gulp-htmlmin');
+var cleanCss = require('gulp-clean-css');
+var rev = require('gulp-rev');
 
 gulp.task('compress', function () {
     gulp.src('platforms/browser/www/*.js')
@@ -68,9 +73,11 @@ gulp.task('usemin', function () {
       .pipe(usemin({
           css: [rev()],
           html: [htmlmin({ collapseWhitespace: true })],
-          js: [uglify(), rev()],
+          js: [rev()],
           inlinejs: [uglify()],
           inlinecss: [cleanCss(), 'concat']
       }))
       .pipe(gulp.dest('build/'));
 });
+
+gulp.task('default', ['usemin']);

@@ -96,3 +96,12 @@ ion-side-menu {
      margin-bottom: 15%!important;
     width:100%
 }
+
+.ltr .home .cat-img{
+    height: unset;
+}
+.ltr .patent-row{
+    bottom: 5%;
+    position: absolute;
+    width: 100%;
+}

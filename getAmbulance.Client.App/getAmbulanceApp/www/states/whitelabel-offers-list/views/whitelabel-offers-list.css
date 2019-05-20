@@ -11,6 +11,14 @@ font-size: calc(0.75em + 2vmin);
     margin: auto;
     border-right:transparent;
 }
+.whitelabel-offer-list .reservation-number-container{
+    text-align:right;
+    margin-bottom: 15px;
+}
+.whitelabel-offer-list .provider-answer{
+    text-align:right;
+    margin-bottom: 5px;
+}
 .offer-item{
         background: -webkit-linear-gradient(right,#f7fbfc 70%, #5bba5e 30%)!important;
 }
@@ -35,4 +43,25 @@ font-size: calc(0.75em + 2vmin);
 }
 .offers-list{
         margin-top: 10%;
+}
+
+
+
+.ltr .offer-item{
+    background: -webkit-linear-gradient(left,#f7fbfc 70%, #5bba5e 30%)!important;
+}
+
+
+.ltr .whitelabel-offer-list .panel{
+    border-right:unset!important;
+
+    border-left:transparent!important;
+}
+
+
+.ltr .whitelabel-offer-list .reservation-number-container{
+    text-align:left;
+}
+.ltr .whitelabel-offer-list .provider-answer{
+    text-align:left;
 }

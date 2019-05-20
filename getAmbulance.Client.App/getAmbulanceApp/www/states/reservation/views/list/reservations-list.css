@@ -70,3 +70,15 @@ margin-top: 5px;
 }
 
 
+.ltr .percent-pending-background{
+    background: -webkit-linear-gradient(left,#f7fbfc 69%, #efad4d 31%)!important;
+}
+.ltr .percent-ignored-background{
+    background: -webkit-linear-gradient(left,#f7fbfc 69%, #e84e4e 31%)!important;
+}
+.ltr .percent-accepted-background{
+    background: -webkit-linear-gradient(left,#f7fbfc 69%, #6ab66b 31%)!important;
+}
+.ltr .reservations-list .col-container{
+   margin: auto;
+}

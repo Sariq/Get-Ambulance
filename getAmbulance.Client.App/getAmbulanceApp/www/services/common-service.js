@@ -54,11 +54,15 @@ angular.module('starter.controllers').factory('CommonService', ['$rootScope', '$
         setIsMobileBrowser(check);
         //return check;
     };
+    var _getIsCustomEn = function () {
+        return $rootScope.isMobileBrowse;
+    }
     CommonServiceFactory.showLoader = _showLoader;
     CommonServiceFactory.hideLoader = _hideLoader;
     CommonServiceFactory.deregisterHardBack = _deregisterHardBack;
     CommonServiceFactory.mobilebrowsercheck = _mobilebrowsercheck;
     CommonServiceFactory.getIsMobileBrowser = _getIsMobileBrowser;
+    CommonServiceFactory.getIsCustomEn = _getIsCustomEn;
 
     return CommonServiceFactory;
 

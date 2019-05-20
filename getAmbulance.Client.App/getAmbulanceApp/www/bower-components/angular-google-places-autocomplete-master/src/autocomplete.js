@@ -86,7 +86,8 @@ angular.module('google.places', [])
 
                         $drawer = $compile(drawerElement)($scope);
                         body.append($drawer);  // Append to DOM
-
+                        
+               
                         $scope.$on('$destroy', function() {
                             $drawer.remove();
                         });

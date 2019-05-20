@@ -1,0 +1,13 @@
+ion-side-menus .icon-img{
+    margin-left: 10px;
+}
+ion-side-menus .icon-img img{
+    width: 22px;
+}
+
+.ltr ion-side-menus .icon-img{
+    width: 22px;
+    margin-left: unset;
+    margin-right: 10px;
+
+}

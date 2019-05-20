@@ -36,6 +36,7 @@
 }
 .phone_number{
     font-size: x-large;
+    text-align: center;
 }
 
 .Confirm_Phone_Number{
@@ -45,4 +46,17 @@
 .Is_This_Your_Phone_Number_row{
     padding-bottom:0;
        padding-left: 14%;
+       text-align: center;
+}
+.ltr .Is_This_Your_Phone_Number_row{
+    padding-left: unset;
+    padding-right: 14%;
+}
+
+.ltr .Confirm_Phone_Number .phone_number{
+    text-align: center;
+}
+.ltr .Is_This_Your_Phone_Number_row{
+    text-align: left;
+    direction: rtl;
 }
