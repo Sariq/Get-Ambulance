@@ -3,11 +3,13 @@
   "integrations": {
     "cordova": {}
   },
+  "type": "ionic1",
   "pro_id": "bba3259e",
   "watchPatterns": [
     "scss/**/*",
     "www/**/*",
     "!www/lib/**/*",
     "!www/**/*.map"
-  ]
+  ],
+  "id": "bba3259e"
 }

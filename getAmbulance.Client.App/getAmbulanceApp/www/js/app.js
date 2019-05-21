@@ -63,14 +63,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'pascalprecht.transla
 
     $validationProvider.showSuccessMessage = false;
     if(navigator.language){
-        if((navigator.language).search(/he/) > -1){
+        if((navigator.language).search(/he/) > -1 || (navigator.language).search(/ar/) > -1){
             $translateProvider.preferredLanguage('he');
         }else{
             $translateProvider.preferredLanguage('en');
         }
     }else{
         if(navigator.userLanguage){
-            if((navigator.userLanguage).search(/he/) > -1){
+            if((navigator.userLanguage).search(/he/) > -1 || (navigator.language).search(/ar/) > -1){
                 $translateProvider.preferredLanguage('he');
             }else{
                 $translateProvider.preferredLanguage('en');
