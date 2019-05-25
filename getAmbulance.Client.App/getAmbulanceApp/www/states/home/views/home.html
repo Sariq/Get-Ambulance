@@ -44,12 +44,17 @@
                     </div>
                     <div class="col-15">
                     </div>
-                    <div class="cat" ng-click="goToReservationForm(2)">
+                    <div ng-if="!isCustomEn" class="cat" ng-click="goToReservationForm(2)">
                         <div class="text-center">
                             <img class="cat-img" style="" src="../www/img/newinconmelavveh.svg" />
-                    
                         </div>
                         <div class="text-center blue-color txt">{{'MedicalTherapist' | translate}}</div>
+                    </div>
+                    <div ng-if="isCustomEn" class="cat " ng-click="goToReservationForm(4)">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/newinconlahtzan.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'Emergency_Button' | translate}} </div>
                     </div>
                     <div class="col-10">
                     </div>

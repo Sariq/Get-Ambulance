@@ -1,0 +1,29 @@
+
+<ion-view view-title="{{'Emergency_Button' | translate}}">
+    <ion-content>
+        <info-header-cmp info-text="headerInfoText"></info-header-cmp>
+        <div id="main-container" class="home" style="position: absolute;width: 100%;">
+            <section class="cat-list-container ">
+                <div class="row">
+                    <div class="col-10">
+                    </div>
+                    <div class="cat">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/police.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'Police Department' | translate}} </div>
+                    </div>
+                    <div class="col-15">
+                    </div>
+                    <div ng-if="isCustomEn" class="cat ">
+                        <div class="text-center">
+                            <img class="cat-img" style="" src="../www/img/fireT.svg" />
+                        </div>
+                        <div class="text-center blue-color txt">{{'Fire Department' | translate}} </div>
+                    </div>
+                    <div class="col-10">
+                    </div>
+                </div>
+            </section>
+    </ion-content>
+</ion-view>

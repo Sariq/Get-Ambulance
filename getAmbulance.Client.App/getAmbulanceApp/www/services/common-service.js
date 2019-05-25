@@ -7,8 +7,9 @@ angular.module('starter.controllers').factory('CommonService', ['$rootScope', '$
 
 
     var _showLoader = function (WhiteLabelsList) {
+        var langExt = $rootScope.isCustomEn ? "-en" : "";
         $ionicLoading.show({
-            template: '<img src="../www/img/loading-logo.gif" class="loader-logo" />'
+            template: '<img src="../www/img/loading-logo' + langExt + '.gif" class="loader-logo" />'
         });
     }
     var _hideLoader = function (WhiteLabelsList) {

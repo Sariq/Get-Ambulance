@@ -9,7 +9,11 @@ angular.module('starter.controllers').controller('HomeCtrl', function ($scope, $
             ReservationService.deleteReservationFormDate();
         }
         localStorageService.set('reservationType', reservationType);
-        $state.go('app.reservation-step1');
+        if(reservationType == 4){
+            $state.go('app.emergency-button');
+        }else{
+            $state.go('app.reservation-step1');
+        }
     }
 
     //$ionicPlatform.ready(function () {
